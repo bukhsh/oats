@@ -9,7 +9,7 @@ Optimization and Analysis Toolbox for power Systems (OATS) is a high-level model
 The scripts in OATS are written in Python 2. The optmization models are written in PYOMO, which is an algebraic modelling language. A solver is required to solve the optimization models. 
 
 ## Documentation
-The documentation of OATS is a best place to start. The documentation provides installation instructions and brief description of the optimization models that are implemented in OATS. 
+The [documentation](oatsdoc.pdf) of OATS is a best place to start. The documentation provides installation instructions and brief description of the optimization models that are implemented in OATS. 
 
 ## Contributing
 Any issues with the code and/or software bugs in OATS should be raised through the GitHub page. 
@@ -20,11 +20,13 @@ Please note that the users are obliged to share the code derived from OATS under
 
 ## License
 
-OATS is distributed under the open source license GNU GPL v3 - see the [LICENSE.md](LICENSE.md) file for details. This is a copyleft license that requires anyone using this code or a derivative work to make the source available under the same terms.
+OATS is distributed under the open source license GNU GPL v3 - see the [LICENSE](LICENSE.md) file for details. This is a copyleft license that requires anyone using this code or a derivative work to make the source available under the same terms.
 
 ## Citing OATS
 
 We are working on a journal article for OATS. Meanwhile, we request the users to cite the user manual of OATS.
+
+* W. Bukhsh, OATS: Optimization and Analysis Toolbox for Power Systems Optimization, Documentation realease 0.1, 2017 \[Available\] Online: https://github.com/bukhsh/oats
 
 ## Acknowledgments
 
