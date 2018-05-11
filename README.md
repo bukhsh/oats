@@ -23,7 +23,7 @@ Please note that the users are obliged to share the code derived from OATS under
 OATS is distributed under the open source license GNU GPL v3 - see the [LICENSE](LICENSE.md) file for details. This is a copyleft license that requires anyone using this code or a derivative work to make the source available under the same terms.
 
 ## Authors
-* **Waqquas Bukhsh** - *Initial work* - [University of Strathclyde](https://wbukhsh.com)
+* **Waqquas Bukhsh** - *Initial work* - [University of Strathclyde](www.wbukhsh.com)
 
 See also the list of [contributors](https://github.com/bukhsh/oats/contributors) who participated in this project.
 
