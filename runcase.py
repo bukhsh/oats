@@ -35,27 +35,30 @@ def runcase(testcase,mod,solver,opt=None):
     r = printdata(datfile,ptc,mod,opt)
     r.reducedata()
     r.printheader()
-    r.printkeysets()
-    r.printnetwork()
-    #'OPF' or 'LF'
-    if 'OPF' in mod:
-        r.printOPF()
-    elif 'LF' in mod:
-        r.printLF()
-    #'AC' or 'DC'
-    if 'AC' in mod:
-        r.printAC()
-    elif 'DC' in mod:
-        r.printDC()
+    if 'UC' in mod:
+        r.printUCdat()
+    else:
+        r.printkeysets()
+        r.printnetwork()
+        #'OPF' or 'LF'
+        if 'OPF' in mod:
+            r.printOPF()
+        elif 'LF' in mod:
+            r.printLF()
+        #'AC' or 'DC'
+        if 'AC' in mod:
+            r.printAC()
+        elif 'DC' in mod:
+            r.printDC()
 
-    if mod=='DCLF':
-        r.printDC()
-    elif mod=='ACLF':
-        r.printACLF()
-    elif mod=='DCOPF':
-        r.printDCOPF()
-    elif mod=='ACOPF':
-        r.printACOPF()
+        if mod=='DCLF':
+            r.printDC()
+        elif mod=='ACLF':
+            r.printACLF()
+        elif mod=='DCOPF':
+            r.printDCOPF()
+        elif mod=='ACOPF':
+            r.printACOPF()
 
 
     ###############Solver settings####################
@@ -75,7 +78,8 @@ def runcase(testcase,mod,solver,opt=None):
     o = printoutput(results, instance,mod)
     o.greet()
     o.solutionstatus()
-    o.printsummary()
-    o.printoutputxls()
-    # results = opt.solve(instance)
-    # print_output(mod,results, instance,ptc,sim_opt)
+    if 'UC' in mod:
+        o.printUC()
+    else:
+        o.printsummary()
+        o.printoutputxls()

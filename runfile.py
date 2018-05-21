@@ -19,12 +19,12 @@ solver = 'ipopt'
 # =====Test cases=====
 #give a path to the testcase file under the 'testcase' folder
 testcase = 'case24_ieee_rts.xlsx'
-
+#testcase = 'IrishNetwork.xlsx'
 # =====Model=====
 #specify a model to solve
-model ='DCLF'
+#model ='DCLF'
 #model ='ACLF'
 #model ='DCOPF'
-#model ='ACOPF'
-
+model ='ACOPF'
+#model ='UC'
 runcase(testcase,model,solver,opt)
