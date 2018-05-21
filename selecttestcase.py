@@ -23,6 +23,8 @@ def selecttestcase(test):
     df_wind        = xl.parse("wind")
     df_baseMVA     = xl.parse("baseMVA")
     df_zone        = xl.parse("zone")
+    df_zonalNTC    = xl.parse("zonalNTC")
+    df_ts          = xl.parse("timeseries",header=[0,1])
 
     data = {
     "bus": df_bus,
@@ -33,6 +35,9 @@ def selecttestcase(test):
     "transformer": df_transformer,
     "wind": df_wind,
     "baseMVA": df_baseMVA,
-    "zone": df_zone
+    "zone": df_zone,
+    "timeseries": df_ts,
+    "zone":df_zone,
+    "zonalNTC":df_zonalNTC
     }
     return data

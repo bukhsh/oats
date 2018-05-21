@@ -10,6 +10,8 @@
 #==================================================================
 import datetime
 import math
+import sys
+deltaT = 1.0
 class printdata(object):
     def __init__(self,datfile,data,model,options):
         self.datfile = datfile
@@ -360,4 +362,175 @@ class printdata(object):
         f.write('param Vmax:=\n')
         for i in self.data["bus"].index.tolist():
             f.write(str(self.data["bus"]["name"][i])+" "+str(self.data["bus"]["VNUB"][i])+"\n")
+        f.write(';\n')
+
+    def printUCdat(self):
+        f = open(self.datfile, 'a')
+        ##===sets===
+        f.write('set LE:=\n 1 \n 2;\n')
+        #---set of zones---
+        f.write('set Z:=\n')
+        for i in set(self.data["bus"]["zone"]):
+            f.write(str(i)+"\n")
+        f.write(';\n')
+        #---set of generators---
+        f.write('set G:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+"\n")
+        f.write(';\n')
+        #---set of demands---
+        f.write('set D:=\n')
+        for i in self.data["demand"]["name"].unique():
+            f.write(str(i)+"\n")
+        f.write(';\n')
+        #---set of wind generators---
+        if len(self.data["wind"]["name"])!=0:
+            f.write('set WIND:=\n')
+            for i in self.data["wind"]["name"].unique():
+                f.write(str(i)+"\n")
+            f.write(';\n')
+        #---set of interconnections between zones
+        if len(set(self.data["bus"]["zone"]))>1:
+            f.write('set ICT:=\n')
+            for i in self.data["zonalNTC"].index.tolist():
+                f.write(str(self.data["zonalNTC"]["interconnection_ID"][i])+"\n")
+            f.write(';\n')
+        #---set of time-periods---
+        f.write('set T:= \n')
+        for i in self.data["timeseries"]["Demand"].index.tolist():
+            f.write(str(i) + "\n")
+        f.write(';\n')
+        f.write('set TRed:= \n')
+        for i in self.data["timeseries"]["Demand"].index.tolist()[1:-1]:
+            f.write(str(i) + "\n")
+        f.write(';\n')
+
+        ##---set of GZ(generator zone mapping---
+        f.write('set GZ:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(self.data["bus"]["zone"][self.data["bus"]["name"]== self.data["generator"]["busname"][i]].item())+"\n")
+        f.write(';\n')
+        ###---set of wind zone mapping---
+        if len(self.data["wind"]["name"].index.tolist())!=0:
+            f.write('set WZ:=\n')
+            for i in self.data["wind"]["name"].index.tolist():
+                f.write(str(self.data["wind"]["name"][i])+" "+str(self.data["bus"]["zone"][self.data["bus"]["name"]== self.data["wind"]["busname"][i]].item())+"\n")
+            f.write(';\n')
+        ###---set of DZ(load zone mapping---
+        f.write('set DZ:=\n')
+        for i in self.data["demand"]["name"].index.tolist():
+            f.write(str(self.data["demand"]["name"][i])+" "+str(self.data["bus"]["zone"][self.data["bus"]["name"]==self.data["demand"]["busname"][i]].item())+"\n")
+        f.write(';\n')
+        #===parameters===
+        #---Real power demand---
+        f.write('param PD:=\n')
+        for i in self.data["timeseries"]["Demand"]:
+            for j in self.data["timeseries"]["Demand"].index.tolist():
+                f.write(str(i)+" "+str(j)+" "+str(float(self.data["timeseries"]["Demand"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+        f.write('param VOLL:=\n')
+        for i in self.data["demand"].index.tolist():
+            f.write(str(self.data["demand"]["name"][i])+" "+str(float(self.data["demand"]["VOLL"][i]))+"\n")
+        f.write(';\n')
+        f.write('param baseMVA:=\n')
+        f.write(str(self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+
+        #---Real power generation bounds---
+        f.write('param PGmin:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["PGLB"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+        f.write('param PGmax:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["PGUB"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+        #---Real power wind generation bounds---
+        if len(self.data["wind"]["name"])!=0:
+            f.write('param WGmin:=\n')
+            for i in self.data["timeseries"]["Wind"]:
+                for j in self.data["timeseries"]["Wind"].index.tolist():
+                    f.write(str(i)+" "+str(j)+" "+str(0)+"\n")
+            f.write(';\n')
+            f.write('param WGmax:=\n')
+            for i in self.data["timeseries"]["Wind"]:
+                for j in self.data["timeseries"]["Wind"].index.tolist():
+                    f.write(str(i)+" "+str(j)+" "+str(float(self.data["timeseries"]["Wind"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+
+        #--zonal data--
+        f.write('param ResReq:=\n')
+        for i in self.data["zone"].index.tolist():
+            f.write(str(self.data["zone"]["zone"][i])+" "+str(float(self.data["zone"]["reserve(MW)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+        if len(self.data["zonalNTC"].index.tolist())!=0:
+            f.write('param A:=\n')
+            for i in self.data["zonalNTC"].index.tolist():
+                f.write(str(self.data["zonalNTC"]["interconnection_ID"][i])+" "+"1"+" "+str(self.data["zonalNTC"]["from_zone"][i])+"\n")
+            for i in self.data["zonalNTC"].index.tolist():
+                f.write(str(self.data["zonalNTC"]["interconnection_ID"][i])+" "+"2"+" "+str(self.data["zonalNTC"]["to_zone"][i])+"\n")
+            f.write(';\n')
+
+            f.write('param NTCto:=\n')
+            for i in self.data["zonalNTC"].index.tolist():
+                f.write(str(self.data["zonalNTC"]["interconnection_ID"][i])+" "+str(float(self.data["zonalNTC"]["TransferCapacityTo(MW)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+            f.write('param NTCfr:=\n')
+            for i in self.data["zonalNTC"].index.tolist():
+                f.write(str(self.data["zonalNTC"]["interconnection_ID"][i])+" "+str(float(self.data["zonalNTC"]["TransferCapacityFr(MW)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+
+        #---ramp rates---
+        f.write('param RampUp:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float(deltaT*self.data["generator"]["RampUp(MW/hr)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+        f.write('param RampDown:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float(deltaT*self.data["generator"]["RampDown(MW/hr)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+
+        # #---minimum up and down times---
+        f.write('param MinUpTime:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float((1.0/deltaT)*self.data["generator"]["MinUpTime(hr)"][i]))+"\n")
+        f.write(';\n')
+        f.write('param MinDownTime:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float((1.0/deltaT)*self.data["generator"]["MinDownTime(hr)"][i]))+"\n")
+        f.write(';\n')
+
+        #---cost data---
+        f.write('param c2:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(self.data["generator"]["costc2"][i])+"\n")
+        f.write(';\n')
+        f.write('param c1:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(self.data["generator"]["costc1"][i])+"\n")
+        f.write(';\n')
+        f.write('param c0:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(self.data["generator"]["costc0"][i])+"\n")
+        f.write(';\n')
+        f.write('param SDcosts:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(self.data["generator"]["shutdown"][i])+"\n")
+        f.write(';\n')
+        f.write('param SUcosts:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(self.data["generator"]["startup"][i])+"\n")
+        f.write(';\n')
+
+        f.write('set UCMinUpT:=\n')
+        for i in self.data["generator"].index.tolist():
+            if int(self.data["generator"]["MinUpTime(hr)"][i])>1:
+                for j in range(int(self.data["generator"]["MinUpTime(hr)"][i]),int(self.data["timeseries"]["Demand"].index[-1]+1)):
+                    f.write(str(self.data["generator"]["name"][i])+" "+str(j)+" "+str(self.data["timeseries"]["Demand"].index[-1])+"\n")
+        f.write(';\n')
+        f.write('set UCMinDownT:=\n')
+        for i in self.data["generator"].index.tolist():
+            if int(self.data["generator"]["MinDownTime(hr)"][i])>1:
+                for j in range(int(self.data["generator"]["MinDownTime(hr)"][i]),int(self.data["timeseries"]["Demand"].index[-1]+1)):
+                    f.write(str(self.data["generator"]["name"][i])+" "+str(j)+" "+str(self.data["timeseries"]["Demand"].index[-1])+"\n")
         f.write(';\n')

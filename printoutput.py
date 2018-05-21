@@ -210,3 +210,72 @@ class printoutput(object):
         wind.to_excel(writer, sheet_name = 'wind',index=False)
         branch.to_excel(writer, sheet_name = 'branch',index=False)
         transformer.to_excel(writer, sheet_name = 'transformer',index=False)
+
+    def printUC(self):
+        print "Cost of the objective function:", str(float(self.instance.OBJ()))
+        print "***********"
+        print "\n Summary"
+        print "***********"
+        tab_summary = []
+        tab_summary.append(['Time Period','Units on','Conventional generation (MW)','Wind generation (MW)', 'Demand (MW)','Cost'])
+        for t in self.instance.T:
+            tab_summary.append([t,sum(self.instance.u[g,t].value for g in self.instance.G),\
+            sum(self.instance.pG[g,t].value for g in self.instance.G)*self.instance.baseMVA,\
+            sum(self.instance.pW[w,t].value for w in self.instance.WIND)*self.instance.baseMVA,sum(self.instance.PD[d,t] for d in self.instance.D)*self.instance.baseMVA,\
+            self.instance.costfunc[t].value/(sum(self.instance.PD[d,t] for d in self.instance.D)*self.instance.baseMVA)])
+        print tabulate(tab_summary, headers="firstrow", tablefmt="grid")
+        print "\n***************"
+        print "\n Zonal Flows"
+        print "***************"
+        zoneflow = []
+        zoneflow.append(['Time Period','Fr','To','Zone Fr (MW)','Zone To (MW)'])
+        for t in self.instance.T:
+            for l in self.instance.ICT:
+                zoneflow.append([t,self.instance.A[l,1],self.instance.A[l,2], self.instance.pICTto[l,t].value*self.instance.baseMVA,\
+                self.instance.pICTfrom[l,t].value*self.instance.baseMVA])
+        print tabulate(zoneflow, headers="firstrow", tablefmt="grid")
+        print "=============================================="
+
+        cols_summary    = ['Time Period','Conventional generation (MW)', 'Wind generation (MW)', 'Demand (MW)']
+        cols_zone       = ['Time Period','Zone', 'Conventional generation (MW)', 'Wind generation (MW)', 'Demand (MW)']
+        cols_ict        = ['Time Period','From', 'To', 'Power flow To(MW)', 'Power flow Fr(MW)']
+        cols_gen        = ['Time Period','Generator', 'on/off', 'start', 'stop','pG(MW)']
+
+        summary         = pd.DataFrame(columns=cols_summary)
+        zone            = pd.DataFrame(columns=cols_zone)
+        interconnect    = pd.DataFrame(columns=cols_ict)
+        generation      = pd.DataFrame(columns=cols_gen)
+        ind = 0
+        for t in self.instance.T:
+            summary.loc[ind] = pd.Series({'Time Period':t,'Conventional generation (MW)':sum(self.instance.pG[g,t].value for g in self.instance.G)*self.instance.baseMVA,\
+            'Wind generation (MW)':sum(self.instance.pW[w,t].value for w in self.instance.WIND)*self.instance.baseMVA,\
+            'Demand (MW)':sum(self.instance.PD[d,t] for d in self.instance.D)*self.instance.baseMVA})
+            ind += 1
+        ind = 0
+        for t in self.instance.T:
+            for z in self.instance.Z:
+                zone.loc[ind] = pd.Series({'Time Period':t,'Zone':z,'Conventional generation (MW)':sum(self.instance.pG[g,t].value for (g,z) in self.instance.GZ)*self.instance.baseMVA,\
+                'Wind generation (MW)':sum(self.instance.pW[w,t].value for (w,z) in self.instance.WZ)*self.instance.baseMVA,\
+                'Demand (MW)':sum(self.instance.PD[d,t] for (d,z) in self.instance.DZ)*self.instance.baseMVA})
+                ind += 1
+        ind = 0
+        for t in self.instance.T:
+            for l in self.instance.ICT:
+                interconnect.loc[ind] = pd.Series({'Time Period':t,'From':self.instance.A[l,1],'To':self.instance.A[l,2],\
+                'Power flow To(MW)':self.instance.pICTto[l,t].value*self.instance.baseMVA,'Power flow Fr(MW)':self.instance.pICTfrom[l,t].value*self.instance.baseMVA})
+                ind += 1
+
+        ind = 0
+        for t in self.instance.T:
+            for g in self.instance.G:
+                generation.loc[ind] = pd.Series({'Time Period':t,'Generator':g, 'on/off':self.instance.u[g,t].value,\
+                'start':self.instance.ustart[g,t].value, 'stop':self.instance.ustop[g,t].value,\
+                'pG(MW)':self.instance.pG[g,t].value*self.instance.baseMVA})
+                ind += 1
+        #===write output on xlsx file===
+        #
+        writer = pd.ExcelWriter('results/results.xlsx', engine ='xlsxwriter')
+        summary.to_excel(writer, sheet_name = 'summary',index=False)
+        zone.to_excel(writer, sheet_name = 'zone',index=False)
+        interconnect.to_excel(writer, sheet_name = 'interconnection',index=False)
+        generation.to_excel(writer, sheet_name = 'generator',index=False)
