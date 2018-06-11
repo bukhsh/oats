@@ -54,9 +54,6 @@ model.SLmaxT = Param(model.TRANSF, within=NonNegativeReals) # real power transfo
 model.BL     = Param(model.L, within=Reals)       # susceptance of a line
 model.BLT    = Param(model.TRANSF, within=Reals)  # susceptance of a transformer
 
-#tap
-model.Tap = Param(model.TRANSF, within=NonNegativeReals)  # turns ratio of line, -
-
 # shunt
 model.GB = Param(model.SHUNT, within=Reals) #  shunt conductance
 model.BB = Param(model.SHUNT, within=Reals) #  shunt susceptance
@@ -107,7 +104,7 @@ model.KCL_const = Constraint(model.B, rule=KCL_def)
 def KVL_line_def(model,l):
     return model.pL[l] == (-model.BL[l])*model.deltaL[l]
 def KVL_trans_def(model,l):
-    return model.pLT[l] == (-model.BLT[l]/model.Tap[l])*model.deltaLT[l]
+    return model.pLT[l] == (-model.BLT[l])*model.deltaLT[l]
 model.KVL_line_const     = Constraint(model.L, rule=KVL_line_def)
 model.KVL_trans_const    = Constraint(model.TRANSF, rule=KVL_trans_def)
 

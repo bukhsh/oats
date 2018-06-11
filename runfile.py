@@ -24,7 +24,8 @@ testcase = 'case24_ieee_rts.xlsx'
 #specify a model to solve
 #model ='DCLF'
 #model ='ACLF'
-#model ='DCOPF'
-model ='ACOPF'
+#model ='ACOPF'
 #model ='UC'
+model ='DCOPF'
+#model ='SCOPF'
 runcase(testcase,model,solver,opt)

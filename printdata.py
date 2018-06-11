@@ -140,6 +140,7 @@ class printdata(object):
             for i in self.data["transformer"].index.tolist():
                 f.write(str(self.data["transformer"]["name"][i])+" "+str(float(self.data["transformer"]["TapRatio"][i]))+"\n")
             f.write(';\n')
+        f.close()
     def printDC(self):
         f = open(self.datfile, 'a')
         #---Tranmission line chracteristics for DC load flow---
@@ -153,6 +154,7 @@ class printdata(object):
             for i in self.data["transformer"].index.tolist():
                 f.write(str(self.data["transformer"]["name"][i])+" "+str(-float(1/self.data["transformer"]["x"][i]))+"\n")
             f.write(';\n')
+        f.close()
     def printOPF(self):
         f = open(self.datfile, 'a')
         #---Real power generation bounds---
@@ -198,6 +200,7 @@ class printdata(object):
         for i in self.data["generator"].index.tolist():
             f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["costc0"][i]))+"\n")
         f.write(';\n')
+        f.close()
     def printDCOPF(self):
         f = open(self.datfile, 'a')
         #---Tranmission line chracteristics---
@@ -211,10 +214,7 @@ class printdata(object):
             for i in self.data["transformer"].index.tolist():
                 f.write(str(self.data["transformer"]["name"][i])+" "+str(-float(1/self.data["transformer"]["x"][i]))+"\n")
             f.write(';\n')
-            f.write('param Tap:=\n')
-            for i in self.data["transformer"].index.tolist():
-                f.write(str(self.data["transformer"]["name"][i])+" "+str(float(self.data["transformer"]["TapRatio"][i]))+"\n")
-            f.write(';\n')
+        f.close()
     def printAC(self):
         f = open(self.datfile, 'a')
         #set of shunts
@@ -329,6 +329,7 @@ class printdata(object):
                 temp     = -self.data["transformer"]["x"][i]/(self.data["transformer"]["r"][i]**2+self.data["transformer"]["x"][i]**2)
                 f.write(str(self.data["transformer"]["name"][i])+" "+str(temp)+"\n")
             f.write(';\n')
+        f.close()
     def printACLF(self):
         f = open(self.datfile, 'a')
         #---Voltage targets---
@@ -342,7 +343,8 @@ class printdata(object):
         for i in self.data["branch"].index.tolist():
             f.write(str(self.data["branch"]["name"][i])+" "+str(self.data["branch"]["b"][i])+"\n")
         f.write(';\n')
-        #derived line parameters
+        f.close()
+
     def printACOPF(self):
         f = open(self.datfile, 'a')
         #---Reactive power generation bounds---
@@ -363,7 +365,7 @@ class printdata(object):
         for i in self.data["bus"].index.tolist():
             f.write(str(self.data["bus"]["name"][i])+" "+str(self.data["bus"]["VNUB"][i])+"\n")
         f.write(';\n')
-
+        f.close()
     def printUCdat(self):
         f = open(self.datfile, 'a')
         ##===sets===
@@ -534,3 +536,78 @@ class printdata(object):
                 for j in range(int(self.data["generator"]["MinDownTime(hr)"][i]),int(self.data["timeseries"]["Demand"].index[-1]+1)):
                     f.write(str(self.data["generator"]["name"][i])+" "+str(j)+" "+str(self.data["timeseries"]["Demand"].index[-1])+"\n")
         f.write(';\n')
+        f.close()
+    def printSCdat(self):
+        flag_C = 0
+        contingencies_id = 1
+        contingencies_set = []
+        ##--Security constrained data--
+        f = open(self.datfile, 'a')
+        ##--Generator contingencies--
+        for i in self.data["generator"].index.tolist():
+            if int(self.data["generator"]["contingency"][i])==1:
+                if flag_C==0:
+                    f.write('set CG:=\n')
+                    flag_C=1
+                f.write(str(contingencies_id)+" "+str(self.data["generator"]["name"][i])+"\n")
+                contingencies_set.append(contingencies_id)
+                contingencies_id += 1
+        if flag_C==1:
+            f.write(';\n')
+        ##--Branch contingencies--
+        flag_C = 0
+        for i in self.data["branch"].index.tolist():
+            if int(self.data["branch"]["contingency"][i])==1:
+                if flag_C==0:
+                    f.write('set CL:=\n')
+                    flag_C=1
+                f.write(str(contingencies_id)+" "+str(self.data["branch"]["name"][i])+"\n")
+                contingencies_set.append([contingencies_id,str(self.data["branch"]["probabality"][i])])
+                contingencies_id += 1
+        if flag_C==1:
+            f.write(';\n')
+        ##--Transformer contingencies--
+        flag_C = 0
+        for i in self.data["transformer"].index.tolist():
+            if int(self.data["transformer"]["contingency"][i])==1:
+                if flag_C==0:
+                    f.write('set CT:=\n')
+                    flag_C=1
+                f.write(str(contingencies_id)+" "+str(self.data["transformer"]["name"][i])+"\n")
+                contingencies_set.append([contingencies_id,str(self.data["transformer"]["probability"][i])])
+                contingencies_id += 1
+        if flag_C==1:
+            f.write(';\n')
+        ##--Wind contingencies--
+        flag_C = 0
+        for i in self.data["wind"].index.tolist():
+            if int(self.data["wind"]["contingency"][i])==1:
+                if flag_C==0:
+                    f.write('set CWIND:=\n')
+                    flag_C=1
+                f.write(str(contingencies_id)+" "+str(self.data["wind"]["name"][i])+"\n")
+                contingencies_set.append([contingencies_id,str(self.data["wind"]["probability"][i])])
+                contingencies_id += 1
+        if flag_C==1:
+            f.write(';\n')
+        ##--set of contingencies--
+        f.write('set C:=\n')
+        for i in contingencies_set:
+            f.write(str(i[0])+"\n")
+        f.write(';\n')
+        if contingencies_set:
+            f.write('param probC:=\n')
+            for i in contingencies_set:
+                f.write(str(i[0])+" "+str(i[1])+"\n")
+            f.write(';\n')
+        #---ramp rates---
+        f.write('param RampUp:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float(deltaT*self.data["generator"]["RampUp(MW/hr)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+        f.write('param RampDown:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float(deltaT*self.data["generator"]["RampDown(MW/hr)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+
+        f.close()
