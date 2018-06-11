@@ -1,6 +1,6 @@
 #This is Python generated data file for Pyomo model DCLF.py
 #_author_:W. Bukhsh
-#Time stamp: 2018-06-11 11:50:52.740000
+#Time stamp: 2018-06-07 16:33:33.321331
 set B:=
 1
 2
@@ -604,4 +604,11 @@ T2-911 -11.9189511323
 T3-912 -11.9189511323
 T4-1011 -11.9189511323
 T5-1012 -11.9189511323
+;
+param Tap:=
+T1-324 1.03
+T2-911 1.03
+T3-912 1.03
+T4-1011 1.02
+T5-1012 1.02
 ;

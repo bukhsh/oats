@@ -51,7 +51,7 @@ class printoutput(object):
         cols_bus        = ['name', 'angle(degs)']
         cols_demand     = ['name', 'busname', 'PD(MW)','alpha']
 
-        if 'DC' in self.mod:
+        if 'DC' or 'SC' in self.mod:
             cols_branch     = ['name', 'from_busname', 'to_busname', 'pL(MW)']
             cols_transf     = ['name', 'from_busname', 'to_busname', 'pLT(MW)']
             if 'LF' in self.mod:
@@ -86,7 +86,7 @@ class printoutput(object):
         'Wind generation (MW)':sum(self.instance.pW[w].value for w in self.instance.WIND)*self.instance.baseMVA,\
         'Demand (MW)':sum(self.instance.PD[d] for d in self.instance.D)*self.instance.baseMVA})
 
-        if 'DC' in self.mod:
+        if ('DC' in self.mod) or ('SC' in self.mod):
             #bus data
             ind=0
             for b in self.instance.B:

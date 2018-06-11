@@ -48,17 +48,17 @@ def runcase(testcase,mod,solver,opt=None):
         #'AC' or 'DC'
         if 'AC' in mod:
             r.printAC()
-        elif 'DC' in mod:
+        elif 'DC' or 'SC' in mod:
             r.printDC()
 
-        if mod=='DCLF':
-            r.printDC()
-        elif mod=='ACLF':
+        if mod=='ACLF':
             r.printACLF()
         elif mod=='DCOPF':
             r.printDCOPF()
         elif mod=='ACOPF':
             r.printACOPF()
+        elif mod=='SCOPF':
+            r.printSCdat()
 
 
     ###############Solver settings####################
