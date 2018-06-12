@@ -9,7 +9,7 @@
 # OATS is distributed under the GNU GENERAL PUBLIC LICENSE v3. (see LICENSE file for details).
 #==================================================================
 
-from runcase import runcase
+from runcase import runcase #JUST TESTING
 
 opt=({}) #pass options to the runcase script
 
