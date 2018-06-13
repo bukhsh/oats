@@ -562,7 +562,7 @@ class printdata(object):
                     f.write('set CL:=\n')
                     flag_C=1
                 f.write(str(contingencies_id)+" "+str(self.data["branch"]["name"][i])+"\n")
-                contingencies_set.append([contingencies_id,str(self.data["branch"]["probabality"][i])])
+                contingencies_set.append([contingencies_id,str(self.data["branch"]["probability"][i])])
                 contingencies_id += 1
         if flag_C==1:
             f.write(';\n')
