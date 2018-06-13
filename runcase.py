@@ -21,17 +21,26 @@ from pyomo.opt import SolverFactory
 from pyomo.opt import SolverStatus, TerminationCondition
 from printdata import printdata
 from printoutput import printoutput
-
+import logging
 
 #====================================
 
 def runcase(testcase,mod,solver,opt=None):
     print 'Selected model is: ', mod
     print 'Selected testcase is: ', testcase
-    model = selectmodel(mod) #load model
-    ptc = selecttestcase(testcase) #read test case
+    try:
+        model = selectmodel(mod) #load model
+        logging.info("Given model file found and selected from the models library")
+    except Exception:
+        logging.error("Given model file not found in the 'models' library", exc_info=False)
+        raise
+    try:
+        ptc = selecttestcase(testcase) #read test case
+        logging.info("Given testcase file found and selected from the testcase library")
+    except Exception:
+        logging.error("Given testcase  not found in the 'testcases' library", exc_info=False)
+        raise
     datfile = 'datafile.dat'
-
     r = printdata(datfile,ptc,mod,opt)
     r.reducedata()
     r.printheader()
