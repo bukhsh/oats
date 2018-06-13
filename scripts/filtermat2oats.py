@@ -10,27 +10,31 @@
 
 import pandas as pd
 
-buscol = ['name','baseKV','type','zone','VM','VA','VNLB','VNUB','VELB','VEUB']
-demcol = ['name','busname','real','reactive','stat','VOLL']
-brncol = ['name','from_busname','to_busname','stat','r','x','b','ShortTermRating','ContinousRating','angLB','angUB','contingency','failure_rate(1/yr)']
-trncol = ['name','from_busname','to_busname','stat','r','x','ShortTermRating','ContinousRating','angLB','angUB','PhaseShift','TapRatio','TapLB','TapUB','contingency','failure_rate(1/yr)']
-wndcol = ['busname','name','stat','PG','QG','PGLB','PGUB','QGLB','QGUB','VS','contingency','failure_rate(1/yr)']
-shtcol = ['busname','name','GL','BL','stat']
-znecol = ['interconnection_ID','from_zone','to_zone','TransferCapacity(MW)']
-gencol = ['busname','name','stat','PG','QG','PGLB','PGUB','QGLB','QGUB','VS','RampDown(MW/hr)','RampUp(MW/hr)','MinDownTime(hr)','MinUpTime(hr)','FuelType','contingency','startup','shutdown','costc2','costc1','costc0']
+buscol    = ['name','baseKV','type','zone','VM','VA','VNLB','VNUB','VELB','VEUB']
+demcol    = ['name','busname','real','reactive','stat','VOLL']
+brncol    = ['name','from_busname','to_busname','stat','r','x','b','ShortTermRating','ContinousRating','angLB','angUB','contingency','probability']
+trncol    = ['name','from_busname','to_busname','stat','r','x','ShortTermRating','ContinousRating','angLB','angUB','PhaseShift','TapRatio','TapLB','TapUB','contingency','probability']
+wndcol    = ['busname','name','stat','PG','QG','PGLB','PGUB','QGLB','QGUB','VS','contingency','probability']
+shtcol    = ['busname','name','GL','BL','stat']
+zneNTCcol = ['interconnection_ID', 'from_zone', 'to_zone', 'TransferCapacityTo(MW)', 'TransferCapacityFr(MW)']
+znecol    = ['zone', 'reserve(MW)']
+gencol    = ['busname','name','stat','PG','QG','PGLB','PGUB','QGLB','QGUB','VS','RampDown(MW/hr)','RampUp(MW/hr)','MinDownTime(hr)','MinUpTime(hr)','FuelType','contingency','probability','startup','shutdown','costc2','costc1','costc0']
 
-dfbus = pd.DataFrame(columns=buscol)
-dfdem = pd.DataFrame(columns=demcol)
-dfbrn = pd.DataFrame(columns=brncol)
-dftrn = pd.DataFrame(columns=trncol)
-dfwnd = pd.DataFrame(columns=wndcol)
-dfsht = pd.DataFrame(columns=shtcol)
-dfzne = pd.DataFrame(columns=znecol)
-dfgen = pd.DataFrame(columns=gencol)
-baseMVA = pd.DataFrame(columns={'baseMVA'})
+
+dfbus    = pd.DataFrame(columns=buscol)
+dfdem    = pd.DataFrame(columns=demcol)
+dfbrn    = pd.DataFrame(columns=brncol)
+dftrn    = pd.DataFrame(columns=trncol)
+dfwnd    = pd.DataFrame(columns=wndcol)
+dfsht    = pd.DataFrame(columns=shtcol)
+dfzne    = pd.DataFrame(columns=znecol)
+dfzneNTC = pd.DataFrame(columns=znecol)
+dfgen    = pd.DataFrame(columns=gencol)
+dfts     = pd.DataFrame()
+baseMVA  = pd.DataFrame(columns={'baseMVA'})
 baseMVA.loc[0]=pd.Series({'baseMVA':100})
 
-filepath = 'matpowercases/case24_ieee_rts.m'
+filepath = 'matpowercases/case300.m'
 
 #value of lost load
 VOLL = str(100000)
@@ -68,20 +72,36 @@ with open(filepath,"r") as myfile:
             break
         if flag == 1:
             temp = line[:-2].split('\t')[1:]
-            if float(temp[8])==0:
-                dfbrn.loc[ind_br] = pd.Series({'name':'L'+str(ind_br+1)+'-'+temp[0]+temp[1],\
-                'from_busname':temp[0],'to_busname':temp[1],'stat':temp[10],\
-                'r':temp[2],'x':temp[3],'b':temp[4],'ShortTermRating':temp[7],\
-                'ContinousRating':temp[5],'angLB':temp[11],'angUB':temp[12],'contingency':str(1),'failure_rate(1/yr)':str(0)})
-                ind_br += 1
+            if float(temp[8])==0: #transformer or not
+                if float(temp[5])==0: #in matpower '0' means no line capacity constraint
+                    dfbrn.loc[ind_br] = pd.Series({'name':'L'+str(ind_br+1)+'-'+temp[0]+temp[1],\
+                    'from_busname':temp[0],'to_busname':temp[1],'stat':temp[10],\
+                    'r':temp[2],'x':temp[3],'b':temp[4],'ShortTermRating':str(9999),\
+                    'ContinousRating':str(9999),'angLB':temp[11],'angUB':temp[12],'contingency':str(1),'probability':str(0.0001)})
+                    ind_br += 1
+                else:
+                    dfbrn.loc[ind_br] = pd.Series({'name':'L'+str(ind_br+1)+'-'+temp[0]+temp[1],\
+                    'from_busname':temp[0],'to_busname':temp[1],'stat':temp[10],\
+                    'r':temp[2],'x':temp[3],'b':temp[4],'ShortTermRating':temp[7],\
+                    'ContinousRating':temp[5],'angLB':temp[11],'angUB':temp[12],'contingency':str(1),'probability':str(0.0001)})
+                    ind_br += 1
             else:
-                dftrn.loc[ind_tr] = pd.Series({'name':'T'+str(ind_tr+1)+'-'+temp[0]+temp[1],\
-                'from_busname':temp[0],'to_busname':temp[1],'stat':temp[10],\
-                'r':temp[2],'x':temp[3],'ShortTermRating':temp[7],'ContinousRating':temp[5],\
-                'angLB':temp[11],'angUB':temp[12],'PhaseShift':temp[9],'TapRatio':temp[8],\
-                'TapLB':str(float(temp[8])*(1-0.05)),'TapUB':str(float(temp[8])*(1+0.05)),\
-                'contingency':str(1),'failure_rate(1/yr)':str(0)})
-                ind_tr += 1
+                if float(temp[5])==0: #in matpower '0' means no line capacity constraint
+                    dftrn.loc[ind_tr] = pd.Series({'name':'T'+str(ind_tr+1)+'-'+temp[0]+temp[1],\
+                    'from_busname':temp[0],'to_busname':temp[1],'stat':temp[10],\
+                    'r':temp[2],'x':temp[3],'ShortTermRating':str(9999),'ContinousRating':str(9999),\
+                    'angLB':temp[11],'angUB':temp[12],'PhaseShift':temp[9],'TapRatio':temp[8],\
+                    'TapLB':str(float(temp[8])*(1-0.05)),'TapUB':str(float(temp[8])*(1+0.05)),\
+                    'contingency':str(1),'probability':str(0.0001)})
+                    ind_tr += 1
+                else:
+                    dftrn.loc[ind_tr] = pd.Series({'name':'T'+str(ind_tr+1)+'-'+temp[0]+temp[1],\
+                    'from_busname':temp[0],'to_busname':temp[1],'stat':temp[10],\
+                    'r':temp[2],'x':temp[3],'ShortTermRating':temp[7],'ContinousRating':temp[5],\
+                    'angLB':temp[11],'angUB':temp[12],'PhaseShift':temp[9],'TapRatio':temp[8],\
+                    'TapLB':str(float(temp[8])*(1-0.05)),'TapUB':str(float(temp[8])*(1+0.05)),\
+                    'contingency':str(1),'probability':str(0.0001)})
+                    ind_tr += 1
     #read mpc.gencost data
     flag    = 0
     costdat = pd.DataFrame(columns={'gen', 'start', 'shut' ,'c2', 'c1', 'c0'})
@@ -113,8 +133,8 @@ with open(filepath,"r") as myfile:
             dfgen.loc[ind] = pd.Series({'busname':temp[0],'name':'G'+str(ind+1),'stat':temp[7],'PG':temp[1],\
             'QG':temp[2],'PGLB':temp[9],'PGUB':temp[8],'QGLB':temp[4],'QGUB':temp[3],\
             'VS':temp[5],'RampDown(MW/hr)':temp[18],'RampUp(MW/hr)':temp[18],'MinDownTime(hr)':str(1),\
-            'MinUpTime(hr)':str(1),'FuelType':'NA','contingency':str(0),'startupcost':costdat['start'][costdat['gen']==ind],\
-            'shutdowncost':costdat['shut'][costdat['gen']==ind],'costc2':costdat['c2'][costdat['gen']==ind].item(),\
+            'MinUpTime(hr)':str(1),'FuelType':'NA','contingency':str(0),'probability':str(0.0001),'startup':costdat['start'][costdat['gen']==ind].item(),\
+            'shutdown':costdat['shut'][costdat['gen']==ind].item(),'costc2':costdat['c2'][costdat['gen']==ind].item(),\
             'costc1':costdat['c1'][costdat['gen']==ind].item(),'costc0':costdat['c0'][costdat['gen']==ind].item()})
             ind += 1
 
@@ -130,5 +150,7 @@ dftrn[trncol].to_excel(writer, sheet_name = 'transformer',index=False, header=Tr
 dfwnd[wndcol].to_excel(writer, sheet_name = 'wind',index=False, header=True)
 dfsht[shtcol].to_excel(writer, sheet_name = 'shunt',index=False, header=True)
 dfzne[znecol].to_excel(writer, sheet_name = 'zone',index=False, header=True)
+dfzneNTC[znecol].to_excel(writer, sheet_name = 'zonalNTC',index=False, header=True)
 dfgen[gencol].to_excel(writer, sheet_name = 'generator',index=False, header=True)
+dfts.to_excel(writer, sheet_name = 'timeseries',index=False, header=True)
 baseMVA.to_excel(writer, sheet_name = 'baseMVA',index=False, header=True)
