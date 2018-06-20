@@ -27,8 +27,8 @@ def main():
     solver = 'ipopt'
     # =====Test cases=====
     #give a path to the testcase file under the 'testcase' folder
-    #testcase = 'case24_ieee_rts.xlsx'
-    testcase = 'case39.xlsx'
+    testcase = 'case24_ieee_rts.xlsx'
+    #testcase = 'case14.xlsx'
     #testcase = 'IrishNetwork.xlsx'
     # =====Model=====
     #specify a model to solve

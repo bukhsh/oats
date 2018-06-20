@@ -47,11 +47,11 @@ class printoutput(object):
         print "=============================================="
     def printoutputxls(self):
         #===initialise pandas dataframes
-        cols_summary    = ['Conventional generation (MW)', 'Wind generation (MW)', 'Demand (MW)']
+        cols_summary    = ['Conventional generation (MW)', 'Wind generation (MW)', 'Demand (MW)','Objective function value']
         cols_bus        = ['name', 'angle(degs)']
         cols_demand     = ['name', 'busname', 'PD(MW)','alpha']
 
-        if 'DC' or 'SC' in self.mod:
+        if ('DC' in self.mod) or ('SC' in self.mod):
             cols_branch     = ['name', 'from_busname', 'to_busname', 'pL(MW)']
             cols_transf     = ['name', 'from_busname', 'to_busname', 'pLT(MW)']
             if 'LF' in self.mod:
@@ -84,7 +84,8 @@ class printoutput(object):
 
         summary.loc[0] = pd.Series({'Conventional generation (MW)': sum(self.instance.pG[g].value for g in self.instance.G)*self.instance.baseMVA,\
         'Wind generation (MW)':sum(self.instance.pW[w].value for w in self.instance.WIND)*self.instance.baseMVA,\
-        'Demand (MW)':sum(self.instance.PD[d] for d in self.instance.D)*self.instance.baseMVA})
+        'Demand (MW)':sum(self.instance.PD[d] for d in self.instance.D)*self.instance.baseMVA,\
+        'Objective function value': self.instance.OBJ()})
 
         if ('DC' in self.mod) or ('SC' in self.mod):
             #bus data
@@ -264,7 +265,6 @@ class printoutput(object):
                 interconnect.loc[ind] = pd.Series({'Time Period':t,'From':self.instance.A[l,1],'To':self.instance.A[l,2],\
                 'Power flow To(MW)':self.instance.pICTto[l,t].value*self.instance.baseMVA,'Power flow Fr(MW)':self.instance.pICTfrom[l,t].value*self.instance.baseMVA})
                 ind += 1
-
         ind = 0
         for t in self.instance.T:
             for g in self.instance.G:

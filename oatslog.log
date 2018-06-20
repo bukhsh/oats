@@ -1,8 +1,8 @@
-Wed, 13 Jun 2018 16:21:43 INFO     OATS log file
-Wed, 13 Jun 2018 16:21:43 INFO     Program started
-Wed, 13 Jun 2018 16:21:43 INFO     Solver selected: ipopt
-Wed, 13 Jun 2018 16:21:43 INFO     Testcase selected: case39.xlsx
-Wed, 13 Jun 2018 16:21:43 INFO     Model selected: DCOPF
-Wed, 13 Jun 2018 16:21:43 INFO     Given model file found and selected from the models library
-Wed, 13 Jun 2018 16:21:43 INFO     Given testcase file found and selected from the testcase library
-Wed, 13 Jun 2018 16:21:43 INFO     Done!
+Wed, 20 Jun 2018 14:22:15 INFO     OATS log file
+Wed, 20 Jun 2018 14:22:15 INFO     Program started
+Wed, 20 Jun 2018 14:22:15 INFO     Solver selected: ipopt
+Wed, 20 Jun 2018 14:22:15 INFO     Testcase selected: case24_ieee_rts.xlsx
+Wed, 20 Jun 2018 14:22:15 INFO     Model selected: DCOPF
+Wed, 20 Jun 2018 14:22:15 INFO     Given model file found and selected from the models library
+Wed, 20 Jun 2018 14:22:15 INFO     Given testcase file found and selected from the testcase library
+Wed, 20 Jun 2018 14:22:16 INFO     Done!
