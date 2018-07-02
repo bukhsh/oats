@@ -143,7 +143,7 @@ with open(filepath,"r") as myfile:
 #===write oats test case===
 #
 writer = pd.ExcelWriter('oats/'+filepath.split('/')[1].split('.')[0]+'.xlsx', engine ='xlsxwriter')
-dfbus[buscol].to_excel(writer, sheet_name = 'bus',index=False , header=True)
+dfbus[buscol].to_excel(writer, sheet_name = 'busbar',index=False , header=True)
 dfdem[demcol].to_excel(writer, sheet_name = 'demand',index=False, header=True)
 dfbrn[brncol].to_excel(writer, sheet_name = 'branch',index=False, header=True)
 dftrn[trncol].to_excel(writer, sheet_name = 'transformer',index=False, header=True)

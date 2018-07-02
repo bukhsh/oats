@@ -14,7 +14,7 @@ import pandas as pd
 def selecttestcase(test):
     xl = pd.ExcelFile("testcases/"+test)
 
-    df_bus         = xl.parse("busbar")
+    df_bus         = xl.parse("bus")
     df_demand      = xl.parse("demand")
     df_branch      = xl.parse("branch")
     df_generators  = xl.parse("generator")
