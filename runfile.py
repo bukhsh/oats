@@ -22,9 +22,10 @@ logging.info("OATS log file")
 #----------------------------------------------------------------------
 def main():
     logging.info("Program started")
-    opt=({}) #pass options to the runcase script
-    # give complete path to the solver
-    solver = 'ipopt'
+    #options
+    opt=({'neos':False,\
+    'solver':'ipopt'})
+
     # =====Test cases=====
     #give a path to the testcase file under the 'testcase' folder
     testcase = 'case24_ieee_rts.xlsx'
@@ -39,10 +40,10 @@ def main():
     model ='DCOPF'
     #model ='SCOPF'
     # ==log==
-    logging.info("Solver selected: "+solver)
+    logging.info("Solver selected: "+opt['solver'])
     logging.info("Testcase selected: "+testcase)
     logging.info("Model selected: "+model)
-    runcase(testcase,model,solver,opt)
+    runcase(testcase,model,opt)
     logging.info("Done!")
 
 if __name__ == "__main__":

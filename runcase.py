@@ -25,7 +25,7 @@ import logging
 
 #====================================
 
-def runcase(testcase,mod,solver,opt=None):
+def runcase(testcase,mod,opt=None):
     print 'Selected model is: ', mod
     print 'Selected testcase is: ', testcase
     try:
@@ -71,24 +71,32 @@ def runcase(testcase,mod,solver,opt=None):
 
 
     ###############Solver settings####################
-    opt = SolverFactory(solver)
-    #opt.options['mipgap'] = 0.1
-    #################################################
+    if not opt['neos']:
 
-    ############Solve###################
-    instance = model.create_instance(datfile)
-    instance.dual = Suffix(direction=Suffix.IMPORT)
-    results = opt.solve(instance,tee=True)
-    instance.solutions.load_from(results)
-    # ##################################
-    #
-    #
-    # ############Output###################
-    o = printoutput(results, instance,mod)
-    o.greet()
-    o.solutionstatus()
-    if 'UC' in mod:
-        o.printUC()
+        opt = SolverFactory(opt['solver'])
+        #opt.options['mipgap'] = 0.1
+        #################################################
+
+        ############Solve###################
+        instance = model.create_instance(datfile)
+        instance.dual = Suffix(direction=Suffix.IMPORT)
+        results = opt.solve(instance,tee=True)
+        instance.solutions.load_from(results)
+        # ##################################
+        #
+        #
+        # ############Output###################
+        o = printoutput(results, instance,mod)
+        o.greet()
+        o.solutionstatus()
+        if 'UC' in mod:
+            o.printUC()
+        else:
+            o.printsummary()
+            o.printoutputxls()
+
     else:
-        o.printsummary()
-        o.printoutputxls()
+        instance = model.create_instance(datfile)
+        solveroptions = SolverFactory(opt['solver'])
+        solver_manager = SolverManagerFactory('neos')
+        solver_manager.solve(instance, opt=solveroptions)
