@@ -13,12 +13,12 @@ import pandas as pd
 buscol    = ['name','baseKV','type','zone','VM','VA','VNLB','VNUB','VELB','VEUB']
 demcol    = ['name','busname','real','reactive','stat','VOLL']
 brncol    = ['name','from_busname','to_busname','stat','r','x','b','ShortTermRating','ContinousRating','angLB','angUB','contingency','probability']
-trncol    = ['name','from_busname','to_busname','stat','r','x','ShortTermRating','ContinousRating','angLB','angUB','PhaseShift','TapRatio','TapLB','TapUB','contingency','probability']
+trncol    = ['name','from_busname','to_busname','stat','type','r','x','ShortTermRating','ContinousRating','angLB','angUB','PhaseShift','TapRatio','TapLB','TapUB','contingency','probability']
 wndcol    = ['busname','name','stat','PG','QG','PGLB','PGUB','QGLB','QGUB','VS','contingency','probability']
 shtcol    = ['busname','name','GL','BL','stat']
 zneNTCcol = ['interconnection_ID', 'from_zone', 'to_zone', 'TransferCapacityTo(MW)', 'TransferCapacityFr(MW)']
 znecol    = ['zone', 'reserve(MW)']
-gencol    = ['busname','name','stat','PG','QG','PGLB','PGUB','QGLB','QGUB','VS','RampDown(MW/hr)','RampUp(MW/hr)','MinDownTime(hr)','MinUpTime(hr)','FuelType','contingency','probability','startup','shutdown','costc2','costc1','costc0']
+gencol    = ['busname','name','stat','type','PG','QG','PGLB','PGUB','QGLB','QGUB','VS','RampDown(MW/hr)','RampUp(MW/hr)','MinDownTime(hr)','MinUpTime(hr)','FuelType','contingency','probability','startup','shutdown','costc2','costc1','costc0']
 
 
 dfbus    = pd.DataFrame(columns=buscol)
@@ -88,7 +88,7 @@ with open(filepath,"r") as myfile:
             else:
                 if float(temp[5])==0: #in matpower '0' means no line capacity constraint
                     dftrn.loc[ind_tr] = pd.Series({'name':'T'+str(ind_tr+1)+'-'+temp[0]+temp[1],\
-                    'from_busname':temp[0],'to_busname':temp[1],'stat':temp[10],\
+                    'from_busname':temp[0],'to_busname':temp[1],'stat':temp[10],'type':str(1),\
                     'r':temp[2],'x':temp[3],'ShortTermRating':str(9999),'ContinousRating':str(9999),\
                     'angLB':temp[11],'angUB':temp[12],'PhaseShift':temp[9],'TapRatio':temp[8],\
                     'TapLB':str(float(temp[8])*(1-0.05)),'TapUB':str(float(temp[8])*(1+0.05)),\
@@ -117,7 +117,6 @@ with open(filepath,"r") as myfile:
             temp = line[:-2].split('\t')[1:]
             costdat.loc[ind_gen] = pd.Series({'gen':ind_gen, 'start':temp[1], 'shut':temp[2] ,'c2':temp[4], 'c1':temp[5], 'c0':temp[6].strip(';')})
             ind_gen += 1
-
     #read mpc.generator
     flag = 0
     ind  = 0
@@ -130,7 +129,7 @@ with open(filepath,"r") as myfile:
             break
         if flag == 1:
             temp = line[:-2].split('\t')[1:]
-            dfgen.loc[ind] = pd.Series({'busname':temp[0],'name':'G'+str(ind+1),'stat':temp[7],'PG':temp[1],\
+            dfgen.loc[ind] = pd.Series({'busname':temp[0],'name':'G'+str(ind+1),'stat':temp[7],'type':str(1),'PG':temp[1],\
             'QG':temp[2],'PGLB':temp[9],'PGUB':temp[8],'QGLB':temp[4],'QGUB':temp[3],\
             'VS':temp[5],'RampDown(MW/hr)':temp[18],'RampUp(MW/hr)':temp[18],'MinDownTime(hr)':str(1),\
             'MinUpTime(hr)':str(1),'FuelType':'NA','contingency':str(0),'probability':str(0.0001),'startup':costdat['start'][costdat['gen']==ind].item(),\
