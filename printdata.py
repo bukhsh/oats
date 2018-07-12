@@ -102,9 +102,9 @@ class printdata(object):
         f.write(';\n')
         #---set of reference bus---
         f.write('set b0:=\n')
-        for i in self.data["bus"].index.tolist():
-            if float(self.data["bus"]["type"][i])==3:
-                f.write(str(self.data["bus"]["name"][i])+""+"\n")
+        slackbus = self.data["generator"]["busname"][self.data["generator"]["type"]==3].tolist()
+        for i in slackbus:
+            f.write(str(i)+""+"\n")
         f.write(';\n')
         #---param defining system topolgy---
         f.write('param A:=\n')
@@ -217,6 +217,7 @@ class printdata(object):
         f.close()
     def printAC(self):
         f = open(self.datfile, 'a')
+
         #set of shunts
         if len(self.data["shunt"]["name"])!=0:
             f.write('set SHUNT:=\n')
@@ -332,19 +333,68 @@ class printdata(object):
         f.close()
     def printACLF(self):
         f = open(self.datfile, 'a')
+        Slack     = self.data["generator"][["name"]][self.data["generator"]["type"]==3]
+        f.write('set g0:=\n')
+        for i in Slack.index.tolist():
+            f.write(str(Slack["name"][i])+"\n")
+        f.write(';\n')
+        DistSlac  = self.data["generator"][["name"]][self.data["generator"]["type"]==2]
+        bustransf = self.data["transformer"][["name","from_busname","to_busname"]][self.data["transformer"]["type"]==2]
+        if not DistSlac.empty:
+            f.write('set DistSlac:=\n')
+            for i in DistSlac.index.tolist():
+                f.write(str(DistSlac["name"][i])+"\n")
+            f.write(';\n')
+        if not bustransf.empty:
+            Bvolt   = []
+            Transf2 = []
+            for i in bustransf.index.tolist():
+                Transf2.append(bustransf["name"][i])
+                frombus = self.data["bus"]["baseKV"][self.data["bus"]["name"]==bustransf["from_busname"][i]].item()
+                tobus   = self.data["bus"]["baseKV"][self.data["bus"]["name"]==bustransf["to_busname"][i]].item()
+                if frombus > tobus:
+                    Bvolt.append(self.data["bus"]["name"][self.data["bus"]["name"]==bustransf["to_busname"][i]].item())
+                else:
+                    Bvolt.append(self.data["bus"]["name"][self.data["bus"]["name"]==bustransf["from_busname"][i]].item())
+            f.write('set Transf2:=\n')
+            for i in Transf2:
+                f.write(str(i)+"\n")
+            f.write(';\n')
+            f.write('set Bvolt:=\n')
+            for i in Bvolt:
+                f.write(str(i)+"\n")
+            f.write(';\n')
+            f.write('param VTar:=\n')
+            for i in Bvolt:
+                f.write(str(i)+' '+str(self.data["bus"]["VM"][self.data["bus"]["name"]==i].item())+"\n")
+            f.write(';\n')
         #---Voltage targets---
         f.write('param VS:=\n')
         for i in self.data["generator"].index.tolist():
             f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["VS"][i]))+"\n")
         f.write(';\n')
-
-        #---Tranmission line chracteristics for DC load flow---
-        f.write('param BC:=\n')
-        for i in self.data["branch"].index.tolist():
-            f.write(str(self.data["branch"]["name"][i])+" "+str(self.data["branch"]["b"][i])+"\n")
+        #---Transformer tap bounds---
+        f.write('param TapLB:=\n')
+        for i in self.data["transformer"].index.tolist():
+            f.write(str(self.data["transformer"]["name"][i])+" "+str(float(self.data["transformer"]["TapLB"][i]))+"\n")
+        f.write(';\n')
+        f.write('param TapUB:=\n')
+        for i in self.data["transformer"].index.tolist():
+            f.write(str(self.data["transformer"]["name"][i])+" "+str(float(self.data["transformer"]["TapUB"][i]))+"\n")
+        f.write(';\n')
+        f.write('param bC:=\n')
+        for i in self.data["transformer"].index.tolist():
+            f.write(str(self.data["transformer"]["name"][i])+" "+str(self.data["transformer"]["bC"][i])+"\n")
+        f.write(';\n')
+        f.write('param g:=\n')
+        for i in self.data["transformer"].index.tolist():
+            f.write(str(self.data["transformer"]["name"][i])+" "+str(self.data["transformer"]["r"][i]/(self.data["transformer"]["r"][i]**2+self.data["transformer"]["x"][i]**2))+"\n")
+        f.write(';\n')
+        f.write('param b:=\n')
+        for i in self.data["transformer"].index.tolist():
+            f.write(str(self.data["transformer"]["name"][i])+" "+str(-self.data["transformer"]["x"][i]/(self.data["transformer"]["r"][i]**2+self.data["transformer"]["x"][i]**2))+"\n")
         f.write(';\n')
         f.close()
-
     def printACOPF(self):
         f = open(self.datfile, 'a')
         #---Reactive power generation bounds---

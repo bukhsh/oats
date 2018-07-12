@@ -37,8 +37,8 @@ def main():
     #model ='ACLF'
     #model ='ACOPF'
     #model ='UC'
-    model ='DCOPF'
-    #model ='SCOPF'
+    #model ='DCOPF'
+    model ='SCOPF'
     # ==log==
     logging.info("Solver selected: "+opt['solver'])
     logging.info("Testcase selected: "+testcase)
