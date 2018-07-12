@@ -35,7 +35,8 @@ class printoutput(object):
         else:
             print sys.exit("Problem is infeasible!\nOats terminated. No output is written on the results file.")
     def printsummary(self):
-        print "Cost of the objective function:", str(float(self.instance.OBJ()))
+        if 'LF' not in self.mod:
+            print "Cost of the objective function:", str(float(self.instance.OBJ()))
         print "***********"
         print "\n Summary"
         print "***********"
@@ -49,7 +50,7 @@ class printoutput(object):
         #===initialise pandas dataframes
         cols_summary    = ['Conventional generation (MW)', 'Wind generation (MW)', 'Demand (MW)','Objective function value']
         cols_bus        = ['name', 'angle(degs)']
-        cols_demand     = ['name', 'busname', 'PD(MW)','alpha']
+        cols_demand     = ['name', 'busname', 'PD(MW)']
 
         if ('DC' in self.mod) or ('SC' in self.mod):
             cols_branch     = ['name', 'from_busname', 'to_busname', 'pL(MW)']
@@ -58,6 +59,7 @@ class printoutput(object):
                 cols_generation = ['name', 'busname', 'PG(MW)', 'pG(MW)']
                 cols_wind       = ['name', 'busname', 'PW(MW)', 'pW(MW)']
             elif 'OPF' in self.mod:
+                cols_demand.append('alpha')
                 cols_generation = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)']
                 cols_wind       = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)']
         elif 'AC' in self.mod:
@@ -66,9 +68,11 @@ class printoutput(object):
             cols_branch     = ['name', 'from_busname', 'to_busname', 'pLto(MW)', 'pLfrom(MW)', 'loss(MW)']
             cols_transf     = ['name', 'from_busname', 'to_busname', 'pLTto(MW)', 'pLTfrom(MW)', 'loss(MW)']
             if 'LF' in self.mod:
+                cols_transf.append('tap')
                 cols_generation = ['name', 'busname', 'PG(MW)', 'pG(MW)', 'qG(MVar)']
                 cols_wind       = ['name', 'busname', 'PG(MW)', 'pG(MW)', 'qG(MVar)']
             elif 'OPF' in self.mod:
+                cols_demand.append('alpha')
                 cols_generation = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)', 'QGLB(MVar)', 'qG(MVar)','QGUB(MVar)']
                 cols_wind       = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)', 'QGLB(MVar)', 'qG(MVar)','QGUB(MVar)']
 
@@ -93,35 +97,44 @@ class printoutput(object):
             for b in self.instance.B:
                 bus.loc[ind] = pd.Series({'name': b,'angle(degs)':self.instance.delta[b].value*180/math.pi})
                 ind += 1
-            #demand data
-            ind = 0
-            for d in self.instance.Dbs:
-                demand.loc[ind] = pd.Series({'name': d[1],'busname':d[0],'PD(MW)':self.instance.PD[d[1]]*self.instance.baseMVA,\
-                'alpha':round(self.instance.alpha[d[1]].value,3)})
-                ind += 1
+            #line data
             ind=0
             for b in self.instance.L:
                 branch.loc[ind] = pd.Series({'name': b, 'from_busname':self.instance.A[b,1], 'to_busname':self.instance.A[b,2],\
                 'pL(MW)':self.instance.pL[b].value*self.instance.baseMVA})
                 ind += 1
+            #transformer data
             ind = 0
             for b in self.instance.TRANSF:
                 transformer.loc[ind] = pd.Series({'name': b, 'from_busname':self.instance.AT[b,1],
                 'to_busname':self.instance.AT[b,2], 'pLT(MW)':self.instance.pLT[b].value*self.instance.baseMVA})
                 ind += 1
-
             if 'LF' in self.mod:
+                #demand data
+                ind = 0
+                for d in self.instance.Dbs:
+                    demand.loc[ind] = pd.Series({'name': d[1],'busname':d[0],'PD(MW)':self.instance.PD[d[1]]*self.instance.baseMVA})
+                    ind += 1
+                #generator data
                 ind = 0
                 for g in self.instance.Gbs:
                     generation.loc[ind] = pd.Series({'name': g[0], 'busname':g[1],\
-                    'PG(MW)':self.instance.PG[g[1]],'pG(MW)':round(self.instance.pG[g[1]].value*self.instance.baseMVA,3)})
+                    'PG(MW)':self.instance.PG[g[1]]*self.instance.baseMVA,'pG(MW)':round(self.instance.pG[g[1]].value*self.instance.baseMVA,3)})
                     ind += 1
                 ind = 0
+                #wind data
                 for g in self.instance.Wbs:
                     wind.loc[ind] = pd.Series({'name': g[0], 'busname':g[1],\
                     'PG(MW)':self.instance.PG[g[1]], 'pG(MW)':round(self.instance.pW[g[1]].value*self.instance.baseMVA,3)})
                     ind += 1
             elif 'OPF' in self.mod:
+                #demand data
+                ind = 0
+                for d in self.instance.Dbs:
+                    demand.loc[ind] = pd.Series({'name': d[1],'busname':d[0],'PD(MW)':self.instance.PD[d[1]]*self.instance.baseMVA,\
+                    'alpha':round(self.instance.alpha[d[1]].value,3)})
+                    ind += 1
+                #generator data
                 ind = 0
                 for g in self.instance.Gbs:
                     generation.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
@@ -129,6 +142,7 @@ class printoutput(object):
                     'pG(MW)':round(self.instance.pG[g[1]].value*self.instance.baseMVA,3),\
                     'PGUB(MW)':self.instance.PGmax[g[1]]*self.instance.baseMVA})
                     ind += 1
+                #wind data
                 ind = 0
                 for g in self.instance.Wbs:
                     wind.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
@@ -143,13 +157,7 @@ class printoutput(object):
                 bus.loc[ind] = pd.Series({'name': b,'angle(degs)':self.instance.delta[b].value*180/math.pi,\
                 'Voltage(p.u.)':self.instance.v[b].value})
                 ind += 1
-            #demand data
-            ind = 0
-            for d in self.instance.Dbs:
-                demand.loc[ind] = pd.Series({'name': d[1],'busname':d[0],'PD(MW)':self.instance.PD[d[1]]*self.instance.baseMVA,\
-                'QD(MVar)':self.instance.QD[d[1]]*self.instance.baseMVA,\
-                'alpha':round(self.instance.alpha[d[1]].value,3)})
-                ind += 1
+            #line data
             ind = 0
             for l in self.instance.L:
                 branch.loc[ind] = pd.Series({'name': l, 'from_busname':self.instance.A[l,1], 'to_busname':self.instance.A[l,2],\
@@ -158,20 +166,29 @@ class printoutput(object):
                 'loss(MW)':(self.instance.pLto[l].value+self.instance.pLfrom[l].value)*self.instance.baseMVA})
                 ind += 1
             ind = 0
-            for l in self.instance.TRANSF:
-                transformer.loc[ind] = pd.Series({'name': l, 'from_busname':self.instance.AT[l,1],
-                'to_busname':self.instance.AT[l,2], 'pLTto(MW)':self.instance.pLtoT[l].value*self.instance.baseMVA,\
-                'pLTfrom(MW)':self.instance.pLfromT[l].value*self.instance.baseMVA,\
-                'loss(MW)':(self.instance.pLfromT[l].value+self.instance.pLtoT[l].value)*self.instance.baseMVA})
-                ind += 1
-
             if 'LF' in self.mod:
+                #demand data
+                ind = 0
+                for d in self.instance.Dbs:
+                    demand.loc[ind] = pd.Series({'name': d[1],'busname':d[0],'PD(MW)':self.instance.PD[d[1]]*self.instance.baseMVA,\
+                    'QD(MVar)':self.instance.QD[d[1]]*self.instance.baseMVA})
+                    ind += 1
+                #transformer data
+                for l in self.instance.TRANSF:
+                    transformer.loc[ind] = pd.Series({'name': l, 'from_busname':self.instance.AT[l,1],
+                    'to_busname':self.instance.AT[l,2], 'pLTto(MW)':self.instance.pLtoT[l].value*self.instance.baseMVA,\
+                    'pLTfrom(MW)':self.instance.pLfromT[l].value*self.instance.baseMVA,\
+                    'loss(MW)':(self.instance.pLfromT[l].value+self.instance.pLtoT[l].value)*self.instance.baseMVA,\
+                    'tap':self.instance.tap[l].value})
+                    ind += 1
+                #generator data
                 ind = 0
                 for g in self.instance.Gbs:
                     generation.loc[ind] = pd.Series({'name': g[0], 'busname':g[1],\
-                    'PG(MW)':self.instance.PG[g[1]],'pG(MW)':round(self.instance.pG[g[1]].value*self.instance.baseMVA,3),\
+                    'PG(MW)':self.instance.PG[g[1]]*self.instance.baseMVA,'pG(MW)':round(self.instance.pG[g[1]].value*self.instance.baseMVA,3),\
                     'qG(MVar)':round(self.instance.qG[g[1]].value*self.instance.baseMVA,3)})
                     ind += 1
+                #wind data
                 ind = 0
                 for g in self.instance.Wbs:
                     wind.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
@@ -179,6 +196,14 @@ class printoutput(object):
                     'pG(MW)':round(self.instance.pW[g[1]].value*self.instance.baseMVA,3)})
                     ind += 1
             elif 'OPF' in self.mod:
+                #demand data
+                ind = 0
+                for d in self.instance.Dbs:
+                    demand.loc[ind] = pd.Series({'name': d[1],'busname':d[0],'PD(MW)':self.instance.PD[d[1]]*self.instance.baseMVA,\
+                    'QD(MVar)':self.instance.QD[d[1]]*self.instance.baseMVA,\
+                    'alpha':round(self.instance.alpha[d[1]].value,3)})
+                    ind += 1
+                #generator data
                 ind=0
                 for g in self.instance.Gbs:
                     generation.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
@@ -189,6 +214,7 @@ class printoutput(object):
                     'qG(MVar)':round(self.instance.qG[g[1]].value*self.instance.baseMVA,3),\
                     'QGUB(MVar)':self.instance.QGmax[g[1]]*self.instance.baseMVA})
                     ind += 1
+                #wind data
                 ind = 0
                 for g in self.instance.Wbs:
                     wind.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
