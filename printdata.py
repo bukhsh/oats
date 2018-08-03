@@ -373,27 +373,28 @@ class printdata(object):
         for i in self.data["generator"].index.tolist():
             f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["VS"][i]))+"\n")
         f.write(';\n')
-        #---Transformer tap bounds---
-        f.write('param TapLB:=\n')
-        for i in self.data["transformer"].index.tolist():
-            f.write(str(self.data["transformer"]["name"][i])+" "+str(float(self.data["transformer"]["TapLB"][i]))+"\n")
-        f.write(';\n')
-        f.write('param TapUB:=\n')
-        for i in self.data["transformer"].index.tolist():
-            f.write(str(self.data["transformer"]["name"][i])+" "+str(float(self.data["transformer"]["TapUB"][i]))+"\n")
-        f.write(';\n')
-        f.write('param bC:=\n')
-        for i in self.data["transformer"].index.tolist():
-            f.write(str(self.data["transformer"]["name"][i])+" "+str(self.data["transformer"]["bC"][i])+"\n")
-        f.write(';\n')
-        f.write('param g:=\n')
-        for i in self.data["transformer"].index.tolist():
-            f.write(str(self.data["transformer"]["name"][i])+" "+str(self.data["transformer"]["r"][i]/(self.data["transformer"]["r"][i]**2+self.data["transformer"]["x"][i]**2))+"\n")
-        f.write(';\n')
-        f.write('param b:=\n')
-        for i in self.data["transformer"].index.tolist():
-            f.write(str(self.data["transformer"]["name"][i])+" "+str(-self.data["transformer"]["x"][i]/(self.data["transformer"]["r"][i]**2+self.data["transformer"]["x"][i]**2))+"\n")
-        f.write(';\n')
+        if len(self.data["transformer"]["name"])!=0:
+            #---Transformer tap bounds---
+            f.write('param TapLB:=\n')
+            for i in self.data["transformer"].index.tolist():
+                f.write(str(self.data["transformer"]["name"][i])+" "+str(float(self.data["transformer"]["TapLB"][i]))+"\n")
+            f.write(';\n')
+            f.write('param TapUB:=\n')
+            for i in self.data["transformer"].index.tolist():
+                f.write(str(self.data["transformer"]["name"][i])+" "+str(float(self.data["transformer"]["TapUB"][i]))+"\n")
+            f.write(';\n')
+            f.write('param bC:=\n')
+            for i in self.data["transformer"].index.tolist():
+                f.write(str(self.data["transformer"]["name"][i])+" "+str(self.data["transformer"]["b"][i])+"\n")
+            f.write(';\n')
+            f.write('param g:=\n')
+            for i in self.data["transformer"].index.tolist():
+                f.write(str(self.data["transformer"]["name"][i])+" "+str(self.data["transformer"]["r"][i]/(self.data["transformer"]["r"][i]**2+self.data["transformer"]["x"][i]**2))+"\n")
+            f.write(';\n')
+            f.write('param b:=\n')
+            for i in self.data["transformer"].index.tolist():
+                f.write(str(self.data["transformer"]["name"][i])+" "+str(-self.data["transformer"]["x"][i]/(self.data["transformer"]["r"][i]**2+self.data["transformer"]["x"][i]**2))+"\n")
+            f.write(';\n')
         f.close()
     def printACOPF(self):
         f = open(self.datfile, 'a')

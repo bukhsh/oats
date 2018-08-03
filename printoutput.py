@@ -229,6 +229,9 @@ class printoutput(object):
         #----------------------------------------------------------
         #===write output on xlsx file===
         #
+        bus = bus.sort_values(['name'])
+        generation = generation.sort_values(['name'])
+        demand = demand.sort_values(['name'])
         writer = pd.ExcelWriter('results/results.xlsx', engine ='xlsxwriter')
         summary.to_excel(writer, sheet_name = 'summary',index=False)
         bus.to_excel(writer, sheet_name = 'bus',index=False)

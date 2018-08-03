@@ -120,7 +120,7 @@ model.epsV_down   = Var(model.G, initialize=0.0, domain= NonNegativeReals)
 # --- cost function ---
 def objective(model):
     obj = 1*sum(model.epsV_up[g]+model.epsV_down[g] for g in model.G)+\
-    sum(model.baseMVA*(model.pLto[l]+model.pLfrom[l]) for l in model.L)+\
+    1*sum(model.baseMVA*(model.pLto[l]+model.pLfrom[l]) for l in model.L)+\
     sum(model.baseMVA*(model.epsPG_up[g]+model.epsPG_down[g]) for g in model.DistSlack)
     return obj
 model.OBJ = Objective(rule=objective, sense=minimize)
