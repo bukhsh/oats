@@ -1,8 +1,8 @@
-Fri, 03 Aug 2018 11:00:49 INFO     OATS log file
-Fri, 03 Aug 2018 11:00:49 INFO     Program started
-Fri, 03 Aug 2018 11:00:49 INFO     Solver selected: ipopt
-Fri, 03 Aug 2018 11:00:49 INFO     Testcase selected: case24_ieee_rts.xlsx
-Fri, 03 Aug 2018 11:00:49 INFO     Model selected: ACLF
-Fri, 03 Aug 2018 11:00:49 INFO     Given model file found and selected from the models library
-Fri, 03 Aug 2018 11:00:49 INFO     Given testcase file found and selected from the testcase library
-Fri, 03 Aug 2018 11:00:50 INFO     Done!
+Wed, 17 Oct 2018 09:31:41 INFO     OATS log file
+Wed, 17 Oct 2018 09:31:41 INFO     Program started
+Wed, 17 Oct 2018 09:31:41 INFO     Solver selected: ipopt
+Wed, 17 Oct 2018 09:31:41 INFO     Testcase selected: case24_ieee_rts.xlsx
+Wed, 17 Oct 2018 09:31:41 INFO     Model selected: ACLF
+Wed, 17 Oct 2018 09:31:41 INFO     Given model file found and selected from the models library
+Wed, 17 Oct 2018 09:31:41 INFO     Given testcase file found and selected from the testcase library
+Wed, 17 Oct 2018 09:31:42 INFO     Done!
