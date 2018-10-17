@@ -167,12 +167,6 @@ class printoutput(object):
                 ind += 1
             ind = 0
             if 'LF' in self.mod:
-                #demand data
-                ind = 0
-                for d in self.instance.Dbs:
-                    demand.loc[ind] = pd.Series({'name': d[1],'busname':d[0],'PD(MW)':self.instance.PD[d[1]]*self.instance.baseMVA,\
-                    'QD(MVar)':self.instance.QD[d[1]]*self.instance.baseMVA})
-                    ind += 1
                 #transformer data
                 for l in self.instance.TRANSF:
                     transformer.loc[ind] = pd.Series({'name': l, 'from_busname':self.instance.AT[l,1],
@@ -180,6 +174,12 @@ class printoutput(object):
                     'pLTfrom(MW)':self.instance.pLfromT[l].value*self.instance.baseMVA,\
                     'loss(MW)':(self.instance.pLfromT[l].value+self.instance.pLtoT[l].value)*self.instance.baseMVA,\
                     'tap':self.instance.tap[l].value})
+                    ind += 1
+                #demand data
+                ind = 0
+                for d in self.instance.Dbs:
+                    demand.loc[ind] = pd.Series({'name': d[1],'busname':d[0],'PD(MW)':self.instance.PD[d[1]]*self.instance.baseMVA,\
+                    'QD(MVar)':self.instance.QD[d[1]]*self.instance.baseMVA})
                     ind += 1
                 #generator data
                 ind = 0
@@ -196,6 +196,14 @@ class printoutput(object):
                     'pG(MW)':round(self.instance.pW[g[1]].value*self.instance.baseMVA,3)})
                     ind += 1
             elif 'OPF' in self.mod:
+                ind = 0
+                #transformer data
+                for l in self.instance.TRANSF:
+                    transformer.loc[ind] = pd.Series({'name': l, 'from_busname':self.instance.AT[l,1],
+                    'to_busname':self.instance.AT[l,2], 'pLTto(MW)':self.instance.pLtoT[l].value*self.instance.baseMVA,\
+                    'pLTfrom(MW)':self.instance.pLfromT[l].value*self.instance.baseMVA,\
+                    'loss(MW)':(self.instance.pLfromT[l].value+self.instance.pLtoT[l].value)*self.instance.baseMVA})
+                    ind += 1
                 #demand data
                 ind = 0
                 for d in self.instance.Dbs:
