@@ -44,7 +44,7 @@ model.PD      = Param(model.D, within=Reals)  # real power demand
 model.VOLL    = Param(model.D, within=Reals)  # value of lost load
 
 # generators
-model.PG    = Param(model.G, within=NonNegativeReals)    # real power set-point of generator
+model.PG    = Param(model.G, within=Reals)    # real power set-point of generator
 model.WG    = Param(model.WIND, within=NonNegativeReals) # real power set-point of wind generator
 
 # lines and transformer chracteristics
@@ -63,7 +63,7 @@ model.eps = Param(within=NonNegativeReals)
 
 
 # --- control variables ---
-model.pG    = Var(model.G, domain= NonNegativeReals) #real power generation
+model.pG    = Var(model.G, domain= Reals) #real power generation
 model.pW    = Var(model.WIND, domain= Reals)         #real power generation from wind
 model.pD    = Var(model.D, domain= Reals)            #real power demand delivered
 model.alpha = Var(model.D, domain= NonNegativeReals) #propotion of real power demand delivered

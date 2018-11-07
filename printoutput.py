@@ -57,7 +57,7 @@ class printoutput(object):
             cols_transf     = ['name', 'from_busname', 'to_busname', 'pLT(MW)']
             if 'LF' in self.mod:
                 cols_generation = ['name', 'busname', 'PG(MW)', 'pG(MW)']
-                cols_wind       = ['name', 'busname', 'PW(MW)', 'pW(MW)']
+                cols_wind       = ['name', 'busname', 'PG(MW)', 'pG(MW)']
             elif 'OPF' in self.mod:
                 cols_demand.append('alpha')
                 cols_generation = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)']
@@ -123,9 +123,9 @@ class printoutput(object):
                     ind += 1
                 ind = 0
                 #wind data
-                for g in self.instance.Wbs:
-                    wind.loc[ind] = pd.Series({'name': g[0], 'busname':g[1],\
-                    'PG(MW)':self.instance.PG[g[1]], 'pG(MW)':round(self.instance.pW[g[1]].value*self.instance.baseMVA,3)})
+                for w in self.instance.Wbs:
+                    wind.loc[ind] = pd.Series({'name': w[0], 'busname':w[1],\
+                    'PG(MW)':self.instance.WG[w[1]]*self.instance.baseMVA, 'pG(MW)':round(self.instance.pW[w[1]].value*self.instance.baseMVA,3)})
                     ind += 1
             elif 'OPF' in self.mod:
                 #demand data
@@ -146,9 +146,9 @@ class printoutput(object):
                 ind = 0
                 for g in self.instance.Wbs:
                     wind.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
-                    'PGLB(MW)':self.instance.PGmin[g[1]]*self.instance.baseMVA,\
+                    'PGLB(MW)':self.instance.WGmin[g[1]]*self.instance.baseMVA,\
                     'pG(MW)':round(self.instance.pW[g[1]].value*self.instance.baseMVA,3),\
-                    'PGUB(MW)':self.instance.PGmax[g[1]]*self.instance.baseMVA})
+                    'PGUB(MW)':self.instance.WGmax[g[1]]*self.instance.baseMVA})
                     ind += 1
         elif 'AC' in self.mod:
             #bus data
