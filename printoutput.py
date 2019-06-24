@@ -60,7 +60,7 @@ class printoutput(object):
                 cols_wind       = ['name', 'busname', 'PG(MW)', 'pG(MW)']
             elif 'OPF' in self.mod:
                 cols_demand.append('alpha')
-                cols_generation = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)']
+                cols_generation = ['name', 'busname', 'PGLB(MW)','PG(MW)', 'pG(MW)','PGUB(MW)']
                 cols_wind       = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)']
         elif 'AC' in self.mod:
             cols_bus.append('Voltage(p.u.)')
@@ -73,7 +73,7 @@ class printoutput(object):
                 cols_wind       = ['name', 'busname', 'PG(MW)', 'pG(MW)', 'qG(MVar)']
             elif 'OPF' in self.mod:
                 cols_demand.append('alpha')
-                cols_generation = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)', 'QGLB(MVar)', 'qG(MVar)','QGUB(MVar)']
+                cols_generation = ['name', 'busname', 'PGLB(MW)', 'PG(MW)', 'pG(MW)','PGUB(MW)', 'QGLB(MVar)', 'qG(MVar)','QGUB(MVar)']
                 cols_wind       = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)', 'QGLB(MVar)', 'qG(MVar)','QGUB(MVar)']
 
         summary         = pd.DataFrame(columns=cols_summary)
@@ -216,6 +216,7 @@ class printoutput(object):
                 for g in self.instance.Gbs:
                     generation.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
                     'PGLB(MW)':self.instance.PGmin[g[1]]*self.instance.baseMVA,\
+                    'PG(MW)':round(self.instance.PG[g[1]]*self.instance.baseMVA,3),\
                     'pG(MW)':round(self.instance.pG[g[1]].value*self.instance.baseMVA,3),\
                     'PGUB(MW)':self.instance.PGmax[g[1]]*self.instance.baseMVA,\
                     'QGLB(MVar)':self.instance.QGmin[g[1]]*self.instance.baseMVA,\
@@ -316,3 +317,4 @@ class printoutput(object):
         zone.to_excel(writer, sheet_name = 'zone',index=False)
         interconnect.to_excel(writer, sheet_name = 'interconnection',index=False)
         generation.to_excel(writer, sheet_name = 'generator',index=False)
+        writer.save()

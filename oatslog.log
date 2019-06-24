@@ -1,8 +1,17 @@
-Wed, 07 Nov 2018 11:35:50 INFO     OATS log file
-Wed, 07 Nov 2018 11:35:50 INFO     Program started
-Wed, 07 Nov 2018 11:35:50 INFO     Solver selected: ipopt
-Wed, 07 Nov 2018 11:35:50 INFO     Testcase selected: case24_ieee_rts.xlsx
-Wed, 07 Nov 2018 11:35:50 INFO     Model selected: DCOPF
-Wed, 07 Nov 2018 11:35:50 INFO     Given model file found and selected from the models library
-Wed, 07 Nov 2018 11:35:51 INFO     Given testcase file found and selected from the testcase library
-Wed, 07 Nov 2018 11:35:51 INFO     Done!
+Mon, 24 Jun 2019 10:27:28 INFO     OATS log file
+Mon, 24 Jun 2019 10:27:28 INFO     Program started
+Mon, 24 Jun 2019 10:27:28 INFO     Solver selected: ipopt
+Mon, 24 Jun 2019 10:27:28 INFO     Testcase selected: case24_ieee_rts.xlsx
+Mon, 24 Jun 2019 10:27:28 INFO     Model selected: ACOPF_BM
+Mon, 24 Jun 2019 10:27:28 WARNING  Implicitly replacing the Component attribute Tap (type=<class 'pyomo.core.base.param.IndexedParam'>) on block unknown with a new Component (type=<class 'pyomo.core.base.param.IndexedParam'>).
+This is usually indicative of a modelling error.
+To avoid this warning, use block.del_component() and block.add_component().
+Mon, 24 Jun 2019 10:27:28 WARNING  Implicitly replacing the Component attribute TapLB (type=<class 'pyomo.core.base.param.IndexedParam'>) on block unknown with a new Component (type=<class 'pyomo.core.base.param.IndexedParam'>).
+This is usually indicative of a modelling error.
+To avoid this warning, use block.del_component() and block.add_component().
+Mon, 24 Jun 2019 10:27:28 WARNING  Implicitly replacing the Component attribute TapUB (type=<class 'pyomo.core.base.param.IndexedParam'>) on block unknown with a new Component (type=<class 'pyomo.core.base.param.IndexedParam'>).
+This is usually indicative of a modelling error.
+To avoid this warning, use block.del_component() and block.add_component().
+Mon, 24 Jun 2019 10:27:28 INFO     Given model file found and selected from the models library
+Mon, 24 Jun 2019 10:27:28 INFO     Given testcase file found and selected from the testcase library
+Mon, 24 Jun 2019 10:27:29 INFO     Done!
