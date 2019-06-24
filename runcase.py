@@ -68,8 +68,11 @@ def runcase(testcase,mod,opt=None):
             r.printACOPF()
         elif mod=='SCOPF':
             r.printSCdat()
-        if 'BM' in mod:
+        if mod=='ACOPF_BM':
             r.printBM()
+        if mod=='DCOPF_BM':
+            r.printDCBM()
+
 
 
     ###############Solver settings####################

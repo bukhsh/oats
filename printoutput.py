@@ -61,7 +61,7 @@ class printoutput(object):
             elif 'OPF' in self.mod:
                 cols_demand.append('alpha')
                 cols_generation = ['name', 'busname', 'PGLB(MW)','PG(MW)', 'pG(MW)','PGUB(MW)']
-                cols_wind       = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)']
+                cols_wind       = ['name', 'busname', 'PGLB(MW)','PG(MW)', 'pG(MW)','PGUB(MW)']
         elif 'AC' in self.mod:
             cols_bus.append('Voltage(p.u.)')
             cols_demand.append('QD(MVar)')
@@ -74,7 +74,7 @@ class printoutput(object):
             elif 'OPF' in self.mod:
                 cols_demand.append('alpha')
                 cols_generation = ['name', 'busname', 'PGLB(MW)', 'PG(MW)', 'pG(MW)','PGUB(MW)', 'QGLB(MVar)', 'qG(MVar)','QGUB(MVar)']
-                cols_wind       = ['name', 'busname', 'PGLB(MW)', 'pG(MW)','PGUB(MW)', 'QGLB(MVar)', 'qG(MVar)','QGUB(MVar)']
+                cols_wind       = ['name', 'busname', 'PGLB(MW)', 'PG(MW)', 'pG(MW)','PGUB(MW)', 'QGLB(MVar)', 'qG(MVar)','QGUB(MVar)']
 
         summary         = pd.DataFrame(columns=cols_summary)
         bus             = pd.DataFrame(columns=cols_bus)
@@ -139,6 +139,7 @@ class printoutput(object):
                 for g in self.instance.Gbs:
                     generation.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
                     'PGLB(MW)':self.instance.PGmin[g[1]]*self.instance.baseMVA,\
+                    'PG(MW)':round(self.instance.PG[g[1]]*self.instance.baseMVA,3),\
                     'pG(MW)':round(self.instance.pG[g[1]].value*self.instance.baseMVA,3),\
                     'PGUB(MW)':self.instance.PGmax[g[1]]*self.instance.baseMVA})
                     ind += 1
@@ -147,6 +148,7 @@ class printoutput(object):
                 for g in self.instance.Wbs:
                     wind.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
                     'PGLB(MW)':self.instance.WGmin[g[1]]*self.instance.baseMVA,\
+                    'PG(MW)':round(self.instance.PW[g[1]]*self.instance.baseMVA,3),\
                     'pG(MW)':round(self.instance.pW[g[1]].value*self.instance.baseMVA,3),\
                     'PGUB(MW)':self.instance.WGmax[g[1]]*self.instance.baseMVA})
                     ind += 1
@@ -234,6 +236,7 @@ class printoutput(object):
                     'qG(MVar)':round(self.instance.qW[g[1]].value*self.instance.baseMVA,3),\
                     'QGUB(MVar)':self.instance.QGmax[g[1]]*self.instance.baseMVA})
                     ind += 1
+
 
         #----------------------------------------------------------
         #===write output on xlsx file===
