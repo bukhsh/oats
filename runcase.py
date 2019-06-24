@@ -64,10 +64,12 @@ def runcase(testcase,mod,opt=None):
             r.printACLF()
         elif mod=='DCOPF':
             r.printDCOPF()
-        elif mod=='ACOPF':
+        elif 'ACOPF' in mod:
             r.printACOPF()
         elif mod=='SCOPF':
             r.printSCdat()
+        if 'BM' in mod:
+            r.printBM()
 
 
     ###############Solver settings####################

@@ -36,10 +36,11 @@ def main():
     #specify a model to solve
     #model ='DCLF'
     #model ='DCLF'
-    model ='DCOPF'
+    # model ='DCOPF'
     #model ='ACOPF'
-    #model ='UC'
+    # model ='UC'
     #model ='SCOPF'
+    model ='ACOPF_BM'
     # ==log==
     logging.info("Solver selected: "+opt['solver'])
     logging.info("Testcase selected: "+testcase)
