@@ -491,6 +491,33 @@ class printdata(object):
             f.write(';\n')
 
         f.close()
+
+    def printDCBM(self):
+        f = open(self.datfile, 'a')
+        #---Reactive power generation bounds---
+        f.write('param PG:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["PG"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+        f.write('param bidG:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["bid"][i]))+"\n")
+        f.write(';\n')
+        f.write('param offerG:=\n')
+        for i in self.data["generator"].index.tolist():
+            f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["offer"][i]))+"\n")
+        f.write(';\n')
+        if len(self.data["wind"]["name"])!=0:
+            f.write('param PW:=\n')
+            for i in self.data["wind"].index.tolist():
+                f.write(str(self.data["wind"]["name"][i])+" "+str(float(self.data["wind"]["PG"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+
+            f.write('param bidW:=\n')
+            for i in self.data["wind"].index.tolist():
+                f.write(str(self.data["wind"]["name"][i])+" "+str(float(self.data["wind"]["offer"][i]))+"\n")
+            f.write(';\n')
+        f.close()
     def printUCdat(self):
         f = open(self.datfile, 'a')
         ##===sets===

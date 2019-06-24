@@ -40,7 +40,7 @@ def main():
     #model ='ACOPF'
     # model ='UC'
     #model ='SCOPF'
-    model ='ACOPF_BM'
+    model ='DCOPF_BM'
     # ==log==
     logging.info("Solver selected: "+opt['solver'])
     logging.info("Testcase selected: "+testcase)
