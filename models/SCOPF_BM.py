@@ -72,9 +72,15 @@ model.GB = Param(model.SHUNT, within=Reals) #  shunt conductance
 model.BB = Param(model.SHUNT, within=Reals) #  shunt susceptance
 
 # cost data
+model.bidG      = Param(model.G, within=Reals)    # generator bid price
+model.offerG    = Param(model.G, within=Reals)    # generator offer price
+model.bidW      = Param(model.WIND, within=Reals) # wind bid price
 model.c2    = Param(model.G, within=NonNegativeReals)# generator cost coefficient c2 (*pG^2)
 model.c1    = Param(model.G, within=NonNegativeReals)# generator cost coefficient c1 (*pG)
 model.c0    = Param(model.G, within=NonNegativeReals)# generator cost coefficient c0
+#FPNs
+model.PG      = Param(model.G, within=NonNegativeReals)    # FPN
+model.PW      = Param(model.WIND, within=NonNegativeReals) # FPN
 
 model.baseMVA = Param(within=NonNegativeReals)# base MVA
 
@@ -85,27 +91,37 @@ model.probC = Param(model.C, domain=NonNegativeReals) #total time horizon
 
 # === Pre-contigency variables ===
 # --- control variables ---
-model.pG    = Var(model.G, domain= Reals)  #real power generation
-model.pW    = Var(model.WIND, domain= Reals) #real power generation from wind
-model.pD    = Var(model.D, domain= Reals) #real power demand delivered
-model.alpha = Var(model.D, domain= NonNegativeReals) #propotion of real power demand delivered
+model.pG      = Var(model.G, domain= Reals)  #real power generation
+model.pGUp    = Var(model.G,  domain= NonNegativeReals)  #re-dispatch upwards
+model.pGDown  = Var(model.G,  domain= NonNegativeReals)  #re-dispatch downwards
+
+model.pW      = Var(model.WIND, domain= Reals) #real power generation from wind
+model.pWDown  = Var(model.WIND, domain= NonNegativeReals) #re-dispatch downwards
+
+model.pD      = Var(model.D, domain= Reals) #real power demand delivered
+model.alpha   = Var(model.D, domain= NonNegativeReals) #propotion of real power demand delivered
 # --- state variables ---
-model.deltaL = Var(model.L, domain= Reals) # angle difference across lines
+model.deltaL  = Var(model.L, domain= Reals) # angle difference across lines
 model.deltaLT = Var(model.TRANSF, domain= Reals) # angle difference across transformers
-model.delta = Var(model.B, domain= Reals, initialize=0.0) # voltage phase angle at bus b, rad
-model.pL = Var(model.L, domain= Reals) # real power injected at b onto line l, p.u.
-model.pLT = Var(model.TRANSF, domain= Reals) # real power injected at b onto transformer line l, p.u.
+model.delta   = Var(model.B, domain= Reals, initialize=0.0) # voltage phase angle at bus b, rad
+model.pL      = Var(model.L, domain= Reals) # real power injected at b onto line l, p.u.
+model.pLT     = Var(model.TRANSF, domain= Reals) # real power injected at b onto transformer line l, p.u.
 
 # === Post-contigency variables ===
 # --- control variables ---
 model.pGC          = Var(model.G,model.C, domain= Reals)  #post-fault generation set point
+model.pGCUp        = Var(model.G,model.C, domain= NonNegativeReals)  #post-fault generation set point
+model.pGCDown      = Var(model.G,model.C, domain= NonNegativeReals)  #post-fault generation set point
+
 model.DeltapG      = Var(model.G,model.C, domain= Reals)  #change in pre-fault generation set point following a contingency
 model.DeltapGUp    = Var(model.G,model.C, domain= NonNegativeReals)  #positive change in pre-fault generation set point
 model.DeltapGDown  = Var(model.G,model.C, domain= NonNegativeReals)  #negative change in pre-fault generation set point
 
-model.pWC         = Var(model.WIND,model.C, domain= Reals) #post-fault wind generation
-model.DeltapW     = Var(model.WIND,model.C, domain= Reals) #change in pre-fault generation set point following a contingency
-model.DeltapWDown = Var(model.WIND,model.C, domain= NonNegativeReals) #negative change in pre-fault generation set point(wind can only move downwards)
+model.pWC          = Var(model.WIND,model.C, domain= Reals) #post-fault wind generation
+model.pWCDown      = Var(model.WIND,model.C, domain= NonNegativeReals) #post-fault wind generation
+
+model.DeltapW      = Var(model.WIND,model.C, domain= Reals) #change in pre-fault generation set point following a contingency
+model.DeltapWDown  = Var(model.WIND,model.C, domain= NonNegativeReals) #negative change in pre-fault generation set point(wind can only move downwards)
 
 model.pDC    = Var(model.D,model.C, domain= Reals) #real power demand delivered post-contingency
 model.alphaC = Var(model.D,model.C, domain= NonNegativeReals) #propotion of real power demand delivered post-contingency
@@ -122,20 +138,21 @@ model.FPreCont  = Var() # Objective function component for pre-contingency opera
 model.FPostCont = Var(model.C) # Objective function component for post-contingency operation
 # --- cost function ---
 def objective(model):
-    obj = sum(model.probC[c]*model.FPostCont[c] for c in model.C) +(1-sum(model.probC[c] for c in model.C))*model.FPreCont
+    obj = model.FPreCont + 0.0*sum(model.FPostCont[c] for c in model.C)
     return obj
 model.OBJ = Objective(rule=objective, sense=minimize)
 
 # --- cost components of the objective function ---
 def precontingency_cost(model):
-    return model.FPreCont == sum(model.c2[g]*(model.baseMVA*model.pG[g])**2+model.c1[g]*model.baseMVA*model.pG[g]+model.c0[g] for g in model.G)\
-    +sum(model.baseMVA*model.VOLL[d]*(1-model.alpha[d])*model.PD[d] for d in model.D)
+    return model.FPreCont == sum(model.offerG[g]*(model.baseMVA*model.pGUp[g])+model.bidG[g]*(model.baseMVA*model.pGDown[g]) for g in model.G) +\
+    sum(model.bidW[w]*(model.baseMVA*model.pWDown[w]) for w in model.WIND) +\
+    sum(model.VOLL[d]*(1-model.alpha[d])*model.baseMVA*model.PD[d] for d in model.D)
 model.precontingency_cost_const = Constraint(rule=precontingency_cost)
 
 def postcontingency_cost(model,c):
-    return model.FPostCont[c] == sum(model.baseMVA*(model.c1[g]*model.DeltapGDown[g,c]+model.c1[g]*model.DeltapGUp[g,c]) for g in model.G)\
-    +sum(model.baseMVA*(model.c1[w]*model.DeltapWDown[w,c]) for w in model.WIND)\
-    +sum(model.baseMVA*(model.VOLL[d]*(1-model.alphaC[d,c])*model.PD[d]) for d in model.D)
+    return model.FPostCont[c] == sum(model.offerG[g]*(model.baseMVA*model.pGCUp[g,c])+model.bidG[g]*(model.baseMVA*model.pGCDown[g,c]) for g in model.G) +\
+    sum(model.bidW[w]*(model.baseMVA*model.pWCDown[w,c]) for w in model.WIND) +\
+    sum(model.VOLL[d]*(1-model.alphaC[d,c])*model.baseMVA*model.PD[d] for d in model.D)
 model.postcontingency_cost_const = Constraint(model.C, rule=postcontingency_cost)
 
 
@@ -151,6 +168,16 @@ def KCL_def(model, b):
     sum(model.GB[s] for s in model.SHUNT if (b,s) in model.SHUNTbs)
 # the next line creates one KCL constraint for each bus
 model.KCL_const = Constraint(model.B, rule=KCL_def)
+
+# --- FPN model ---
+def Generator_redispatch(model,g):
+    return model.pG[g] == model.PG[g]+model.pGUp[g]-model.pGDown[g]
+def Wind_redispatch(model,w):
+    return model.pW[w] == model.PW[w]-model.pWDown[w]
+
+model.RedispatcG = Constraint(model.G, rule=Generator_redispatch)
+model.RedispatcW = Constraint(model.WIND, rule=Wind_redispatch)
+
 
 # --- Kirchoff's voltage law on each line and transformer---
 def KVL_line_def(model,l):
@@ -236,6 +263,15 @@ def KCL_def_PostCnt(model, b,c):
     sum(model.GB[s] for s in model.SHUNT if (b,s) in model.SHUNTbs)
 # the next line creates one KCL constraint for each bus
 model.KCL_const_PostCnt = Constraint(model.B,model.C, rule=KCL_def_PostCnt)
+
+# --- FPN model ---
+def Generator_redispatch_C(model,g,c):
+    return model.pGC[g,c] == model.PG[g]+model.pGUp[g]-model.pGDown[g]
+def Wind_redispatch_C(model,w,c):
+    return model.pWC[w,c] == model.PW[w]-model.pWDown[w]
+
+model.RedispatcGC = Constraint(model.G,model.C, rule=Generator_redispatch_C)
+model.RedispatcWC = Constraint(model.WIND,model.C, rule=Wind_redispatch_C)
 
 # --- Kirchoff's voltage law on each line ---
 def KVL_line_def_PostCnt(model,l,c):

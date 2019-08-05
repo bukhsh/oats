@@ -66,11 +66,11 @@ def runcase(testcase,mod,opt=None):
             r.printDCOPF()
         elif 'ACOPF' in mod:
             r.printACOPF()
-        elif mod=='SCOPF':
+        elif mod=='SCOPF' or mod=='SCOPF_BM':
             r.printSCdat()
         if mod=='ACOPF_BM':
             r.printBM()
-        if mod=='DCOPF_BM':
+        if mod=='DCOPF_BM' or mod=='SCOPF_BM':
             r.printDCBM()
 
 
