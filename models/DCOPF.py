@@ -45,6 +45,7 @@ model.VOLL    = Param(model.D, within=Reals)  # value of lost load
 # generators
 model.PGmax    = Param(model.G, within=NonNegativeReals) # max real power of generator, p.u.
 model.PGmin    = Param(model.G, within=Reals)            # min real power of generator, p.u.
+model.PG       = Param(model.G, within=Reals) # FPN
 model.WGmax    = Param(model.WIND, within=NonNegativeReals) # max real power of wind generator, p.u.
 model.WGmin    = Param(model.WIND, within=NonNegativeReals) # min real power of wind generator, p.u.
 
