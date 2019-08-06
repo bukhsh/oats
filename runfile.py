@@ -28,7 +28,7 @@ def main():
 
     # =====Test cases=====
     #give a path to the testcase file under the 'testcase' folder
-    testcase = 'Winter_Low wind_High demand-SWS_DR.xlsx'
+    testcase = 'case24_ieee_rts.xlsx'
     # testcase = 'winter_High wind_Low demand-SWS_DR.xlsx'
     #testcase = 'case300.xlsx'
     #testcase = 'IrishNetwork.xlsx'
@@ -36,12 +36,13 @@ def main():
     #specify a model to solve
     #model ='DCLF'
     #model ='DCLF'
-    #model ='DCOPF'
+    model ='DCOPF'
     # model ='ACOPF'
     # model ='UC'
     #model ='SCOPF'
-    model ='SCOPF_BM'
-    #model ='DCOPF_BM'
+    # model ='SCOPF_BM'
+    # model ='DCOPF_BM'
+
     # ==log==
     logging.info("Solver selected: "+opt['solver'])
     logging.info("Testcase selected: "+testcase)
