@@ -1,8 +1,8 @@
-Mon, 05 Aug 2019 15:22:56 INFO     OATS log file
-Mon, 05 Aug 2019 15:22:56 INFO     Program started
-Mon, 05 Aug 2019 15:22:56 INFO     Solver selected: ipopt
-Mon, 05 Aug 2019 15:22:56 INFO     Testcase selected: case24_ieee_rts.xlsx
-Mon, 05 Aug 2019 15:22:56 INFO     Model selected: DCOPF_BM
-Mon, 05 Aug 2019 15:22:56 INFO     Given model file found and selected from the models library
-Mon, 05 Aug 2019 15:22:56 INFO     Given testcase file found and selected from the testcase library
-Mon, 05 Aug 2019 15:22:56 INFO     Done!
+Tue, 06 Aug 2019 14:50:16 INFO     OATS log file
+Tue, 06 Aug 2019 14:50:16 INFO     Program started
+Tue, 06 Aug 2019 14:50:16 INFO     Solver selected: ipopt
+Tue, 06 Aug 2019 14:50:16 INFO     Testcase selected: Winter_Low wind_High demand-SWS_DR.xlsx
+Tue, 06 Aug 2019 14:50:16 INFO     Model selected: SCOPF_BM
+Tue, 06 Aug 2019 14:50:16 INFO     Given model file found and selected from the models library
+Tue, 06 Aug 2019 14:50:16 INFO     Given testcase file found and selected from the testcase library
+Tue, 06 Aug 2019 14:50:24 INFO     Done!
