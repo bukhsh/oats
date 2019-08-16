@@ -53,13 +53,15 @@ class printoutput(object):
         cols_demand     = ['name', 'busname', 'PD(MW)']
 
         if ('DC' in self.mod) or ('SC' in self.mod):
-            cols_branch     = ['name', 'from_busname', 'to_busname', 'pL(MW)', 'SLmax(MW)']
-            cols_transf     = ['name', 'from_busname', 'to_busname', 'pLT(MW)', 'SLmax(MW)']
+            cols_branch     = ['name', 'from_busname', 'to_busname', 'pL(MW)']
+            cols_transf     = ['name', 'from_busname', 'to_busname', 'pLT(MW)']
             if 'LF' in self.mod:
                 cols_generation = ['name', 'busname', 'PG(MW)', 'pG(MW)']
                 cols_wind       = ['name', 'busname', 'PG(MW)', 'pG(MW)']
             elif 'OPF' in self.mod:
                 cols_demand.append('alpha')
+                cols_branch.append('SLmax(MW)')
+                cols_transf.append('SLmax(MW)')
                 cols_generation = ['name', 'busname', 'PGLB(MW)','PG(MW)', 'pG(MW)','PGUB(MW)']
                 cols_wind       = ['name', 'busname', 'PGLB(MW)','PG(MW)', 'pG(MW)','PGUB(MW)']
         elif 'AC' in self.mod:
@@ -97,20 +99,19 @@ class printoutput(object):
             for b in self.instance.B:
                 bus.loc[ind] = pd.Series({'name': b,'angle(degs)':self.instance.delta[b].value*180/math.pi})
                 ind += 1
-            #line data
-            ind=0
-            for b in self.instance.L:
-                branch.loc[ind] = pd.Series({'name': b, 'from_busname':self.instance.A[b,1], 'to_busname':self.instance.A[b,2],\
-                'pL(MW)':self.instance.pL[b].value*self.instance.baseMVA,'SLmax(MW)':self.instance.SLmax[b]*self.instance.baseMVA})
-                ind += 1
-            #transformer data
-            ind = 0
-            for b in self.instance.TRANSF:
-                transformer.loc[ind] = pd.Series({'name': b, 'from_busname':self.instance.AT[b,1],
-                'to_busname':self.instance.AT[b,2], 'pLT(MW)':self.instance.pLT[b].value*self.instance.baseMVA,\
-                'SLmax(MW)':self.instance.SLmaxT[b]*self.instance.baseMVA})
-                ind += 1
             if 'LF' in self.mod:
+                #line data
+                ind=0
+                for b in self.instance.L:
+                    branch.loc[ind] = pd.Series({'name': b, 'from_busname':self.instance.A[b,1], 'to_busname':self.instance.A[b,2],\
+                    'pL(MW)':self.instance.pL[b].value*self.instance.baseMVA})
+                    ind += 1
+                #transformer data
+                ind = 0
+                for b in self.instance.TRANSF:
+                    transformer.loc[ind] = pd.Series({'name': b, 'from_busname':self.instance.AT[b,1],
+                    'to_busname':self.instance.AT[b,2], 'pLT(MW)':self.instance.pLT[b].value*self.instance.baseMVA})
+                ind += 1
                 #demand data
                 ind = 0
                 for d in self.instance.Dbs:
@@ -144,7 +145,6 @@ class printoutput(object):
                     'pG(MW)':round(self.instance.pG[g[1]].value*self.instance.baseMVA,3),\
                     'PGUB(MW)':self.instance.PGmax[g[1]]*self.instance.baseMVA})
                     ind += 1
-
                 #wind data
                 ind = 0
                 for g in self.instance.Wbs:
@@ -156,6 +156,20 @@ class printoutput(object):
                     ind += 1
 
             elif 'OPF' in self.mod:
+                #line data
+                ind=0
+                for b in self.instance.L:
+                    branch.loc[ind] = pd.Series({'name': b, 'from_busname':self.instance.A[b,1], 'to_busname':self.instance.A[b,2],\
+                    'pL(MW)':self.instance.pL[b].value*self.instance.baseMVA,'SLmax(MW)':self.instance.SLmax[b]*self.instance.baseMVA})
+                    ind += 1
+                #transformer data
+                ind = 0
+                for b in self.instance.TRANSF:
+                    transformer.loc[ind] = pd.Series({'name': b, 'from_busname':self.instance.AT[b,1],
+                    'to_busname':self.instance.AT[b,2], 'pLT(MW)':self.instance.pLT[b].value*self.instance.baseMVA,\
+                    'SLmax(MW)':self.instance.SLmaxT[b]*self.instance.baseMVA})
+                    ind += 1
+
                 #demand data
                 ind = 0
                 for d in self.instance.Dbs:
@@ -310,7 +324,7 @@ class printoutput(object):
         bus = bus.sort_values(['name'])
         generation = generation.sort_values(['name'])
         demand = demand.sort_values(['name'])
-        writer = pd.ExcelWriter('results/results.xlsx', engine ='xlsxwriter')
+        writer = pd.ExcelWriter('results.xlsx', engine ='xlsxwriter')
         summary.to_excel(writer, sheet_name = 'summary',index=False)
         bus.to_excel(writer, sheet_name = 'bus',index=False)
         demand.to_excel(writer, sheet_name = 'demand',index=False)
@@ -318,7 +332,7 @@ class printoutput(object):
         wind.to_excel(writer, sheet_name = 'wind',index=False)
         branch.to_excel(writer, sheet_name = 'branch',index=False)
         transformer.to_excel(writer, sheet_name = 'transformer',index=False)
-
+        writer.save()
     def printUC(self):
         print ("Cost of the objective function:", str(float(self.instance.OBJ())))
         print ("***********")
@@ -381,7 +395,7 @@ class printoutput(object):
                 ind += 1
         #===write output on xlsx file===
         #
-        writer = pd.ExcelWriter('results/results.xlsx', engine ='xlsxwriter')
+        writer = pd.ExcelWriter('results.xlsx', engine ='xlsxwriter')
         summary.to_excel(writer, sheet_name = 'summary',index=False)
         zone.to_excel(writer, sheet_name = 'zone',index=False)
         interconnect.to_excel(writer, sheet_name = 'interconnection',index=False)

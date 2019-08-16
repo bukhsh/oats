@@ -1,0 +1,50 @@
+Fri, 16 Aug 2019 09:46:30 INFO     OATS log file
+Fri, 16 Aug 2019 09:46:30 INFO     Program started
+Fri, 16 Aug 2019 09:46:35 INFO     Solver selected: ipopt
+Fri, 16 Aug 2019 09:46:35 INFO     Testcase selected: /home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx
+Fri, 16 Aug 2019 09:46:35 INFO     Model selected: ACLF
+Fri, 16 Aug 2019 09:46:35 INFO     Given model file found and selected from the models library
+Fri, 16 Aug 2019 09:46:35 INFO     Given testcase file found and selected from the testcase library
+Fri, 16 Aug 2019 09:46:35 INFO     Done!
+Fri, 16 Aug 2019 09:46:42 INFO     Solver selected: ipopt
+Fri, 16 Aug 2019 09:46:42 INFO     Testcase selected: /home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx
+Fri, 16 Aug 2019 09:46:42 INFO     Model selected: DCLF
+Fri, 16 Aug 2019 09:46:42 INFO     Given model file found and selected from the models library
+Fri, 16 Aug 2019 09:46:42 INFO     Given testcase file found and selected from the testcase library
+Fri, 16 Aug 2019 09:46:42 INFO     Done!
+Fri, 16 Aug 2019 09:46:47 INFO     Solver selected: ipopt
+Fri, 16 Aug 2019 09:46:47 INFO     Testcase selected: /home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx
+Fri, 16 Aug 2019 09:46:47 INFO     Model selected: ACOPF
+Fri, 16 Aug 2019 09:46:47 INFO     Given model file found and selected from the models library
+Fri, 16 Aug 2019 09:46:47 INFO     Given testcase file found and selected from the testcase library
+Fri, 16 Aug 2019 09:46:48 INFO     Done!
+Fri, 16 Aug 2019 09:46:51 INFO     Solver selected: ipopt
+Fri, 16 Aug 2019 09:46:51 INFO     Testcase selected: /home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx
+Fri, 16 Aug 2019 09:46:51 INFO     Model selected: DCOPF
+Fri, 16 Aug 2019 09:46:51 INFO     Given model file found and selected from the models library
+Fri, 16 Aug 2019 09:46:51 INFO     Given testcase file found and selected from the testcase library
+Fri, 16 Aug 2019 09:46:51 INFO     Done!
+Fri, 16 Aug 2019 09:52:06 INFO     Solver selected: ipopt
+Fri, 16 Aug 2019 09:52:06 INFO     Testcase selected: /home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx
+Fri, 16 Aug 2019 09:52:06 INFO     Model selected: DCOPF
+Fri, 16 Aug 2019 09:52:06 INFO     Given model file found and selected from the models library
+Fri, 16 Aug 2019 09:52:06 INFO     Given testcase file found and selected from the testcase library
+Fri, 16 Aug 2019 09:52:07 INFO     Done!
+Fri, 16 Aug 2019 09:52:09 INFO     Solver selected: ipopt
+Fri, 16 Aug 2019 09:52:09 INFO     Testcase selected: /home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx
+Fri, 16 Aug 2019 09:52:09 INFO     Model selected: ACOPF
+Fri, 16 Aug 2019 09:52:09 INFO     Given model file found and selected from the models library
+Fri, 16 Aug 2019 09:52:10 INFO     Given testcase file found and selected from the testcase library
+Fri, 16 Aug 2019 09:52:10 INFO     Done!
+Fri, 16 Aug 2019 09:52:12 INFO     Solver selected: ipopt
+Fri, 16 Aug 2019 09:52:12 INFO     Testcase selected: /home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx
+Fri, 16 Aug 2019 09:52:12 INFO     Model selected: SCOPF
+Fri, 16 Aug 2019 09:52:12 INFO     Given model file found and selected from the models library
+Fri, 16 Aug 2019 09:52:12 INFO     Given testcase file found and selected from the testcase library
+Fri, 16 Aug 2019 09:52:13 INFO     Done!
+Fri, 16 Aug 2019 09:52:18 INFO     Solver selected: ipopt
+Fri, 16 Aug 2019 09:52:18 INFO     Testcase selected: /home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx
+Fri, 16 Aug 2019 09:52:18 INFO     Model selected: ACLF
+Fri, 16 Aug 2019 09:52:18 INFO     Given model file found and selected from the models library
+Fri, 16 Aug 2019 09:52:18 INFO     Given testcase file found and selected from the testcase library
+Fri, 16 Aug 2019 09:52:19 INFO     Done!

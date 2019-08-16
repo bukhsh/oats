@@ -12,7 +12,7 @@
 import pandas as pd
 
 def selecttestcase(test):
-    xl = pd.ExcelFile("testcases/"+test)
+    xl = pd.ExcelFile(test)
 
     df_bus         = xl.parse("bus")
     df_demand      = xl.parse("demand")

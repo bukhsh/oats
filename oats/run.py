@@ -9,6 +9,7 @@
 # OATS is distributed under the GNU GENERAL PUBLIC LICENSE v3. (see LICENSE file for details).
 #==================================================================
 import logging
+import os
 from oats.runcase import runcase
 
 logging.basicConfig(level=logging.INFO,
@@ -18,17 +19,81 @@ logging.basicConfig(level=logging.INFO,
                     filemode='w')
 logging.info("OATS log file")
 logging.info("Program started")
-
+oats_dir = os.path.dirname(os.path.realpath(__file__))
+default_testcase = oats_dir+'/testcases/case24_ieee_rts.xlsx'
 #----------------------------------------------------------------------
-def dcopf():
+# DC Load flow
+def dclf(tc=default_testcase,solver='ipopt',neos=False,out=0):
     #options
-    opt=({'neos':False,\
-    'solver':'cplex'})
-    # =====Test cases=====
-    #give a path to the testcase file under the 'testcase' folder
-    testcase = 'case24_ieee_rts.xlsx'
-
+    opt=({'neos':neos,\
+    'solver':solver,'out':out})
+    testcase = tc
+    model ='DCLF'
+    # ==log==
+    logging.info("Solver selected: "+opt['solver'])
+    logging.info("Testcase selected: "+testcase)
+    logging.info("Model selected: "+model)
+    runcase(testcase,model,opt)
+    logging.info("Done!")
+# AC Load flow
+def aclf(tc=default_testcase,solver='ipopt',neos=False,out=0):
+    #options
+    opt=({'neos':neos,\
+    'solver':solver,'out':out})
+    testcase = tc
+    model ='ACLF'
+    # ==log==
+    logging.info("Solver selected: "+opt['solver'])
+    logging.info("Testcase selected: "+testcase)
+    logging.info("Model selected: "+model)
+    runcase(testcase,model,opt)
+    logging.info("Done!")
+# DC optimal power flow problem
+def dcopf(tc=default_testcase,solver='ipopt',neos=False,out=0):
+    #options
+    opt=({'neos':neos,\
+    'solver':solver,'out':out})
+    testcase = tc
     model ='DCOPF'
+    # ==log==
+    logging.info("Solver selected: "+opt['solver'])
+    logging.info("Testcase selected: "+testcase)
+    logging.info("Model selected: "+model)
+    runcase(testcase,model,opt)
+    logging.info("Done!")
+# AC optimal power flow problem
+def acopf(tc=default_testcase,solver='ipopt',neos=False,out=0):
+    #options
+    opt=({'neos':neos,\
+    'solver':solver,'out':out})
+    testcase = tc
+    model ='ACOPF'
+    # ==log==
+    logging.info("Solver selected: "+opt['solver'])
+    logging.info("Testcase selected: "+testcase)
+    logging.info("Model selected: "+model)
+    runcase(testcase,model,opt)
+    logging.info("Done!")
+# security constrained optimal power flow problem
+def scopf(tc=default_testcase,solver='ipopt',neos=False,out=0):
+    #options
+    opt=({'neos':neos,\
+    'solver':solver,'out':out})
+    testcase = tc
+    model ='SCOPF'
+    # ==log==
+    logging.info("Solver selected: "+opt['solver'])
+    logging.info("Testcase selected: "+testcase)
+    logging.info("Model selected: "+model)
+    runcase(testcase,model,opt)
+    logging.info("Done!")
+# unit commitment problem
+def uc(tc=default_testcase,solver='cplex',neos=False,out=0):
+    #options
+    opt=({'neos':neos,\
+    'solver':solver,'out':out})
+    testcase = tc
+    model ='UC'
     # ==log==
     logging.info("Solver selected: "+opt['solver'])
     logging.info("Testcase selected: "+testcase)

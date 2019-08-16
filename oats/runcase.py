@@ -19,17 +19,16 @@ from pyomo.opt import SolverFactory
 from pyomo.opt import SolverStatus, TerminationCondition
 import logging
 from oats.selecttestcase import selecttestcase
-from oats.selectmodel import selectmodel
 from oats.printdata import printdata
 from oats.printoutput import printoutput
-
+import imp
 #====================================
 
 def runcase(testcase,mod,opt=None):
-    print ('Selected model is: ', mod)
-    print ('Selected testcase is: ', testcase)
+    oats_dir = os.path.dirname(os.path.realpath(__file__))
     try:
-        model = selectmodel(mod) #load model
+        modelf = imp.load_source(mod, oats_dir+'/models/'+mod+'.py')
+        model = modelf.model
         logging.info("Given model file found and selected from the models library")
     except Exception:
         logging.error("Given model file not found in the 'models' library", exc_info=False)
@@ -76,24 +75,26 @@ def runcase(testcase,mod,opt=None):
 
 
     ###############Solver settings####################
-    if not opt['neos']:
+    if (not opt['neos']):
 
-        opt = SolverFactory(opt['solver'])
+        optimise = SolverFactory(opt['solver'])
         #opt.options['mipgap'] = 0.1
         #################################################
 
         ############Solve###################
         instance = model.create_instance(datfile)
         instance.dual = Suffix(direction=Suffix.IMPORT)
-        results = opt.solve(instance,tee=True)
+        results = optimise.solve(instance,tee=True)
         instance.solutions.load_from(results)
         # ##################################
         #
-        #
         # ############Output###################
         o = printoutput(results, instance,mod)
-        o.greet()
-        o.solutionstatus()
+        if (opt['out']):
+            o.solutionstatus()
+        else:
+            o.greet()
+            o.solutionstatus()
         if 'UC' in mod:
             o.printUC()
         else:
