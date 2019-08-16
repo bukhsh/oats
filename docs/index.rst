@@ -9,7 +9,7 @@ OATS is a collection of optimisation models and Python scripts for analysis and 
 
 
 .. image:: /pics/logo.png
-		:width: 50em
+		:width: 150em
 		:align: center
 
 .. |br| raw:: html
