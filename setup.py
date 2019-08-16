@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='oatspower',
-      version='0.0.1',
+      version='0.0.10',
       description='OATS: Optimisation and Analysis Toolbox for Power Systems',
       url='https://github.com/bukhsh/oats',
       author='Waqquas Bukhsh',
@@ -21,6 +21,5 @@ setup(name='oatspower',
         'sympy',
         'xlrd',
         'pandas',
-        'ipopt'
       ],
       zip_safe=False)

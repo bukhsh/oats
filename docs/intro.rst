@@ -1,6 +1,6 @@
 
 
-OATS: Optimisation and Analysis Toolbox for power Systems
+Introduction to OATS
 ================================
 Optimisation and Analysis Toolbox for power Systems (OATS) is a high-level modelling
 and simulation tool for power system analysis, developed at the University of Strathclyde.
@@ -9,18 +9,8 @@ range of power system analysis problems.
 
 
 
-.. image:: /pics/logo.png
-		:width: 350em
-		:align: center
-
-.. |br| raw:: html
-
-    <br />
-
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
-    intro
-    installation
-    models
-    dataformat
+    intro/license
+		intro/citation
