@@ -3,6 +3,7 @@ from setuptools import setup
 setup(name='oatspower',
       version='0.0.10',
       description='OATS: Optimisation and Analysis Toolbox for Power Systems',
+      long_description_content_type='text/markdown',
       url='https://github.com/bukhsh/oats',
       author='Waqquas Bukhsh',
       author_email='wbukhsh@gmail.com',
