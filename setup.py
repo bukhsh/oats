@@ -1,15 +1,17 @@
 from setuptools import setup
-
+with open('README.md') as f:
+    readme = f.read()
 setup(name='oatspower',
-      version='0.0.10',
+      version='0.0.12',
       description='OATS: Optimisation and Analysis Toolbox for Power Systems',
+      long_description=readme,
       long_description_content_type='text/markdown',
       url='https://github.com/bukhsh/oats',
       author='Waqquas Bukhsh',
       author_email='wbukhsh@gmail.com',
       license='GPLv3+',
       packages=['oats','oats.models','oats.testcases'],
-      package_data={'oats.testcases': ['*']},
+      package_data={'oats.testcases': ['*'],'logo.png'},
       install_requires =[
         'pyomo',
         'tabulate',
