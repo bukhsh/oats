@@ -9,4 +9,4 @@ OATS can be installed using pip
       pip install oatspower
 
 
-OATS can also be installed directly from the source available from the GitHub page.
+OATS can also be installed directly from the source available `here <https://github.com/bukhsh/oats/>`__.
