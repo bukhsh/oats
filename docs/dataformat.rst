@@ -2,4 +2,4 @@
 
 Data format
 ================================
-OATS used spreadsheets for specifying set of data
+OATS use spreadsheet format for specifying network, demand and generation data.

@@ -26,7 +26,7 @@ default_testcase = oats_dir+'/testcases/case24_ieee_rts.xlsx'
 # DC Load flow
 def dclf(tc='default',solver='ipopt',neos=True,out=0):
     """
-    Runs DC load flow problem
+    Solves DC load flow problem
 
     ARGUMENTS:
         **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
@@ -54,7 +54,7 @@ def dclf(tc='default',solver='ipopt',neos=True,out=0):
 # AC Load flow
 def aclf(tc='default',solver='ipopt',neos=True,out=0):
     """
-    Runs AC load flow problem
+    Solves AC load flow problem
 
     ARGUMENTS:
         **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
@@ -80,7 +80,7 @@ def aclf(tc='default',solver='ipopt',neos=True,out=0):
 # DC optimal power flow problem
 def dcopf(tc='default',solver='ipopt',neos=True,out=0):
     """
-    Runs DC optimal power flow problem
+    Solves DC optimal power flow problem
 
     ARGUMENTS:
         **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
@@ -108,7 +108,7 @@ def dcopf(tc='default',solver='ipopt',neos=True,out=0):
 # AC optimal power flow problem
 def acopf(tc='default',solver='ipopt',neos=True,out=0):
     """
-    Runs AC optimal power flow problem
+    Solves AC optimal power flow problem
 
     ARGUMENTS:
         **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
@@ -136,7 +136,7 @@ def acopf(tc='default',solver='ipopt',neos=True,out=0):
 # security constrained optimal power flow problem
 def scopf(tc='default',solver='ipopt',neos=True,out=0):
     """
-    Runs security constrained optimal power flow problem
+    Solves security constrained optimal power flow problem
 
     ARGUMENTS:
         **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
@@ -164,7 +164,7 @@ def scopf(tc='default',solver='ipopt',neos=True,out=0):
 # unit commitment problem
 def uc(tc='default',solver='cplex',neos=True,out=0):
     """
-    Runs unit commitment problem
+    Solves unit commitment problem
 
     ARGUMENTS:
         **tc** (*.xlsx file)  - OATS test case. See OATS data format for details

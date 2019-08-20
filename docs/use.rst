@@ -7,10 +7,24 @@ OATS is a powerful power systems optimisation toolbox. OATS include implementati
 * DC/AC load flow problem
 * DC/AC optimal power flow problem
 * Security constrained optimal power flow problem
-* Unit comittment problem
+* Unit commitment problem
 
-.. automodule:: oats
-    :members: aclf
-    :exclude-members: dclf
+.. code-block:: python
 
-.. autofunction:: dclf(tc=default_testcase,solver='ipopt',neos=False,out=0)
+      import oats
+      oats.dcopf()
+
+
+The above command will solve a DC optimal power flow problem on a default 24-bus IEEE reliability test system. A user provide their own network by using the keyword 'tc', as shown in an example below.
+
+.. code-block:: python
+
+      import oats
+      oats.dcopf(tc='mynetwork.xlsx',)
+
+Other options allow a user to specify solver: either on NEOS server of locally on a machine. The following set of lines solves a DC optimal power flow problem using a local installation of the solver 'cplex'.
+
+.. code-block:: python
+
+      import oats
+      oats.dclf(tc='mynetwork.xlsx',solver='cplex',neos=False,out=0):

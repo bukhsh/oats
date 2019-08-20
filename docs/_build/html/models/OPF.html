@@ -20,11 +20,21 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -158,8 +168,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="optimal-power-flow-problem">
-<h1>Optimal power flow problem<a class="headerlink" href="#optimal-power-flow-problem" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-oats">
+<span id="optimal-power-flow-problem"></span><h1>Optimal power flow problem<a class="headerlink" href="#module-oats" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="oats.dcopf">
+<code class="descclassname">oats.</code><code class="descname">dcopf</code><span class="sig-paren">(</span><em>tc='default'</em>, <em>solver='ipopt'</em>, <em>neos=True</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.dcopf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs DC optimal power flow problem</p>
+<dl class="docutils">
+<dt>ARGUMENTS:</dt>
+<dd><p class="first"><strong>tc</strong> (<a href="#id1"><span class="problematic" id="id2">*</span></a>.xlsx file)  - OATS test case. See OATS data format for details</p>
+<p><strong>solver</strong> (str)  - name of a solver. Defualt is ‘ipopt’</p>
+<p><strong>neos</strong> (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.</p>
+<p class="last"><strong>out</strong> (bool) - If True, the output is displayed on screen.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 
