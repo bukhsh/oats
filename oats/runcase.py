@@ -102,7 +102,8 @@ def runcase(testcase,mod,opt=None):
             o.printoutputxls()
 
     else:
-        instance = model.create_instance(datfile)
-        solveroptions = SolverFactory(opt['solver'])
+        instance       = model.create_instance(datfile)
+        solveroptions  = SolverFactory(opt['solver'])
         solver_manager = SolverManagerFactory('neos')
-        solver_manager.solve(instance, opt=solveroptions)
+        results        = solver_manager.solve(instance, opt=solveroptions)
+        print (results)

@@ -1,8 +1,8 @@
-Fri, 16 Aug 2019 13:07:56 INFO     OATS log file
-Fri, 16 Aug 2019 13:07:56 INFO     Program started
-Fri, 16 Aug 2019 13:08:00 INFO     Solver selected: ipopt
-Fri, 16 Aug 2019 13:08:00 INFO     Testcase selected: /Users/waqquasbukhsh/oats/oats/testcases/case24_ieee_rts.xlsx
-Fri, 16 Aug 2019 13:08:00 INFO     Model selected: DCOPF
-Fri, 16 Aug 2019 13:08:00 INFO     Given model file found and selected from the models library
-Fri, 16 Aug 2019 13:08:00 INFO     Given testcase file found and selected from the testcase library
-Fri, 16 Aug 2019 13:08:00 WARNING  Could not locate the 'ipopt' executable, which is required for solver ipopt
+Tue, 20 Aug 2019 13:28:59 INFO     OATS log file
+Tue, 20 Aug 2019 13:28:59 INFO     Program started
+Tue, 20 Aug 2019 13:29:14 INFO     Solver selected: ipopt
+Tue, 20 Aug 2019 13:29:14 INFO     Testcase selected: /home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx
+Tue, 20 Aug 2019 13:29:14 INFO     Model selected: DCLF
+Tue, 20 Aug 2019 13:29:14 INFO     Given model file found and selected from the models library
+Tue, 20 Aug 2019 13:29:14 INFO     Given testcase file found and selected from the testcase library
+Tue, 20 Aug 2019 13:29:14 INFO     Done!
