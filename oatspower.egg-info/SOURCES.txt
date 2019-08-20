@@ -8,12 +8,9 @@ oats/runcase.py
 oats/selecttestcase.py
 oats/models/ACLF.py
 oats/models/ACOPF.py
-oats/models/ACOPF_BM.py
 oats/models/DCLF.py
 oats/models/DCOPF.py
-oats/models/DCOPF_BM.py
 oats/models/SCOPF.py
-oats/models/SCOPF_BM.py
 oats/models/UC.py
 oats/models/__init__.py
 oats/testcases/__init__.py

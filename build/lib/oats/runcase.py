@@ -26,13 +26,17 @@ import imp
 
 def runcase(testcase,mod,opt=None):
     oats_dir = os.path.dirname(os.path.realpath(__file__))
-    try:
-        modelf = imp.load_source(mod, oats_dir+'/models/'+mod+'.py')
+    if 'user_def_model' in opt:
+        modelf = imp.load_source(mod, mod+'.py')
         model = modelf.model
-        logging.info("Given model file found and selected from the models library")
-    except Exception:
-        logging.error("Given model file not found in the 'models' library", exc_info=False)
-        raise
+    else:
+        try:
+            modelf = imp.load_source(mod, oats_dir+'/models/'+mod+'.py')
+            model = modelf.model
+            logging.info("Given model file found and selected from the models library")
+        except Exception:
+            logging.error("Given model file not found in the 'models' library", exc_info=False)
+            raise
     try:
         ptc = selecttestcase(testcase) #read test case
         logging.info("Given testcase file found and selected from the testcase library")
