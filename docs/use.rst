@@ -9,6 +9,8 @@ OATS is a powerful power systems optimisation toolbox. OATS include implementati
 * Security constrained optimal power flow problem
 * Unit commitment problem
 
+Solving a problem in OATS
+--------------------------
 .. code-block:: python
 
       import oats
@@ -28,3 +30,8 @@ Other options allow a user to specify solver: either on NEOS server of locally o
 
       import oats
       oats.dclf(tc='mynetwork.xlsx',solver='cplex',neos=False,out=0):
+
+
+Output
+------
+A 'results.xlsx' file is produced after an OATS model is solved. This file in created in the directory where the oats in called. The results file has a same data format as the input test case.
