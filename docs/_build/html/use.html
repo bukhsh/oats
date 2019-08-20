@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Models" href="models.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -78,9 +80,10 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to OATS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started with OATS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataformat.html">Data format</a></li>
 </ul>
@@ -156,6 +159,25 @@
 <li>Security constrained optimal power flow problem</li>
 <li>Unit comittment problem</li>
 </ul>
+<span class="target" id="module-oats"></span><dl class="function">
+<dt id="oats.aclf">
+<code class="descclassname">oats.</code><code class="descname">aclf</code><span class="sig-paren">(</span><em>tc='/home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx'</em>, <em>solver='ipopt'</em>, <em>neos=False</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.aclf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs AC load flow</p>
+<dl class="docutils">
+<dt>ARGUMENTS:</dt>
+<dd><p class="first"><strong>tc</strong>   - test case</p>
+<p><strong>solver</strong>  - name of the solver</p>
+<p><strong>neos</strong>  - option for solving on neos server</p>
+<p class="last"><strong>out</strong>  - output options</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="oats.dclf">
+<code class="descclassname">oats.</code><code class="descname">dclf</code><span class="sig-paren">(</span><em>tc=default_testcase</em>, <em>solver='ipopt'</em>, <em>neos=False</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.dclf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 
 
@@ -163,6 +185,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="models.html" class="btn btn-neutral float-right" title="Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

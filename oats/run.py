@@ -37,7 +37,18 @@ def dclf(tc=default_testcase,solver='ipopt',neos=False,out=0):
     logging.info("Done!")
 # AC Load flow
 def aclf(tc=default_testcase,solver='ipopt',neos=False,out=0):
-    #options
+    """
+    Runs AC load flow
+
+    ARGUMENTS:
+        **tc**   - test case
+
+        **solver**  - name of the solver
+
+        **neos**  - option for solving on neos server
+
+        **out**  - output options
+    """
     opt=({'neos':neos,\
     'solver':solver,'out':out})
     testcase = tc

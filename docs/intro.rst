@@ -8,9 +8,8 @@ OATS is a collection of optimisation models and Python scripts for analysis and 
 range of power system analysis problems.
 
 
-
 .. toctree::
     :maxdepth: 1
 
     intro/license
-		intro/citation
+    intro/citation

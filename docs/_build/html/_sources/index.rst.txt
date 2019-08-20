@@ -17,13 +17,11 @@ OATS is a collection of optimisation models and Python scripts for analysis and 
 
 
 
-
-
 .. toctree::
-    :maxdepth: 2
+   :maxdepth: 2
 
-    intro
-    installation
-		use
-    models
-    dataformat
+   intro
+   installation
+   use
+   models
+   dataformat

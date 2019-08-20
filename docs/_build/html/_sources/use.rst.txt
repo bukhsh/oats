@@ -9,4 +9,8 @@ OATS is a powerful power systems optimisation toolbox. OATS include implementati
 * Security constrained optimal power flow problem
 * Unit comittment problem
 
-.. autofunction:: oats.dclf
+.. automodule:: oats
+    :members: aclf
+    :exclude-members: dclf
+
+.. autofunction:: dclf(tc=default_testcase,solver='ipopt',neos=False,out=0)
