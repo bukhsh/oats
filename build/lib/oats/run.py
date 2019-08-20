@@ -21,9 +21,25 @@ logging.info("OATS log file")
 logging.info("Program started")
 oats_dir = os.path.dirname(os.path.realpath(__file__))
 default_testcase = oats_dir+'/testcases/case24_ieee_rts.xlsx'
+
 #----------------------------------------------------------------------
 # DC Load flow
-def dclf(tc=default_testcase,solver='ipopt',neos=False,out=0):
+def dclf(tc='default',solver='ipopt',neos=True,out=0):
+    """
+    Solves DC load flow problem
+
+    ARGUMENTS:
+        **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
+
+        **solver** (str)  - name of a solver. Defualt is 'ipopt'
+
+        **neos** (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.
+
+        **out** (bool) - If True, the output is displayed on screen.
+    """
+
+    if tc == 'default':
+        tc = default_testcase
     #options
     opt=({'neos':neos,\
     'solver':solver,'out':out})
@@ -36,8 +52,21 @@ def dclf(tc=default_testcase,solver='ipopt',neos=False,out=0):
     runcase(testcase,model,opt)
     logging.info("Done!")
 # AC Load flow
-def aclf(tc=default_testcase,solver='ipopt',neos=False,out=0):
-    #options
+def aclf(tc='default',solver='ipopt',neos=True,out=0):
+    """
+    Solves AC load flow problem
+
+    ARGUMENTS:
+        **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
+
+        **solver** (str)  - name of a solver. Defualt is 'ipopt'
+
+        **neos** (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.
+
+        **out** (bool) - If True, the output is displayed on screen.
+    """
+    if tc == 'default':
+        tc = default_testcase
     opt=({'neos':neos,\
     'solver':solver,'out':out})
     testcase = tc
@@ -49,7 +78,22 @@ def aclf(tc=default_testcase,solver='ipopt',neos=False,out=0):
     runcase(testcase,model,opt)
     logging.info("Done!")
 # DC optimal power flow problem
-def dcopf(tc=default_testcase,solver='ipopt',neos=False,out=0):
+def dcopf(tc='default',solver='ipopt',neos=True,out=0):
+    """
+    Solves DC optimal power flow problem
+
+    ARGUMENTS:
+        **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
+
+        **solver** (str)  - name of a solver. Defualt is 'ipopt'
+
+        **neos** (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.
+
+        **out** (bool) - If True, the output is displayed on screen.
+    """
+
+    if tc == 'default':
+        tc = default_testcase
     #options
     opt=({'neos':neos,\
     'solver':solver,'out':out})
@@ -62,7 +106,22 @@ def dcopf(tc=default_testcase,solver='ipopt',neos=False,out=0):
     runcase(testcase,model,opt)
     logging.info("Done!")
 # AC optimal power flow problem
-def acopf(tc=default_testcase,solver='ipopt',neos=False,out=0):
+def acopf(tc='default',solver='ipopt',neos=True,out=0):
+    """
+    Solves AC optimal power flow problem
+
+    ARGUMENTS:
+        **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
+
+        **solver** (str)  - name of a solver. Defualt is 'ipopt'
+
+        **neos** (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.
+
+        **out** (bool) - If True, the output is displayed on screen.
+    """
+
+    if tc == 'default':
+        tc = default_testcase
     #options
     opt=({'neos':neos,\
     'solver':solver,'out':out})
@@ -75,7 +134,22 @@ def acopf(tc=default_testcase,solver='ipopt',neos=False,out=0):
     runcase(testcase,model,opt)
     logging.info("Done!")
 # security constrained optimal power flow problem
-def scopf(tc=default_testcase,solver='ipopt',neos=False,out=0):
+def scopf(tc='default',solver='ipopt',neos=True,out=0):
+    """
+    Solves security constrained optimal power flow problem
+
+    ARGUMENTS:
+        **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
+
+        **solver** (str)  - name of a solver. Defualt is 'ipopt'
+
+        **neos** (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.
+
+        **out** (bool) - If True, the output is displayed on screen.
+    """
+
+    if tc == 'default':
+        tc = default_testcase
     #options
     opt=({'neos':neos,\
     'solver':solver,'out':out})
@@ -88,7 +162,22 @@ def scopf(tc=default_testcase,solver='ipopt',neos=False,out=0):
     runcase(testcase,model,opt)
     logging.info("Done!")
 # unit commitment problem
-def uc(tc=default_testcase,solver='cplex',neos=False,out=0):
+def uc(tc='default',solver='cplex',neos=True,out=0):
+    """
+    Solves unit commitment problem
+
+    ARGUMENTS:
+        **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
+
+        **solver** (str)  - name of a solver. Defualt is 'ipopt'
+
+        **neos** (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.
+
+        **out** (bool) - If True, the output is displayed on screen.
+    """
+
+    if tc == 'default':
+        tc = default_testcase
     #options
     opt=({'neos':neos,\
     'solver':solver,'out':out})

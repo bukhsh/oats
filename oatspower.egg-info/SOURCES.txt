@@ -5,7 +5,6 @@ oats/printdata.py
 oats/printoutput.py
 oats/run.py
 oats/runcase.py
-oats/runfile.py
 oats/selecttestcase.py
 oats/models/ACLF.py
 oats/models/ACOPF.py
