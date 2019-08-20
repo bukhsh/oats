@@ -105,6 +105,7 @@ def dcopf(tc='default',solver='ipopt',neos=True,out=0):
     logging.info("Model selected: "+model)
     runcase(testcase,model,opt)
     logging.info("Done!")
+
 # AC optimal power flow problem
 def acopf(tc='default',solver='ipopt',neos=True,out=0):
     """
@@ -133,6 +134,7 @@ def acopf(tc='default',solver='ipopt',neos=True,out=0):
     logging.info("Model selected: "+model)
     runcase(testcase,model,opt)
     logging.info("Done!")
+
 # security constrained optimal power flow problem
 def scopf(tc='default',solver='ipopt',neos=True,out=0):
     """
@@ -161,6 +163,7 @@ def scopf(tc='default',solver='ipopt',neos=True,out=0):
     logging.info("Model selected: "+model)
     runcase(testcase,model,opt)
     logging.info("Done!")
+
 # unit commitment problem
 def uc(tc='default',solver='cplex',neos=True,out=0):
     """
@@ -183,6 +186,38 @@ def uc(tc='default',solver='cplex',neos=True,out=0):
     'solver':solver,'out':out})
     testcase = tc
     model ='UC'
+    # ==log==
+    logging.info("Solver selected: "+opt['solver'])
+    logging.info("Testcase selected: "+testcase)
+    logging.info("Model selected: "+model)
+    runcase(testcase,model,opt)
+    logging.info("Done!")
+
+
+# user defined model
+def model(model,tc='default',solver='cplex',neos=True,out=0):
+    """
+    Solves a user defined model
+
+    ARGUMENTS:
+        **model** (*.py file)  - A model file that describes the optimisation problem using PYOMO modelling language.
+
+        **tc** (*.xlsx file)  - OATS test case. See OATS data format for details
+
+        **solver** (str)  - name of a solver. Defualt is 'ipopt'
+
+        **neos** (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.
+
+        **out** (bool) - If True, the output is displayed on screen.
+    """
+
+    if tc == 'default':
+        tc = default_testcase
+    #options
+    opt=({'neos':neos,\
+    'solver':solver,'out':out,'user_def_model':True})
+    testcase = tc
+    model =model
     # ==log==
     logging.info("Solver selected: "+opt['solver'])
     logging.info("Testcase selected: "+testcase)

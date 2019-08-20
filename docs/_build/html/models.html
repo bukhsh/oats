@@ -99,6 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="models/OPF.html">Optimal power flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models/SCOPF.html">Security constrained optimal power flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models/UC.html">Unit Commitment problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extending-models">Extending models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="dataformat.html">Data format</a></li>
@@ -168,7 +169,7 @@
             
   <div class="section" id="models">
 <h1>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h1>
-<p>Models implemented in OATS</p>
+<p>OATS include implementation of the following steady-state power system optimisation models:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="models/LF.html">Load flow problem</a></li>
@@ -176,6 +177,17 @@
 <li class="toctree-l1"><a class="reference internal" href="models/SCOPF.html">Security constrained optimal power flow problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models/UC.html">Unit Commitment problem</a></li>
 </ul>
+</div>
+<div class="section" id="extending-models">
+<h2>Extending models<a class="headerlink" href="#extending-models" title="Permalink to this headline">¶</a></h2>
+<p>A salient feature of OATS is its ease of extending a model to define a new class of problem.</p>
+<p>No modelling tool is capable of capturing all the extensions in constraint handling, or extension in objective function so it is important to give the user freedom to define their problems.</p>
+<p>Knowledge of PYOMO modelling language is required to defined OATS models. The GitHub page of OATS includes a range of models that are extended for specific applications.
+A user can solve a new model by called oats function ‘model’. Here is an example of solving DCOPF_BM model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oats</span>
+<span class="n">oats</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;DCOPF_BM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 

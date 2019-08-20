@@ -93,7 +93,11 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to OATS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started with OATS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started with OATS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#solving-a-problem-in-oats">Solving a problem in OATS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataformat.html">Data format</a></li>
 </ul>
@@ -169,6 +173,8 @@
 <li>Security constrained optimal power flow problem</li>
 <li>Unit commitment problem</li>
 </ul>
+<div class="section" id="solving-a-problem-in-oats">
+<h2>Solving a problem in OATS<a class="headerlink" href="#solving-a-problem-in-oats" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oats</span>
 <span class="n">oats</span><span class="o">.</span><span class="n">dcopf</span><span class="p">()</span>
 </pre></div>
@@ -182,6 +188,11 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oats</span>
 <span class="n">oats</span><span class="o">.</span><span class="n">dclf</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="s1">&#39;mynetwork.xlsx&#39;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;cplex&#39;</span><span class="p">,</span><span class="n">neos</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
+<p>A ‘results.xlsx’ file is produced after an OATS model is solved. This file in created in the directory where the oats in called. The results file has a same data format as the input test case.</p>
 </div>
 </div>
 

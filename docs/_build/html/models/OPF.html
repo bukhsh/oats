@@ -99,6 +99,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Optimal power flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SCOPF.html">Security constrained optimal power flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UC.html">Unit Commitment problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models.html#extending-models">Extending models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../dataformat.html">Data format</a></li>
@@ -173,10 +174,24 @@
 <dl class="function">
 <dt id="oats.dcopf">
 <code class="descclassname">oats.</code><code class="descname">dcopf</code><span class="sig-paren">(</span><em>tc='default'</em>, <em>solver='ipopt'</em>, <em>neos=True</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.dcopf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs DC optimal power flow problem</p>
+<dd><p>Solves DC optimal power flow problem</p>
 <dl class="docutils">
 <dt>ARGUMENTS:</dt>
 <dd><p class="first"><strong>tc</strong> (<a href="#id1"><span class="problematic" id="id2">*</span></a>.xlsx file)  - OATS test case. See OATS data format for details</p>
+<p><strong>solver</strong> (str)  - name of a solver. Defualt is ‘ipopt’</p>
+<p><strong>neos</strong> (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.</p>
+<p class="last"><strong>out</strong> (bool) - If True, the output is displayed on screen.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-oats"></span><dl class="function">
+<dt id="oats.acopf">
+<code class="descclassname">oats.</code><code class="descname">acopf</code><span class="sig-paren">(</span><em>tc='default'</em>, <em>solver='ipopt'</em>, <em>neos=True</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.acopf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solves AC optimal power flow problem</p>
+<dl class="docutils">
+<dt>ARGUMENTS:</dt>
+<dd><p class="first"><strong>tc</strong> (<a href="#id3"><span class="problematic" id="id4">*</span></a>.xlsx file)  - OATS test case. See OATS data format for details</p>
 <p><strong>solver</strong> (str)  - name of a solver. Defualt is ‘ipopt’</p>
 <p><strong>neos</strong> (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.</p>
 <p class="last"><strong>out</strong> (bool) - If True, the output is displayed on screen.</p>
