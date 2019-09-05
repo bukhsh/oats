@@ -1,6 +1,9 @@
 ![](https://badge.fury.io/py/oatspower.svg)
 ![](https://img.shields.io/badge/License-GNU%20General%20Public%20License%20v3.0-yellow)
 ![](https://img.shields.io/badge/Python-2.7.x%20%7C%203.x-red)
+[![DOI](https://zenodo.org/badge/119113524.svg)](https://zenodo.org/badge/latestdoi/119113524)
+
+
 # OATS
 
 Optimisation and Analysis Toolbox for power Systems (OATS) is a high-level modelling and simulation tool for power system analysis, developed at the [University of Strathclyde](https://www.strath.ac.uk/engineering/electronicelectricalengineering/). OATS is a collection of optimisation models and Python scripts for analysis and solution of a range of power system analysis problems.
