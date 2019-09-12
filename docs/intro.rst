@@ -11,5 +11,6 @@ range of power system analysis problems. These problems include: load flow, opti
 .. toctree::
     :maxdepth: 1
 
+    intro/architecture
     intro/license
     intro/citation

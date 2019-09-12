@@ -92,7 +92,15 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to OATS</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#oats">OATS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solvers">Solvers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#neos">NEOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-installation-of-solvers">Local installation of solvers</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="use.html">Getting Started with OATS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataformat.html">Data format</a></li>
@@ -162,11 +170,132 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>OATS can be installed using pip</p>
+<div class="section" id="oats">
+<h2>OATS<a class="headerlink" href="#oats" title="Permalink to this headline">¶</a></h2>
+<p>OATS can be installed using pip;</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">oatspower</span>
 </pre></div>
 </div>
+<p>The pip installation is most suited to users wishing to solve standard ‘off-the-shelf’ power flow problems without the need for full access to the OATS scripts. The ipopt solver is included in the oatspower package along with the following key dependencies:</p>
 <p>OATS can also be installed directly from the source available <a class="reference external" href="https://github.com/bukhsh/oats/">here</a>.</p>
+<p>Installing OATS from the source offers the advantage of full access to customise the OATS scripts. This is recommended for advanced users comfortable with coding (or learning) in pyomo.</p>
+</div>
+<div class="section" id="solvers">
+<h2>Solvers<a class="headerlink" href="#solvers" title="Permalink to this headline">¶</a></h2>
+<p>A solver is required to solve a power systems optimisation problem in OATS. The choice of problem depends on the type of the optimisation problem. The optimisation problems can be broadly classified into following four main categories:</p>
+<ul class="simple">
+<li>Linear programming (LP)</li>
+<li>Nonlinear programming (NLP)</li>
+<li>Mixed integer programming problem (MILP)</li>
+<li>Mixed integer nonlinear programming problem (MINLP)</li>
+</ul>
+<p>The following table presents the classification of the traditional optimisation models implemented in OATS and suitable solvers that can be used to solve these problems.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="19%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Model</th>
+<th class="head">Type</th>
+<th class="head">Solver</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>DC Optimal Power Flow</td>
+<td>LP</td>
+<td>cplex, ipopt, glpk</td>
+</tr>
+<tr class="row-odd"><td>AC Optimal Power Flow</td>
+<td>NLP</td>
+<td>ipopt</td>
+</tr>
+<tr class="row-even"><td>DC Security Constrained OPF</td>
+<td>LP</td>
+<td>cplex, ipopt, glpk</td>
+</tr>
+<tr class="row-odd"><td>Unit commitment</td>
+<td>MILP</td>
+<td>cplex</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="neos">
+<h3>NEOS<a class="headerlink" href="#neos" title="Permalink to this headline">¶</a></h3>
+<p>OATS allow a user to submit the problems to NEOS server. A user can specify neos=True option while calling the function and also can specify the solver to use on the NEOS server by using the option ‘solver’.</p>
+<p>For more details on the available solvers on the NEOS server, please follow this <a class="reference external" href="https://neos-server.org/neos/">link</a>.</p>
+</div>
+<div class="section" id="local-installation-of-solvers">
+<h3>Local installation of solvers<a class="headerlink" href="#local-installation-of-solvers" title="Permalink to this headline">¶</a></h3>
+<p>Installation of a local solver is recommended for using OATS. This is not only computationally efficient, but also allow greater control for specifying options to the solver. The following table provides a number of open-source and free academic license solvers that can be used with OATS.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="30%" />
+<col width="32%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Solver name</th>
+<th class="head">Capability</th>
+<th class="head">License</th>
+<th class="head">Reference</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>glpk</td>
+<td>LP, MILP</td>
+<td>Open source</td>
+<td>[1]</td>
+</tr>
+<tr class="row-odd"><td>cbc</td>
+<td>LP, MILP</td>
+<td>Open source</td>
+<td>[2]</td>
+</tr>
+<tr class="row-even"><td>lp_solve</td>
+<td>LP, MILP</td>
+<td>Open source</td>
+<td>[3]</td>
+</tr>
+<tr class="row-odd"><td>ipopt</td>
+<td>LP, NLP</td>
+<td>Open source</td>
+<td>[4]</td>
+</tr>
+<tr class="row-even"><td>bonmin</td>
+<td>LP, NLP, MILP, MINLP</td>
+<td>Open source</td>
+<td>[5]</td>
+</tr>
+<tr class="row-odd"><td>couen</td>
+<td>LP, NLP, MILP</td>
+<td>Open source</td>
+<td>[6]</td>
+</tr>
+<tr class="row-even"><td>gurobi</td>
+<td>LP, QP, MILP</td>
+<td>Free academic license</td>
+<td>[7]</td>
+</tr>
+<tr class="row-odd"><td>CPLEX</td>
+<td>LP, QP, MILP</td>
+<td>Free academic license</td>
+<td>[8]</td>
+</tr>
+</tbody>
+</table>
+<p>[1] “GLPK (GNU linear programming kit),” 2006. [Online]. Available: <a class="reference external" href="http://www.gnu.org/software/glpk">http://www.gnu.org/software/glpk</a></p>
+<p>[2] J. Forrest and R. Lougee-Heimer, CBC User Guide, ch. Chapter 10, pp. 257–277. [Online]. Available: <a class="reference external" href="https://pubsonline.informs.org/doi/abs/10.1287/educ.1053.0020">https://pubsonline.informs.org/doi/abs/10.1287/educ.1053.0020</a></p>
+<p>[3] “lp solve: Documentation 5.52.5,” 2016. [Online]. Available: <a class="reference external" href="http://web.mit.edu/lpsolve/doc/">http://web.mit.edu/lpsolve/doc/</a></p>
+<p>[4] A. WAchter and L. T. Biegler, “On the implementation of an interior-point filter line-search algorithm for large-scale nonlinear programming,” Mathematical Programming, vol. 106, pp. 25–57, 2006.</p>
+<p>[5] “bonmin (basic open-source nonlinear mixed integer programming),” 2005. [Online]. Available: <a class="reference external" href="https://www.coin-or.org/Bonmin/">https://www.coin-or.org/Bonmin/</a></p>
+<p>[6] P. Belotti, J. Lee et al., “Branching and bounds tightening techniques for non-convex MINLP,” Optimization Methods and Software, vol. 24, no. 4-5, pp. 597–634, 2009. [Online]. Available: <a class="reference external" href="https://projects.coinor.org/Couenne">https://projects.coinor.org/Couenne</a></p>
+<p>[7] I. Gurobi Optimization, “Gurobi optimizer reference manual,” 2016. [Online]. Available: <a class="reference external" href="http://www.gurobi.com">http://www.gurobi.com</a></p>
+<p>[8] “IBM ILOG CPLEX Optimizer,” <a class="reference external" href="http://www01.ibm.com/software/integration/optimization/cplex-optimizer/">http://www01.ibm.com/software/integration/optimization/cplex-optimizer/</a>, Last 2010.</p>
+</div>
+</div>
 </div>
 
 

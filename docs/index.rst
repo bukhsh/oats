@@ -17,6 +17,10 @@ OATS is a collection of optimisation models and Python scripts for analysis and 
 
 
 
+OATS integrates a modelling language PYOMO for describing optimisation models. Using PYOMO’s high-level representation of sets, variables and parameters the models in OATS are written in a way that are intuitive and easy to understand and extend.
+
+
+
 .. toctree::
    :maxdepth: 2
 

@@ -30,3 +30,5 @@ A user can solve a new model by called oats function ‘model’. Here is an exa
 
       import oats
       oats.model(model='DCOPF_BM')
+
+The DCOPF_BM model is a balancing optimisation model where the objective function is to minimise the cost of redispatching generation from their set points; to balance supply and demand, and/or due to thermal and voltage constraints.

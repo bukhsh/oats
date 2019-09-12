@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Citation &mdash; oats 0.1 documentation</title>
+  <title>Architecture &mdash; oats 0.1 documentation</title>
   
 
   
@@ -45,8 +45,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installation" href="../installation.html" />
-    <link rel="prev" title="License" href="license.html" /> 
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="Introduction to OATS" href="../intro.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,9 +92,9 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../intro.html">Introduction to OATS</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="license.html">License</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Citation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="citation.html">Citation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
@@ -148,13 +148,13 @@
         
           <li><a href="../intro.html">Introduction to OATS</a> &raquo;</li>
         
-      <li>Citation</li>
+      <li>Architecture</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/intro/citation.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/intro/architecture.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,9 +167,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="citation">
-<h1>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h1>
-<p>Waqquas Bukhsh. (2019, September 5). bukhsh/oats: OATS release (Version v1.0.1). Zenodo. <a class="reference external" href="http://doi.org/10.5281/zenodo.3387594">http://doi.org/10.5281/zenodo.3387594</a>.</p>
+  <div class="section" id="architecture">
+<h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
+<p>The optimisation models in OATS are written in an algebraic modelling language (AML) called PYOMO. An algebraic modelling language provides a convenient interface between an optimisation model and a solver where the problem is eventually solved. OATS also contains a set of Python scripts that handle the flow of information between OATS, PYOMO and a solver.</p>
+<a class="reference internal image-reference" href="../_images/architecture.png"><img alt="../_images/architecture.png" class="align-center" src="../_images/architecture.png" style="width: 35em;" /></a>
+<p>In OATS the optimisation models are written in PYOMO, the test case data is specified using a spreadsheet. OATS passes user-specified optimisation model, a test case and a set of options to PYOMO. PYOMO creates an instance (a concrete model). The concrete model is then passed onto a solver in the form of a .nl binary file. The solver returns a solution in a binary format .sol that is processed by PYOMO. OATS reads the output and write it in a spreadsheet.</p>
+<p>The optimisation problems can be warm-started meaning that a user-specified (or output of another model) is used as an initial guess for gradient-based solvers. This feature is particularly useful for running batch simulations where the speed of convergence of a solution if important.</p>
 </div>
 
 
@@ -180,10 +183,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="license.html" class="btn btn-neutral float-left" title="License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../intro.html" class="btn btn-neutral float-left" title="Introduction to OATS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
