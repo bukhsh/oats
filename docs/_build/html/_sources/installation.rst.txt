@@ -5,7 +5,8 @@ Installation
 
 
 OATS
---------------------------
+-----
+
 OATS can be installed using pip;
 
 .. code-block:: python
