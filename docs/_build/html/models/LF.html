@@ -20,21 +20,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'0.1',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -93,9 +83,15 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction to OATS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use.html">Getting Started with OATS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Load flow problem</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Load flow problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#oats-implementation-of-the-load-flow-problem">OATS implementation of the load flow problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distributed-slack">Distributed slack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tap-changing-transformer">Tap-changing transformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-oats">Solving DC and AC load flow problems in OATS</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="OPF.html">Optimal power flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SCOPF.html">Security constrained optimal power flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UC.html">Unit Commitment problem</a></li>
@@ -169,8 +165,78 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-oats">
-<span id="load-flow-problem"></span><h1>Load flow problem<a class="headerlink" href="#module-oats" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="load-flow-problem">
+<h1>Load flow problem<a class="headerlink" href="#load-flow-problem" title="Permalink to this headline">¶</a></h1>
+<p>The load flow problem can be stated as: for a given power network,
+with known complex power loads, and a set of specifications on
+power generation and voltages, determine bus voltages, any unspecified generation set point and finally the complex power flow in the
+network components. Load flow (or power flow) problem forms the
+core of power system analysis. This problem is at the heart of system
+planning, operation, contingency analysis and the implementation of
+real-time monitoring systems.</p>
+<p>Load flow analysis is commonly used for following applications:</p>
+<ul class="simple">
+<li>Identify real and reactive power flow</li>
+<li>Identify proper transformer tap settings</li>
+<li>Identify transformer and circuit loadings</li>
+<li>Contingency analysis</li>
+</ul>
+<p>The following two tables provide information about the generator and transformers types modelled in OATS.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Generator Types in OATS</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1=   PV bus</td>
+</tr>
+<tr class="row-odd"><td>2= Distributed slack bus</td>
+</tr>
+<tr class="row-even"><td>3= Reference bus</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Transformer Types in OATS</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1=   2-winding transformer</td>
+</tr>
+<tr class="row-odd"><td>2= Tap-changing transformer</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="oats-implementation-of-the-load-flow-problem">
+<h2>OATS implementation of the load flow problem<a class="headerlink" href="#oats-implementation-of-the-load-flow-problem" title="Permalink to this headline">¶</a></h2>
+<p>The load flow problem in OATS is solved as a constrained OPF
+problem. The fixed parameters of PV, PQ and Vδ buses are modelled
+using hard constraints.</p>
+</div>
+<div class="section" id="distributed-slack">
+<h2>Distributed slack<a class="headerlink" href="#distributed-slack" title="Permalink to this headline">¶</a></h2>
+<p>The load flow problem in OATS allow a user to model a distributed
+slack. The user can specify the number of slack buses in a system by
+changing the generator type from ’1’ to ’2’.</p>
+</div>
+<div class="section" id="tap-changing-transformer">
+<h2>Tap-changing transformer<a class="headerlink" href="#tap-changing-transformer" title="Permalink to this headline">¶</a></h2>
+<p>OATS allow a user to determine tap setting of the transformers con-
+necting a high voltage bus to a lower voltage bus. The tap-changing
+transformers can be specified using ’2’ in the type field of the trans-
+formers. The target voltage at the lower-voltage side is specified in
+column VM in the bus sheet. The turn ratios are determined at the
+high-voltage side of the transformer.</p>
+</div>
+<div class="section" id="module-oats">
+<span id="solving-dc-and-ac-load-flow-problems-in-oats"></span><h2>Solving DC and AC load flow problems in OATS<a class="headerlink" href="#module-oats" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="oats.dclf">
 <code class="descclassname">oats.</code><code class="descname">dclf</code><span class="sig-paren">(</span><em>tc='default'</em>, <em>solver='ipopt'</em>, <em>neos=True</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.dclf" title="Permalink to this definition">¶</a></dt>
@@ -199,6 +265,7 @@
 </dl>
 </dd></dl>
 
+</div>
 </div>
 
 

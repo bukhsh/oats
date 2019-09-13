@@ -1,7 +1,7 @@
 
 
 OATS: Optimisation and Analysis Toolbox for power Systems
-================================
+==========================================================
 
 .. image:: /pics/logo.png
 		:width: 15em
@@ -28,4 +28,5 @@ OATS integrates a modelling language PYOMO for describing optimisation models. U
    installation
    use
    models
-   dataformat
+	 dataformat
+   extensions

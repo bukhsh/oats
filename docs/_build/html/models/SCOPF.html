@@ -20,21 +20,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'0.1',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -93,12 +83,13 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction to OATS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use.html">Getting Started with OATS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="LF.html">Load flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OPF.html">Optimal power flow problem</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Security constrained optimal power flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UC.html">Unit Commitment problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models.html#extending-models">Extending models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../dataformat.html">Data format</a></li>
@@ -170,10 +161,15 @@
             
   <div class="section" id="security-constrained-optimal-power-flow-problem">
 <h1>Security constrained optimal power flow problem<a class="headerlink" href="#security-constrained-optimal-power-flow-problem" title="Permalink to this headline">¶</a></h1>
+<p>Secure operation of a power system requires that no breach of oper-
+ating standards take place following a credible contingency. This is
+achieved by solved a security constrained optimal power flow. A DC
+version of SCOPF is implemented in OATS. A set of credible contingencies can be specified in the test case. The credible contingencies
+in OATS are outages of single circuits, transformers or generating units.</p>
 <span class="target" id="module-oats"></span><dl class="function">
 <dt id="oats.scopf">
 <code class="descclassname">oats.</code><code class="descname">scopf</code><span class="sig-paren">(</span><em>tc='default'</em>, <em>solver='ipopt'</em>, <em>neos=True</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.scopf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs security constrained optimal power flow problem</p>
+<dd><p>Solves security constrained optimal power flow problem</p>
 <dl class="docutils">
 <dt>ARGUMENTS:</dt>
 <dd><p class="first"><strong>tc</strong> (<a href="#id1"><span class="problematic" id="id2">*</span></a>.xlsx file)  - OATS test case. See OATS data format for details</p>

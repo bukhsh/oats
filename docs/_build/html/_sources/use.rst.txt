@@ -1,7 +1,7 @@
 
 
-Getting Started with OATS
-================================
+Quick Start
+============
 OATS is a powerful power systems optimisation toolbox. OATS include implementation of the following steady-state analysis models:
 
 * DC/AC load flow problem

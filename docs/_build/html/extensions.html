@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Models &mdash; oats 0.1 documentation</title>
+  <title>Extending models in OATS &mdash; oats 0.1 documentation</title>
   
 
   
@@ -35,8 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Load flow problem" href="models/LF.html" />
-    <link rel="prev" title="Quick Start" href="use.html" /> 
+    <link rel="prev" title="Unit Commitment problem" href="models/UC.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,14 +83,16 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to OATS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="use.html">Quick Start</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="models/LF.html">Load flow problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/OPF.html">Optimal power flow problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/SCOPF.html">Security constrained optimal power flow problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/UC.html">Unit Commitment problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Extending models in OATS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modifying-objective-function">Modifying objective function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-modifying-constraints">Adding/Modifying constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-new-variables">Adding new variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-parameters">Adding parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-output-results-on-new-parameters">Getting output results on new parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reporting-marginal-prices">Reporting marginal prices</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dataformat.html">Data format</a></li>
 </ul>
 
             
@@ -137,13 +138,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Models</li>
+      <li>Extending models in OATS</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/models.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/extensions.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -156,16 +157,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="models">
-<h1>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h1>
-<p>OATS include implementation of the following steady-state power system optimisation models:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="models/LF.html">Load flow problem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/OPF.html">Optimal power flow problem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/SCOPF.html">Security constrained optimal power flow problem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/UC.html">Unit Commitment problem</a></li>
-</ul>
+  <div class="section" id="extending-models-in-oats">
+<h1>Extending models in OATS<a class="headerlink" href="#extending-models-in-oats" title="Permalink to this headline">¶</a></h1>
+<p>A salient feature of OATS is its ease of extending a model to define a new class of problem.</p>
+<p>No modelling tool is capable of capturing all the extensions in constraint handling, or extension in objective function so it is important to give the user freedom to define their problems.</p>
+<p>Knowledge of PYOMO modelling language is required to defined OATS models. The GitHub page of OATS includes a range of models that are extended for specific applications.</p>
+<div class="section" id="modifying-objective-function">
+<h2>Modifying objective function<a class="headerlink" href="#modifying-objective-function" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="adding-modifying-constraints">
+<h2>Adding/Modifying constraints<a class="headerlink" href="#adding-modifying-constraints" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="adding-new-variables">
+<h2>Adding new variables<a class="headerlink" href="#adding-new-variables" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="adding-parameters">
+<h2>Adding parameters<a class="headerlink" href="#adding-parameters" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getting-output-results-on-new-parameters">
+<h2>Getting output results on new parameters<a class="headerlink" href="#getting-output-results-on-new-parameters" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="reporting-marginal-prices">
+<h2>Reporting marginal prices<a class="headerlink" href="#reporting-marginal-prices" title="Permalink to this headline">¶</a></h2>
+<p>A user can solve a new model by called oats function ‘model’. Here is an example of solving DCOPF_BM model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oats</span>
+<span class="n">oats</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;DCOPF_BM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The DCOPF_BM model is a balancing optimisation model where the objective function is to minimise the cost of redispatching generation from their set points; to balance supply and demand, and/or due to thermal and voltage constraints.</p>
 </div>
 </div>
 
@@ -177,10 +196,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="models/LF.html" class="btn btn-neutral float-right" title="Load flow problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="use.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="models/UC.html" class="btn btn-neutral float-left" title="Unit Commitment problem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
