@@ -37,7 +37,7 @@ bus
 +-----------+-------------------------------------------------------+
 .. rubric:: Notes
 .. [#bus1] Zone is used in unit commitment problem to define inter zonal transfer constraints
-.. [#bus2] Extreme values are used in the solver in what way?
+.. [#bus2] Extreme values columns are provided as an option for security constrained optimal power flow when relaxed post-fault voltage bounds are desired
 
 demand
 ~~~~~~~
@@ -253,3 +253,9 @@ generators
 .. [#gen2] Ramp rates required for security constrainted OPF or unit commitment problems
 .. [#gen3] Minimum up/down times, startup and shutdown costs are required in the unit commitment models
 .. [#gen4] These parameters are part of the balancing market extension model that is available as an extension to OATS
+
+
+Filter Matpower2Oats
+---------------------
+
+A Python script is provided that can be used to convert Matpower test-cases into equivalent OATS test-cases. This script is available on the GitHub page of OATS.
