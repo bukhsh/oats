@@ -19,6 +19,11 @@ Solving a problem in OATS
 
 The above command will solve a DC optimal power flow problem on a default 24-bus IEEE reliability test system. A user provide their own network by using the keyword 'tc', as shown in an example below.
 
+.. image:: /pics/dcopf0.png
+		:width: 35em
+		:align: center
+
+
 .. code-block:: python
 
       import oats
@@ -31,7 +36,20 @@ Other options allow a user to specify solver: either on NEOS server of locally o
       import oats
       oats.dclf(tc='mynetwork.xlsx',solver='cplex',neos=False,out=0):
 
+.. image:: /pics/dcopf1.png
+		:width: 35em
+		:align: center
+
+.. image:: /pics/dcopf2.png
+		:width: 35em
+		:align: center
+
+
 
 Output
 ------
 A 'results.xlsx' file is produced after an OATS model is solved. This file in created in the directory where the oats in called. The results file has a same data format as the input test case.
+
+.. image:: /pics/results.png
+		:width: 35em
+		:align: center

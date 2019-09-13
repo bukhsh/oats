@@ -2,10 +2,18 @@ Data format
 ================================
 OATS uses a spreadsheet format for specifying network, demand and generation data.
 
-A blank tempelate of OATS data format can be downloaded from this `link <https://github.com/bukhsh/oats/blob/master/OATS-testcases/tempelate.xlsx>`__.
 
 OATS also has a test case library where a number of standard IEEE and some real-world test cases are provided. The test case library is available on the `OATS GitHub page <https://github.com/bukhsh/oats>`__.
 
+
+OATS data template
+--------------------
+A blank template of OATS data format can be downloaded from this `link <https://github.com/bukhsh/oats/blob/master/OATS-testcases/tempelate.xlsx>`__.
+
+
+.. image:: /pics/dcopf2.png
+		:width: 35em
+		:align: center
 
 Description of sheets in the OATS data format
 ---------------------------------------------

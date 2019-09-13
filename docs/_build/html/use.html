@@ -20,11 +20,21 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -90,6 +100,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataformat.html">Data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extending models in OATS</a></li>
 </ul>
 
             
@@ -170,6 +181,7 @@
 </pre></div>
 </div>
 <p>The above command will solve a DC optimal power flow problem on a default 24-bus IEEE reliability test system. A user provide their own network by using the keyword ‘tc’, as shown in an example below.</p>
+<a class="reference internal image-reference" href="_images/dcopf0.png"><img alt="_images/dcopf0.png" class="align-center" src="_images/dcopf0.png" style="width: 35em;" /></a>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oats</span>
 <span class="n">oats</span><span class="o">.</span><span class="n">dcopf</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="s1">&#39;mynetwork.xlsx&#39;</span><span class="p">,)</span>
 </pre></div>
@@ -179,10 +191,13 @@
 <span class="n">oats</span><span class="o">.</span><span class="n">dclf</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="s1">&#39;mynetwork.xlsx&#39;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;cplex&#39;</span><span class="p">,</span><span class="n">neos</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">out</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 </pre></div>
 </div>
+<a class="reference internal image-reference" href="_images/dcopf1.png"><img alt="_images/dcopf1.png" class="align-center" src="_images/dcopf1.png" style="width: 35em;" /></a>
+<a class="reference internal image-reference" href="_images/dcopf2.png"><img alt="_images/dcopf2.png" class="align-center" src="_images/dcopf2.png" style="width: 35em;" /></a>
 </div>
 <div class="section" id="output">
 <h2>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
 <p>A ‘results.xlsx’ file is produced after an OATS model is solved. This file in created in the directory where the oats in called. The results file has a same data format as the input test case.</p>
+<a class="reference internal image-reference" href="_images/results.png"><img alt="_images/results.png" class="align-center" src="_images/results.png" style="width: 35em;" /></a>
 </div>
 </div>
 
