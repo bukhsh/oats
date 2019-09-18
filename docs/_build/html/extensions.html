@@ -96,12 +96,11 @@
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataformat.html">Data format</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Extending models in OATS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-variables">Adding variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-parameters">Adding parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modifying-objective-function">Modifying objective function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adding-modifying-constraints">Adding/Modifying constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-new-variables">Adding new variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-parameters">Adding parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-output-results-on-new-parameters">Getting output results on new parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reporting-marginal-prices">Reporting marginal prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solving-user-defined-models">Solving user defined models</a></li>
 </ul>
 </li>
 </ul>
@@ -173,23 +172,78 @@
 <p>A salient feature of OATS is its ease of extending a model to define a new class of problem.</p>
 <p>No modelling tool is capable of capturing all the extensions in constraint handling, or extension in objective function so it is important to give the user freedom to define their problems.</p>
 <p>Knowledge of PYOMO modelling language is required to defined OATS models. The GitHub page of OATS includes a range of models that are extended for specific applications.</p>
-<div class="section" id="modifying-objective-function">
-<h2>Modifying objective function<a class="headerlink" href="#modifying-objective-function" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-variables">
+<h2>Adding variables<a class="headerlink" href="#adding-variables" title="Permalink to this headline">¶</a></h2>
+<p>Variables in OATS are defined using Pyomo’s ‘Var’ function. For example, real power generation variable in DCOPF model of OATS is defined as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">pG</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">G</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span> <span class="n">Reals</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="adding-modifying-constraints">
-<h2>Adding/Modifying constraints<a class="headerlink" href="#adding-modifying-constraints" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="adding-new-variables">
-<h2>Adding new variables<a class="headerlink" href="#adding-new-variables" title="Permalink to this headline">¶</a></h2>
+<p>The above definition of the variable name ‘pG’ states that it is variable defined on a set of generators ‘G’ and is with the domain of real numbers.</p>
 </div>
 <div class="section" id="adding-parameters">
 <h2>Adding parameters<a class="headerlink" href="#adding-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Parameters in OATS are defined using Pyomo’s ‘Param’ function. The following example shows definition of a parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">PGmax</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">G</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="getting-output-results-on-new-parameters">
-<h2>Getting output results on new parameters<a class="headerlink" href="#getting-output-results-on-new-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The above definition of a parameter ‘PGmax’ defines a new parameter that belongs to the set of generators ‘G’ and since it is modelling the capacity of a generator it’s domain is defined as a set of non-negative real numbers. OATS will raise an error if a user tries to input a negative value for a generator capacity.</p>
 </div>
-<div class="section" id="reporting-marginal-prices">
-<h2>Reporting marginal prices<a class="headerlink" href="#reporting-marginal-prices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modifying-objective-function">
+<h2>Modifying objective function<a class="headerlink" href="#modifying-objective-function" title="Permalink to this headline">¶</a></h2>
+<p>The objective function describes the main aim of the model which is either to minimise or maximise. In power systems optimisation problems often the objective function is to minimise the total cost of generation that is required to meet demand. The objective function of DCOPF and ACOPF models in OATS is written as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">c2</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">baseMVA</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">pG</span><span class="p">[</span><span class="n">g</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">model</span><span class="o">.</span><span class="n">c1</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">baseMVA</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">pG</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">c0</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">G</span><span class="p">)</span><span class="o">+</span>\
+    <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">VOLL</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="n">d</span><span class="p">])</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">baseMVA</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">PD</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">obj</span>
+</pre></div>
+</div>
+<p>The first part of the objective function is to minimise the cost of generation and the second part of the objective function is to minimise the cost of load shedding. ‘c2’, ‘c1’ and ‘c0’ are the coefficients of the quadratic cost function and VOLL represents the value of lost load.</p>
+<p>The objective function in OATS can be changed by modifying the ‘obj’ variable. For example, if it is desired in the ACOPF model that the voltages deviation from 1 p.u. is penalised then that could be achieved by modifying the objective function in the following way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">c2</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">baseMVA</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">pG</span><span class="p">[</span><span class="n">g</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">model</span><span class="o">.</span><span class="n">c1</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">baseMVA</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">pG</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">c0</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">G</span><span class="p">)</span><span class="o">+</span>\
+    <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">VOLL</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="n">d</span><span class="p">])</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">baseMVA</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">PD</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">)</span><span class="o">+</span>\
+    <span class="n">model</span><span class="o">.</span><span class="n">WV</span><span class="o">*</span><span class="nb">sum</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">b</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">B</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">obj</span>
+</pre></div>
+</div>
+<p>Note that we have added a penalty in the objective function that penalises the violation of the voltages from 1 p.u. ‘WV’ is weighting on the voltage deviation part of the objective function.</p>
+</div>
+<div class="section" id="adding-modifying-constraints">
+<h2>Adding/Modifying constraints<a class="headerlink" href="#adding-modifying-constraints" title="Permalink to this headline">¶</a></h2>
+<p>Constraints in OATS are implemented as function calls for each member of a set. For example, line limits in DCOPF are implemented as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">line_lim1_def</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">line_lim2_def</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The line limit constraints are applied for each member of the set of lines ‘L’. The following code snippet presents an example where the line limits are relaxed by 10%.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">line_lim1_def</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">1.10</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">line_lim2_def</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mf">1.10</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Consider a case when the relaxation of 10% is required to be penalised in the objective function. This could be achieved by defining new variables (a variable for each line) that captures line violations up to 10% and then penalises it in the objective function.</p>
+<p>The first step is to define new variables as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">relaxL</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">L</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span> <span class="n">NonNegativeReals</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The line limit constrains are modified as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">line_lim1_def</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">+</span><span class="n">model</span><span class="o">.</span><span class="n">relaxL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">line_lim2_def</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">relaxL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The variable ‘relaxL’ needs to be bounded so that the line violations are limited to 10%. This can be achieved using the following constraint:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">relaxL_bound</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">relaxL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="solving-user-defined-models">
+<h2>Solving user defined models<a class="headerlink" href="#solving-user-defined-models" title="Permalink to this headline">¶</a></h2>
 <p>A user can solve a new model by called oats function ‘model’. Here is an example of solving DCOPF_BM model:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oats</span>
 <span class="n">oats</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;DCOPF_BM&#39;</span><span class="p">)</span>

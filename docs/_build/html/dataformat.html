@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="use.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#oats-data-template">OATS data template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description-of-sheets-in-the-oats-data-format">Description of sheets in the OATS data format</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bus">bus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#demand">demand</a></li>
@@ -178,8 +179,12 @@
   <div class="section" id="data-format">
 <h1>Data format<a class="headerlink" href="#data-format" title="Permalink to this headline">¶</a></h1>
 <p>OATS uses a spreadsheet format for specifying network, demand and generation data.</p>
-<p>A blank tempelate of OATS data format can be downloaded from this <a class="reference external" href="https://github.com/bukhsh/oats/blob/master/OATS-testcases/tempelate.xlsx">link</a>.</p>
 <p>OATS also has a test case library where a number of standard IEEE and some real-world test cases are provided. The test case library is available on the <a class="reference external" href="https://github.com/bukhsh/oats">OATS GitHub page</a>.</p>
+<div class="section" id="oats-data-template">
+<h2>OATS data template<a class="headerlink" href="#oats-data-template" title="Permalink to this headline">¶</a></h2>
+<p>A blank template of OATS data format can be downloaded from this <a class="reference external" href="https://github.com/bukhsh/oats/blob/master/OATS-testcases/tempelate.xlsx">link</a>.</p>
+<a class="reference internal image-reference" href="_images/dcopf2.png"><img alt="_images/dcopf2.png" class="align-center" src="_images/dcopf2.png" style="width: 35em;" /></a>
+</div>
 <div class="section" id="description-of-sheets-in-the-oats-data-format">
 <h2>Description of sheets in the OATS data format<a class="headerlink" href="#description-of-sheets-in-the-oats-data-format" title="Permalink to this headline">¶</a></h2>
 <p>Following tables provide information about each sheet of the OATS dataformat.</p>
@@ -289,7 +294,7 @@
 <td>to bus name <a class="footnote-reference" href="#branch1" id="id5">[4]</a></td>
 </tr>
 <tr class="row-even"><td>stat</td>
-<td>Status (1-connected, 2-disconnected)</td>
+<td>Status (1-connected, 0-disconnected)</td>
 </tr>
 <tr class="row-odd"><td>r</td>
 <td>resistance (p.u.)</td>
@@ -313,7 +318,7 @@
 <td>maximum angle difference (degrees) <a class="footnote-reference" href="#branch3" id="id8">[6]</a></td>
 </tr>
 <tr class="row-even"><td>contingency^</td>
-<td>1-include in SCOPF contingencies, 2- don’t include</td>
+<td>1-include in SCOPF contingencies, 0- don’t include</td>
 </tr>
 <tr class="row-odd"><td>failure_rate^</td>
 <td>failure rate over user specified time horizon</td>
@@ -358,7 +363,7 @@
 <td>to bus name <a class="footnote-reference" href="#tranf1" id="id10">[7]</a></td>
 </tr>
 <tr class="row-even"><td>stat</td>
-<td>Status (1-connected, 2-disconnected)</td>
+<td>Status (1-connected, 0-disconnected)</td>
 </tr>
 <tr class="row-odd"><td>type^</td>
 <td>1- 2-winding transformer with fixed tap ratios
@@ -438,7 +443,7 @@
 <td>Wind farm name</td>
 </tr>
 <tr class="row-odd"><td>stat</td>
-<td>Status (1-connected, 2-disconnected)</td>
+<td>Status (1-connected, 0-disconnected)</td>
 </tr>
 <tr class="row-even"><td>PG</td>
 <td>Real power output (MW)</td>
@@ -462,7 +467,7 @@
 <td>Voltage magnitude setpoint (p.u.)</td>
 </tr>
 <tr class="row-odd"><td>contingency^</td>
-<td>1-include in SCOPF contingencies, 2- don’t include</td>
+<td>1-include in SCOPF contingencies, 0- don’t include</td>
 </tr>
 <tr class="row-even"><td>failure_rate^</td>
 <td>failure rate over user specified time horizon</td>
@@ -498,7 +503,7 @@
 <td>Shunt susceptance (MVAr injected at V = 1.0 p.u.)</td>
 </tr>
 <tr class="row-odd"><td>stat</td>
-<td>Status (1- connected, 2-disconnected)</td>
+<td>Status (1- connected, 0-disconnected)</td>
 </tr>
 </tbody>
 </table>
@@ -549,7 +554,7 @@
 <td>Generator name (string)</td>
 </tr>
 <tr class="row-odd"><td>stat</td>
-<td>Status (1-connected, 2-disconnected)</td>
+<td>Status (1-connected, 0-disconnected)</td>
 </tr>
 <tr class="row-even"><td>PG</td>
 <td>Real power output (MW)</td>
@@ -588,7 +593,7 @@
 <td>Coal, Nuke - nuclear, CCGT, OCGT, Unknown</td>
 </tr>
 <tr class="row-even"><td>contingency</td>
-<td>1-include in SCOPF contingencies, 2- don’t include</td>
+<td>1-include in SCOPF contingencies, 0- don’t include</td>
 </tr>
 <tr class="row-odd"><td>startup^</td>
 <td>Start up cost (£) <a class="footnote-reference" href="#gen3" id="id23">[14]</a></td>

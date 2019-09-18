@@ -74,7 +74,7 @@ branch
 +--------------------+-------------------------------------------------------------------+
 | to_busname         | to bus name [#branch1]_                                           |
 +--------------------+-------------------------------------------------------------------+
-| stat               | Status (1-connected, 2-disconnected)                              |
+| stat               | Status (1-connected, 0-disconnected)                              |
 +--------------------+-------------------------------------------------------------------+
 | r                  | resistance (p.u.)                                                 |
 +--------------------+-------------------------------------------------------------------+
@@ -90,7 +90,7 @@ branch
 +--------------------+-------------------------------------------------------------------+
 | angUB              | maximum angle difference (degrees) [#branch3]_                    |
 +--------------------+-------------------------------------------------------------------+
-| contingency^       | 1-include in SCOPF contingencies, 2- don't include                |
+| contingency^       | 1-include in SCOPF contingencies, 0- don't include                |
 +--------------------+-------------------------------------------------------------------+
 | failure_rate^      | failure rate over user specified time horizon                     |
 +--------------------+-------------------------------------------------------------------+
@@ -108,7 +108,7 @@ transformer
 +--------------------+-------------------------------------------------------------------+
 | to_busname         | to bus name [#tranf1]_                                            |
 +--------------------+-------------------------------------------------------------------+
-| stat               | Status (1-connected, 2-disconnected)                              |
+| stat               | Status (1-connected, 0-disconnected)                              |
 +--------------------+-------------------------------------------------------------------+
 | type^              | 1- 2-winding transformer with fixed tap ratios                    |
 |                    | 2- tap-changing transformer                                       |
@@ -151,7 +151,7 @@ The wind sheet is included to separate variable generation from fixed capacity
 +--------------------+----------------------------------------------------+
 | name               | Wind farm name                                     |
 +--------------------+----------------------------------------------------+
-| stat               | Status (1-connected, 2-disconnected)               |
+| stat               | Status (1-connected, 0-disconnected)               |
 +--------------------+----------------------------------------------------+
 | PG                 | Real power output (MW)                             |
 +--------------------+----------------------------------------------------+
@@ -167,7 +167,7 @@ The wind sheet is included to separate variable generation from fixed capacity
 +--------------------+----------------------------------------------------+
 | VS                 | Voltage magnitude setpoint (p.u.)                  |
 +--------------------+----------------------------------------------------+
-| contingency^       | 1-include in SCOPF contingencies, 2- don't include |
+| contingency^       | 1-include in SCOPF contingencies, 0- don't include |
 +--------------------+----------------------------------------------------+
 | failure_rate^      | failure rate over user specified time horizon      |
 +--------------------+----------------------------------------------------+
@@ -186,7 +186,7 @@ shunt
 +--------------------+--------------------------------------------------+
 | BL                 | Shunt susceptance (MVAr injected at V = 1.0 p.u.)|
 +--------------------+--------------------------------------------------+
-| stat               | Status (1- connected, 2-disconnected)            |
+| stat               | Status (1- connected, 0-disconnected)            |
 +--------------------+--------------------------------------------------+
 .. rubric:: Notes
 .. [#shunt1] Must match a bus name from the bus sheet
@@ -213,7 +213,7 @@ generators
 +--------------------+-------------------------------------------------------------+
 | name               | Generator name (string)                                     |
 +--------------------+-------------------------------------------------------------+
-| stat               | Status (1-connected, 2-disconnected)                        |
+| stat               | Status (1-connected, 0-disconnected)                        |
 +--------------------+-------------------------------------------------------------+
 | PG                 | Real power output (MW)                                      |
 +--------------------+-------------------------------------------------------------+
@@ -239,7 +239,7 @@ generators
 +--------------------+-------------------------------------------------------------+
 | FuelType^          | Coal, Nuke - nuclear, CCGT, OCGT, Unknown                   |
 +--------------------+-------------------------------------------------------------+
-| contingency        | 1-include in SCOPF contingencies, 2- don't include          |
+| contingency        | 1-include in SCOPF contingencies, 0- don't include          |
 +--------------------+-------------------------------------------------------------+
 | startup^           | Start up cost (£) [#gen3]_                                  |
 +--------------------+-------------------------------------------------------------+
