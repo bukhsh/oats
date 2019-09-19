@@ -11,7 +11,7 @@ OATS data template
 A blank template of OATS data format can be downloaded from this `link <https://github.com/bukhsh/oats/blob/master/OATS-testcases/tempelate.xlsx>`__.
 
 
-.. image:: /pics/dcopf2.png
+.. image:: /pics/testcase.png
 		:width: 35em
 		:align: center
 
