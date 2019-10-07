@@ -20,21 +20,11 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.1',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -45,6 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Data format" href="dataformat.html" /> 
 </head>
 
@@ -103,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#solving-user-defined-models">Solving user defined models</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
             
@@ -171,7 +163,7 @@
 <h1>Extending models in OATS<a class="headerlink" href="#extending-models-in-oats" title="Permalink to this headline">¶</a></h1>
 <p>A salient feature of OATS is its ease of extending a model to define a new class of problem.</p>
 <p>No modelling tool is capable of capturing all the extensions in constraint handling, or extension in objective function so it is important to give the user freedom to define their problems.</p>
-<p>Knowledge of PYOMO modelling language is required to defined OATS models. The GitHub page of OATS includes a range of models that are extended for specific applications.</p>
+<p>Knowledge of PYOMO modelling language is required to defined OATS models. The <a class="reference external" href="https://github.com/bukhsh/oats/tree/master/OATS-models">GitHub</a> page of OATS includes a range of models that are extended for specific applications.</p>
 <div class="section" id="adding-variables">
 <h2>Adding variables<a class="headerlink" href="#adding-variables" title="Permalink to this headline">¶</a></h2>
 <p>Variables in OATS are defined using Pyomo’s ‘Var’ function. For example, real power generation variable in DCOPF model of OATS is defined as follows:</p>
@@ -197,7 +189,7 @@
     <span class="k">return</span> <span class="n">obj</span>
 </pre></div>
 </div>
-<p>The first part of the objective function is to minimise the cost of generation and the second part of the objective function is to minimise the cost of load shedding. ‘c2’, ‘c1’ and ‘c0’ are the coefficients of the quadratic cost function and VOLL represents the value of lost load.</p>
+<p>The first part of the objective function is to minimise the cost of generation and the second part of the objective function is to minimise the cost of load shedding. ‘c2’, ‘c1’ and ‘c0’ are the coefficients of the quadratic cost function and ‘VOLL’ represents the value of lost load. ‘g’ represents a generator in ‘model.G’ set of generators.  ‘d’ represents a demand in ‘model.D’ set of demands.</p>
 <p>The objective function in OATS can be changed by modifying the ‘obj’ variable. For example, if it is desired in the ACOPF model that the voltages deviation from 1 p.u. is penalised then that could be achieved by modifying the objective function in the following way:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
     <span class="n">obj</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">c2</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">baseMVA</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">pG</span><span class="p">[</span><span class="n">g</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">model</span><span class="o">.</span><span class="n">c1</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">baseMVA</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">pG</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">c0</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">G</span><span class="p">)</span><span class="o">+</span>\
@@ -206,7 +198,7 @@
     <span class="k">return</span> <span class="n">obj</span>
 </pre></div>
 </div>
-<p>Note that we have added a penalty in the objective function that penalises the violation of the voltages from 1 p.u. ‘WV’ is weighting on the voltage deviation part of the objective function.</p>
+<p>Note that we have added a penalty in the objective function that penalises the violation of the voltages from 1 p.u. ‘WV’ is a weighting on the voltage deviation part of the objective function. ‘b’ represents a demand in ‘model.B’ set of demands. ‘model.v[b]’ represents the voltage at bus ‘b’.</p>
 </div>
 <div class="section" id="adding-modifying-constraints">
 <h2>Adding/Modifying constraints<a class="headerlink" href="#adding-modifying-constraints" title="Permalink to this headline">¶</a></h2>
@@ -217,7 +209,7 @@
     <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>The line limit constraints are applied for each member of the set of lines ‘L’. The following code snippet presents an example where the line limits are relaxed by 10%.</p>
+<p>The line limit constraints are applied for each member of the set of lines ‘L’. The following code snippet presents an example where the line limits are relaxed by 10%. ‘pL[l]’ represents the active power flow in line ‘l’ and ‘SLmax[l]’ represents the continuous line rating of line ‘l’.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">line_lim1_def</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">1.10</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
 <span class="k">def</span> <span class="nf">line_lim2_def</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
@@ -229,18 +221,22 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">relaxL</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">L</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span> <span class="n">NonNegativeReals</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The line limit constrains are modified as follows:</p>
+<p>The line limit constraints are modified as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">line_lim1_def</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">+</span><span class="n">model</span><span class="o">.</span><span class="n">relaxL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
 <span class="k">def</span> <span class="nf">line_lim2_def</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">relaxL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>The line_lim1_def constraint ensures that the active power flow ‘model.pL[l]’ through line ‘l’ is less than or equal to the continuous line rating ‘model.SLmax’ plus the relaxation variable ‘model.relaxL[l]’.
+The line_lim2_def constraint ensures that the active power flow ‘model.pL[l]’ through line ‘l’ is more than or equal to the continuous line rating ‘model.SLmax’ minus the relaxation variable ‘model.relaxL[l]’.</p>
 <p>The variable ‘relaxL’ needs to be bounded so that the line violations are limited to 10%. This can be achieved using the following constraint:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">relaxL_bound</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">relaxL</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">SLmax</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>The final step is to penalise variable ‘relaxL’ in the objective function:</p>
+<p>The objective function now puts a cost on relaxation of the line power flow constraint, ‘WR’ is the weighting of the cost.</p>
 </div>
 <div class="section" id="solving-user-defined-models">
 <h2>Solving user defined models<a class="headerlink" href="#solving-user-defined-models" title="Permalink to this headline">¶</a></h2>
@@ -260,6 +256,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="dataformat.html" class="btn btn-neutral float-left" title="Data format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
