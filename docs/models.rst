@@ -3,7 +3,7 @@
 Models
 =========
 
-OATS include implementation of the following steady-state power system optimisation models:
+OATS includes implementation of the following steady-state power system optimisation models:
 
 
 .. toctree::
