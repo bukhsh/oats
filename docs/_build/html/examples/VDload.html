@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Voltage Dependent Loads &mdash; oats 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Load flow problem" href="storage.html" />
+    <link rel="prev" title="Examples" href="../examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> oats
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction to OATS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataformat.html">Data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions.html">Extending models in OATS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Voltage Dependent Loads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage.html">Load flow problem</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">oats</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../examples.html">Examples</a> &raquo;</li>
+        
+      <li>Voltage Dependent Loads</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/examples/VDload.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="voltage-dependent-loads">
+<h1>Voltage Dependent Loads<a class="headerlink" href="#voltage-dependent-loads" title="Permalink to this headline">¶</a></h1>
+<p>The steady-state analysis models implemented in OATS have a constant power model of electricity load. The ACOPF model in OATS can be easily extended to model voltage dependent loads. In this demonstrative examples, a ZIP model of electricity load consists of constant impedance (Z), constant current (I) and constant power (P) load components and are represented by a second-order polynomial in bus voltage magnitude as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+p^{\text{D}}_d(v_d) &amp;= \text{P}^{\text{D}}_d \left( a^\text{P}_dv_d^2+b^\text{P}_dv_d+c^\text{P}_d\right)\\
+q^{\text{D}}_d(v_d) &amp;= \text{Q}^{\text{D}}_d \left(a^\text{Q}_dv_d^2+b^\text{Q}_dv_d+c^\text{Q}_d\right)
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a^\text{P}_d, b^\text{P}_d, c^\text{P}_d\)</span> are the active and reactive power coefficients of the quadratic polynomial, respectively. Parameters <span class="math notranslate nohighlight">\(a^\text{P}_d\)</span> represent the relative participation of constant impedance load, <span class="math notranslate nohighlight">\(b^\text{P}_d\)</span> the relative participation of constant load, and <span class="math notranslate nohighlight">\(c^\text{P}_d\)</span> the relative participation of constant power load.</p>
+<p>The real and reactive power demand are modelled as parameters in the ACOPF model of OATS (written in PYOMO syntax) on the set of demands D, as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">PD</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">Reals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">QD</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">Reals</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In order to model the dependence of electricity demand on voltages, the real and reactive power parameters are modelled as variables pD and qD, as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">pD</span>  <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">Reals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">qD</span>  <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">Reals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">aPD</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">bPD</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">cPD</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">aQD</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">bQD</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">cQD</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="n">within</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The coefficients of the quadratic function are defined as parameters given by the user. Equations (2) are implemented in the ACOPF model of OATS to model the ZIP load as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">real_power_demand</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">pD</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">==</span> <span class="n">model</span><span class="o">.</span><span class="n">PD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">aPD</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">model</span><span class="o">.</span><span class="n">bPD</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">+</span><span class="n">model</span><span class="o">.</span><span class="n">cPD</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">reactive_power_demand</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">qD</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">==</span> <span class="n">model</span><span class="o">.</span><span class="n">QD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">aQD</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">model</span><span class="o">.</span><span class="n">bQD</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">+</span><span class="n">model</span><span class="o">.</span><span class="n">cQD</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The implementation of the above model is provided in the <a class="reference external" href="https://github.com/bukhsh/oats/tree/master/OATS-models">GitHub folder</a> containing OATS models extensions.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="storage.html" class="btn btn-neutral float-right" title="Load flow problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Waqquas Bukhsh
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
