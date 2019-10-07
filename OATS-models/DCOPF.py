@@ -1,6 +1,6 @@
 #==================================================================
 # DCOPF.mod
-# PYOMO model file of "DC" balancing mechanism model
+# PYOMO model file of "DC" optimal power flow problem (DCOPF)
 # This formulation uses the standard "DC" linearization of the AC power flow equations
 # ---Author---
 # W. Bukhsh,
@@ -45,6 +45,7 @@ model.VOLL    = Param(model.D, within=Reals)  # value of lost load
 # generators
 model.PGmax    = Param(model.G, within=NonNegativeReals) # max real power of generator, p.u.
 model.PGmin    = Param(model.G, within=Reals)            # min real power of generator, p.u.
+model.PG       = Param(model.G, within=Reals) # FPN
 model.WGmax    = Param(model.WIND, within=NonNegativeReals) # max real power of wind generator, p.u.
 model.WGmin    = Param(model.WIND, within=NonNegativeReals) # min real power of wind generator, p.u.
 
@@ -59,16 +60,9 @@ model.GB = Param(model.SHUNT, within=Reals) #  shunt conductance
 model.BB = Param(model.SHUNT, within=Reals) #  shunt susceptance
 
 # cost data
-model.bidG      = Param(model.G, within=Reals)    # generator bid price
-model.offerG    = Param(model.G, within=Reals)    # generator offer price
-model.bidW      = Param(model.WIND, within=Reals) # wind bid price
 model.c2    = Param(model.G, within=NonNegativeReals)# generator cost coefficient c2 (*pG^2)
 model.c1    = Param(model.G, within=NonNegativeReals)# generator cost coefficient c1 (*pG)
 model.c0    = Param(model.G, within=NonNegativeReals)# generator cost coefficient c0
-
-#FPNs
-model.PG      = Param(model.G, within=NonNegativeReals)    # FPN
-model.PW      = Param(model.WIND, within=NonNegativeReals) # FPN
 
 model.baseMVA = Param(within=NonNegativeReals)# base MVA
 
@@ -76,14 +70,8 @@ model.baseMVA = Param(within=NonNegativeReals)# base MVA
 model.eps = Param(within=NonNegativeReals)
 
 # --- control variables ---
-model.pG     = Var(model.G,  domain= Reals)  #real power generation
-model.pGUp   = Var(model.G,  domain= NonNegativeReals)  #re-dispatch upwards
-model.pGDown = Var(model.G,  domain= NonNegativeReals)  #re-dispatch downwards
-
-model.pW     = Var(model.WIND, domain= Reals) #real power generation from wind
-model.pWDown = Var(model.WIND, domain= NonNegativeReals) #re-dispatch downwards
-
-
+model.pG    = Var(model.G,  domain= Reals)  #real power generation
+model.pW    = Var(model.WIND, domain= Reals) #real power generation from wind
 model.pD    = Var(model.D, domain= Reals) #real power demand delivered
 model.alpha = Var(model.D, domain= NonNegativeReals) #propotion of real power demand delivered
 # --- state variables ---
@@ -95,8 +83,8 @@ model.pLT     = Var(model.TRANSF, domain= Reals) # real power injected at b onto
 
 # --- cost function ---
 def objective(model):
-    obj = sum(model.offerG[g]*(model.baseMVA*model.pGUp[g])+model.bidG[g]*(model.baseMVA*model.pGDown[g]) for g in model.G) +\
-    sum(model.bidW[w]*(model.baseMVA*model.pWDown[w]) for w in model.WIND) +\
+    obj = sum(model.c2[g]*(model.baseMVA*model.pG[g])**2+\
+    model.c1[g]*(model.baseMVA*model.pG[g])+model.c0[g] for g in model.G) +\
     sum(model.VOLL[d]*(1-model.alpha[d])*model.baseMVA*model.PD[d] for d in model.D)
     return obj
 model.OBJ = Objective(rule=objective, sense=minimize)
@@ -112,17 +100,6 @@ def KCL_def(model, b):
     sum(model.pLT[l] for l in model.TRANSF if model.AT[l,2]==b)+\
     sum(model.GB[s] for s in model.SHUNT if (b,s) in model.SHUNTbs)
 model.KCL_const = Constraint(model.B, rule=KCL_def)
-
-
-# --- FPN model ---
-def Generator_redispatch(model,g):
-    return model.pG[g] == model.PG[g]+model.pGUp[g]-model.pGDown[g]
-def Wind_redispatch(model,w):
-    return model.pW[w] == model.PW[w]-model.pWDown[w]
-
-model.RedispatcG = Constraint(model.G, rule=Generator_redispatch)
-model.RedispatcW = Constraint(model.WIND, rule=Wind_redispatch)
-
 
 # --- Kirchoff's voltage law on each line and transformer---
 def KVL_line_def(model,l):
