@@ -1,6 +1,6 @@
 #==================================================================
 # ACOPF.mod
-# PYOMO model file for balancing mechanism model
+# PYOMO model file of "AC" optimal power flow problem (ACOPF)
 # ---Author---
 # W. Bukhsh,
 # wbukhsh@gmail.com
@@ -24,8 +24,6 @@ model.SHUNT  = Set()  # set of shunts
 model.LE     = Set()  # line-to and from ends set (1,2)
 model.TRANSF = Set()  # set of transformers
 model.b0     = Set(within=model.B)  # set of reference buses
-model.Transf2   = Set(within=model.TRANSF)
-model.Bvolt     = Set()  # set of bus that connects voltage regulated transformer
 
 # generators, buses, loads linked to each bus b
 model.Gbs = Set(within=model.B * model.G)    # generator-bus mapping
@@ -34,11 +32,6 @@ model.Wbs = Set(within=model.B * model.WIND) # wind-bus mapping
 model.SHUNTbs = Set(within=model.B * model.SHUNT)# shunt-bus mapping
 
 # --- parameters ---
-# --- tap ratio bounds ---
-model.TapUB = Param(model.TRANSF, within=NonNegativeReals)
-model.TapLB = Param(model.TRANSF, within=NonNegativeReals)
-model.Tap = Param(model.TRANSF, within=NonNegativeReals)
-model.VTar = Param(model.Bvolt, within=NonNegativeReals)
 # line matrix
 model.A = Param(model.L*model.LE)       # bus-line
 model.AT = Param(model.TRANSF*model.LE) # bus-transformer
@@ -82,9 +75,6 @@ model.SLmaxT = Param(model.TRANSF, within=NonNegativeReals) # max real power flo
 model.GLT    = Param(model.TRANSF, within=Reals)
 model.BLT    = Param(model.TRANSF, within=Reals)
 
-model.g  = Param(model.TRANSF, within=Reals)
-model.b  = Param(model.TRANSF, within=Reals)
-model.bC = Param(model.TRANSF, within=Reals)
 # derived line parameters
 model.G11 = Param(model.L, within=Reals)
 model.G12 = Param(model.L, within=Reals)
@@ -113,11 +103,9 @@ model.GB = Param(model.SHUNT, within=Reals) #  shunt conductance
 model.BB = Param(model.SHUNT, within=Reals) #  shunt susceptance
 
 # cost
-model.c2    = Param(model.G, within=NonNegativeReals)# generator cost coefficient c2 (*pG^2)
-model.c1    = Param(model.G, within=NonNegativeReals)# generator cost coefficient c1 (*pG)
-model.c0    = Param(model.G, within=NonNegativeReals)# generator cost coefficient c0
-model.bid   = Param(model.G, within=Reals)# generator cost coefficient c1 (*pG)
-model.offer = Param(model.G, within=NonNegativeReals)# generator cost coefficient c0
+model.c2 = Param(model.G, within=NonNegativeReals)# generator cost coefficient c2 (*pG^2)
+model.c1 = Param(model.G, within=NonNegativeReals)# generator cost coefficient c1 (*pG)
+model.c0 = Param(model.G, within=NonNegativeReals)# generator cost coefficient c0
 
 model.baseMVA = Param(within=NonNegativeReals)# base MVA
 
@@ -125,16 +113,8 @@ model.baseMVA = Param(within=NonNegativeReals)# base MVA
 model.eps = Param(within=NonNegativeReals)
 
 # --- variables ---
-model.PG       = Param(model.G, domain= NonNegativeReals)# real power output of generator
 model.pG       = Var(model.G, domain= NonNegativeReals)# real power output of generator
-model.pGUp     = Var(model.G, domain= NonNegativeReals)# real power output of generator
-model.pGDown   = Var(model.G, domain= NonNegativeReals)# real power output of generator
-
-model.QG       = Param(model.G, domain= Reals)# real power output of generator
 model.qG       = Var(model.G, domain= Reals)# reactive power output of generator
-model.qGUp     = Var(model.G, domain= NonNegativeReals)# reactive power output of generator
-model.qGDown   = Var(model.G, domain= NonNegativeReals)# reactive power output of generator
-
 model.pW       = Var(model.WIND, domain= Reals) #real power generation from wind
 model.qW       = Var(model.WIND, domain= Reals) #reactive power generation from wind
 model.pD       = Var(model.D, domain= Reals)# real power absorbed by demand
@@ -147,7 +127,6 @@ model.pLfromT  = Var(model.TRANSF, domain= Reals) # real power injected at b ont
 model.pLtoT    = Var(model.TRANSF, domain= Reals) # real power injected at b' onto transformer
 model.qLfromT  = Var(model.TRANSF, domain= Reals) # reactive power injected at b onto transformer
 model.qLtoT    = Var(model.TRANSF, domain= Reals) # reactive power injected at b' onto transformer
-model.tap      = Var(model.TRANSF,initialize=1.0, within=NonNegativeReals)  # turns ratio of a transformer
 
 #model.deltaL = Var(model.L, domain= Reals) # angle difference across lines
 model.delta  = Var(model.B, domain= Reals, initialize=0.0) # voltage phase angle at bus b, rad
@@ -156,9 +135,8 @@ model.alpha  = Var(model.D, initialize=1.0, domain= NonNegativeReals)# proportio
 
 # --- cost function ---
 def objective(model):
-    obj = sum(model.bid[g]*model.baseMVA*model.pGDown[g]+ model.offer[g]*model.baseMVA*model.pGUp[g] for g in model.G)+\
-    0.0*sum(model.baseMVA*model.qGDown[g]+ model.baseMVA*model.qGUp[g] for g in model.G)+\
-    sum(999*(model.PD[d]-model.pD[d])*100 for d in model.D)
+    obj = sum(model.c2[g]*(model.baseMVA*model.pG[g])**2+model.c1[g]*model.baseMVA*model.pG[g]+ model.c0[g] for g in model.G)+\
+    sum(model.VOLL[d]*(1-model.alpha[d])*model.baseMVA*model.PD[d] for d in model.D)
     return obj
 model.OBJ = Objective(rule=objective, sense=minimize)
 
@@ -184,16 +162,6 @@ def KCL_reactive_def(model, b):
 model.KCL_real     = Constraint(model.B, rule=KCL_real_def)
 model.KCL_reactive = Constraint(model.B, rule=KCL_reactive_def)
 
-
-# --- FPN constraints for P and Q---
-def FPN_P(model,g):
-    return model.pG[g] == model.PG[g] + model.pGUp[g] - model.pGDown[g]
-def FPN_Q(model,g):
-    return model.qG[g] == model.QG[g] + model.qGUp[g] - model.qGDown[g]
-model.FPN_Pconst = Constraint(model.G, rule=FPN_P)
-model.FPN_Qconst = Constraint(model.G, rule=FPN_Q)
-
-
 # --- Kirchoff's voltage law on each line ---
 def KVL_real_fromend(model,l):
     return model.pLfrom[l] == model.G11[l]*(model.v[model.A[l,1]]**2)+\
@@ -218,67 +186,25 @@ model.KVL_reactive_to   = Constraint(model.L, rule=KVL_reactive_toend)
 
 # --- Kirchoff's voltage law on each transformer line ---
 def KVL_real_fromendTransf(model,l):
-    if (model.AT[l,1] in model.Bvolt) or (model.AT[l,2] in model.Bvolt):
-        return model.pLfromT[l] == (model.g[l]/(model.tap[l]**2))*(model.v[model.AT[l,1]]**2)-\
-        (1/model.tap[l])*model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.b[l]*sin(model.delta[model.AT[l,1]]-\
-        model.delta[model.AT[l,2]])+model.g[l]*cos(model.delta[model.AT[l,1]]-model.delta[model.AT[l,2]]))
-    else:
-        return model.pLfromT[l] == (model.g[l]/(model.Tap[l]**2))*(model.v[model.AT[l,1]]**2)-\
-        (1/model.Tap[l])*model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.b[l]*sin(model.delta[model.AT[l,1]]-\
-        model.delta[model.AT[l,2]])+model.g[l]*cos(model.delta[model.AT[l,1]]-model.delta[model.AT[l,2]]))
+    return model.pLfromT[l] == model.G11T[l]*(model.v[model.AT[l,1]]**2)+\
+    model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.B12T[l]*sin(model.delta[model.AT[l,1]]-\
+    model.delta[model.AT[l,2]])+model.G12T[l]*cos(model.delta[model.AT[l,1]]-model.delta[model.AT[l,2]]))
 def KVL_real_toendTransf(model,l):
-    if (model.AT[l,1] in model.Bvolt) or (model.AT[l,2] in model.Bvolt):
-        return model.pLtoT[l] == model.g[l]*(model.v[model.AT[l,2]]**2)-\
-        (1/model.tap[l])*model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.b[l]*sin(model.delta[model.AT[l,2]]-\
-        model.delta[model.AT[l,1]])+model.g[l]*cos(model.delta[model.AT[l,2]]-model.delta[model.AT[l,1]]))
-    else:
-        return model.pLtoT[l] == model.g[l]*(model.v[model.AT[l,2]]**2)-\
-        (1/model.Tap[l])*model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.b[l]*sin(model.delta[model.AT[l,2]]-\
-        model.delta[model.AT[l,1]])+model.g[l]*cos(model.delta[model.AT[l,2]]-model.delta[model.AT[l,1]]))
+    return model.pLtoT[l] == model.G22T[l]*(model.v[model.AT[l,2]]**2)+\
+    model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.B21T[l]*sin(model.delta[model.AT[l,2]]-\
+    model.delta[model.AT[l,1]])+model.G21T[l]*cos(model.delta[model.AT[l,2]]-model.delta[model.AT[l,1]]))
 def KVL_reactive_fromendTransf(model,l):
-    if (model.AT[l,1] in model.Bvolt) or (model.AT[l,2] in model.Bvolt):
-        return model.qLfromT[l] == -(model.b[l]+0.5*model.bC[l])*(model.v[model.AT[l,1]]**2)/(model.tap[l]**2)-\
-        (1/model.tap[l])*model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.g[l]*sin(model.delta[model.AT[l,1]]-\
-        model.delta[model.AT[l,2]])-model.b[l]*cos(model.delta[model.AT[l,1]]-model.delta[model.AT[l,2]]))
-    else:
-        return model.qLfromT[l] == -(model.b[l]+0.5*model.bC[l])*(model.v[model.AT[l,1]]**2)/(model.Tap[l]**2)-\
-        (1/model.Tap[l])*model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.g[l]*sin(model.delta[model.AT[l,1]]-\
-        model.delta[model.AT[l,2]])-model.b[l]*cos(model.delta[model.AT[l,1]]-model.delta[model.AT[l,2]]))
+    return model.qLfromT[l] == -model.B11T[l]*(model.v[model.AT[l,1]]**2)+\
+    model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.G12T[l]*sin(model.delta[model.AT[l,1]]-\
+    model.delta[model.AT[l,2]])-model.B12T[l]*cos(model.delta[model.AT[l,1]]-model.delta[model.AT[l,2]]))
 def KVL_reactive_toendTransf(model,l):
-    if (model.AT[l,1] in model.Bvolt) or (model.AT[l,2] in model.Bvolt):
-        return model.qLtoT[l] == -(model.b[l]+0.5*model.bC[l])*(model.v[model.AT[l,2]]**2)-\
-        (1/model.tap[l])*model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.g[l]*sin(model.delta[model.AT[l,2]]-\
-        model.delta[model.AT[l,1]])-model.b[l]*cos(model.delta[model.AT[l,2]]-model.delta[model.AT[l,1]]))
-    else:
-        return model.qLtoT[l] == -(model.b[l])*(model.v[model.AT[l,2]]**2)-\
-        (1/model.Tap[l])*model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.g[l]*sin(model.delta[model.AT[l,2]]-\
-        model.delta[model.AT[l,1]])-model.b[l]*cos(model.delta[model.AT[l,2]]-model.delta[model.AT[l,1]]))
+    return model.qLtoT[l] == -model.B22T[l]*(model.v[model.AT[l,2]]**2)+\
+    model.v[model.AT[l,1]]*model.v[model.AT[l,2]]*(model.G21T[l]*sin(model.delta[model.AT[l,2]]-\
+    model.delta[model.AT[l,1]])-model.B21T[l]*cos(model.delta[model.AT[l,2]]-model.delta[model.AT[l,1]]))
 model.KVL_real_fromTransf     = Constraint(model.TRANSF, rule=KVL_real_fromendTransf)
 model.KVL_real_toTransf       = Constraint(model.TRANSF, rule=KVL_real_toendTransf)
 model.KVL_reactive_fromTransf = Constraint(model.TRANSF, rule=KVL_reactive_fromendTransf)
 model.KVL_reactive_toTransf   = Constraint(model.TRANSF, rule=KVL_reactive_toendTransf)
-
-# --- tap ratios ---
-def tap_max(model,l):
-    if l in model.Transf2:
-        return model.tap[l] <= model.TapUB[l]
-    else:
-        return model.tap[l] <= model.Tap[l]
-def tap_min(model,l):
-    if l in model.Transf2:
-        return model.tap[l] >= model.TapLB[l]
-    else:
-        return model.tap[l] >= model.Tap[l]
-model.TapMaxC = Constraint(model.TRANSF, rule=tap_max)
-model.TapMinC = Constraint(model.TRANSF, rule=tap_min)
-
-# --- voltage constraint on a voltage regulated transformer---
-def volt_reg(model,b):
-    return model.v[b] <= model.VTar[b]
-def volt_reg2(model,b):
-    return model.v[b] >= model.VTar[b]
-# model.VoltRegC  = Constraint(model.Bvolt, rule=volt_reg)
-# model.VoltRegC2 = Constraint(model.Bvolt, rule=volt_reg2)
 
 # --- generator power limits ---
 def Real_Power_Max(model,g):
