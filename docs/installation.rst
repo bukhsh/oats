@@ -22,12 +22,12 @@ Installing OATS from the source offers the advantage of full access to customise
 
 Solvers
 --------
-A solver is required to solve a power systems optimisation problem in OATS. The choice of problem depends on the type of the optimisation problem. The optimisation problems can be broadly classified into following four main categories:
+A solver is required to solve a power systems optimisation problem in OATS. The choice of the problem depends on the type of optimisation problem. The optimisation problems can be broadly classified into the following four main categories:
 
 * Linear programming (LP)
 * Nonlinear programming (NLP)
-* Mixed integer programming problem (MILP)
-* Mixed integer nonlinear programming problem (MINLP)
+* Mixed-integer programming problem (MILP)
+* Mixed-integer nonlinear programming problem (MINLP)
 
 The following table presents the classification of the traditional optimisation models implemented in OATS and suitable solvers that can be used to solve these problems.
 
@@ -55,7 +55,7 @@ For more details on the available solvers on the NEOS server, please follow this
 Local installation of solvers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Installation of a local solver is recommended for using OATS. This is not only computationally efficient, but also allow greater control for specifying options to the solver. The following table provides a number of open-source and free academic license solvers that can be used with OATS.
+Installation of a local solver is recommended for using OATS. This is not only computationally efficient but also allow greater control for specifying options to the solver. The following table provides several open-source and free academic license solvers that can be used with OATS.
 
 +---------------+----------------------+-----------------------+-------------+
 | Solver name   | Capability           | License               | Reference   |
@@ -79,6 +79,19 @@ Installation of a local solver is recommended for using OATS. This is not only c
 
 
 
+Installation instructions for the CPLEX solver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Academics can get free access to the IBM solver CPLEX. The following instructions will help you to download CPLEX solver directly from IBM academic initiative website:
+
+1. Go to the IBM academic initiative page using this `link <http://ibm.biz/CPLEXonAI?_ga=2.96373084.1144452298.1570705587-1145870747.1570705587>`__.
+2. Register an account with an academic institution-issued email address
+3. After registering and logging into your IBM academic initiative account click on Download vXY.Z under ILOG CPLEX Optimization Studio on this `page <http://ibm.biz/CPLEXonAI?_ga=2.96373084.1144452298.1570705587-1145870747.1570705587>`__. .
+4. A new window will open where you can choose a Download option suitable for your operating system (for example 	IBM ILOG CPLEX Optimization Studio 12.8 for Windows x86-64 Multilingual).
+
+
+References
+~~~~~~~~~~
 [1] “GLPK (GNU linear programming kit),” 2006. [Online]. Available: http://www.gnu.org/software/glpk
 
 [2] J. Forrest and R. Lougee-Heimer, CBC User Guide, ch. Chapter 10, pp. 257–277. [Online]. Available: https://pubsonline.informs.org/doi/abs/10.1287/educ.1053.0020
