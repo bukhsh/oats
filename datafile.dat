@@ -1,6 +1,6 @@
 #This is Python generated data file for Pyomo model DCLF.py
 #_author_:W. Bukhsh
-#Time stamp: 2019-10-14 17:19:47.675811
+#Time stamp: 2019-10-14 21:53:06.467070
 set LE:=
  1 
  2;
@@ -17,10 +17,12 @@ ScotDem
 EngDem
 ;
 set ICT:=
-B6
+1
+;
+set S:=
+ScotStore
 ;
 set T:= 
-0
 1
 2
 3
@@ -30,9 +32,9 @@ set T:=
 7
 8
 9
+10
 ;
 set TRed:= 
-1
 2
 3
 4
@@ -40,6 +42,10 @@ set TRed:=
 6
 7
 8
+9
+;
+set Sbs:=
+1 ScotStore
 ;
 set GZ:=
 G1 1
@@ -50,26 +56,26 @@ ScotDem 1
 EngDem 2
 ;
 param PD:=
-ScotDem 0 10.0
-ScotDem 1 5.0
-ScotDem 2 6.0
-ScotDem 3 11.5
-ScotDem 4 12.0
-ScotDem 5 9.0
-ScotDem 6 10.0
-ScotDem 7 9.5
-ScotDem 8 8.5
-ScotDem 9 7.5
-EngDem 0 15.0
-EngDem 1 16.0
-EngDem 2 17.0
-EngDem 3 18.0
-EngDem 4 19.0
-EngDem 5 20.0
-EngDem 6 21.0
-EngDem 7 22.0
-EngDem 8 23.0
-EngDem 9 24.0
+ScotDem 1 1.0
+ScotDem 2 1.12
+ScotDem 3 1.23
+ScotDem 4 1.25
+ScotDem 5 1.1
+ScotDem 6 1.05
+ScotDem 7 0.24
+ScotDem 8 2.45
+ScotDem 9 0.25
+ScotDem 10 0.22
+EngDem 1 0.97
+EngDem 2 0.97
+EngDem 3 0.97
+EngDem 4 0.97
+EngDem 5 0.97
+EngDem 6 0.97
+EngDem 7 0.97
+EngDem 8 0.97
+EngDem 9 0.97
+EngDem 10 0.97
 ;
 param VOLL:=
 ScotDem 7000.0
@@ -83,92 +89,84 @@ G1 0.0
 G2 0.0
 ;
 param PGmax:=
-G1 10.0
-G2 150.0
+G1 40.0
+G2 40.0
+;
+param ChargeEff:=
+ScotStore 0.87
+;
+param DischargeEff:=
+ScotStore 0.87
+;
+param StoreUB:=
+ScotStore 30.0
+;
+param StoreLB:=
+ScotStore 0.0
+;
+param StoreInitial:=
+ScotStore 0.0
+;
+param StoreFinal:=
+ScotStore 0.0
+;
+param rampCharge:=
+ScotStore 2.5
+;
+param rampDischarge:=
+ScotStore 2.5
 ;
 param ResReq:=
-1 0.0
-2 0.0
+1 0.2
+2 0.2
 ;
 param A:=
-B6 1 Scot
-B6 2 Eng
+1 1 1
+1 2 2
 ;
 param NTCto:=
-B6 50.0
+1 40.0
 ;
 param NTCfr:=
-B6 50.0
+1 40.0
 ;
 param RampUp:=
-G1 20.0
-G2 20.0
+G1 100.0
+G2 100.0
 ;
 param RampDown:=
-G1 20.0
-G2 20.0
+G1 100.0
+G2 100.0
 ;
 param MinUpTime:=
-G1 2.0
-G2 2.0
+G1 1.0
+G2 1.0
 ;
 param MinDownTime:=
-G1 2.0
-G2 2.0
+G1 1.0
+G2 1.0
 ;
 param c2:=
 G1 0
 G2 0
 ;
 param c1:=
-G1 130
-G2 130
+G1 2
+G2 2
 ;
 param c0:=
-G1 400.6849
-G2 400.6849
+G1 0
+G2 0
 ;
 param SDcosts:=
-G1 100
-G2 100
+G1 1
+G2 1
 ;
 param SUcosts:=
-G1 100
-G2 100
+G1 1
+G2 1
 ;
 set UCMinUpT:=
-G1 2 9
-G1 3 9
-G1 4 9
-G1 5 9
-G1 6 9
-G1 7 9
-G1 8 9
-G1 9 9
-G2 2 9
-G2 3 9
-G2 4 9
-G2 5 9
-G2 6 9
-G2 7 9
-G2 8 9
-G2 9 9
 ;
 set UCMinDownT:=
-G1 2 9
-G1 3 9
-G1 4 9
-G1 5 9
-G1 6 9
-G1 7 9
-G1 8 9
-G1 9 9
-G2 2 9
-G2 3 9
-G2 4 9
-G2 5 9
-G2 6 9
-G2 7 9
-G2 8 9
-G2 9 9
 ;
