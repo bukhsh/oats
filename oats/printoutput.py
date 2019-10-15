@@ -346,8 +346,9 @@ class printoutput(object):
             sum(self.instance.pW[w,t].value for w in self.instance.WIND)*self.instance.baseMVA,sum(self.instance.PD[d,t] for d in self.instance.D)*self.instance.baseMVA,\
             self.instance.costfunc[t].value/(sum(self.instance.PD[d,t] for d in self.instance.D)*self.instance.baseMVA)])
         print (tabulate(tab_summary, headers="firstrow", tablefmt="grid"))
-        print ("\n***************")
-        print ("\n Zonal Flows")
+
+        print ("***************\n")
+        print ("Zonal Flows\n")
         print ("***************")
         zoneflow = []
         zoneflow.append(['Time Period','Fr','To','Zone Fr (MW)','Zone To (MW)'])
@@ -356,6 +357,22 @@ class printoutput(object):
                 zoneflow.append([t,self.instance.A[l,1],self.instance.A[l,2], self.instance.pICTto[l,t].value*self.instance.baseMVA,\
                 self.instance.pICTfrom[l,t].value*self.instance.baseMVA])
         print (tabulate(zoneflow, headers="firstrow", tablefmt="grid"))
+
+
+        print ("***************\n")
+        print ("Storage\n")
+        print ("***************")
+        storage = []
+        storage.append(['Storage','Time Period','Charge(MWh)','Discharge(MWh)','State(MWh)'])
+        for t in self.instance.T:
+            for s in self.instance.S:
+                storage.append([s,t,self.instance.pSIn[s,t].value*self.instance.baseMVA,\
+                self.instance.pSOut[s,t].value*self.instance.baseMVA,\
+                self.instance.pS[s,t].value*self.instance.baseMVA])
+
+
+        print (tabulate(storage, headers="firstrow", tablefmt="grid"))
+
         print ("==============================================")
 
         cols_summary    = ['Time Period','Conventional generation (MW)', 'Wind generation (MW)', 'Demand (MW)']

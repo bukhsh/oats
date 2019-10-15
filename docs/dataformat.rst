@@ -243,7 +243,7 @@ generators
 +--------------------+-------------------------------------------------------------+
 | startup^           | Start up cost (£) [#gen3]_                                  |
 +--------------------+-------------------------------------------------------------+
-| shutdown^          | Shut down cost	(£) [#gen3]_                               |
+| shutdown^          | Shut down cost	(£) [#gen3]_                                 |
 +--------------------+-------------------------------------------------------------+
 | costc2             | Quadratic cost coefficient                                  |
 +--------------------+-------------------------------------------------------------+
@@ -261,6 +261,36 @@ generators
 .. [#gen2] Ramp rates required for security constrainted OPF or unit commitment problems
 .. [#gen3] Minimum up/down times, startup and shutdown costs are required in the unit commitment models
 .. [#gen4] These parameters are part of the balancing market extension model that is available as an extension to OATS
+
+
+
+storage
+~~~~~~~~
+
++--------------------------+-------------------------------------------------------+
+| name                     | Name for the storage device                           |
++--------------------------+-------------------------------------------------------+
+| zone                     | Name of the zone                                      |
++--------------------------+-------------------------------------------------------+
+| stat                     | Status                                                |
++--------------------------+-------------------------------------------------------+
+| Minoperatingcapacity(MW) | Min operating capacity 		                           |
++--------------------------+-------------------------------------------------------+
+| capacity(MW)             | Total capacity of the storage                         |
++--------------------------+-------------------------------------------------------+
+| chargingrate(MW/hr)      | charging rate                                         |
++--------------------------+-------------------------------------------------------+
+| dischargingrate(MW/hr)   | discharging rate                                      |
++--------------------------+-------------------------------------------------------+
+| ChargingEfficieny(%)     | charging efficiency                                   |
++--------------------------+-------------------------------------------------------+
+| DischargingEfficieny(%)  | discharging efficiency                                |
++--------------------------+-------------------------------------------------------+
+| InitialStoredPower(MW)   | Initial stored energy                                 |
++--------------------------+-------------------------------------------------------+
+| FinalStoredPower(MW)     | Final stored enery at the end of the planning horizon |
++--------------------------+-------------------------------------------------------+
+
 
 
 Filter Matpower2Oats

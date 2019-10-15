@@ -26,13 +26,14 @@ model.ICT    = Set()  # set of interconnections between zone
 model.TRed   = Set()  # set of time periods T={1,...,N-1} ignoring last time period-req for ramp
 model.SHUNT  = Set()  # set of shunts
 model.LE     = Set()  # line-to and from ends set (1,2)
-
+model.S      = Set()  # set of storage
 
 ## mapping sets
-model.GZ = Set(within=model.G*model.Z)     # set of generators and zones
-model.WZ = Set(within=model.WIND*model.Z)  # set of WIND abd zones
-model.DZ = Set(within=model.D*model.Z)     # set of demand and zones
-model.SZ = Set(within=model.SHUNT*model.Z) # set of shunts and zones
+model.GZ  = Set(within=model.G*model.Z)     # set of generators and zones
+model.WZ  = Set(within=model.WIND*model.Z)  # set of WIND abd zones
+model.DZ  = Set(within=model.D*model.Z)     # set of demand and zones
+model.SZ  = Set(within=model.SHUNT*model.Z) # set of shunts and zones
+model.Sbs = Set(within=model.Z*model.S)    # set of storage-zone mapping
 
 # UC Min Up and Min Down indexing sets
 model.UCMinDownT   = Set(within=model.G*model.T*model.T) #indexing set for min down constraints
@@ -41,6 +42,18 @@ model.MinDownTime  = Param(model.G)
 model.MinUpTime    = Param(model.G)
 
 # --- parameters ---
+
+# storage
+model.StoreUB       = Param(model.S, within=NonNegativeReals)# max real power capacity of storage, p.u.
+model.StoreLB       = Param(model.S, within=NonNegativeReals)# max real power capacity of storage, p.u.
+model.StoreInitial  = Param(model.S, within=NonNegativeReals)# charging efficieny of storage
+model.StoreFinal    = Param(model.S, within=NonNegativeReals)# charging efficieny of storage
+model.ChargeEff     = Param(model.S, within=NonNegativeReals)# charging efficieny of storage
+model.DischargeEff  = Param(model.S, within=NonNegativeReals)# charging efficieny of storage
+model.RateCharge    = Param(model.S, within=NonNegativeReals)# rate of charging of storage
+model.RateDischarge = Param(model.S, within=NonNegativeReals)# rate of charging of storage
+model.rampCharge    = Param(model.S, within=NonNegativeReals)# storage cost for discharging
+model.rampDischarge = Param(model.S, within=NonNegativeReals)# storage cost for discharging
 
 # interconnector matrix
 model.A = Param(model.ICT*model.LE)  # bus-line (node-arc) matrix
@@ -95,6 +108,12 @@ model.alpha    = Var(model.D,model.T, domain= NonNegativeReals)# propotion of re
 model.pICTto   = Var(model.ICT,model.T, domain= Reals) # real power injected at b' onto line l
 model.pICTfrom = Var(model.ICT,model.T, domain= Reals) # reactive power injected at b onto line l
 
+#storage variables
+model.pS    = Var(model.S,model.T, domain= Reals)  #real power contribution of storage
+model.pSIn  = Var(model.S,model.T, domain= NonNegativeReals)  #real power charging
+model.pSOut = Var(model.S,model.T, domain= NonNegativeReals)  #real power discharging
+
+
 #Unit comittment variables
 model.u      = Var(model.G,model.T, within=Binary, initialize=1) # unit comittment variables for the generators
 model.ustart = Var(model.G,model.T, within=Binary, initialize=1) # unit comittment variables for the generators
@@ -123,8 +142,10 @@ model.cost_const = Constraint(model.T, rule=cost_def)
 def KCL_def(model,z, t):
     return sum(model.pG[g,t] for g in model.G if (g,z) in model.GZ)+\
     sum(model.pW[w,t] for w in model.WIND if (w,z) in model.WZ) +\
-    sum(model.pICTto[i,t] for i in model.ICT if model.A[i,1]==z) +\
-    sum(model.pICTfrom[i,t] for i in model.ICT if model.A[i,2]==z) == \
+    sum(model.pSOut[s,t] for s in model.S if (z,s) in model.Sbs) - \
+    sum(model.pSIn[s,t] for s in model.S if (z,s) in model.Sbs)+\
+    sum(model.pICTfrom[i,t] for i in model.ICT if model.A[i,1]==z) +\
+    sum(model.pICTto[i,t] for i in model.ICT if model.A[i,2]==z) == \
     sum(model.pD[d,t] for d in model.D if (d,z) in model.DZ)+\
     sum(model.GB[s] for s in model.SHUNT if (s,z) in model.SZ)
 
@@ -201,16 +222,45 @@ def ICT_lim_def1(model,i,t):
     return model.pICTto[i,t] <= model.NTCto[i]
 def ICT_lim_def2(model,i,t):
     return model.pICTfrom[i,t] <= model.NTCfr[i]
-# def ICT_lim_def3(model,i,t):
-#     return model.pICTto[i,t] >= -model.NTCto[i]
-# def ICT_lim_def4(model,i,t):
-#     return model.pICTfrom[i,t] >= -model.NTCfr[i]
+def ICT_lim_def3(model,i,t):
+    return model.pICTto[i,t] >= -model.NTCto[i]
+def ICT_lim_def4(model,i,t):
+    return model.pICTfrom[i,t] >= -model.NTCfr[i]
 model.line_lim1 = Constraint(model.ICT,model.T, rule=ICT_lim_def1)
 model.line_lim2 = Constraint(model.ICT,model.T, rule=ICT_lim_def2)
-# model.line_lim4 = Constraint(model.ICT,model.T, rule=ICT_lim_def4)
-# model.line_lim3 = Constraint(model.ICT,model.T, rule=ICT_lim_def3)
+model.line_lim4 = Constraint(model.ICT,model.T, rule=ICT_lim_def4)
+model.line_lim3 = Constraint(model.ICT,model.T, rule=ICT_lim_def3)
 # --- Loss equations ---
 def Loss_Approx(model,i,t):
     return model.pICTto[i,t]+model.pICTfrom[i,t] == 0
 
 model.Loss_ApproxC = Constraint(model.ICT,model.T, rule=Loss_Approx)
+
+# --- storage model ---
+def storage_model(model,s,t):
+    return model.pS[s,t] == (model.pSIn[s,t]*(model.ChargeEff[s])-model.pSOut[s,t]*(1/model.DischargeEff[s]))
+#the next two lines creates constraints for demand model
+model.StoreModelC = Constraint(model.S,model.T, rule=storage_model)
+
+
+#===Storage dynamics Constraints
+def storage_dynamics_UB(model,s,t):
+    return sum(model.pS[s,i] for i in range(1,t+1))  <= model.StoreUB[s]-model.StoreInitial[s]
+def storage_dynamics_LB(model,s,t):
+    return sum(model.pS[s,i] for i in range(1,t+1))  >= model.StoreLB[s]-model.StoreInitial[s]
+#the next two lines creates constraints for demand model
+model.StoreModelDynUBC = Constraint(model.S,model.TRed, rule=storage_dynamics_UB)
+model.StoreModelDynLBC = Constraint(model.S,model.TRed, rule=storage_dynamics_LB)
+
+def storage_dynamics_UB_firtsperiod(model,s):
+    return model.pS[s,0]   <= model.StoreUB[s]-model.StoreInitial[s]
+def storage_dynamics_LB_firtsperiod(model,s):
+    return model.pS[s,0]  >= model.StoreLB[s]-model.StoreInitial[s]
+#the next two lines creates constraints for demand model
+model.StoreModelDynUBC_fixed = Constraint(model.S,rule=storage_dynamics_UB_firtsperiod)
+model.StoreModelDynLBC_fixed = Constraint(model.S,rule=storage_dynamics_LB_firtsperiod)
+
+# --- boundary constraint for storage ---
+def storage_boundary_constraint(model,s):
+    return sum(model.pS[s,t] for t in model.T) == model.StoreFinal[s]-model.StoreInitial[s]
+model.storageBounddef = Constraint(model.S,rule=storage_boundary_constraint)

@@ -26,6 +26,7 @@ def selecttestcase(test):
     df_zonalNTC    = xl.parse("zonalNTC")
     df_ts          = xl.parse("timeseries",header=[0,1])
 
+
     data = {
     "bus": df_bus,
     "demand": df_demand,
@@ -40,4 +41,10 @@ def selecttestcase(test):
     "zone":df_zone,
     "zonalNTC":df_zonalNTC
     }
+    try:
+        df_storage   = xl.parse("storage")
+        data['storage'] = df_storage
+    except:
+        print ('Storage not defined')
+
     return data

@@ -1,8 +1,8 @@
-Tue, 20 Aug 2019 13:28:59 INFO     OATS log file
-Tue, 20 Aug 2019 13:28:59 INFO     Program started
-Tue, 20 Aug 2019 13:29:14 INFO     Solver selected: ipopt
-Tue, 20 Aug 2019 13:29:14 INFO     Testcase selected: /home/waqquas/oats/oats/testcases/case24_ieee_rts.xlsx
-Tue, 20 Aug 2019 13:29:14 INFO     Model selected: DCLF
-Tue, 20 Aug 2019 13:29:14 INFO     Given model file found and selected from the models library
-Tue, 20 Aug 2019 13:29:14 INFO     Given testcase file found and selected from the testcase library
-Tue, 20 Aug 2019 13:29:14 INFO     Done!
+Tue, 15 Oct 2019 09:51:47 INFO     OATS log file
+Tue, 15 Oct 2019 09:51:47 INFO     Program started
+Tue, 15 Oct 2019 09:51:47 INFO     Solver selected: cplex
+Tue, 15 Oct 2019 09:51:47 INFO     Testcase selected: /home/waqquas/oats_testing/caseGB.xlsx
+Tue, 15 Oct 2019 09:51:47 INFO     Model selected: UC
+Tue, 15 Oct 2019 09:51:47 INFO     Given model file found and selected from the models library
+Tue, 15 Oct 2019 09:51:47 INFO     Given testcase file found and selected from the testcase library
+Tue, 15 Oct 2019 09:51:47 INFO     Done!
