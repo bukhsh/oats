@@ -562,7 +562,7 @@ class printdata(object):
             f.write(str(i) + "\n")
         f.write(';\n')
         f.write('set TRed:= \n')
-        for i in self.data["timeseries"]["Demand"].index.tolist()[1:-1]:
+        for i in self.data["timeseries"]["Demand"].index.tolist()[1:]:
             f.write(str(i) + "\n")
         f.write(';\n')
         #---storage-bus mapping---
