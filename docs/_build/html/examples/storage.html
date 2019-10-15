@@ -20,12 +20,21 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,6 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Optimising Reactive Power Margin" href="OptimisingReactivePowerMargin.html" />
     <link rel="prev" title="Voltage Dependent Loads" href="VDload.html" /> 
 </head>
 
@@ -90,6 +100,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="VDload.html">Voltage Dependent Loads</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Modelling Storage in OATS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OptimisingReactivePowerMargin.html">Optimising Reactive Power Margin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OptimisingTapSettings.html">Optimising Transformers Tap Settings</a></li>
 </ul>
 </li>
 </ul>
@@ -160,6 +172,18 @@
             
   <div class="section" id="modelling-storage-in-oats">
 <h1>Modelling Storage in OATS<a class="headerlink" href="#modelling-storage-in-oats" title="Permalink to this headline">¶</a></h1>
+<p>In the current version of OATS, storage is modelled as part of the unit commitment (UC) problem.</p>
+<p>The UC problem is a time-linked problem where the time-periods are coupled via ramp rate constraints. The following power balance equation is imposed for each time period t and for each zone z:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{g \in G} p^{\text{G}}_{g,t} + \sum_{s \in S} \left(p^{\text{Out}}_{s,t}-p^{\text{In}}_{s,t}\right) = \sum_{d \in D}P^{\text{D}}_{d,t}+\sum_{l \in L}p^{\text{L}}_{l,t}\]</div>
+<p>where pIn and pOut represents the charging and discharging of energy storage, respectively. The energy storage is modelled using the following equation:</p>
+<div class="math notranslate nohighlight">
+\[p^S_{s,t} =\eta^{D}_s p^{\text{Out}}_{s,t}-\frac{1}{\eta^{C}_s} p^{\text{In}}_{s,t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\eta^{C}_s, \eta^{D}_s\)</span> are the charging and discharging efficiencies of the storage asset s, respectively.</p>
+<p>For details about specifying storage data type, see the explanation of fields <a class="reference external" href="https://oats.readthedocs.io/en/latest/dataformat.html#storage">here</a>. The following command will run the unit commitment model and display results for storage that has been modelled in the network data test.xlsx.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">oats</span><span class="o">.</span><span class="n">uc</span><span class="p">(</span><span class="n">neos</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;cplex&#39;</span><span class="p">,</span> <span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;test.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -169,6 +193,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="OptimisingReactivePowerMargin.html" class="btn btn-neutral float-right" title="Optimising Reactive Power Margin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="VDload.html" class="btn btn-neutral float-left" title="Voltage Dependent Loads" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

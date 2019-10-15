@@ -43,6 +43,7 @@ bus
 +-----------+-------------------------------------------------------+
 | VEUB      | Extreme minimum voltage magnitude (p.u.)              |
 +-----------+-------------------------------------------------------+
+
 .. rubric:: Notes
 .. [#bus1] Zone is used in unit commitment problem to define inter zonal transfer constraints
 .. [#bus2] Extreme values columns are provided as an option for security constrained optimal power flow when relaxed post-fault voltage bounds are desired
@@ -62,6 +63,7 @@ demand
 +--------------------+---------------------------------------+
 | VOLL               | Value of Lost Load (£/MW)             |
 +--------------------+---------------------------------------+
+
 .. rubric:: Notes
 .. [#dem1] Must match a bus name from the bus sheet
 
@@ -94,6 +96,7 @@ branch
 +--------------------+-------------------------------------------------------------------+
 | failure_rate^      | failure rate over user specified time horizon                     |
 +--------------------+-------------------------------------------------------------------+
+
 .. rubric:: Notes
 .. [#branch1] Must match a bus name from the bus sheet
 .. [#branch2] The short term rating is used in post fault calculation in SCOPF
@@ -137,6 +140,7 @@ transformer
 +--------------------+-------------------------------------------------------------------+
 | failure_rate^      | failure rate over user specified time horizon                     |
 +--------------------+-------------------------------------------------------------------+
+
 .. rubric:: Notes
 .. [#tranf1] Must match a bus name from the bus sheet
 .. [#tranf2] The short term rating is used in post fault calculation in SCOPF
@@ -171,6 +175,7 @@ The wind sheet is included to separate variable generation from fixed capacity
 +--------------------+----------------------------------------------------+
 | failure_rate^      | failure rate over user specified time horizon      |
 +--------------------+----------------------------------------------------+
+
 .. rubric:: Notes
 .. [#wind1] Must match a bus name from the bus sheet
 
@@ -188,23 +193,26 @@ shunt
 +--------------------+--------------------------------------------------+
 | stat               | Status (1- connected, 0-disconnected)            |
 +--------------------+--------------------------------------------------+
+
 .. rubric:: Notes
 .. [#shunt1] Must match a bus name from the bus sheet
 
 zone
 ~~~~~~~~
 
-+---------------------+---------------------------------------------------+
-| interconnection_ID  | ID for interconnector between zones               |
-+---------------------+---------------------------------------------------+
-| from_zone           | from zone [#zone1]_                               |
-+---------------------+---------------------------------------------------+
-| to_zone             | to zone [#zone1]_                                 |
-+---------------------+---------------------------------------------------+
-| TransferCapacity(MW)| Transfer capacity betwen 'from_zone' and 'to_zone'|
-+---------------------+---------------------------------------------------+
++---------------------+----------------------------------------------------+
+| interconnection_ID  | ID for interconnector between zones                |
++---------------------+----------------------------------------------------+
+| from_zone           | from zone [#zone1]_                                |
++---------------------+----------------------------------------------------+
+| to_zone             | to zone [#zone1]_                                  |
++---------------------+----------------------------------------------------+
+| TransferCapacity(MW)| Transfer capacity between 'from_zone' and 'to_zone'|
++---------------------+----------------------------------------------------+
+
 .. rubric:: Notes
-.. [#zone1]_ Must match a zone name from the bus sheet
+.. [#zone1] Must match a zone name from the bus sheet
+
 
 generators
 ~~~~~~~~~~~~
@@ -243,7 +251,7 @@ generators
 +--------------------+-------------------------------------------------------------+
 | startup^           | Start up cost (£) [#gen3]_                                  |
 +--------------------+-------------------------------------------------------------+
-| shutdown^          | Shut down cost	(£) [#gen3]_                                 |
+| shutdown^          | Shut down cost	(£) [#gen3]_                               |
 +--------------------+-------------------------------------------------------------+
 | costc2             | Quadratic cost coefficient                                  |
 +--------------------+-------------------------------------------------------------+
@@ -258,7 +266,7 @@ generators
 
 .. rubric:: Notes
 .. [#gen1] Must match a bus name from the bus sheet
-.. [#gen2] Ramp rates required for security constrainted OPF or unit commitment problems
+.. [#gen2] Ramp rates required for security constrained OPF or unit commitment problems
 .. [#gen3] Minimum up/down times, startup and shutdown costs are required in the unit commitment models
 .. [#gen4] These parameters are part of the balancing market extension model that is available as an extension to OATS
 
@@ -266,7 +274,6 @@ generators
 
 storage
 ~~~~~~~~
-
 +--------------------------+-------------------------------------------------------+
 | name                     | Name for the storage device                           |
 +--------------------------+-------------------------------------------------------+
@@ -274,7 +281,7 @@ storage
 +--------------------------+-------------------------------------------------------+
 | stat                     | Status                                                |
 +--------------------------+-------------------------------------------------------+
-| Minoperatingcapacity(MW) | Min operating capacity 		                           |
+| Minoperatingcapacity(MW) | Min operating capacity 		                   |
 +--------------------------+-------------------------------------------------------+
 | capacity(MW)             | Total capacity of the storage                         |
 +--------------------------+-------------------------------------------------------+
@@ -288,7 +295,7 @@ storage
 +--------------------------+-------------------------------------------------------+
 | InitialStoredPower(MW)   | Initial stored energy                                 |
 +--------------------------+-------------------------------------------------------+
-| FinalStoredPower(MW)     | Final stored enery at the end of the planning horizon |
+| FinalStoredPower(MW)     | Final stored energy at the end of the planning horizon|
 +--------------------------+-------------------------------------------------------+
 
 
@@ -296,4 +303,4 @@ storage
 Filter Matpower2Oats
 ---------------------
 
-A Python script is provided that can be used to convert Matpower test-cases into equivalent OATS test-cases. This script is available on the `OATS GitHub page <https://github.com/bukhsh/oats>`__..
+A Python script is provided that can be used to convert Matpower test-cases into equivalent OATS test-cases. This script is available on the `OATS GitHub page <https://github.com/bukhsh/oats>`__.
