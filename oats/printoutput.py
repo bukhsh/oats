@@ -354,8 +354,8 @@ class printoutput(object):
         zoneflow.append(['Time Period','Fr','To','Zone Fr (MW)','Zone To (MW)'])
         for t in self.instance.T:
             for l in self.instance.ICT:
-                zoneflow.append([t,self.instance.A[l,1],self.instance.A[l,2], self.instance.pICTto[l,t].value*self.instance.baseMVA,\
-                self.instance.pICTfrom[l,t].value*self.instance.baseMVA])
+                zoneflow.append([t,self.instance.A[l,1],self.instance.A[l,2], self.instance.pICTfrom[l,t].value*self.instance.baseMVA,\
+                self.instance.pICTto[l,t].value*self.instance.baseMVA])
         print (tabulate(zoneflow, headers="firstrow", tablefmt="grid"))
 
 
@@ -379,11 +379,13 @@ class printoutput(object):
         cols_zone       = ['Time Period','Zone', 'Conventional generation (MW)', 'Wind generation (MW)', 'Demand (MW)']
         cols_ict        = ['Time Period','From', 'To', 'Power flow To(MW)', 'Power flow Fr(MW)']
         cols_gen        = ['Time Period','Generator', 'on/off', 'start', 'stop','pG(MW)']
+        cols_storage    = ['Storage','Time Period','Charge(MWh)','Discharge(MWh)','State(MWh)']
 
         summary         = pd.DataFrame(columns=cols_summary)
         zone            = pd.DataFrame(columns=cols_zone)
         interconnect    = pd.DataFrame(columns=cols_ict)
         generation      = pd.DataFrame(columns=cols_gen)
+        storage         = pd.DataFrame(columns=cols_storage)
         ind = 0
         for t in self.instance.T:
             summary.loc[ind] = pd.Series({'Time Period':t,'Conventional generation (MW)':sum(self.instance.pG[g,t].value for g in self.instance.G)*self.instance.baseMVA,\
@@ -410,6 +412,15 @@ class printoutput(object):
                 'start':self.instance.ustart[g,t].value, 'stop':self.instance.ustop[g,t].value,\
                 'pG(MW)':self.instance.pG[g,t].value*self.instance.baseMVA})
                 ind += 1
+        ind = 0
+        for t in self.instance.T:
+            for s in self.instance.S:
+                storage.loc[ind] = pd.Series({'Storage':s,'Time Period':t,\
+                'Charge(MWh)':self.instance.pSIn[s,t].value*self.instance.baseMVA,\
+                'Discharge(MWh)':self.instance.pSOut[s,t].value*self.instance.baseMVA,\
+                'State(MWh)':self.instance.pS[s,t].value*self.instance.baseMVA})
+                ind += 1
+
         #===write output on xlsx file===
         #
         writer = pd.ExcelWriter('results.xlsx', engine ='xlsxwriter')
@@ -417,4 +428,5 @@ class printoutput(object):
         zone.to_excel(writer, sheet_name = 'zone',index=False)
         interconnect.to_excel(writer, sheet_name = 'interconnection',index=False)
         generation.to_excel(writer, sheet_name = 'generator',index=False)
+        storage.to_excel(writer, sheet_name = 'storage',index=False)
         writer.save()

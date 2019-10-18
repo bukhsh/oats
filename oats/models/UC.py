@@ -144,8 +144,8 @@ def KCL_def(model,z, t):
     sum(model.pW[w,t] for w in model.WIND if (w,z) in model.WZ) +\
     sum(model.pSOut[s,t] for s in model.S if (z,s) in model.Sbs) - \
     sum(model.pSIn[s,t] for s in model.S if (z,s) in model.Sbs)+\
-    sum(model.pICTfrom[i,t] for i in model.ICT if model.A[i,1]==z) +\
-    sum(model.pICTto[i,t] for i in model.ICT if model.A[i,2]==z) == \
+    sum(model.pICTfrom[i,t] for i in model.ICT if model.A[i,2]==z) +\
+    sum(model.pICTto[i,t] for i in model.ICT if model.A[i,1]==z) == \
     sum(model.pD[d,t] for d in model.D if (d,z) in model.DZ)+\
     sum(model.GB[s] for s in model.SHUNT if (s,z) in model.SZ)
 
@@ -253,9 +253,9 @@ model.StoreModelDynUBC = Constraint(model.S,model.TRed, rule=storage_dynamics_UB
 model.StoreModelDynLBC = Constraint(model.S,model.TRed, rule=storage_dynamics_LB)
 
 def storage_dynamics_UB_firtsperiod(model,s):
-    return model.pS[s,0]   <= model.StoreUB[s]-model.StoreInitial[s]
+    return model.pS[s,1]   <= model.StoreUB[s]-model.StoreInitial[s]
 def storage_dynamics_LB_firtsperiod(model,s):
-    return model.pS[s,0]  >= model.StoreLB[s]-model.StoreInitial[s]
+    return model.pS[s,1]  >= model.StoreLB[s]-model.StoreInitial[s]
 #the next two lines creates constraints for demand model
 model.StoreModelDynUBC_fixed = Constraint(model.S,rule=storage_dynamics_UB_firtsperiod)
 model.StoreModelDynLBC_fixed = Constraint(model.S,rule=storage_dynamics_LB_firtsperiod)
