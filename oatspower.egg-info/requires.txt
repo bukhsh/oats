@@ -1,0 +1,11 @@
+pyomo
+tabulate
+PyYAML
+ipython[notebook]
+openpyxl
+pymysql
+pypyodbc
+pyro4
+sympy
+xlrd
+pandas
