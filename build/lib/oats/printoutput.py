@@ -395,9 +395,9 @@ class printoutput(object):
         ind = 0
         for t in self.instance.T:
             for z in self.instance.Z:
-                zone.loc[ind] = pd.Series({'Time Period':t,'Zone':z,'Conventional generation (MW)':sum(self.instance.pG[g,t].value for (g,z) in self.instance.GZ)*self.instance.baseMVA,\
-                'Wind generation (MW)':sum(self.instance.pW[w,t].value for (w,z) in self.instance.WZ)*self.instance.baseMVA,\
-                'Demand (MW)':sum(self.instance.PD[d,t] for (d,z) in self.instance.DZ)*self.instance.baseMVA})
+                zone.loc[ind] = pd.Series({'Time Period':t,'Zone':z,'Conventional generation (MW)':sum(self.instance.pG[g,t].value for (g,z1) in self.instance.GZ if z1==z)*self.instance.baseMVA,\
+                'Wind generation (MW)':sum(self.instance.pW[w,t].value for (w,z1) in self.instance.WZ if z==z1)*self.instance.baseMVA,\
+                'Demand (MW)':sum(self.instance.PD[d,t] for (d,z1) in self.instance.DZ if z==z1)*self.instance.baseMVA})
                 ind += 1
         ind = 0
         for t in self.instance.T:
