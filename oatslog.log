@@ -1,22 +1,8 @@
-Tue, 15 Oct 2019 17:47:34 INFO     OATS log file
-Tue, 15 Oct 2019 17:47:34 INFO     Program started
-Tue, 15 Oct 2019 17:47:39 INFO     Solver selected: cplex
-Tue, 15 Oct 2019 17:47:39 INFO     Testcase selected: /Users/waqquasbukhsh/oats/oats/testcases/case24_ieee_rts.xlsx
-Tue, 15 Oct 2019 17:47:39 INFO     Model selected: UC
-Tue, 15 Oct 2019 17:47:39 INFO     Given model file found and selected from the models library
-Tue, 15 Oct 2019 17:47:39 INFO     Given testcase file found and selected from the testcase library
-Tue, 15 Oct 2019 17:47:44 ERROR    Error loading NEOS solution into model  NEOS log:
-Job 7609834 dispatched
-password: wSXkDYzy
----------- Begin Solver Output -----------
-Condor submit: 'neos.submit'
-Condor submit: 'watchdog.submit'
-Job submitted to NEOS HTCondor pool.
-
-Tue, 15 Oct 2019 17:47:44 INFO     Done!
-Tue, 15 Oct 2019 17:48:03 INFO     Solver selected: cplex
-Tue, 15 Oct 2019 17:48:03 INFO     Testcase selected: /Users/waqquasbukhsh/oats/oats/testcases/case24_ieee_rts.xlsx
-Tue, 15 Oct 2019 17:48:03 INFO     Model selected: UC
-Tue, 15 Oct 2019 17:48:03 INFO     Given model file found and selected from the models library
-Tue, 15 Oct 2019 17:48:03 INFO     Given testcase file found and selected from the testcase library
-Tue, 15 Oct 2019 17:48:05 INFO     Done!
+Thu, 24 Oct 2019 08:53:46 INFO     OATS log file
+Thu, 24 Oct 2019 08:53:46 INFO     Program started
+Thu, 24 Oct 2019 08:53:46 INFO     Solver selected: cplex
+Thu, 24 Oct 2019 08:53:46 INFO     Testcase selected: /home/waqquas/oats_testing/caseGB.xlsx
+Thu, 24 Oct 2019 08:53:46 INFO     Model selected: UC
+Thu, 24 Oct 2019 08:53:46 INFO     Given model file found and selected from the models library
+Thu, 24 Oct 2019 08:53:46 INFO     Given testcase file found and selected from the testcase library
+Thu, 24 Oct 2019 08:53:47 INFO     Done!
