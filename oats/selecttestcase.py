@@ -43,7 +43,7 @@ def selecttestcase(test):
     }
     try:
         df_storage   = xl.parse("storage")
-        data['storage'] = df_storage
+        data.update( {"storage" : df_storage} )
     except:
         print ('Storage not defined')
 

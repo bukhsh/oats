@@ -553,8 +553,8 @@ class printdata(object):
          ###---set of storage---
         if len(self.data["storage"]["name"])!=0:
             f.write('set S:=\n')
-            for i in self.data["storage"]["name"].unique():
-                f.write(str(i)+"\n")
+            for i in self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["name"][i])+"\n")
             f.write(';\n')
         #---set of time-periods---
         f.write('set T:= \n')
