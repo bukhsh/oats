@@ -264,3 +264,11 @@ model.StoreModelDynLBC_fixed = Constraint(model.S,rule=storage_dynamics_LB_firts
 def storage_boundary_constraint(model,s):
     return sum(model.pS[s,t] for t in model.T) == model.StoreFinal[s]-model.StoreInitial[s]
 model.storageBounddef = Constraint(model.S,rule=storage_boundary_constraint)
+
+# --- storage ramping constraints ---
+def storage_rampUP_constraint_def(model,s,t):
+    return model.pSIn[s,t]-model.pSIn[s,t-1]<= model.rampCharge[s]
+def storage_rampDOWN_constraint_def(model,s,t):
+    return model.pSOut[s,t]-model.pSOut[s,t-1]<= model.rampDischarge[s]
+model.storageRampUP   = Constraint(model.S,model.TRed, rule=storage_rampUP_constraint_def)
+model.storageRampDOWN = Constraint(model.S,model.TRed,rule=storage_rampDOWN_constraint_def)
