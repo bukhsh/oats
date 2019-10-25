@@ -270,5 +270,5 @@ def storage_rampUP_constraint_def(model,s,t):
     return model.pSIn[s,t]-model.pSIn[s,t-1]<= model.rampCharge[s]
 def storage_rampDOWN_constraint_def(model,s,t):
     return model.pSOut[s,t]-model.pSOut[s,t-1]<= model.rampDischarge[s]
-# model.storageRampUP   = Constraint(model.S,model.TRed, rule=storage_rampUP_constraint_def)
-# model.storageRampDOWN = Constraint(model.S,model.TRed,rule=storage_rampDOWN_constraint_def)
+model.storageRampUP   = Constraint(model.S,model.TRed, rule=storage_rampUP_constraint_def)
+model.storageRampDOWN = Constraint(model.S,model.TRed,rule=storage_rampDOWN_constraint_def)
