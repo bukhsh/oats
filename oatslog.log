@@ -1,8 +1,0 @@
-Fri, 25 Oct 2019 10:18:53 INFO     OATS log file
-Fri, 25 Oct 2019 10:18:53 INFO     Program started
-Fri, 25 Oct 2019 10:18:53 INFO     Solver selected: cplex
-Fri, 25 Oct 2019 10:18:53 INFO     Testcase selected: /home/waqquas/Dropbox/caseGB.xlsx
-Fri, 25 Oct 2019 10:18:53 INFO     Model selected: UC
-Fri, 25 Oct 2019 10:18:53 INFO     Given model file found and selected from the models library
-Fri, 25 Oct 2019 10:18:53 INFO     Given testcase file found and selected from the testcase library
-Fri, 25 Oct 2019 10:18:53 INFO     Done!
