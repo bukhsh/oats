@@ -67,6 +67,7 @@ model.PGmin = Param(model.G, within=Reals)# min real power of generator, p.u.
 #RES
 model.WGmax = Param(model.WIND,model.T, within=NonNegativeReals)# max real power of wind generator, p.u.
 model.WGmin = Param(model.WIND,model.T, within=NonNegativeReals)# min real power of wind generator, p.u.
+model.bid   = Param(model.WIND,within=NonNegativeReals)   # cost of curtailing wind generation
 
 # inter-connector
 model.NTCto = Param(model.ICT, within=NonNegativeReals) # to NTC
