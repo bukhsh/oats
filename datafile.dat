@@ -1,6 +1,6 @@
 #This is Python generated data file for Pyomo model DCLF.py
 #_author_:W. Bukhsh
-#Time stamp: 2019-10-31 12:10:36.833622
+#Time stamp: 2019-10-31 15:59:04.472552
 set LE:=
  1 
  2;
@@ -28,7 +28,6 @@ set S:=
 PSH
 ;
 set T:= 
-0
 1
 2
 3
@@ -38,9 +37,9 @@ set T:=
 7
 8
 9
+10
 ;
 set TRed:= 
-1
 2
 3
 4
@@ -49,6 +48,7 @@ set TRed:=
 7
 8
 9
+10
 ;
 set Sbs:=
 1 PSH
@@ -67,36 +67,36 @@ EngDem 2
 WalesDem 2
 ;
 param PD:=
-ScotDem 0 10.0
-ScotDem 1 5.0
-ScotDem 2 6.0
-ScotDem 3 11.5
-ScotDem 4 12.0
-ScotDem 5 9.0
-ScotDem 6 10.0
-ScotDem 7 9.5
-ScotDem 8 8.5
-ScotDem 9 7.5
-EngDem 0 15.0
-EngDem 1 16.0
-EngDem 2 17.0
-EngDem 3 18.0
-EngDem 4 19.0
-EngDem 5 20.0
-EngDem 6 21.0
-EngDem 7 22.0
-EngDem 8 23.0
-EngDem 9 24.0
-WalesDem 0 5.0
-WalesDem 1 6.0
-WalesDem 2 7.0
-WalesDem 3 4.0
-WalesDem 4 5.0
-WalesDem 5 3.0
-WalesDem 6 4.5
-WalesDem 7 6.7
-WalesDem 8 5.5
-WalesDem 9 5.0
+ScotDem 1 10.0
+ScotDem 2 5.0
+ScotDem 3 6.0
+ScotDem 4 11.5
+ScotDem 5 12.0
+ScotDem 6 9.0
+ScotDem 7 10.0
+ScotDem 8 9.5
+ScotDem 9 8.5
+ScotDem 10 7.5
+EngDem 1 15.0
+EngDem 2 16.0
+EngDem 3 17.0
+EngDem 4 18.0
+EngDem 5 19.0
+EngDem 6 20.0
+EngDem 7 21.0
+EngDem 8 22.0
+EngDem 9 23.0
+EngDem 10 24.0
+WalesDem 1 5.0
+WalesDem 2 6.0
+WalesDem 3 7.0
+WalesDem 4 4.0
+WalesDem 5 5.0
+WalesDem 6 3.0
+WalesDem 7 4.5
+WalesDem 8 6.7
+WalesDem 9 5.5
+WalesDem 10 5.0
 ;
 param VOLL:=
 ScotDem 7000.0
@@ -117,7 +117,6 @@ G2 150.0
 GScot3 5.0
 ;
 param WGmin:=
-ScotWind 0 0
 ScotWind 1 0
 ScotWind 2 0
 ScotWind 3 0
@@ -127,9 +126,9 @@ ScotWind 6 0
 ScotWind 7 0
 ScotWind 8 0
 ScotWind 9 0
+ScotWind 10 0
 ;
 param WGmax:=
-ScotWind 0 50.0
 ScotWind 1 50.0
 ScotWind 2 50.0
 ScotWind 3 50.0
@@ -139,6 +138,7 @@ ScotWind 6 50.0
 ScotWind 7 50.0
 ScotWind 8 50.0
 ScotWind 9 50.0
+ScotWind 10 50.0
 ;
 param bid:=
 ScotWind 10
@@ -227,54 +227,60 @@ G2 100
 GScot3 100
 ;
 set UCMinUpT:=
-G1 2 9
-G1 3 9
-G1 4 9
-G1 5 9
-G1 6 9
-G1 7 9
-G1 8 9
-G1 9 9
-G2 2 9
-G2 3 9
-G2 4 9
-G2 5 9
-G2 6 9
-G2 7 9
-G2 8 9
-G2 9 9
-GScot3 2 9
-GScot3 3 9
-GScot3 4 9
-GScot3 5 9
-GScot3 6 9
-GScot3 7 9
-GScot3 8 9
-GScot3 9 9
+G1 2 10
+G1 3 10
+G1 4 10
+G1 5 10
+G1 6 10
+G1 7 10
+G1 8 10
+G1 9 10
+G1 10 10
+G2 2 10
+G2 3 10
+G2 4 10
+G2 5 10
+G2 6 10
+G2 7 10
+G2 8 10
+G2 9 10
+G2 10 10
+GScot3 2 10
+GScot3 3 10
+GScot3 4 10
+GScot3 5 10
+GScot3 6 10
+GScot3 7 10
+GScot3 8 10
+GScot3 9 10
+GScot3 10 10
 ;
 set UCMinDownT:=
-G1 2 9
-G1 3 9
-G1 4 9
-G1 5 9
-G1 6 9
-G1 7 9
-G1 8 9
-G1 9 9
-G2 2 9
-G2 3 9
-G2 4 9
-G2 5 9
-G2 6 9
-G2 7 9
-G2 8 9
-G2 9 9
-GScot3 2 9
-GScot3 3 9
-GScot3 4 9
-GScot3 5 9
-GScot3 6 9
-GScot3 7 9
-GScot3 8 9
-GScot3 9 9
+G1 2 10
+G1 3 10
+G1 4 10
+G1 5 10
+G1 6 10
+G1 7 10
+G1 8 10
+G1 9 10
+G1 10 10
+G2 2 10
+G2 3 10
+G2 4 10
+G2 5 10
+G2 6 10
+G2 7 10
+G2 8 10
+G2 9 10
+G2 10 10
+GScot3 2 10
+GScot3 3 10
+GScot3 4 10
+GScot3 5 10
+GScot3 6 10
+GScot3 7 10
+GScot3 8 10
+GScot3 9 10
+GScot3 10 10
 ;

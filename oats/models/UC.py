@@ -259,7 +259,6 @@ model.StoreModelDisChargeOnly = Constraint(model.S,model.T, rule=storage_model_d
 model.StoreModelBinary        = Constraint(model.S,model.T, rule=storage_model_only_chargedischarg)
 
 
-
 #===Storage dynamics Constraints
 def storage_dynamics_UB(model,s,t):
     return sum(model.pS[s,i] for i in range(1,t+1))  <= model.StoreUB[s]-model.StoreInitial[s]
@@ -270,9 +269,9 @@ model.StoreModelDynUBC = Constraint(model.S,model.TRed, rule=storage_dynamics_UB
 model.StoreModelDynLBC = Constraint(model.S,model.TRed, rule=storage_dynamics_LB)
 
 def storage_dynamics_UB_firtsperiod(model,s):
-    return model.pS[s,0]   <= model.StoreUB[s]-model.StoreInitial[s]
+    return model.pS[s,1]   <= model.StoreUB[s]-model.StoreInitial[s]
 def storage_dynamics_LB_firtsperiod(model,s):
-    return model.pS[s,0]  >= model.StoreLB[s]-model.StoreInitial[s]
+    return model.pS[s,1]  >= model.StoreLB[s]-model.StoreInitial[s]
 #the next two lines creates constraints for demand model
 model.StoreModelDynUBC_fixed = Constraint(model.S,rule=storage_dynamics_UB_firtsperiod)
 model.StoreModelDynLBC_fixed = Constraint(model.S,rule=storage_dynamics_LB_firtsperiod)

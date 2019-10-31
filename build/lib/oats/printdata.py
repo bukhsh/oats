@@ -624,6 +624,12 @@ class printdata(object):
                     f.write(str(i)+" "+str(j)+" "+str(float(self.data["timeseries"]["Wind"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
             f.write(';\n')
 
+            f.write('param bid:=\n')
+            for i in self.data["wind"].index.tolist():
+                f.write(str(self.data["wind"]["name"][i]) + " "+str(self.data["wind"]["bid"][i])+"\n")
+            f.write(';\n')
+
+
         if len(self.data["storage"]["name"])!=0:
             f.write('param ChargeEff:=\n')
             for i in  self.data["storage"].index.tolist():

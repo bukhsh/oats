@@ -67,6 +67,7 @@ model.PGmin = Param(model.G, within=Reals)# min real power of generator, p.u.
 #RES
 model.WGmax = Param(model.WIND,model.T, within=NonNegativeReals)# max real power of wind generator, p.u.
 model.WGmin = Param(model.WIND,model.T, within=NonNegativeReals)# min real power of wind generator, p.u.
+model.bid   = Param(model.WIND,within=NonNegativeReals)   # cost of curtailing wind generation
 
 # inter-connector
 model.NTCto = Param(model.ICT, within=NonNegativeReals) # to NTC
@@ -113,6 +114,8 @@ model.pS    = Var(model.S,model.T, domain= Reals)  #real power contribution of s
 model.pSIn  = Var(model.S,model.T, domain= NonNegativeReals)  #real power charging
 model.pSOut = Var(model.S,model.T, domain= NonNegativeReals)  #real power discharging
 
+model.pSInBinary  = Var(model.S,model.T, within=Binary, initialize=1)  #binary decision to charge the storage
+model.pSOutBinary = Var(model.S,model.T, within=Binary, initialize=1)  #binary decision to discharge the storage
 
 #Unit comittment variables
 model.u      = Var(model.G,model.T, within=Binary, initialize=1) # unit comittment variables for the generators
@@ -133,6 +136,7 @@ def cost_def(model, t):
     model.c0[g]*model.u[g,t])*model.baseMVA +\
     model.ustart[g,t]*model.SUcosts[g]+\
     model.ustop[g,t]*model.SDcosts[g] for g in model.G)+\
+    sum(sum(model.bid[w]*(model.WGmax[w,t]-model.pW[w,t])*model.baseMVA for w in model.WIND) for t in model.T)+\
     sum(model.VOLL[d]*(1-model.alpha[d,t])*model.baseMVA*model.PD[d,t] for d in model.D)
 
 # the next line creates one KCL constraint for each bus
@@ -243,6 +247,18 @@ def storage_model(model,s,t):
 model.StoreModelC = Constraint(model.S,model.T, rule=storage_model)
 
 
+def storage_model_charge(model,s,t):
+    return model.pSIn[s,t] <= model.pSInBinary[s,t]*model.StoreUB[s]
+def storage_model_discharge(model,s,t):
+    return model.pSOut[s,t] <= model.pSOutBinary[s,t]*model.StoreUB[s]
+def storage_model_only_chargedischarg(model,s,t):
+    return model.pSInBinary[s,t]+model.pSOutBinary[s,t]<=1
+
+model.StoreModelChargeOnly    = Constraint(model.S,model.T, rule=storage_model_charge)
+model.StoreModelDisChargeOnly = Constraint(model.S,model.T, rule=storage_model_discharge)
+model.StoreModelBinary        = Constraint(model.S,model.T, rule=storage_model_only_chargedischarg)
+
+
 #===Storage dynamics Constraints
 def storage_dynamics_UB(model,s,t):
     return sum(model.pS[s,i] for i in range(1,t+1))  <= model.StoreUB[s]-model.StoreInitial[s]
@@ -253,9 +269,9 @@ model.StoreModelDynUBC = Constraint(model.S,model.TRed, rule=storage_dynamics_UB
 model.StoreModelDynLBC = Constraint(model.S,model.TRed, rule=storage_dynamics_LB)
 
 def storage_dynamics_UB_firtsperiod(model,s):
-    return model.pS[s,0]   <= model.StoreUB[s]-model.StoreInitial[s]
+    return model.pS[s,1]   <= model.StoreUB[s]-model.StoreInitial[s]
 def storage_dynamics_LB_firtsperiod(model,s):
-    return model.pS[s,0]  >= model.StoreLB[s]-model.StoreInitial[s]
+    return model.pS[s,1]  >= model.StoreLB[s]-model.StoreInitial[s]
 #the next two lines creates constraints for demand model
 model.StoreModelDynUBC_fixed = Constraint(model.S,rule=storage_dynamics_UB_firtsperiod)
 model.StoreModelDynLBC_fixed = Constraint(model.S,rule=storage_dynamics_LB_firtsperiod)
@@ -270,5 +286,5 @@ def storage_rampUP_constraint_def(model,s,t):
     return model.pSIn[s,t]-model.pSIn[s,t-1]<= model.rampCharge[s]
 def storage_rampDOWN_constraint_def(model,s,t):
     return model.pSOut[s,t]-model.pSOut[s,t-1]<= model.rampDischarge[s]
-# model.storageRampUP   = Constraint(model.S,model.TRed, rule=storage_rampUP_constraint_def)
-# model.storageRampDOWN = Constraint(model.S,model.TRed,rule=storage_rampDOWN_constraint_def)
+model.storageRampUP   = Constraint(model.S,model.TRed, rule=storage_rampUP_constraint_def)
+model.storageRampDOWN = Constraint(model.S,model.TRed,rule=storage_rampDOWN_constraint_def)
