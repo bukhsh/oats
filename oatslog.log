@@ -1,8 +1,8 @@
-Mon, 04 Nov 2019 09:24:04 INFO     OATS log file
-Mon, 04 Nov 2019 09:24:04 INFO     Program started
-Mon, 04 Nov 2019 09:24:04 INFO     Solver selected: cplex
-Mon, 04 Nov 2019 09:24:04 INFO     Testcase selected: /home/waqquas/Dropbox/caseGBwind.xlsx
-Mon, 04 Nov 2019 09:24:04 INFO     Model selected: UC
-Mon, 04 Nov 2019 09:24:04 INFO     Given model file found and selected from the models library
-Mon, 04 Nov 2019 09:24:04 INFO     Given testcase file found and selected from the testcase library
-Mon, 04 Nov 2019 09:24:04 INFO     Done!
+Mon, 04 Nov 2019 09:57:54 INFO     OATS log file
+Mon, 04 Nov 2019 09:57:54 INFO     Program started
+Mon, 04 Nov 2019 09:57:54 INFO     Solver selected: cplex
+Mon, 04 Nov 2019 09:57:54 INFO     Testcase selected: /home/waqquas/Dropbox/caseGBwind.xlsx
+Mon, 04 Nov 2019 09:57:54 INFO     Model selected: UC
+Mon, 04 Nov 2019 09:57:54 INFO     Given model file found and selected from the models library
+Mon, 04 Nov 2019 09:57:54 INFO     Given testcase file found and selected from the testcase library
+Mon, 04 Nov 2019 09:57:55 INFO     Done!

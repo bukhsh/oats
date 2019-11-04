@@ -558,13 +558,22 @@ class printdata(object):
             f.write(';\n')
         #---set of time-periods---
         f.write('set T:= \n')
-        for i in self.data["timeseries"]["Demand"].index.tolist():
+        for i in self.data["timeseries"]["TP"]["timeperiod"]:
             f.write(str(i) + "\n")
         f.write(';\n')
         f.write('set TRed:= \n')
-        for i in self.data["timeseries"]["Demand"].index.tolist()[1:]:
+        for i in self.data["timeseries"]["TP"]["timeperiod"][1:]:
             f.write(str(i) + "\n")
         f.write(';\n')
+
+        f.write('set Tstart:= \n')
+        f.write(str(self.data["timeseries"]["TP"]["timeperiod"][0]) + "\n")
+        f.write(';\n')
+
+        f.write('set Tend:= \n')
+        f.write(str(self.data["timeseries"]["TP"]["timeperiod"][self.data["timeseries"]["TP"]["timeperiod"].index[-1]]) + "\n")
+        f.write(';\n')
+
         #---storage-bus mapping---
         if len(self.data["storage"]["name"])!=0:
             f.write('set Sbs:=\n')
@@ -592,7 +601,7 @@ class printdata(object):
         f.write('param PD:=\n')
         for i in self.data["timeseries"]["Demand"]:
             for j in self.data["timeseries"]["Demand"].index.tolist():
-                f.write(str(i)+" "+str(j)+" "+str(float(self.data["timeseries"]["Demand"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+                f.write(str(i)+" "+str(self.data["timeseries"]["TP"]["timeperiod"][j])+" "+str(float(self.data["timeseries"]["Demand"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
         f.write(';\n')
         f.write('param VOLL:=\n')
         for i in self.data["demand"].index.tolist():
@@ -616,12 +625,12 @@ class printdata(object):
             f.write('param WGmin:=\n')
             for i in self.data["timeseries"]["Wind"]:
                 for j in self.data["timeseries"]["Wind"].index.tolist():
-                    f.write(str(i)+" "+str(j)+" "+str(0)+"\n")
+                    f.write(str(i)+" "+str(self.data["timeseries"]["TP"]["timeperiod"][j])+" "+str(0)+"\n")
             f.write(';\n')
             f.write('param WGmax:=\n')
             for i in self.data["timeseries"]["Wind"]:
                 for j in self.data["timeseries"]["Wind"].index.tolist():
-                    f.write(str(i)+" "+str(j)+" "+str(float(self.data["timeseries"]["Wind"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+                    f.write(str(i)+" "+str(self.data["timeseries"]["TP"]["timeperiod"][j])+" "+str(float(self.data["timeseries"]["Wind"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
             f.write(';\n')
 
             f.write('param bid:=\n')
