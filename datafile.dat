@@ -1,6 +1,6 @@
 #This is Python generated data file for Pyomo model DCLF.py
 #_author_:W. Bukhsh
-#Time stamp: 2019-10-31 15:59:04.472552
+#Time stamp: 2019-11-04 09:24:04.151492
 set LE:=
  1 
  2;
@@ -19,13 +19,15 @@ EngDem
 WalesDem
 ;
 set WIND:=
-ScotWind
+windS
+windS2
 ;
 set ICT:=
 B6
 ;
 set S:=
 PSH
+PSH2
 ;
 set T:= 
 1
@@ -50,8 +52,15 @@ set TRed:=
 9
 10
 ;
+set Tstart:= 
+1
+;
+set Tend:= 
+10
+;
 set Sbs:=
 1 PSH
+1 PSH2
 ;
 set GZ:=
 G1 1
@@ -59,7 +68,8 @@ G2 2
 GScot3 1
 ;
 set WZ:=
-ScotWind 1
+windS 1
+windS2 1
 ;
 set DZ:=
 ScotDem 1
@@ -117,55 +127,84 @@ G2 150.0
 GScot3 5.0
 ;
 param WGmin:=
-ScotWind 1 0
-ScotWind 2 0
-ScotWind 3 0
-ScotWind 4 0
-ScotWind 5 0
-ScotWind 6 0
-ScotWind 7 0
-ScotWind 8 0
-ScotWind 9 0
-ScotWind 10 0
+windS 1 0
+windS 2 0
+windS 3 0
+windS 4 0
+windS 5 0
+windS 6 0
+windS 7 0
+windS 8 0
+windS 9 0
+windS 10 0
+windS2 1 0
+windS2 2 0
+windS2 3 0
+windS2 4 0
+windS2 5 0
+windS2 6 0
+windS2 7 0
+windS2 8 0
+windS2 9 0
+windS2 10 0
 ;
 param WGmax:=
-ScotWind 1 50.0
-ScotWind 2 50.0
-ScotWind 3 50.0
-ScotWind 4 50.0
-ScotWind 5 50.0
-ScotWind 6 50.0
-ScotWind 7 50.0
-ScotWind 8 50.0
-ScotWind 9 50.0
-ScotWind 10 50.0
+windS 1 50.0
+windS 2 50.5
+windS 3 51.0
+windS 4 51.5
+windS 5 52.0
+windS 6 52.5
+windS 7 53.0
+windS 8 53.5
+windS 9 54.0
+windS 10 54.5
+windS2 1 50.0
+windS2 2 50.5
+windS2 3 51.0
+windS2 4 51.5
+windS2 5 52.0
+windS2 6 52.5
+windS2 7 53.0
+windS2 8 53.5
+windS2 9 54.0
+windS2 10 54.5
 ;
 param bid:=
-ScotWind 10
+windS 10
+windS2 10
 ;
 param ChargeEff:=
 PSH 0.9
+PSH2 0.9
 ;
 param DischargeEff:=
 PSH 0.9
+PSH2 0.9
 ;
 param StoreUB:=
 PSH 30.0
+PSH2 30.0
 ;
 param StoreLB:=
 PSH 0.0
+PSH2 0.0
 ;
 param StoreInitial:=
 PSH 0.0
+PSH2 0.0
 ;
 param StoreFinal:=
 PSH 0.0
+PSH2 0.0
 ;
 param rampCharge:=
-PSH 2.5
+PSH 5.0
+PSH2 5.0
 ;
 param rampDischarge:=
-PSH 2.5
+PSH 5.0
+PSH2 5.0
 ;
 param ResReq:=
 1 0.0
@@ -227,60 +266,54 @@ G2 100
 GScot3 100
 ;
 set UCMinUpT:=
-G1 2 10
-G1 3 10
-G1 4 10
-G1 5 10
-G1 6 10
-G1 7 10
-G1 8 10
-G1 9 10
-G1 10 10
-G2 2 10
-G2 3 10
-G2 4 10
-G2 5 10
-G2 6 10
-G2 7 10
-G2 8 10
-G2 9 10
-G2 10 10
-GScot3 2 10
-GScot3 3 10
-GScot3 4 10
-GScot3 5 10
-GScot3 6 10
-GScot3 7 10
-GScot3 8 10
-GScot3 9 10
-GScot3 10 10
+G1 2 9
+G1 3 9
+G1 4 9
+G1 5 9
+G1 6 9
+G1 7 9
+G1 8 9
+G1 9 9
+G2 2 9
+G2 3 9
+G2 4 9
+G2 5 9
+G2 6 9
+G2 7 9
+G2 8 9
+G2 9 9
+GScot3 2 9
+GScot3 3 9
+GScot3 4 9
+GScot3 5 9
+GScot3 6 9
+GScot3 7 9
+GScot3 8 9
+GScot3 9 9
 ;
 set UCMinDownT:=
-G1 2 10
-G1 3 10
-G1 4 10
-G1 5 10
-G1 6 10
-G1 7 10
-G1 8 10
-G1 9 10
-G1 10 10
-G2 2 10
-G2 3 10
-G2 4 10
-G2 5 10
-G2 6 10
-G2 7 10
-G2 8 10
-G2 9 10
-G2 10 10
-GScot3 2 10
-GScot3 3 10
-GScot3 4 10
-GScot3 5 10
-GScot3 6 10
-GScot3 7 10
-GScot3 8 10
-GScot3 9 10
-GScot3 10 10
+G1 2 9
+G1 3 9
+G1 4 9
+G1 5 9
+G1 6 9
+G1 7 9
+G1 8 9
+G1 9 9
+G2 2 9
+G2 3 9
+G2 4 9
+G2 5 9
+G2 6 9
+G2 7 9
+G2 8 9
+G2 9 9
+GScot3 2 9
+GScot3 3 9
+GScot3 4 9
+GScot3 5 9
+GScot3 6 9
+GScot3 7 9
+GScot3 8 9
+GScot3 9 9
 ;

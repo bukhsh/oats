@@ -7,5 +7,5 @@
 from oats.run import uc
 
 
-#uc(neos=False,solver='cplex',tc='/home/waqquas/Dropbox/caseGB.xlsx')
-uc(neos=False,solver='cplex',tc='/Users/waqquasbukhsh/Dropbox/caseGB.xlsx')
+uc(neos=False,solver='cplex',tc='/home/waqquas/Dropbox/caseGBwind.xlsx')
+# uc(neos=False,solver='cplex',tc='/Users/waqquasbukhsh/Dropbox/caseGB.xlsx')

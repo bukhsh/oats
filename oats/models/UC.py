@@ -28,6 +28,9 @@ model.SHUNT  = Set()  # set of shunts
 model.LE     = Set()  # line-to and from ends set (1,2)
 model.S      = Set()  # set of storage
 
+model.Tstart    = Set(within=model.T)  # start of the time horizon
+model.Tend      = Set(within=model.T)  # end of the time horizon
+
 ## mapping sets
 model.GZ  = Set(within=model.G*model.Z)     # set of generators and zones
 model.WZ  = Set(within=model.WIND*model.Z)  # set of WIND abd zones
@@ -264,17 +267,26 @@ def storage_dynamics_UB(model,s,t):
     return sum(model.pS[s,i] for i in range(1,t+1))  <= model.StoreUB[s]-model.StoreInitial[s]
 def storage_dynamics_LB(model,s,t):
     return sum(model.pS[s,i] for i in range(1,t+1))  >= model.StoreLB[s]-model.StoreInitial[s]
-#the next two lines creates constraints for demand model
 model.StoreModelDynUBC = Constraint(model.S,model.TRed, rule=storage_dynamics_UB)
 model.StoreModelDynLBC = Constraint(model.S,model.TRed, rule=storage_dynamics_LB)
 
-def storage_dynamics_UB_firtsperiod(model,s):
-    return model.pS[s,1]   <= model.StoreUB[s]-model.StoreInitial[s]
-def storage_dynamics_LB_firtsperiod(model,s):
-    return model.pS[s,1]  >= model.StoreLB[s]-model.StoreInitial[s]
-#the next two lines creates constraints for demand model
-model.StoreModelDynUBC_fixed = Constraint(model.S,rule=storage_dynamics_UB_firtsperiod)
-model.StoreModelDynLBC_fixed = Constraint(model.S,rule=storage_dynamics_LB_firtsperiod)
+def storage_dynamics_UB_firtsperiod(model,s,t):
+    return model.pS[s,t]   <= model.StoreUB[s]-model.StoreInitial[s]
+def storage_dynamics_LB_firtsperiod(model,s,t):
+    return model.pS[s,t]  >= model.StoreLB[s]-model.StoreInitial[s]
+model.StoreModelDynUBC_fixed = Constraint(model.S,model.Tstart, rule=storage_dynamics_UB_firtsperiod)
+model.StoreModelDynLBC_fixed = Constraint(model.S,model.Tstart,rule=storage_dynamics_LB_firtsperiod)
+
+
+def storage_start(model,s,t):
+    return model.pS[s,t]  ==  model.StoreInitial[s]
+def storage_end(model,s,t):
+    return model.pS[s,t]  ==  model.StoreFinal[s]
+
+model.StorageStartC = Constraint(model.S,model.Tstart,rule=storage_start)
+model.StorageEndC   = Constraint(model.S,model.Tend,rule=storage_end)
+
+
 
 # --- boundary constraint for storage ---
 def storage_boundary_constraint(model,s):
