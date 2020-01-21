@@ -20,11 +20,21 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -96,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#shunt">shunt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#zone">zone</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generators">generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storage">storage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#filter-matpower2oats">Filter Matpower2Oats</a></li>
@@ -518,17 +529,23 @@
 <td>ID for interconnector between zones</td>
 </tr>
 <tr class="row-even"><td>from_zone</td>
-<td>from zone <a href="#id28"><span class="problematic" id="id16">[#zone1]_</span></a></td>
+<td>from zone <a class="footnote-reference" href="#zone1" id="id16">[12]</a></td>
 </tr>
 <tr class="row-odd"><td>to_zone</td>
-<td>to zone <a href="#id29"><span class="problematic" id="id17">[#zone1]_</span></a></td>
+<td>to zone <a class="footnote-reference" href="#zone1" id="id17">[12]</a></td>
 </tr>
 <tr class="row-even"><td>TransferCapacity(MW)</td>
-<td>Transfer capacity betwen ‘from_zone’ and ‘to_zone’</td>
+<td>Transfer capacity between ‘from_zone’ and ‘to_zone’</td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
+<table class="docutils footnote" frame="void" id="zone1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[12]</td><td><em>(<a class="fn-backref" href="#id16">1</a>, <a class="fn-backref" href="#id17">2</a>)</em> Must match a zone name from the bus sheet</td></tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="generators">
 <h3>generators<a class="headerlink" href="#generators" title="Permalink to this headline">¶</a></h3>
@@ -539,7 +556,7 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>busname</td>
-<td>Bus name <a class="footnote-reference" href="#gen1" id="id18">[12]</a></td>
+<td>Bus name <a class="footnote-reference" href="#gen1" id="id18">[13]</a></td>
 </tr>
 <tr class="row-even"><td>name</td>
 <td>Generator name (string)</td>
@@ -569,16 +586,16 @@
 <td>Voltage magnitude setpoint (p.u.)</td>
 </tr>
 <tr class="row-odd"><td>RampDown (MW/hr)^</td>
-<td>Ramp down rate (MW/hr) <a class="footnote-reference" href="#gen2" id="id19">[13]</a></td>
+<td>Ramp down rate (MW/hr) <a class="footnote-reference" href="#gen2" id="id19">[14]</a></td>
 </tr>
 <tr class="row-even"><td>RampUp (MW/hr)^</td>
-<td>Ramp up rate (MW/hr) <a class="footnote-reference" href="#gen2" id="id20">[13]</a></td>
+<td>Ramp up rate (MW/hr) <a class="footnote-reference" href="#gen2" id="id20">[14]</a></td>
 </tr>
 <tr class="row-odd"><td>MinDownTime(hr)^</td>
-<td>Minimum down time (hr) <a class="footnote-reference" href="#gen3" id="id21">[14]</a></td>
+<td>Minimum down time (hr) <a class="footnote-reference" href="#gen3" id="id21">[15]</a></td>
 </tr>
 <tr class="row-even"><td>MinupTime(hr)^</td>
-<td>Minimum up time (hr) <a class="footnote-reference" href="#gen3" id="id22">[14]</a></td>
+<td>Minimum up time (hr) <a class="footnote-reference" href="#gen3" id="id22">[15]</a></td>
 </tr>
 <tr class="row-odd"><td>FuelType^</td>
 <td>Coal, Nuke - nuclear, CCGT, OCGT, Unknown</td>
@@ -587,10 +604,10 @@
 <td>1-include in SCOPF contingencies, 0- don’t include</td>
 </tr>
 <tr class="row-odd"><td>startup^</td>
-<td>Start up cost (£) <a class="footnote-reference" href="#gen3" id="id23">[14]</a></td>
+<td>Start up cost (£) <a class="footnote-reference" href="#gen3" id="id23">[15]</a></td>
 </tr>
 <tr class="row-even"><td>shutdown^</td>
-<td>Shut down cost   (£) <a class="footnote-reference" href="#gen3" id="id24">[14]</a></td>
+<td>Shut down cost   (£) <a class="footnote-reference" href="#gen3" id="id24">[15]</a></td>
 </tr>
 <tr class="row-odd"><td>costc2</td>
 <td>Quadratic cost coefficient</td>
@@ -602,10 +619,10 @@
 <td>Constant cost coefficient</td>
 </tr>
 <tr class="row-even"><td>bid^</td>
-<td>Bid in balancing mechanism to reduce generation <a class="footnote-reference" href="#gen4" id="id25">[15]</a></td>
+<td>Bid in balancing mechanism to reduce generation <a class="footnote-reference" href="#gen4" id="id25">[16]</a></td>
 </tr>
 <tr class="row-odd"><td>offer^</td>
-<td>Offer in balancing mechanism to increase generation <a class="footnote-reference" href="#gen4" id="id26">[15]</a></td>
+<td>Offer in balancing mechanism to increase generation <a class="footnote-reference" href="#gen4" id="id26">[16]</a></td>
 </tr>
 </tbody>
 </table>
@@ -613,32 +630,76 @@
 <table class="docutils footnote" frame="void" id="gen1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id18">[12]</a></td><td>Must match a bus name from the bus sheet</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id18">[13]</a></td><td>Must match a bus name from the bus sheet</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="gen2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[13]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id20">2</a>)</em> Ramp rates required for security constrainted OPF or unit commitment problems</td></tr>
+<tr><td class="label">[14]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id20">2</a>)</em> Ramp rates required for security constrained OPF or unit commitment problems</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="gen3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[14]</td><td><em>(<a class="fn-backref" href="#id21">1</a>, <a class="fn-backref" href="#id22">2</a>, <a class="fn-backref" href="#id23">3</a>, <a class="fn-backref" href="#id24">4</a>)</em> Minimum up/down times, startup and shutdown costs are required in the unit commitment models</td></tr>
+<tr><td class="label">[15]</td><td><em>(<a class="fn-backref" href="#id21">1</a>, <a class="fn-backref" href="#id22">2</a>, <a class="fn-backref" href="#id23">3</a>, <a class="fn-backref" href="#id24">4</a>)</em> Minimum up/down times, startup and shutdown costs are required in the unit commitment models</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="gen4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[15]</td><td><em>(<a class="fn-backref" href="#id25">1</a>, <a class="fn-backref" href="#id26">2</a>)</em> These parameters are part of the balancing market extension model that is available as an extension to OATS</td></tr>
+<tr><td class="label">[16]</td><td><em>(<a class="fn-backref" href="#id25">1</a>, <a class="fn-backref" href="#id26">2</a>)</em> These parameters are part of the balancing market extension model that is available as an extension to OATS</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="storage">
+<h3>storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>name</td>
+<td>Name for the storage device</td>
+</tr>
+<tr class="row-even"><td>zone</td>
+<td>Name of the zone</td>
+</tr>
+<tr class="row-odd"><td>stat</td>
+<td>Status</td>
+</tr>
+<tr class="row-even"><td>Minoperatingcapacity(MW)</td>
+<td>Min operating capacity</td>
+</tr>
+<tr class="row-odd"><td>capacity(MW)</td>
+<td>Total capacity of the storage</td>
+</tr>
+<tr class="row-even"><td>chargingrate(MW/hr)</td>
+<td>charging rate</td>
+</tr>
+<tr class="row-odd"><td>dischargingrate(MW/hr)</td>
+<td>discharging rate</td>
+</tr>
+<tr class="row-even"><td>ChargingEfficieny(%)</td>
+<td>charging efficiency</td>
+</tr>
+<tr class="row-odd"><td>DischargingEfficieny(%)</td>
+<td>discharging efficiency</td>
+</tr>
+<tr class="row-even"><td>InitialStoredPower(MW)</td>
+<td>Initial stored energy</td>
+</tr>
+<tr class="row-odd"><td>FinalStoredPower(MW)</td>
+<td>Final stored energy at the end of the planning horizon</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="section" id="filter-matpower2oats">
 <h2>Filter Matpower2Oats<a class="headerlink" href="#filter-matpower2oats" title="Permalink to this headline">¶</a></h2>
-<p>A Python script is provided that can be used to convert Matpower test-cases into equivalent OATS test-cases. This script is available on the <a class="reference external" href="https://github.com/bukhsh/oats">OATS GitHub page</a>..</p>
+<p>A Python script is provided that can be used to convert Matpower test-cases into equivalent OATS test-cases. This script is available on the <a class="reference external" href="https://github.com/bukhsh/oats">OATS GitHub page</a>.</p>
 </div>
 </div>
 

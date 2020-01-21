@@ -2,10 +2,10 @@ from setuptools import setup
 with open('README.md') as f:
     readme = f.read()
 setup(name='oatspower',
-      version='0.0.16',
+      version='0.4.0',
       description='OATS: Optimisation and Analysis Toolbox for Power Systems',
-      long_description=readme,
-      long_description_content_type='text/markdown',
+      # long_description=README.md,
+      # long_description_content_type='text/markdown',
       url='https://github.com/bukhsh/oats',
       author='Waqquas Bukhsh',
       author_email='wbukhsh@gmail.com',

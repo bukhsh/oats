@@ -1,0 +1,8 @@
+Mon, 14 Oct 2019 16:21:14 INFO     OATS log file
+Mon, 14 Oct 2019 16:21:14 INFO     Program started
+Mon, 14 Oct 2019 16:21:14 INFO     OATS log file
+Mon, 14 Oct 2019 16:21:14 INFO     Program started
+Mon, 14 Oct 2019 16:21:14 INFO     Solver selected: cplex
+Mon, 14 Oct 2019 16:21:14 INFO     Testcase selected: /home/waqquas/oats_testing/case24.xlsx
+Mon, 14 Oct 2019 16:21:14 INFO     Model selected: UC
+Mon, 14 Oct 2019 16:21:14 ERROR    Given model file not found in the 'models' library

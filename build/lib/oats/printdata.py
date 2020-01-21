@@ -22,6 +22,7 @@ class printdata(object):
         self.data["demand"]      = self.data["demand"].drop(self.data["demand"][self.data["demand"]['stat'] == 0].index.tolist())
         self.data["branch"]      = self.data["branch"].drop(self.data["branch"][self.data["branch"]['stat'] == 0].index.tolist())
         self.data["shunt"]       = self.data["shunt"].drop(self.data["shunt"][self.data["shunt"]['stat'] == 0].index.tolist())
+        self.data["storage"]     = self.data["storage"].drop(self.data["storage"][self.data["storage"]['stat'] == 0].index.tolist())
         self.data["transformer"] = self.data["transformer"].drop(self.data["transformer"][self.data["transformer"]['stat'] == 0].index.tolist())
         self.data["wind"]        = self.data["wind"].drop(self.data["wind"][self.data["wind"]['stat'] == 0].index.tolist())
         self.data["generator"]   = self.data["generator"].drop(self.data["generator"][self.data["generator"]['stat'] == 0].index.tolist())
@@ -549,16 +550,36 @@ class printdata(object):
             for i in self.data["zonalNTC"].index.tolist():
                 f.write(str(self.data["zonalNTC"]["interconnection_ID"][i])+"\n")
             f.write(';\n')
+         ###---set of storage---
+        if len(self.data["storage"]["name"])!=0:
+            f.write('set S:=\n')
+            for i in self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["name"][i])+"\n")
+            f.write(';\n')
         #---set of time-periods---
         f.write('set T:= \n')
-        for i in self.data["timeseries"]["Demand"].index.tolist():
+        for i in self.data["timeseries"]["TP"]["timeperiod"]:
             f.write(str(i) + "\n")
         f.write(';\n')
         f.write('set TRed:= \n')
-        for i in self.data["timeseries"]["Demand"].index.tolist()[1:-1]:
+        for i in self.data["timeseries"]["TP"]["timeperiod"][1:]:
             f.write(str(i) + "\n")
         f.write(';\n')
 
+        f.write('set Tstart:= \n')
+        f.write(str(self.data["timeseries"]["TP"]["timeperiod"][0]) + "\n")
+        f.write(';\n')
+
+        f.write('set Tend:= \n')
+        f.write(str(self.data["timeseries"]["TP"]["timeperiod"][self.data["timeseries"]["TP"]["timeperiod"].index[-1]]) + "\n")
+        f.write(';\n')
+
+        #---storage-bus mapping---
+        if len(self.data["storage"]["name"])!=0:
+            f.write('set Sbs:=\n')
+            for i in self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["zone"][i]) + " "+str(self.data["storage"]["name"][i])+"\n")
+            f.write(';\n')
         ##---set of GZ(generator zone mapping---
         f.write('set GZ:=\n')
         for i in self.data["generator"].index.tolist():
@@ -580,7 +601,7 @@ class printdata(object):
         f.write('param PD:=\n')
         for i in self.data["timeseries"]["Demand"]:
             for j in self.data["timeseries"]["Demand"].index.tolist():
-                f.write(str(i)+" "+str(j)+" "+str(float(self.data["timeseries"]["Demand"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+                f.write(str(i)+" "+str(self.data["timeseries"]["TP"]["timeperiod"][j])+" "+str(float(self.data["timeseries"]["Demand"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
         f.write(';\n')
         f.write('param VOLL:=\n')
         for i in self.data["demand"].index.tolist():
@@ -604,13 +625,54 @@ class printdata(object):
             f.write('param WGmin:=\n')
             for i in self.data["timeseries"]["Wind"]:
                 for j in self.data["timeseries"]["Wind"].index.tolist():
-                    f.write(str(i)+" "+str(j)+" "+str(0)+"\n")
+                    f.write(str(i)+" "+str(self.data["timeseries"]["TP"]["timeperiod"][j])+" "+str(0)+"\n")
             f.write(';\n')
             f.write('param WGmax:=\n')
             for i in self.data["timeseries"]["Wind"]:
                 for j in self.data["timeseries"]["Wind"].index.tolist():
-                    f.write(str(i)+" "+str(j)+" "+str(float(self.data["timeseries"]["Wind"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+                    f.write(str(i)+" "+str(self.data["timeseries"]["TP"]["timeperiod"][j])+" "+str(float(self.data["timeseries"]["Wind"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
             f.write(';\n')
+
+            f.write('param bid:=\n')
+            for i in self.data["wind"].index.tolist():
+                f.write(str(self.data["wind"]["name"][i]) + " "+str(self.data["wind"]["bid"][i])+"\n")
+            f.write(';\n')
+
+
+        if len(self.data["storage"]["name"])!=0:
+            f.write('param ChargeEff:=\n')
+            for i in  self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["name"][i])+" "+str(float(self.data["storage"]["ChargingEfficieny(%)"][i])/100.0)+"\n")
+            f.write(';\n')
+            f.write('param DischargeEff:=\n')
+            for i in  self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["name"][i])+" "+str(float(self.data["storage"]["DischargingEfficieny(%)"][i])/100.0)+"\n")
+            f.write(';\n')
+            f.write('param StoreUB:=\n')
+            for i in  self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["name"][i])+" "+str(float(self.data["storage"]["capacity(MW)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+            f.write('param StoreLB:=\n')
+            for i in  self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["name"][i])+" "+str(float(self.data["storage"]["Minoperatingcapacity(MW)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+            f.write('param StoreInitial:=\n')
+            for i in  self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["name"][i])+" "+str(float(self.data["storage"]["InitialStoredPower(MW)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+            f.write('param StoreFinal:=\n')
+            for i in  self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["name"][i])+" "+str(float(self.data["storage"]["FinalStoredPower(MW)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+            f.write('param rampCharge:=\n')
+            for i in  self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["name"][i])+" "+str(float(self.data["storage"]["chargingrate(MW/hr)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+            f.write('param rampDischarge:=\n')
+            for i in  self.data["storage"].index.tolist():
+                f.write(str(self.data["storage"]["name"][i])+" "+str(float(self.data["storage"]["dischargingrate(MW/hr)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+
 
         #--zonal data--
         f.write('param ResReq:=\n')
