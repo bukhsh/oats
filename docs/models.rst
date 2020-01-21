@@ -14,23 +14,23 @@ OATS includes implementation of the following steady-state power system optimisa
     models/SCOPF
     models/UC
 
-The mathematical formulation of these models can
+The following table provides information about the implementation of the steady-state optimisation models in OATS. Note that the selected solver(s) column is not an exhaustive list of solvers. Also, the references column provide links to a selected set of publications where the users can find the mathematical formulation of the models implemented in OATS.
 
 
 +----------+---------------------------+----------------+------------------------+--------------+
-| OATS ID  | Model                     | Classification | Selected solver(s)     | References
+| OATS ID  | Model                     | Classification | Selected solver(s)     | References   |
 +==========+===========================+================+========================+==============+
-| DCLF     | DC load flow              | LP             | cplex, glpk            | [1,2]      |
+| DCLF     | DC load flow              | LP             | cplex, glpk            | [1,2]        |
 +----------+---------------------------+----------------+------------------------+--------------+
-| DCOPF    | DC optimal power flow     | LP             | cplex, gurobi          | [3]         |
+| DCOPF    | DC optimal power flow     | LP             | cplex, gurobi          | [3]          |
 +----------+---------------------------+----------------+------------------------+--------------+
-| SCOPF    | Security constrained OPF  | LP             | cplex, gurobi          | [4]         |
+| SCOPF    | Security constrained OPF  | LP             | cplex, gurobi          | [4]          |
 +----------+---------------------------+----------------+------------------------+--------------+
-| ACLF     | AC load flow              | NLP            | ipopt                  | [2,3]      |
+| ACLF     | AC load flow              | NLP            | ipopt                  | [2,3]        |
 +----------+---------------------------+----------------+------------------------+--------------+
-| ACOPF    | AC optimal power flow     | NLP            | ipopt                  | [5,6]      |
+| ACOPF    | AC optimal power flow     | NLP            | ipopt                  | [5,6]        |
 +----------+---------------------------+----------------+------------------------+--------------+
-| UC       | Unit commitment problem   | MILP           | cplex, bonmin          | [7]         |
+| UC       | Unit commitment problem   | MILP           | cplex, bonmin          | [7]          |
 +----------+---------------------------+----------------+------------------------+--------------+
 
 
@@ -43,8 +43,7 @@ flow: Theory, formulation, and examples,” IIE Transactions,
 vol. 48, no. 12, pp. 1172–1197, 2016. [Online]. Available:
 https://doi.org/10.1080/0740817X.2016.1189626
 
-[3] A. J. Wood, Power generation, operation, and control [internet re-
-source], third edition ed., 2014.
+[3] A. J. Wood, Power generation, operation, and control, Third edition ed., 2014.
 
 [4] D. Phan and J. Kalagnanam, “Some efficient optimization methods for
 solving the security-constrained optimal power flow problem,” IEEE
@@ -58,6 +57,6 @@ pp. 4780–4788, Nov 2013.
 [6] M. B. Cain, R. P. O’Neil, and A. Castillo, “History of optimal power
 flow and formulations, optimal power flow paper 1,” 2012.
 
-[7] G. Morales-Espana, J. Latorre, and A. Ramos, “Tight and compact milp
+[7] G. Morales-Espana, J. Latorre, and A. Ramos, “Tight and compact MILP
 formulation for the thermal unit commitment problem,” Power Systems,
 IEEE Transactions on, vol. 28, no. 4, pp. 4897–4908, Nov 2013.

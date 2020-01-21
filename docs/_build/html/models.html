@@ -179,6 +179,82 @@
 <li class="toctree-l1"><a class="reference internal" href="models/UC.html">Unit Commitment problem</a></li>
 </ul>
 </div>
+<p>The following table provides information about the implementation of the steady-state optimisation models in OATS. Note that the selected solver(s) column is not an exhaustive list of solvers. Also, the references column provide links to a selected set of publications where the users can find the mathematical formulation of the models implemented in OATS.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="30%" />
+<col width="18%" />
+<col width="26%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">OATS ID</th>
+<th class="head">Model</th>
+<th class="head">Classification</th>
+<th class="head">Selected solver(s)</th>
+<th class="head">References</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>DCLF</td>
+<td>DC load flow</td>
+<td>LP</td>
+<td>cplex, glpk</td>
+<td>[1,2]</td>
+</tr>
+<tr class="row-odd"><td>DCOPF</td>
+<td>DC optimal power flow</td>
+<td>LP</td>
+<td>cplex, gurobi</td>
+<td>[3]</td>
+</tr>
+<tr class="row-even"><td>SCOPF</td>
+<td>Security constrained OPF</td>
+<td>LP</td>
+<td>cplex, gurobi</td>
+<td>[4]</td>
+</tr>
+<tr class="row-odd"><td>ACLF</td>
+<td>AC load flow</td>
+<td>NLP</td>
+<td>ipopt</td>
+<td>[2,3]</td>
+</tr>
+<tr class="row-even"><td>ACOPF</td>
+<td>AC optimal power flow</td>
+<td>NLP</td>
+<td>ipopt</td>
+<td>[5,6]</td>
+</tr>
+<tr class="row-odd"><td>UC</td>
+<td>Unit commitment problem</td>
+<td>MILP</td>
+<td>cplex, bonmin</td>
+<td>[7]</td>
+</tr>
+</tbody>
+</table>
+<p>[1] W. Bukhsh, On Solving the Load Flow Problem as an Optimization
+Problem. Tech. Report, University of Strathclyde, May 2018. [Online].
+Available: <a class="reference external" href="https://strathprints.strath.ac.uk/64156/">https://strathprints.strath.ac.uk/64156/</a></p>
+<p>[2] S. Frank and S. Rebennack, “An introduction to optimal power
+flow: Theory, formulation, and examples,” IIE Transactions,
+vol. 48, no. 12, pp. 1172–1197, 2016. [Online]. Available:
+<a class="reference external" href="https://doi.org/10.1080/0740817X.2016.1189626">https://doi.org/10.1080/0740817X.2016.1189626</a></p>
+<p>[3] A. J. Wood, Power generation, operation, and control, Third edition ed., 2014.</p>
+<p>[4] D. Phan and J. Kalagnanam, “Some efficient optimization methods for
+solving the security-constrained optimal power flow problem,” IEEE
+Transactions on Power Systems, vol. 29, no. 2, pp. 863–872, March
+2014.</p>
+<p>[5] W. Bukhsh, A. Grothey et al., “Local solutions of the optimal power
+flow problem,” Power Systems, IEEE Transactions on, vol. 28, no. 4,
+pp. 4780–4788, Nov 2013.</p>
+<p>[6] M. B. Cain, R. P. O’Neil, and A. Castillo, “History of optimal power
+flow and formulations, optimal power flow paper 1,” 2012.</p>
+<p>[7] G. Morales-Espana, J. Latorre, and A. Ramos, “Tight and compact MILP
+formulation for the thermal unit commitment problem,” Power Systems,
+IEEE Transactions on, vol. 28, no. 4, pp. 4897–4908, Nov 2013.</p>
 </div>
 
 
