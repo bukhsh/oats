@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Security constrained optimal power flow problem &mdash; oats 0.1 documentation</title>
+  <title>Security constrained optimal power flow problem &mdash; oats 1.0.1 documentation</title>
   
 
   
@@ -23,7 +23,7 @@
       <script type="text/javascript">
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
-              VERSION:'0.1',
+              VERSION:'1.0.1',
               LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
@@ -97,7 +97,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="LF.html">Load flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OPF.html">Optimal power flow problem</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Security constrained optimal power flow problem</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Security constrained optimal power flow problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mathematical-formulation">Mathematical formulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scopf-problem-with-pre-fault-ac-and-post-fault-dc">SCOPF problem with pre-fault AC and post-fault DC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-oats">Solving SCOPF problems in OATS</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="UC.html">Unit Commitment problem</a></li>
 </ul>
 </li>
@@ -172,12 +177,49 @@
             
   <div class="section" id="security-constrained-optimal-power-flow-problem">
 <h1>Security constrained optimal power flow problem<a class="headerlink" href="#security-constrained-optimal-power-flow-problem" title="Permalink to this headline">¶</a></h1>
-<p>Secure operation of a power system requires that no breach of oper-
-ating standards take place following a credible contingency. This is
-achieved by solved a security constrained optimal power flow. A DC
-version of SCOPF is implemented in OATS. A set of credible contingencies can be specified in the test case. The credible contingencies
-in OATS are outages of single circuits, transformers or generating units.</p>
-<span class="target" id="module-oats"></span><dl class="function">
+<p>Secure operation of a power system requires that no breach of operating standards
+take place following a credible contingency. This is achieved by solving a
+security-constrained optimal power flow. A DC version of SCOPF is implemented in
+OATS. A set of credible contingencies can be specified in the test case. The
+credible contingencies in OATS are outages of single circuits, transformers or
+generating units.</p>
+<div class="section" id="mathematical-formulation">
+<h2>Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this headline">¶</a></h2>
+<p>The mathematical formulation of the SCOPF implemented in OATS takes the following form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\min_{u_c,x_c: \forall c \in \{0\} \cup C} ~~f(u_0,x_0)~~~~~~~~~~~~~~~~~~\\
+\text{subject to}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+h_c(u_c,x_c)=0,~~~~~~~~~~~~ \forall c \in \{0\} \cup C\\
+g_c(u_c,x_c)\le 0,~~~~~~~~~~~~ \forall c \in \{0\} \cup C\\
+|u_c-u_0|\le R_c, ~~~~~~~~~~~~~~\forall c \in C~~~~~~~~~~\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is the set of contingencies. OATS allow a user to build the set of
+contingencies by selecting generators, branches and transformers to be included in the
+contingency list. The user is referred to the data format section for information
+regarding selecting a contingency. The equality constraints (<span class="math notranslate nohighlight">\(h_c\)</span>) and
+inequality constraints (<span class="math notranslate nohighlight">\(g_C\)</span>) are imposed on the set of contingencies <span class="math notranslate nohighlight">\(C\)</span> and
+on the pre-fault operating state <span class="math notranslate nohighlight">\(\{0\}\)</span>. The last constraint is a coupling constraint
+that couples pre-fault and post-fault state of operation.</p>
+</div>
+<div class="section" id="scopf-problem-with-pre-fault-ac-and-post-fault-dc">
+<h2>SCOPF problem with pre-fault AC and post-fault DC<a class="headerlink" href="#scopf-problem-with-pre-fault-ac-and-post-fault-dc" title="Permalink to this headline">¶</a></h2>
+<p>The traditional implementations of the SCOPF problem model the pre-fault and post-fault operation
+of a system using DC-model of power flow. OATS allow a user to model the pre-fault operation of a system
+using AC power flow (hence giving information regarding voltage and reactive power) and post-fault
+operation using DC equations. The mathematical formulation of such problem is given as follows.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\min_{u_c,x_c: \forall c \in \{0\} \cup C} ~~f(u_0,x_0)~~~~~~~~~~~~~~~~~~\\
+\text{subject to}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+h^{\text{AC}}_0(u_c,x_c)=0,~~~~~~~~~~~~ c \in \{0\}\\
+g^{\text{AC}}_0(u_c,x_c)\le 0,~~~~~~~~~~~~ c \in \{0\}\\
+h^{\text{DC}}_c(u_c,x_c)=0,~~~~~~~~~~~~ \forall c \in C\\
+g^{\text{DC}}_c(u_c,x_c)\le 0,~~~~~~~~~~~~ \forall c \in C\\
+|u_c-u_0|\le R_c, ~~~~~~~~~~~\forall c \in C\end{split}\]</div>
+<p>As noted above, the AC power flow equations are only used to model the pre-fault operation of a system.
+The post-fault operation of a system is modelled using DC power flow equations.</p>
+</div>
+<div class="section" id="module-oats">
+<span id="solving-scopf-problems-in-oats"></span><h2>Solving SCOPF problems in OATS<a class="headerlink" href="#module-oats" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="oats.scopf">
 <code class="descclassname">oats.</code><code class="descname">scopf</code><span class="sig-paren">(</span><em>tc='default'</em>, <em>solver='ipopt'</em>, <em>neos=True</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.scopf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves security constrained optimal power flow problem</p>
@@ -191,6 +233,7 @@ in OATS are outages of single circuits, transformers or generating units.</p>
 </dl>
 </dd></dl>
 
+</div>
 </div>
 
 

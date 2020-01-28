@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Unit Commitment problem &mdash; oats 0.1 documentation</title>
+  <title>Unit Commitment problem &mdash; oats 1.0.1 documentation</title>
   
 
   
@@ -23,7 +23,7 @@
       <script type="text/javascript">
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
-              VERSION:'0.1',
+              VERSION:'1.0.1',
               LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
@@ -98,7 +98,11 @@
 <li class="toctree-l2"><a class="reference internal" href="LF.html">Load flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OPF.html">Optimal power flow problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SCOPF.html">Security constrained optimal power flow problem</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Unit Commitment problem</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Unit Commitment problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-mathematical-formulation-of-the-uc-problem">A mathematical formulation of the UC problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-oats">Solving UC problems in OATS</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../dataformat.html">Data format</a></li>
@@ -174,10 +178,19 @@
 <h1>Unit Commitment problem<a class="headerlink" href="#unit-commitment-problem" title="Permalink to this headline">¶</a></h1>
 <p>Unit commitment is the problem of determining the least cost schedule of generating units subject to power balance and network constraints. In OATS, the unit commitment problem is modelled as a
 mixed integer linear programming problem. The objective function
-is to minimize the total cost of generation over a given time horizon.
+is to minimise the total cost of generation over a given time horizon.
 The constraints in each step are of power balance, restrictions on
 ramp rates, zonal net transfer limits and generation limits.</p>
-<span class="target" id="module-oats"></span><dl class="function">
+<div class="section" id="a-mathematical-formulation-of-the-uc-problem">
+<h2>A mathematical formulation of the UC problem<a class="headerlink" href="#a-mathematical-formulation-of-the-uc-problem" title="Permalink to this headline">¶</a></h2>
+<p>Several mathematical formulations of the unit commitment problem exists in literature. The current release of oats implement a formulation from the following paper:</p>
+<p>G. Morales-España, J. M. Latorre and A. Ramos, “Tight and Compact MILP Formulation for the Thermal Unit Commitment Problem,” in IEEE Transactions on Power Systems, vol. 28, no. 4, pp. 4897-4908, Nov. 2013.
+doi: 10.1109/TPWRS.2013.2251373</p>
+<p>Note that the above formulation provides several tight relaxations around minimum start-up (shut-down) times of the thermal generators. These relaxations can easily be implemented in OATS by adopting the current ‘UC.mod’ model file. In case of any issues, the user is encouraged to raise an issue via GitHub page for support.</p>
+</div>
+<div class="section" id="module-oats">
+<span id="solving-uc-problems-in-oats"></span><h2>Solving UC problems in OATS<a class="headerlink" href="#module-oats" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="oats.uc">
 <code class="descclassname">oats.</code><code class="descname">uc</code><span class="sig-paren">(</span><em>tc='default'</em>, <em>solver='cplex'</em>, <em>neos=True</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.uc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves unit commitment problem</p>
@@ -191,6 +204,7 @@ ramp rates, zonal net transfer limits and generation limits.</p>
 </dl>
 </dd></dl>
 
+</div>
 </div>
 
 

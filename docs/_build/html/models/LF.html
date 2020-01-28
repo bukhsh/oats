@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Load flow problem &mdash; oats 0.1 documentation</title>
+  <title>Load flow problem &mdash; oats 1.0.1 documentation</title>
   
 
   
@@ -23,7 +23,7 @@
       <script type="text/javascript">
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
-              VERSION:'0.1',
+              VERSION:'1.0.1',
               LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
@@ -96,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../use.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Load flow problem</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#oats-implementation-of-the-load-flow-problem">OATS implementation of the load flow problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mathematical-formulation">Mathematical formulation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#distributed-slack">Distributed slack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tap-changing-transformer">Tap-changing transformer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-oats">Solving DC and AC load flow problems in OATS</a></li>
@@ -225,11 +225,12 @@ real-time monitoring systems.</p>
 </tr>
 </tbody>
 </table>
-<div class="section" id="oats-implementation-of-the-load-flow-problem">
-<h2>OATS implementation of the load flow problem<a class="headerlink" href="#oats-implementation-of-the-load-flow-problem" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mathematical-formulation">
+<h2>Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this headline">¶</a></h2>
 <p>The load flow problem in OATS is solved as a constrained OPF
 problem. The fixed parameters of PV, PQ and Vδ buses are modelled
-using hard constraints.</p>
+using hard constraints. The detailed mathematical formulation is provided in the following technical note.</p>
+<p>Bukhsh, W. (2018). On Solving the Load Flow Problem as an Optimization Problem. Glasgow: University of Strathclyde. [Online] Available: <a class="reference external" href="https://pureportal.strath.ac.uk/en/publications/on-solving-the-load-flow-problem-as-an-optimization-problem">https://pureportal.strath.ac.uk/en/publications/on-solving-the-load-flow-problem-as-an-optimization-problem</a></p>
 </div>
 <div class="section" id="distributed-slack">
 <h2>Distributed slack<a class="headerlink" href="#distributed-slack" title="Permalink to this headline">¶</a></h2>
@@ -239,12 +240,9 @@ changing the generator type from ’1’ to ’2’.</p>
 </div>
 <div class="section" id="tap-changing-transformer">
 <h2>Tap-changing transformer<a class="headerlink" href="#tap-changing-transformer" title="Permalink to this headline">¶</a></h2>
-<p>OATS allow a user to determine tap setting of the transformers con-
-necting a high voltage bus to a lower voltage bus. The tap-changing
-transformers can be specified using ’2’ in the type field of the trans-
-formers. The target voltage at the lower-voltage side is specified in
-column VM in the bus sheet. The turn ratios are determined at the
-high-voltage side of the transformer.</p>
+<p>OATS allow a user to determine tap setting of the transformers connecting a high voltage bus to a lower voltage bus. The tap-changing
+transformers can be specified using ’2’ in the type field of the transformers. The target voltage at the lower-voltage side is specified in
+column VM in the bus sheet. The turn ratios are determined at the high-voltage side of the transformer.</p>
 </div>
 <div class="section" id="module-oats">
 <span id="solving-dc-and-ac-load-flow-problems-in-oats"></span><h2>Solving DC and AC load flow problems in OATS<a class="headerlink" href="#module-oats" title="Permalink to this headline">¶</a></h2>
