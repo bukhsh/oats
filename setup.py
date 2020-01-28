@@ -1,8 +1,11 @@
 from setuptools import setup
-with open('README.md') as f:
-    readme = f.read()
+# read the contents of your README file
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 setup(name='oatspower',
-      version='0.4.0',
+      version='1.0.2',
       description='OATS: Optimisation and Analysis Toolbox for Power Systems',
       # long_description=README.md,
       # long_description_content_type='text/markdown',
