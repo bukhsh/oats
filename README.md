@@ -1,4 +1,4 @@
-![](https://badge.fury.io/py/oatspower.svg)
+[![PyPI version](https://badge.fury.io/py/oatspower.svg)](https://badge.fury.io/py/oatspower)
 ![](https://img.shields.io/badge/License-GNU%20General%20Public%20License%20v3.0-yellow)
 ![](https://img.shields.io/badge/Python-2.7.x%20%7C%203.x-red)
 ![](https://zenodo.org/badge/DOI/10.5281/zenodo.3629418.svg)
