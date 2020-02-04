@@ -1,5 +1,9 @@
 from setuptools import setup
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+# read the contents of your README file
+>>>>>>> 147d67b67e02f98542ca11aa7a31715711aaf709
 =======
 # read the contents of your README file
 >>>>>>> 147d67b67e02f98542ca11aa7a31715711aaf709
