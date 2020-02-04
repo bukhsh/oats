@@ -1,12 +1,4 @@
 from setuptools import setup
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-# read the contents of your README file
->>>>>>> 147d67b67e02f98542ca11aa7a31715711aaf709
-=======
-# read the contents of your README file
->>>>>>> 147d67b67e02f98542ca11aa7a31715711aaf709
 from os import path
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
