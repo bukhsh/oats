@@ -42,11 +42,16 @@ The following two tables provide information about the generator and transformer
 
 
 
-OATS implementation of the load flow problem
---------------------------------------------
+Mathematical formulation
+------------------------
 The load flow problem in OATS is solved as a constrained OPF
 problem. The fixed parameters of PV, PQ and Vδ buses are modelled
-using hard constraints.
+using hard constraints. The detailed mathematical formulation is provided in the following technical note.
+
+
+Bukhsh, W. (2018). On Solving the Load Flow Problem as an Optimization Problem. Glasgow: University of Strathclyde. [Online] Available: https://pureportal.strath.ac.uk/en/publications/on-solving-the-load-flow-problem-as-an-optimization-problem
+
+
 
 Distributed slack
 -----------------
@@ -58,12 +63,9 @@ changing the generator type from ’1’ to ’2’.
 
 Tap-changing transformer
 ------------------------
-OATS allow a user to determine tap setting of the transformers con-
-necting a high voltage bus to a lower voltage bus. The tap-changing
-transformers can be specified using ’2’ in the type field of the trans-
-formers. The target voltage at the lower-voltage side is specified in
-column VM in the bus sheet. The turn ratios are determined at the
-high-voltage side of the transformer.
+OATS allow a user to determine tap setting of the transformers connecting a high voltage bus to a lower voltage bus. The tap-changing
+transformers can be specified using ’2’ in the type field of the transformers. The target voltage at the lower-voltage side is specified in
+column VM in the bus sheet. The turn ratios are determined at the high-voltage side of the transformer.
 
 
 Solving DC and AC load flow problems in OATS
