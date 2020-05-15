@@ -25,6 +25,7 @@ OATS integrates a modelling language PYOMO for describing optimisation models. U
    :maxdepth: 2
 
    intro
+   outputs
    installation
    use
    models

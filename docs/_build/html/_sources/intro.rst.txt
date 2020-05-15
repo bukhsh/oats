@@ -27,7 +27,9 @@ The optimisation problems can be warm-started meaning that a user-specified (or 
 Citation
 --------
 
-Waqquas Bukhsh. (2019, September 5). bukhsh/oats: OATS release (Version v1.0.1). Zenodo. http://doi.org/10.5281/zenodo.3387594.
+- W A Bukhsh, C Edmunds and K R W Bell, "OATS: Optimisation and Analysis Toolbox for Power Systems," in IEEE Transactions on Power Systems, doi: 10.1109/TPWRS.2020.2986081.
+
+- Waqquas Bukhsh. (2019, September 5). bukhsh/oats: OATS release (Version v1.0.1). Zenodo. http://doi.org/10.5281/zenodo.3387594.
 
 
 License

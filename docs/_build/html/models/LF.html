@@ -20,21 +20,12 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'1.0.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -92,6 +83,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction to OATS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outputs.html">Outputs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a><ul class="current">
@@ -187,41 +179,41 @@ planning, operation, contingency analysis and the implementation of
 real-time monitoring systems.</p>
 <p>Load flow analysis is commonly used for following applications:</p>
 <ul class="simple">
-<li>Identify real and reactive power flow</li>
-<li>Identify proper transformer tap settings</li>
-<li>Identify transformer and circuit loadings</li>
-<li>Contingency analysis</li>
+<li><p>Identify real and reactive power flow</p></li>
+<li><p>Identify proper transformer tap settings</p></li>
+<li><p>Identify transformer and circuit loadings</p></li>
+<li><p>Contingency analysis</p></li>
 </ul>
 <p>The following two tables provide information about the generator and transformers types modelled in OATS.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Generator Types in OATS</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Generator Types in OATS</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>1=   PV bus</td>
+<tbody>
+<tr class="row-even"><td><p>1=   PV bus</p></td>
 </tr>
-<tr class="row-odd"><td>2= Distributed slack bus</td>
+<tr class="row-odd"><td><p>2= Distributed slack bus</p></td>
 </tr>
-<tr class="row-even"><td>3= Reference bus</td>
+<tr class="row-even"><td><p>3= Reference bus</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Transformer Types in OATS</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Transformer Types in OATS</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>1=   2-winding transformer</td>
+<tbody>
+<tr class="row-even"><td><p>1=   2-winding transformer</p></td>
 </tr>
-<tr class="row-odd"><td>2= Tap-changing transformer</td>
+<tr class="row-odd"><td><p>2= Tap-changing transformer</p></td>
 </tr>
 </tbody>
 </table>
@@ -246,30 +238,28 @@ column VM in the bus sheet. The turn ratios are determined at the high-voltage s
 </div>
 <div class="section" id="module-oats">
 <span id="solving-dc-and-ac-load-flow-problems-in-oats"></span><h2>Solving DC and AC load flow problems in OATS<a class="headerlink" href="#module-oats" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="oats.dclf">
-<code class="descclassname">oats.</code><code class="descname">dclf</code><span class="sig-paren">(</span><em>tc='default'</em>, <em>solver='ipopt'</em>, <em>neos=True</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.dclf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">oats.</code><code class="sig-name descname">dclf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tc</span><span class="o">=</span><span class="default_value">'default'</span></em>, <em class="sig-param"><span class="n">solver</span><span class="o">=</span><span class="default_value">'ipopt'</span></em>, <em class="sig-param"><span class="n">neos</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">out</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#oats.dclf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves DC load flow problem</p>
-<dl class="docutils">
-<dt>ARGUMENTS:</dt>
-<dd><p class="first"><strong>tc</strong> (<a href="#id1"><span class="problematic" id="id2">*</span></a>.xlsx file)  - OATS test case. See OATS data format for details</p>
+<dl>
+<dt>ARGUMENTS:</dt><dd><p><strong>tc</strong> (<a href="#id1"><span class="problematic" id="id2">*</span></a>.xlsx file)  - OATS test case. See OATS data format for details</p>
 <p><strong>solver</strong> (str)  - name of a solver. Defualt is ‘ipopt’</p>
 <p><strong>neos</strong> (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.</p>
-<p class="last"><strong>out</strong> (bool) - If True, the output is displayed on screen.</p>
+<p><strong>out</strong> (bool) - If True, the output is displayed on screen.</p>
 </dd>
 </dl>
 </dd></dl>
 
-<span class="target" id="module-oats"></span><dl class="function">
+<span class="target" id="module-0"></span><dl class="py function">
 <dt id="oats.aclf">
-<code class="descclassname">oats.</code><code class="descname">aclf</code><span class="sig-paren">(</span><em>tc='default'</em>, <em>solver='ipopt'</em>, <em>neos=True</em>, <em>out=0</em><span class="sig-paren">)</span><a class="headerlink" href="#oats.aclf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">oats.</code><code class="sig-name descname">aclf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tc</span><span class="o">=</span><span class="default_value">'default'</span></em>, <em class="sig-param"><span class="n">solver</span><span class="o">=</span><span class="default_value">'ipopt'</span></em>, <em class="sig-param"><span class="n">neos</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">out</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#oats.aclf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves AC load flow problem</p>
-<dl class="docutils">
-<dt>ARGUMENTS:</dt>
-<dd><p class="first"><strong>tc</strong> (<a href="#id3"><span class="problematic" id="id4">*</span></a>.xlsx file)  - OATS test case. See OATS data format for details</p>
+<dl>
+<dt>ARGUMENTS:</dt><dd><p><strong>tc</strong> (<a href="#id3"><span class="problematic" id="id4">*</span></a>.xlsx file)  - OATS test case. See OATS data format for details</p>
 <p><strong>solver</strong> (str)  - name of a solver. Defualt is ‘ipopt’</p>
 <p><strong>neos</strong> (bool) - If True, the problem is solved using NEOS otherwise using a localy install solver.</p>
-<p class="last"><strong>out</strong> (bool) - If True, the output is displayed on screen.</p>
+<p><strong>out</strong> (bool) - If True, the output is displayed on screen.</p>
 </dd>
 </dl>
 </dd></dl>
