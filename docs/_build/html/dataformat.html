@@ -20,21 +20,12 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'1.0.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -193,505 +184,473 @@
 <p>The parameters required to describe a network in OATS are outlined below. Optional parameters are highlighted by (^);</p>
 <div class="section" id="bus">
 <h3>bus<a class="headerlink" href="#bus" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="17%" />
-<col width="83%" />
+<col style="width: 17%" />
+<col style="width: 83%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>name</td>
-<td>bus name. string (can contain letters and/or numbers)</td>
+<tbody>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>bus name. string (can contain letters and/or numbers)</p></td>
 </tr>
-<tr class="row-even"><td>baseKV</td>
-<td>base voltage (kV)</td>
+<tr class="row-even"><td><p>baseKV</p></td>
+<td><p>base voltage (kV)</p></td>
 </tr>
-<tr class="row-odd"><td>zone^</td>
-<td>zone (positive integer) <a class="footnote-reference" href="#bus1" id="id1">[1]</a></td>
+<tr class="row-odd"><td><p>zone^</p></td>
+<td><p>zone (positive integer) <a class="footnote-reference brackets" href="#bus1" id="id1">1</a></p></td>
 </tr>
-<tr class="row-even"><td>VM</td>
-<td>Voltage Magnitude (p.u.)</td>
+<tr class="row-even"><td><p>VM</p></td>
+<td><p>Voltage Magnitude (p.u.)</p></td>
 </tr>
-<tr class="row-odd"><td>VA</td>
-<td>Voltage angle</td>
+<tr class="row-odd"><td><p>VA</p></td>
+<td><p>Voltage angle</p></td>
 </tr>
-<tr class="row-even"><td>VNLB</td>
-<td>Normal minimum voltage magnitude (p.u.)</td>
+<tr class="row-even"><td><p>VNLB</p></td>
+<td><p>Normal minimum voltage magnitude (p.u.)</p></td>
 </tr>
-<tr class="row-odd"><td>VNUB</td>
-<td>Normal maximum voltage magnitude (p.u.)</td>
+<tr class="row-odd"><td><p>VNUB</p></td>
+<td><p>Normal maximum voltage magnitude (p.u.)</p></td>
 </tr>
-<tr class="row-even"><td>VELB</td>
-<td>Extreme minimum voltage magnitude (p.u.)   <a class="footnote-reference" href="#bus2" id="id2">[2]</a></td>
+<tr class="row-even"><td><p>VELB</p></td>
+<td><p>Extreme minimum voltage magnitude (p.u.)   <a class="footnote-reference brackets" href="#bus2" id="id2">2</a></p></td>
 </tr>
-<tr class="row-odd"><td>VEUB</td>
-<td>Extreme minimum voltage magnitude (p.u.)</td>
+<tr class="row-odd"><td><p>VEUB</p></td>
+<td><p>Extreme minimum voltage magnitude (p.u.)</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<table class="docutils footnote" frame="void" id="bus1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Zone is used in unit commitment problem to define inter zonal transfer constraints</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="bus2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Extreme values columns are provided as an option for security constrained optimal power flow when relaxed post-fault voltage bounds are desired</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="bus1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Zone is used in unit commitment problem to define inter zonal transfer constraints</p>
+</dd>
+<dt class="label" id="bus2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Extreme values columns are provided as an option for security constrained optimal power flow when relaxed post-fault voltage bounds are desired</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="demand">
 <h3>demand<a class="headerlink" href="#demand" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col style="width: 34%" />
+<col style="width: 66%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>name</td>
-<td>Demand name (string)</td>
+<tbody>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>Demand name (string)</p></td>
 </tr>
-<tr class="row-even"><td>busname</td>
-<td>Bus name <a class="footnote-reference" href="#dem1" id="id3">[3]</a></td>
+<tr class="row-even"><td><p>busname</p></td>
+<td><p>Bus name <a class="footnote-reference brackets" href="#dem1" id="id3">3</a></p></td>
 </tr>
-<tr class="row-odd"><td>real</td>
-<td>real power demand (MW)</td>
+<tr class="row-odd"><td><p>real</p></td>
+<td><p>real power demand (MW)</p></td>
 </tr>
-<tr class="row-even"><td>reactive</td>
-<td>reactive power demand (MVAr)</td>
+<tr class="row-even"><td><p>reactive</p></td>
+<td><p>reactive power demand (MVAr)</p></td>
 </tr>
-<tr class="row-odd"><td>stat</td>
-<td>Status (1- connected, 2-disconnected)</td>
+<tr class="row-odd"><td><p>stat</p></td>
+<td><p>Status (1- connected, 2-disconnected)</p></td>
 </tr>
-<tr class="row-even"><td>VOLL</td>
-<td>Value of Lost Load (£/MW)</td>
+<tr class="row-even"><td><p>VOLL</p></td>
+<td><p>Value of Lost Load (£/MW)</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<table class="docutils footnote" frame="void" id="dem1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Must match a bus name from the bus sheet</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="dem1"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Must match a bus name from the bus sheet</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="branch">
 <h3>branch<a class="headerlink" href="#branch" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="23%" />
-<col width="77%" />
+<col style="width: 23%" />
+<col style="width: 77%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>name</td>
-<td>branch name (string)</td>
+<tbody>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>branch name (string)</p></td>
 </tr>
-<tr class="row-even"><td>from_busname</td>
-<td>from bus name <a class="footnote-reference" href="#branch1" id="id4">[4]</a></td>
+<tr class="row-even"><td><p>from_busname</p></td>
+<td><p>from bus name <a class="footnote-reference brackets" href="#branch1" id="id4">4</a></p></td>
 </tr>
-<tr class="row-odd"><td>to_busname</td>
-<td>to bus name <a class="footnote-reference" href="#branch1" id="id5">[4]</a></td>
+<tr class="row-odd"><td><p>to_busname</p></td>
+<td><p>to bus name <a class="footnote-reference brackets" href="#branch1" id="id5">4</a></p></td>
 </tr>
-<tr class="row-even"><td>stat</td>
-<td>Status (1-connected, 0-disconnected)</td>
+<tr class="row-even"><td><p>stat</p></td>
+<td><p>Status (1-connected, 0-disconnected)</p></td>
 </tr>
-<tr class="row-odd"><td>r</td>
-<td>resistance (p.u.)</td>
+<tr class="row-odd"><td><p>r</p></td>
+<td><p>resistance (p.u.)</p></td>
 </tr>
-<tr class="row-even"><td>x</td>
-<td>reactance (p.u.)</td>
+<tr class="row-even"><td><p>x</p></td>
+<td><p>reactance (p.u.)</p></td>
 </tr>
-<tr class="row-odd"><td>b</td>
-<td>total line charging susceptance (p.u.)</td>
+<tr class="row-odd"><td><p>b</p></td>
+<td><p>total line charging susceptance (p.u.)</p></td>
 </tr>
-<tr class="row-even"><td>ShortTermRating</td>
-<td>MVA rating (short term rating), set to 0 for unlimited <a class="footnote-reference" href="#branch2" id="id6">[5]</a></td>
+<tr class="row-even"><td><p>ShortTermRating</p></td>
+<td><p>MVA rating (short term rating), set to 0 for unlimited <a class="footnote-reference brackets" href="#branch2" id="id6">5</a></p></td>
 </tr>
-<tr class="row-odd"><td>ContinuousRating</td>
-<td>MVA rating (continuous rating), set to 0 for unlimited</td>
+<tr class="row-odd"><td><p>ContinuousRating</p></td>
+<td><p>MVA rating (continuous rating), set to 0 for unlimited</p></td>
 </tr>
-<tr class="row-even"><td>angLB</td>
-<td>minimum angle difference (degrees) <a class="footnote-reference" href="#branch3" id="id7">[6]</a></td>
+<tr class="row-even"><td><p>angLB</p></td>
+<td><p>minimum angle difference (degrees) <a class="footnote-reference brackets" href="#branch3" id="id7">6</a></p></td>
 </tr>
-<tr class="row-odd"><td>angUB</td>
-<td>maximum angle difference (degrees) <a class="footnote-reference" href="#branch3" id="id8">[6]</a></td>
+<tr class="row-odd"><td><p>angUB</p></td>
+<td><p>maximum angle difference (degrees) <a class="footnote-reference brackets" href="#branch3" id="id8">6</a></p></td>
 </tr>
-<tr class="row-even"><td>contingency^</td>
-<td>1-include in SCOPF contingencies, 0- don’t include</td>
+<tr class="row-even"><td><p>contingency^</p></td>
+<td><p>1-include in SCOPF contingencies, 0- don’t include</p></td>
 </tr>
-<tr class="row-odd"><td>failure_rate^</td>
-<td>failure rate over user specified time horizon</td>
+<tr class="row-odd"><td><p>failure_rate^</p></td>
+<td><p>failure rate over user specified time horizon</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<table class="docutils footnote" frame="void" id="branch1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> Must match a bus name from the bus sheet</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="branch2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[5]</a></td><td>The short term rating is used in post fault calculation in SCOPF</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="branch3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[6]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id8">2</a>)</em> The voltage angle difference is taken to be unbounded below if angLB &lt; -360 and unbounded above if angUB &gt; 360. If both parameters are zero, it is unconstrained.</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="branch1"><span class="brackets">4</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id5">2</a>)</span></dt>
+<dd><p>Must match a bus name from the bus sheet</p>
+</dd>
+<dt class="label" id="branch2"><span class="brackets"><a class="fn-backref" href="#id6">5</a></span></dt>
+<dd><p>The short term rating is used in post fault calculation in SCOPF</p>
+</dd>
+<dt class="label" id="branch3"><span class="brackets">6</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id8">2</a>)</span></dt>
+<dd><p>The voltage angle difference is taken to be unbounded below if angLB &lt; -360 and unbounded above if angUB &gt; 360. If both parameters are zero, it is unconstrained.</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="transformer">
 <h3>transformer<a class="headerlink" href="#transformer" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="23%" />
-<col width="77%" />
+<col style="width: 23%" />
+<col style="width: 77%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>name</td>
-<td>transformer name (string)</td>
+<tbody>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>transformer name (string)</p></td>
 </tr>
-<tr class="row-even"><td>from_busname</td>
-<td>from bus name <a class="footnote-reference" href="#tranf1" id="id9">[7]</a></td>
+<tr class="row-even"><td><p>from_busname</p></td>
+<td><p>from bus name <a class="footnote-reference brackets" href="#tranf1" id="id9">7</a></p></td>
 </tr>
-<tr class="row-odd"><td>to_busname</td>
-<td>to bus name <a class="footnote-reference" href="#tranf1" id="id10">[7]</a></td>
+<tr class="row-odd"><td><p>to_busname</p></td>
+<td><p>to bus name <a class="footnote-reference brackets" href="#tranf1" id="id10">7</a></p></td>
 </tr>
-<tr class="row-even"><td>stat</td>
-<td>Status (1-connected, 0-disconnected)</td>
+<tr class="row-even"><td><p>stat</p></td>
+<td><p>Status (1-connected, 0-disconnected)</p></td>
 </tr>
-<tr class="row-odd"><td>type^</td>
-<td>1- 2-winding transformer with fixed tap ratios
-2- tap-changing transformer</td>
+<tr class="row-odd"><td><p>type^</p></td>
+<td><p>1- 2-winding transformer with fixed tap ratios
+2- tap-changing transformer</p></td>
 </tr>
-<tr class="row-even"><td>r</td>
-<td>resistance (p.u.)</td>
+<tr class="row-even"><td><p>r</p></td>
+<td><p>resistance (p.u.)</p></td>
 </tr>
-<tr class="row-odd"><td>x</td>
-<td>reactance (p.u.)</td>
+<tr class="row-odd"><td><p>x</p></td>
+<td><p>reactance (p.u.)</p></td>
 </tr>
-<tr class="row-even"><td>ShortTermRating</td>
-<td>MVA rating (short term rating), set to 0 for unlimited <a class="footnote-reference" href="#tranf2" id="id11">[8]</a></td>
+<tr class="row-even"><td><p>ShortTermRating</p></td>
+<td><p>MVA rating (short term rating), set to 0 for unlimited <a class="footnote-reference brackets" href="#tranf2" id="id11">8</a></p></td>
 </tr>
-<tr class="row-odd"><td>ContinuousRating</td>
-<td>MVA rating (continuous rating), set to 0 for unlimited</td>
+<tr class="row-odd"><td><p>ContinuousRating</p></td>
+<td><p>MVA rating (continuous rating), set to 0 for unlimited</p></td>
 </tr>
-<tr class="row-even"><td>angLB</td>
-<td>minimum angle difference (degrees) <a class="footnote-reference" href="#tranf3" id="id12">[9]</a></td>
+<tr class="row-even"><td><p>angLB</p></td>
+<td><p>minimum angle difference (degrees) <a class="footnote-reference brackets" href="#tranf3" id="id12">9</a></p></td>
 </tr>
-<tr class="row-odd"><td>angUB</td>
-<td>minimum angle difference (degrees) <a class="footnote-reference" href="#tranf3" id="id13">[9]</a></td>
+<tr class="row-odd"><td><p>angUB</p></td>
+<td><p>minimum angle difference (degrees) <a class="footnote-reference brackets" href="#tranf3" id="id13">9</a></p></td>
 </tr>
-<tr class="row-even"><td>PhaseShift^</td>
-<td>transformer phase shift angle (degrees), positive =&gt; delay</td>
+<tr class="row-even"><td><p>PhaseShift^</p></td>
+<td><p>transformer phase shift angle (degrees), positive =&gt; delay</p></td>
 </tr>
-<tr class="row-odd"><td>TapRatio^</td>
-<td>Transformer turns ratio</td>
+<tr class="row-odd"><td><p>TapRatio^</p></td>
+<td><p>Transformer turns ratio</p></td>
 </tr>
-<tr class="row-even"><td>TapLB</td>
-<td>Transformer minimum turns ratio</td>
+<tr class="row-even"><td><p>TapLB</p></td>
+<td><p>Transformer minimum turns ratio</p></td>
 </tr>
-<tr class="row-odd"><td>TapUB</td>
-<td>Transformer maximum turns ratio</td>
+<tr class="row-odd"><td><p>TapUB</p></td>
+<td><p>Transformer maximum turns ratio</p></td>
 </tr>
-<tr class="row-even"><td>contingency^</td>
-<td>1-include in SCOPF contingencies, 2- don’t include</td>
+<tr class="row-even"><td><p>contingency^</p></td>
+<td><p>1-include in SCOPF contingencies, 2- don’t include</p></td>
 </tr>
-<tr class="row-odd"><td>failure_rate^</td>
-<td>failure rate over user specified time horizon</td>
+<tr class="row-odd"><td><p>failure_rate^</p></td>
+<td><p>failure rate over user specified time horizon</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<table class="docutils footnote" frame="void" id="tranf1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[7]</td><td><em>(<a class="fn-backref" href="#id9">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> Must match a bus name from the bus sheet</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="tranf2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[8]</a></td><td>The short term rating is used in post fault calculation in SCOPF</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="tranf3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[9]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> The voltage angle difference is taken to be unbounded below if angLB &lt; -360 and unbounded above if angUB &gt; 360. If both parameters are zero, it is unconstrained.</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="tranf1"><span class="brackets">7</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id10">2</a>)</span></dt>
+<dd><p>Must match a bus name from the bus sheet</p>
+</dd>
+<dt class="label" id="tranf2"><span class="brackets"><a class="fn-backref" href="#id11">8</a></span></dt>
+<dd><p>The short term rating is used in post fault calculation in SCOPF</p>
+</dd>
+<dt class="label" id="tranf3"><span class="brackets">9</span><span class="fn-backref">(<a href="#id12">1</a>,<a href="#id13">2</a>)</span></dt>
+<dd><p>The voltage angle difference is taken to be unbounded below if angLB &lt; -360 and unbounded above if angUB &gt; 360. If both parameters are zero, it is unconstrained.</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="wind">
 <h3>wind<a class="headerlink" href="#wind" title="Permalink to this headline">¶</a></h3>
 <p>The wind sheet is included to separate variable generation from fixed capacity</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="28%" />
-<col width="72%" />
+<col style="width: 28%" />
+<col style="width: 72%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>busname</td>
-<td>Bus name <a class="footnote-reference" href="#wind1" id="id14">[10]</a></td>
+<tbody>
+<tr class="row-odd"><td><p>busname</p></td>
+<td><p>Bus name <a class="footnote-reference brackets" href="#wind1" id="id14">10</a></p></td>
 </tr>
-<tr class="row-even"><td>name</td>
-<td>Wind farm name</td>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>Wind farm name</p></td>
 </tr>
-<tr class="row-odd"><td>stat</td>
-<td>Status (1-connected, 0-disconnected)</td>
+<tr class="row-odd"><td><p>stat</p></td>
+<td><p>Status (1-connected, 0-disconnected)</p></td>
 </tr>
-<tr class="row-even"><td>PG</td>
-<td>Real power output (MW)</td>
+<tr class="row-even"><td><p>PG</p></td>
+<td><p>Real power output (MW)</p></td>
 </tr>
-<tr class="row-odd"><td>QG</td>
-<td>Reactive power output (MVAr)</td>
+<tr class="row-odd"><td><p>QG</p></td>
+<td><p>Reactive power output (MVAr)</p></td>
 </tr>
-<tr class="row-even"><td>PGLB</td>
-<td>Minimum real power output (MW)</td>
+<tr class="row-even"><td><p>PGLB</p></td>
+<td><p>Minimum real power output (MW)</p></td>
 </tr>
-<tr class="row-odd"><td>PGUB</td>
-<td>Maximum power output (MW)</td>
+<tr class="row-odd"><td><p>PGUB</p></td>
+<td><p>Maximum power output (MW)</p></td>
 </tr>
-<tr class="row-even"><td>QGLB</td>
-<td>Minimum Reactive power output (MW)</td>
+<tr class="row-even"><td><p>QGLB</p></td>
+<td><p>Minimum Reactive power output (MW)</p></td>
 </tr>
-<tr class="row-odd"><td>QGUB</td>
-<td>Maximum reactive power output (MVAr)</td>
+<tr class="row-odd"><td><p>QGUB</p></td>
+<td><p>Maximum reactive power output (MVAr)</p></td>
 </tr>
-<tr class="row-even"><td>VS</td>
-<td>Voltage magnitude setpoint (p.u.)</td>
+<tr class="row-even"><td><p>VS</p></td>
+<td><p>Voltage magnitude setpoint (p.u.)</p></td>
 </tr>
-<tr class="row-odd"><td>contingency^</td>
-<td>1-include in SCOPF contingencies, 0- don’t include</td>
+<tr class="row-odd"><td><p>contingency^</p></td>
+<td><p>1-include in SCOPF contingencies, 0- don’t include</p></td>
 </tr>
-<tr class="row-even"><td>failure_rate^</td>
-<td>failure rate over user specified time horizon</td>
+<tr class="row-even"><td><p>failure_rate^</p></td>
+<td><p>failure rate over user specified time horizon</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<table class="docutils footnote" frame="void" id="wind1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[10]</a></td><td>Must match a bus name from the bus sheet</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="wind1"><span class="brackets"><a class="fn-backref" href="#id14">10</a></span></dt>
+<dd><p>Must match a bus name from the bus sheet</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="shunt">
 <h3>shunt<a class="headerlink" href="#shunt" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="29%" />
-<col width="71%" />
+<col style="width: 29%" />
+<col style="width: 71%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>busname</td>
-<td>Bus name <a class="footnote-reference" href="#shunt1" id="id15">[11]</a></td>
+<tbody>
+<tr class="row-odd"><td><p>busname</p></td>
+<td><p>Bus name <a class="footnote-reference brackets" href="#shunt1" id="id15">11</a></p></td>
 </tr>
-<tr class="row-even"><td>name</td>
-<td>Shunt name (string)</td>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>Shunt name (string)</p></td>
 </tr>
-<tr class="row-odd"><td>GL</td>
-<td>Shunt conductance (MW demanded at V = 1.0 p.u.)</td>
+<tr class="row-odd"><td><p>GL</p></td>
+<td><p>Shunt conductance (MW demanded at V = 1.0 p.u.)</p></td>
 </tr>
-<tr class="row-even"><td>BL</td>
-<td>Shunt susceptance (MVAr injected at V = 1.0 p.u.)</td>
+<tr class="row-even"><td><p>BL</p></td>
+<td><p>Shunt susceptance (MVAr injected at V = 1.0 p.u.)</p></td>
 </tr>
-<tr class="row-odd"><td>stat</td>
-<td>Status (1- connected, 0-disconnected)</td>
+<tr class="row-odd"><td><p>stat</p></td>
+<td><p>Status (1- connected, 0-disconnected)</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<table class="docutils footnote" frame="void" id="shunt1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[11]</a></td><td>Must match a bus name from the bus sheet</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="shunt1"><span class="brackets"><a class="fn-backref" href="#id15">11</a></span></dt>
+<dd><p>Must match a bus name from the bus sheet</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="zone">
 <h3>zone<a class="headerlink" href="#zone" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="29%" />
-<col width="71%" />
+<col style="width: 29%" />
+<col style="width: 71%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>interconnection_ID</td>
-<td>ID for interconnector between zones</td>
+<tbody>
+<tr class="row-odd"><td><p>interconnection_ID</p></td>
+<td><p>ID for interconnector between zones</p></td>
 </tr>
-<tr class="row-even"><td>from_zone</td>
-<td>from zone <a class="footnote-reference" href="#zone1" id="id16">[12]</a></td>
+<tr class="row-even"><td><p>from_zone</p></td>
+<td><p>from zone <a class="footnote-reference brackets" href="#zone1" id="id16">12</a></p></td>
 </tr>
-<tr class="row-odd"><td>to_zone</td>
-<td>to zone <a class="footnote-reference" href="#zone1" id="id17">[12]</a></td>
+<tr class="row-odd"><td><p>to_zone</p></td>
+<td><p>to zone <a class="footnote-reference brackets" href="#zone1" id="id17">12</a></p></td>
 </tr>
-<tr class="row-even"><td>TransferCapacity(MW)</td>
-<td>Transfer capacity between ‘from_zone’ and ‘to_zone’</td>
+<tr class="row-even"><td><p>TransferCapacity(MW)</p></td>
+<td><p>Transfer capacity between ‘from_zone’ and ‘to_zone’</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<table class="docutils footnote" frame="void" id="zone1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[12]</td><td><em>(<a class="fn-backref" href="#id16">1</a>, <a class="fn-backref" href="#id17">2</a>)</em> Must match a zone name from the bus sheet</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="zone1"><span class="brackets">12</span><span class="fn-backref">(<a href="#id16">1</a>,<a href="#id17">2</a>)</span></dt>
+<dd><p>Must match a zone name from the bus sheet</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="generators">
 <h3>generators<a class="headerlink" href="#generators" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="25%" />
-<col width="75%" />
+<col style="width: 25%" />
+<col style="width: 75%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>busname</td>
-<td>Bus name <a class="footnote-reference" href="#gen1" id="id18">[13]</a></td>
+<tbody>
+<tr class="row-odd"><td><p>busname</p></td>
+<td><p>Bus name <a class="footnote-reference brackets" href="#gen1" id="id18">13</a></p></td>
 </tr>
-<tr class="row-even"><td>name</td>
-<td>Generator name (string)</td>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>Generator name (string)</p></td>
 </tr>
-<tr class="row-odd"><td>stat</td>
-<td>Status (1-connected, 0-disconnected)</td>
+<tr class="row-odd"><td><p>stat</p></td>
+<td><p>Status (1-connected, 0-disconnected)</p></td>
 </tr>
-<tr class="row-even"><td>PG</td>
-<td>Real power output (MW)</td>
+<tr class="row-even"><td><p>PG</p></td>
+<td><p>Real power output (MW)</p></td>
 </tr>
-<tr class="row-odd"><td>QG</td>
-<td>Reactive power output (MVAr)</td>
+<tr class="row-odd"><td><p>QG</p></td>
+<td><p>Reactive power output (MVAr)</p></td>
 </tr>
-<tr class="row-even"><td>PGLB</td>
-<td>Minimum real power output (MW)</td>
+<tr class="row-even"><td><p>PGLB</p></td>
+<td><p>Minimum real power output (MW)</p></td>
 </tr>
-<tr class="row-odd"><td>PGUB</td>
-<td>Maximum power output (MW)</td>
+<tr class="row-odd"><td><p>PGUB</p></td>
+<td><p>Maximum power output (MW)</p></td>
 </tr>
-<tr class="row-even"><td>QGLB</td>
-<td>Minimum Reactive power output (MW)</td>
+<tr class="row-even"><td><p>QGLB</p></td>
+<td><p>Minimum Reactive power output (MW)</p></td>
 </tr>
-<tr class="row-odd"><td>QGUB</td>
-<td>Maximum reactive power output (MVAr)</td>
+<tr class="row-odd"><td><p>QGUB</p></td>
+<td><p>Maximum reactive power output (MVAr)</p></td>
 </tr>
-<tr class="row-even"><td>VS</td>
-<td>Voltage magnitude setpoint (p.u.)</td>
+<tr class="row-even"><td><p>VS</p></td>
+<td><p>Voltage magnitude setpoint (p.u.)</p></td>
 </tr>
-<tr class="row-odd"><td>RampDown (MW/hr)^</td>
-<td>Ramp down rate (MW/hr) <a class="footnote-reference" href="#gen2" id="id19">[14]</a></td>
+<tr class="row-odd"><td><p>RampDown (MW/hr)^</p></td>
+<td><p>Ramp down rate (MW/hr) <a class="footnote-reference brackets" href="#gen2" id="id19">14</a></p></td>
 </tr>
-<tr class="row-even"><td>RampUp (MW/hr)^</td>
-<td>Ramp up rate (MW/hr) <a class="footnote-reference" href="#gen2" id="id20">[14]</a></td>
+<tr class="row-even"><td><p>RampUp (MW/hr)^</p></td>
+<td><p>Ramp up rate (MW/hr) <a class="footnote-reference brackets" href="#gen2" id="id20">14</a></p></td>
 </tr>
-<tr class="row-odd"><td>MinDownTime(hr)^</td>
-<td>Minimum down time (hr) <a class="footnote-reference" href="#gen3" id="id21">[15]</a></td>
+<tr class="row-odd"><td><p>MinDownTime(hr)^</p></td>
+<td><p>Minimum down time (hr) <a class="footnote-reference brackets" href="#gen3" id="id21">15</a></p></td>
 </tr>
-<tr class="row-even"><td>MinupTime(hr)^</td>
-<td>Minimum up time (hr) <a class="footnote-reference" href="#gen3" id="id22">[15]</a></td>
+<tr class="row-even"><td><p>MinupTime(hr)^</p></td>
+<td><p>Minimum up time (hr) <a class="footnote-reference brackets" href="#gen3" id="id22">15</a></p></td>
 </tr>
-<tr class="row-odd"><td>FuelType^</td>
-<td>Coal, Nuke - nuclear, CCGT, OCGT, Unknown</td>
+<tr class="row-odd"><td><p>FuelType^</p></td>
+<td><p>Coal, Nuke - nuclear, CCGT, OCGT, Unknown</p></td>
 </tr>
-<tr class="row-even"><td>contingency</td>
-<td>1-include in SCOPF contingencies, 0- don’t include</td>
+<tr class="row-even"><td><p>contingency</p></td>
+<td><p>1-include in SCOPF contingencies, 0- don’t include</p></td>
 </tr>
-<tr class="row-odd"><td>startup^</td>
-<td>Start up cost (£) <a class="footnote-reference" href="#gen3" id="id23">[15]</a></td>
+<tr class="row-odd"><td><p>startup^</p></td>
+<td><p>Start up cost (£) <a class="footnote-reference brackets" href="#gen3" id="id23">15</a></p></td>
 </tr>
-<tr class="row-even"><td>shutdown^</td>
-<td>Shut down cost   (£) <a class="footnote-reference" href="#gen3" id="id24">[15]</a></td>
+<tr class="row-even"><td><p>shutdown^</p></td>
+<td><p>Shut down cost   (£) <a class="footnote-reference brackets" href="#gen3" id="id24">15</a></p></td>
 </tr>
-<tr class="row-odd"><td>costc2</td>
-<td>Quadratic cost coefficient</td>
+<tr class="row-odd"><td><p>costc2</p></td>
+<td><p>Quadratic cost coefficient</p></td>
 </tr>
-<tr class="row-even"><td>costc1</td>
-<td>Linear cost coefficient</td>
+<tr class="row-even"><td><p>costc1</p></td>
+<td><p>Linear cost coefficient</p></td>
 </tr>
-<tr class="row-odd"><td>costc0</td>
-<td>Constant cost coefficient</td>
+<tr class="row-odd"><td><p>costc0</p></td>
+<td><p>Constant cost coefficient</p></td>
 </tr>
-<tr class="row-even"><td>bid^</td>
-<td>Bid in balancing mechanism to reduce generation <a class="footnote-reference" href="#gen4" id="id25">[16]</a></td>
+<tr class="row-even"><td><p>bid^</p></td>
+<td><p>Bid in balancing mechanism to reduce generation <a class="footnote-reference brackets" href="#gen4" id="id25">16</a></p></td>
 </tr>
-<tr class="row-odd"><td>offer^</td>
-<td>Offer in balancing mechanism to increase generation <a class="footnote-reference" href="#gen4" id="id26">[16]</a></td>
+<tr class="row-odd"><td><p>offer^</p></td>
+<td><p>Offer in balancing mechanism to increase generation <a class="footnote-reference brackets" href="#gen4" id="id26">16</a></p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<table class="docutils footnote" frame="void" id="gen1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id18">[13]</a></td><td>Must match a bus name from the bus sheet</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="gen2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[14]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id20">2</a>)</em> Ramp rates required for security constrained OPF or unit commitment problems</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="gen3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[15]</td><td><em>(<a class="fn-backref" href="#id21">1</a>, <a class="fn-backref" href="#id22">2</a>, <a class="fn-backref" href="#id23">3</a>, <a class="fn-backref" href="#id24">4</a>)</em> Minimum up/down times, startup and shutdown costs are required in the unit commitment models</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="gen4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[16]</td><td><em>(<a class="fn-backref" href="#id25">1</a>, <a class="fn-backref" href="#id26">2</a>)</em> These parameters are part of the balancing market extension model that is available as an extension to OATS</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="gen1"><span class="brackets"><a class="fn-backref" href="#id18">13</a></span></dt>
+<dd><p>Must match a bus name from the bus sheet</p>
+</dd>
+<dt class="label" id="gen2"><span class="brackets">14</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id20">2</a>)</span></dt>
+<dd><p>Ramp rates required for security constrained OPF or unit commitment problems</p>
+</dd>
+<dt class="label" id="gen3"><span class="brackets">15</span><span class="fn-backref">(<a href="#id21">1</a>,<a href="#id22">2</a>,<a href="#id23">3</a>,<a href="#id24">4</a>)</span></dt>
+<dd><p>Minimum up/down times, startup and shutdown costs are required in the unit commitment models</p>
+</dd>
+<dt class="label" id="gen4"><span class="brackets">16</span><span class="fn-backref">(<a href="#id25">1</a>,<a href="#id26">2</a>)</span></dt>
+<dd><p>These parameters are part of the balancing market extension model that is available as an extension to OATS</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="storage">
 <h3>storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="32%" />
-<col width="68%" />
+<col style="width: 32%" />
+<col style="width: 68%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>name</td>
-<td>Name for the storage device</td>
+<tbody>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>Name for the storage device</p></td>
 </tr>
-<tr class="row-even"><td>zone</td>
-<td>Name of the zone</td>
+<tr class="row-even"><td><p>zone</p></td>
+<td><p>Name of the zone</p></td>
 </tr>
-<tr class="row-odd"><td>stat</td>
-<td>Status</td>
+<tr class="row-odd"><td><p>stat</p></td>
+<td><p>Status</p></td>
 </tr>
-<tr class="row-even"><td>Minoperatingcapacity(MW)</td>
-<td>Min operating capacity</td>
+<tr class="row-even"><td><p>Minoperatingcapacity(MW)</p></td>
+<td><p>Min operating capacity</p></td>
 </tr>
-<tr class="row-odd"><td>capacity(MW)</td>
-<td>Total capacity of the storage</td>
+<tr class="row-odd"><td><p>capacity(MW)</p></td>
+<td><p>Total capacity of the storage</p></td>
 </tr>
-<tr class="row-even"><td>chargingrate(MW/hr)</td>
-<td>charging rate</td>
+<tr class="row-even"><td><p>chargingrate(MW/hr)</p></td>
+<td><p>charging rate</p></td>
 </tr>
-<tr class="row-odd"><td>dischargingrate(MW/hr)</td>
-<td>discharging rate</td>
+<tr class="row-odd"><td><p>dischargingrate(MW/hr)</p></td>
+<td><p>discharging rate</p></td>
 </tr>
-<tr class="row-even"><td>ChargingEfficieny(%)</td>
-<td>charging efficiency</td>
+<tr class="row-even"><td><p>ChargingEfficieny(%)</p></td>
+<td><p>charging efficiency</p></td>
 </tr>
-<tr class="row-odd"><td>DischargingEfficieny(%)</td>
-<td>discharging efficiency</td>
+<tr class="row-odd"><td><p>DischargingEfficieny(%)</p></td>
+<td><p>discharging efficiency</p></td>
 </tr>
-<tr class="row-even"><td>InitialStoredPower(MW)</td>
-<td>Initial stored energy</td>
+<tr class="row-even"><td><p>InitialStoredPower(MW)</p></td>
+<td><p>Initial stored energy</p></td>
 </tr>
-<tr class="row-odd"><td>FinalStoredPower(MW)</td>
-<td>Final stored energy at the end of the planning horizon</td>
+<tr class="row-odd"><td><p>FinalStoredPower(MW)</p></td>
+<td><p>Final stored energy at the end of the planning horizon</p></td>
 </tr>
 </tbody>
 </table>

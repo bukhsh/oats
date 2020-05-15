@@ -20,21 +20,12 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'1.0.2',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -92,6 +83,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to OATS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputs.html">Outputs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="use.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Models</a><ul>
@@ -180,58 +172,58 @@
 </ul>
 </div>
 <p>The following table provides information about the implementation of the steady-state optimisation models in OATS. Note that the selected solver(s) column is not an exhaustive list of solvers. Also, the references column provide links to a selected set of publications where the users can find the mathematical formulation of the models implemented in OATS.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="11%" />
-<col width="30%" />
-<col width="18%" />
-<col width="26%" />
-<col width="15%" />
+<col style="width: 11%" />
+<col style="width: 30%" />
+<col style="width: 18%" />
+<col style="width: 26%" />
+<col style="width: 15%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">OATS ID</th>
-<th class="head">Model</th>
-<th class="head">Classification</th>
-<th class="head">Selected solver(s)</th>
-<th class="head">References</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>OATS ID</p></th>
+<th class="head"><p>Model</p></th>
+<th class="head"><p>Classification</p></th>
+<th class="head"><p>Selected solver(s)</p></th>
+<th class="head"><p>References</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>DCLF</td>
-<td>DC load flow</td>
-<td>LP</td>
-<td>cplex, glpk</td>
-<td>[1,2]</td>
+<tbody>
+<tr class="row-even"><td><p>DCLF</p></td>
+<td><p>DC load flow</p></td>
+<td><p>LP</p></td>
+<td><p>cplex, glpk</p></td>
+<td><p>[1,2]</p></td>
 </tr>
-<tr class="row-odd"><td>DCOPF</td>
-<td>DC optimal power flow</td>
-<td>LP</td>
-<td>cplex, gurobi</td>
-<td>[3]</td>
+<tr class="row-odd"><td><p>DCOPF</p></td>
+<td><p>DC optimal power flow</p></td>
+<td><p>LP</p></td>
+<td><p>cplex, gurobi</p></td>
+<td><p>[3]</p></td>
 </tr>
-<tr class="row-even"><td>SCOPF</td>
-<td>Security constrained OPF</td>
-<td>LP</td>
-<td>cplex, gurobi</td>
-<td>[4]</td>
+<tr class="row-even"><td><p>SCOPF</p></td>
+<td><p>Security constrained OPF</p></td>
+<td><p>LP</p></td>
+<td><p>cplex, gurobi</p></td>
+<td><p>[4]</p></td>
 </tr>
-<tr class="row-odd"><td>ACLF</td>
-<td>AC load flow</td>
-<td>NLP</td>
-<td>ipopt</td>
-<td>[2,3]</td>
+<tr class="row-odd"><td><p>ACLF</p></td>
+<td><p>AC load flow</p></td>
+<td><p>NLP</p></td>
+<td><p>ipopt</p></td>
+<td><p>[2,3]</p></td>
 </tr>
-<tr class="row-even"><td>ACOPF</td>
-<td>AC optimal power flow</td>
-<td>NLP</td>
-<td>ipopt</td>
-<td>[5,6]</td>
+<tr class="row-even"><td><p>ACOPF</p></td>
+<td><p>AC optimal power flow</p></td>
+<td><p>NLP</p></td>
+<td><p>ipopt</p></td>
+<td><p>[5,6]</p></td>
 </tr>
-<tr class="row-odd"><td>UC</td>
-<td>Unit commitment problem</td>
-<td>MILP</td>
-<td>cplex, bonmin</td>
-<td>[7]</td>
+<tr class="row-odd"><td><p>UC</p></td>
+<td><p>Unit commitment problem</p></td>
+<td><p>MILP</p></td>
+<td><p>cplex, bonmin</p></td>
+<td><p>[7]</p></td>
 </tr>
 </tbody>
 </table>
