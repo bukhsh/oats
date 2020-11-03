@@ -35,9 +35,11 @@ See also the list of [contributors](https://github.com/bukhsh/oats/contributors)
 
 ## Citing OATS
 
-We are working on a journal article for OATS. Meanwhile, we request the users to cite the user manual of OATS.
+We request that publications derived from the use of OATS acknowledge our work by citing the follow:
 
-* W. Bukhsh, OATS: Optimisation and Analysis Toolbox for Power Systems Optimisation, Documentation release 0.1, 2017 \[Available\] Online: https://github.com/bukhsh/oats
+
+* W. Bukhsh, C. Edmunds and K. Bell, "OATS: Optimisation and Analysis Toolbox for Power Systems," in IEEE Transactions on Power Systems, vol. 35, no. 5, pp. 3552-3561, Sept. 2020, doi: 10.1109/TPWRS.2020.2986081.
+* W. Bukhsh, OATS: Optimisation and Analysis Toolbox for Power Systems Optimisation, Documentation release 0.1, 2019 \[Available\] Online: https://github.com/bukhsh/oats
 
 ## Acknowledgments
 
