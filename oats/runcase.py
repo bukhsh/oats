@@ -107,7 +107,9 @@ def runcase(testcase,mod,opt=None):
 
     else:
         instance       = model.create_instance(datfile)
-        solveroptions  = SolverFactory(opt['solver'])
+        #solveroptions  = SolverFactory(opt['solver'])
         solver_manager = SolverManagerFactory('neos')
+        print (dir(solver_manager.solve))
         results        = solver_manager.solve(instance, opt=solveroptions)
+
         print (results)
