@@ -1,8 +1,800 @@
-Mon, 04 Nov 2019 09:57:54 INFO     OATS log file
-Mon, 04 Nov 2019 09:57:54 INFO     Program started
-Mon, 04 Nov 2019 09:57:54 INFO     Solver selected: cplex
-Mon, 04 Nov 2019 09:57:54 INFO     Testcase selected: /home/waqquas/Dropbox/caseGBwind.xlsx
-Mon, 04 Nov 2019 09:57:54 INFO     Model selected: UC
-Mon, 04 Nov 2019 09:57:54 INFO     Given model file found and selected from the models library
-Mon, 04 Nov 2019 09:57:54 INFO     Given testcase file found and selected from the testcase library
-Mon, 04 Nov 2019 09:57:55 INFO     Done!
+Thu, 21 Jan 2021 14:46:10 INFO     OATS log file
+Thu, 21 Jan 2021 14:46:10 INFO     Program started
+Thu, 21 Jan 2021 14:46:10 INFO     Solver selected: cplex
+Thu, 21 Jan 2021 14:46:10 INFO     Testcase selected: /home/waqquas/Dropbox/NIA-GB-Data/TestCases/GB_ReducedModel_woTransformers_RI.xlsx
+Thu, 21 Jan 2021 14:46:10 INFO     Model selected: DCOPF
+Thu, 21 Jan 2021 14:46:10 INFO     Given model file found and selected from the models library
+Thu, 21 Jan 2021 14:46:10 INFO     Given testcase file found and selected from the testcase library
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:11 WARNING  DEPRECATED: The default domain for Param objects is 'Any'.  However,
+we will be changing that default to 'Reals' in the future.  If you
+really intend the domain of this Param (A) to be 'Any', you can
+suppress this warning by explicitly specifying 'within=Any' to the
+Param constructor.  (deprecated in 5.6.9, will be removed in 6.0)
+(called from /home/waqquas/.local/lib/python3.6/site-packages/pyomo/core/base/param.py:83)
+Thu, 21 Jan 2021 14:46:12 INFO     Done!
