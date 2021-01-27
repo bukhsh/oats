@@ -6,5 +6,5 @@
 #
 from oats.run import dcopf
 
-dcopf(neos=False,solver='cplex',tc='/home/waqquas/Dropbox/NIA-GB-Data/TestCases/GB_ReducedModel_woTransformers_RI.xlsx')
+dcopf(neos=False,solver='ipopt',tc='OATS-testcases/GB_ReducedNetwork.xlsx')
 
