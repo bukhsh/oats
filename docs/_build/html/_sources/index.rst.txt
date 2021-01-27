@@ -30,5 +30,6 @@ OATS integrates a modelling language PYOMO for describing optimisation models. U
    use
    models
    dataformat
+   networkdata
    extensions
    examples
