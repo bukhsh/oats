@@ -2,16 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="223f896f-623a-4933-b075-25cee17ebd93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/networkdata.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OATS-testcases/case24_ieee_rts.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/OATS-testcases/case24_ieee_rts.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OATS-testcases/~$case24_ieee_rts.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafile.dat" beforeDir="false" afterPath="$PROJECT_DIR$/datafile.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oats/printdata.py" beforeDir="false" afterPath="$PROJECT_DIR$/oats/printdata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oats/selecttestcase.py" beforeDir="false" afterPath="$PROJECT_DIR$/oats/selecttestcase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oats/testcases/.~lock.case24_ieee_rts.xlsx#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oatslog.log" beforeDir="false" afterPath="$PROJECT_DIR$/oatslog.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/results.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/dataformat.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/dataformat.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/examples.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/examples.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/examples/OptimisingReactivePowerMargin.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/examples/OptimisingReactivePowerMargin.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/examples/OptimisingTapSettings.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/examples/OptimisingTapSettings.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/examples/VDload.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/examples/VDload.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/examples/storage.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/examples/storage.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/extensions.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/extensions.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/index.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/installation.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/installation.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/intro.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/intro.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/intro/architecture.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/intro/architecture.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/intro/citation.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/intro/citation.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/intro/license.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/intro/license.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/models.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/models.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/models/LF.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/models/LF.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/models/OPF.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/models/OPF.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/models/SCOPF.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/models/SCOPF.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/models/UC.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/models/UC.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/outputs.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/outputs.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/use.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/use.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/.buildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/.buildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/_sources/index.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/index.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/_static/basic.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/_static/basic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/_static/css/badge_only.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/_static/css/badge_only.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/_static/css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/_static/css/theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/_static/doctools.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/_static/doctools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/_static/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/_static/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/_static/js/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/_static/js/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/_static/pygments.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/_static/pygments.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/_static/searchtools.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/_static/searchtools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/dataformat.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/dataformat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/examples.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/examples.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/examples/OptimisingReactivePowerMargin.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/examples/OptimisingReactivePowerMargin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/examples/OptimisingTapSettings.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/examples/OptimisingTapSettings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/examples/VDload.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/examples/VDload.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/examples/storage.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/examples/storage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/extensions.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/extensions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/genindex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/installation.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/installation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/intro.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/intro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/intro/architecture.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/intro/architecture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/intro/citation.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/intro/citation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/intro/license.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/intro/license.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/models.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/models.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/models/LF.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/models/LF.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/models/OPF.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/models/OPF.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/models/SCOPF.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/models/SCOPF.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/models/UC.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/models/UC.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/objects.inv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/outputs.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/outputs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/py-modindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/py-modindex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/use.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/oatslog.log" beforeDir="false" afterPath="$PROJECT_DIR$/docs/oatslog.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +80,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
