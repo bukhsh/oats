@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Network Data &mdash; oats 1.0.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Extending models in OATS" href="extensions.html" />
+    <link rel="prev" title="Data format" href="dataformat.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> oats
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction to OATS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputs.html">Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataformat.html">Data format</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Network Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#matpower-test-cases">MATPOWER test cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-reduced-representative-gb-network">A reduced representative GB network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#irish-testcase">Irish testcase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extending models in OATS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">oats</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Network Data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/networkdata.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="network-data">
+<h1>Network Data<a class="headerlink" href="#network-data" title="Permalink to this headline">¶</a></h1>
+<p>OATS provide users with a range of <a class="reference external" href="https://github.com/bukhsh/oats/tree/master/OATS-testcases">test cases</a> to simulate the implemented steady-state models. We request that publications
+derived from the use of OATS, or its datasets, acknowledge OATS by citing the following paper.</p>
+<p>W. Bukhsh, C. Edmunds and K. Bell, “OATS: Optimisation and Analysis Toolbox for Power Systems,” in IEEE Transactions on Power Systems, vol. 35, no. 5, pp. 3552-3561, Sept. 2020, doi: 10.1109/TPWRS.2020.2986081.
+<a class="reference external" href="https://pureportal.strath.ac.uk/en/publications/oats-optimisation-and-analysis-toolbox-for-power-systems">[Download link]</a></p>
+<div class="section" id="matpower-test-cases">
+<h2>MATPOWER test cases<a class="headerlink" href="#matpower-test-cases" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://matpower.org/">MATPOWER</a> is an open-source tool for solving power system steady-state analysis optimisation problems.</p>
+<p>A Python script is provided that can be used to convert Matpower test-cases into equivalent OATS test-cases. This script is available on the <a class="reference external" href="https://github.com/bukhsh/oats">OATS GitHub page</a>.</p>
+<p>If you are using a Matpower testcase for your study, we request you to cite Matpower, in addition to the OATS paper.</p>
+</div>
+<div class="section" id="a-reduced-representative-gb-network">
+<h2>A reduced representative GB network<a class="headerlink" href="#a-reduced-representative-gb-network" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/bukhsh/oats/blob/master/OATS-testcases/GB_ReducedNetwork.xlsx">[Direct link to download]</a></p>
+<p>A reduced GB network model that was developed at the University of Strathclyde in response to a
+need articulated in [1]. The network model is based on a solved 2009 full GB transmission network peak demand load flow
+case and has been used in [2] to study optimal loading of the Western link.</p>
+<p>This case has been tested for convergence on DC/AC load flow, DC/AC optimal power flow and the security constrained optimal power flow problems.</p>
+<p>We request you to cite [1], in addition to the OATS paper, for any publications that are derived from this dataset.</p>
+<p>[1] Bell, K. R. W., &amp; Tleis, A. N. D. (2010). Test system requirements for modelling future power systems. Paper presented at 2010 General Meeting of the Power and Energy Society (PES), Minneapolis, Minnesota, . <a class="reference external" href="https://doi.org/10.1109/PES.2010.5589807">https://doi.org/10.1109/PES.2010.5589807</a>
+<a class="reference external" href="https://pureportal.strath.ac.uk/en/publications/test-system-requirements-for-modelling-future-power-systems">[Link]</a></p>
+<p>[2] Leavy, A. S. C., Bukhsh, W. A., &amp; Bell, K. R. W. (2018). Optimal operation of the Western Link embedded HVDC connection. Paper presented at 20th Power Systems Computation Conference, Dublin, Ireland. <a class="reference external" href="https://doi.org/10.23919/PSCC.2018.8442651">https://doi.org/10.23919/PSCC.2018.8442651</a>
+<a class="reference external" href="https://pureportal.strath.ac.uk/en/publications/optimal-operation-of-the-western-link-embedded-hvdc-connection">[Link]</a></p>
+</div>
+<div class="section" id="irish-testcase">
+<h2>Irish testcase<a class="headerlink" href="#irish-testcase" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/IR-UC.png"><img alt="_images/IR-UC.png" class="align-center" src="_images/IR-UC.png" style="width: 15em;" /></a>
+<p>This is a two-area (Republic of Ireland and Northern Ireland) model assembled to solve a unit commitment problem in OATS.
+The main source of data is a report from Baringa Partners [3]. The transmission capacitsies were obtained from [4].</p>
+<p>[3] Baringa Partners LLP 2016, “SEM PLEXOS model validation,” May 2016. [Online]. Available: <a class="reference external" href="https://www.semcommittee.com/news">https://www.semcommittee.com/news</a>-
+centre/baringa-sem-plexos-forecast-model-2016-17</p>
+<p>[4] House of Commons Northern Ireland Affairs Committee, “Electricity sector in northern ireland,” 2017. [Online]. Available:
+<a class="reference external" href="https://publications.parliament.uk/pa/cm201617/cmselect/cmniaf/51/51.pdf">https://publications.parliament.uk/pa/cm201617/cmselect/cmniaf/51/51.pdf</a></p>
+<p>Tested for convergence on the unit commitment problem.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="extensions.html" class="btn btn-neutral float-right" title="Extending models in OATS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dataformat.html" class="btn btn-neutral float-left" title="Data format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, Waqquas Bukhsh
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
