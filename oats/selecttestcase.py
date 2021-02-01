@@ -12,14 +12,13 @@
 import pandas as pd
 
 def selecttestcase(test):
-    data_flags = {'storage':1,'ts':1}
+    data_flags = {'storage':1,'ts':1,'shunt':1}
     xl = pd.ExcelFile(test,engine='openpyxl')
 
     df_bus         = xl.parse("bus")
     df_demand      = xl.parse("demand")
     df_branch      = xl.parse("branch")
     df_generators  = xl.parse("generator")
-    df_shunt       = xl.parse("shunt")
     df_transformer = xl.parse("transformer")
     df_wind        = xl.parse("wind")
     df_baseMVA     = xl.parse("baseMVA")
@@ -31,7 +30,6 @@ def selecttestcase(test):
     "demand": df_demand.dropna(how='all'),
     "branch": df_branch.dropna(how='all'),
     "generator": df_generators.dropna(how='all'),
-    "shunt": df_shunt.dropna(how='all'),
     "transformer": df_transformer.dropna(how='all'),
     "wind": df_wind.dropna(how='all'),
     "baseMVA": df_baseMVA.dropna(how='all'),
@@ -52,4 +50,12 @@ def selecttestcase(test):
     except:
         print('Time-series data not defined')
         data["flags"]['ts'] = 0
+    try:
+        df_ts    = xl.parse("shunt",header=[0,1])
+        data.update( {"shunt" : df_ts.dropna(how='all')} )
+    except:
+        print('Shunt data not defined')
+        data["flags"]['shunt'] = 0
+
+
     return data

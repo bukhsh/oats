@@ -21,7 +21,8 @@ class printdata(object):
     def reducedata(self):
         self.data["demand"]      = self.data["demand"].drop(self.data["demand"][self.data["demand"]['stat'] == 0].index.tolist())
         self.data["branch"]      = self.data["branch"].drop(self.data["branch"][self.data["branch"]['stat'] == 0].index.tolist())
-        self.data["shunt"]       = self.data["shunt"].drop(self.data["shunt"][self.data["shunt"]['stat'] == 0].index.tolist())
+        if self.data["flags"]["shunt"]:
+            self.data["shunt"]       = self.data["shunt"].drop(self.data["shunt"][self.data["shunt"]['stat'] == 0].index.tolist())
         if self.data["flags"]["storage"]:
             self.data["storage"]     = self.data["storage"].drop(self.data["storage"][self.data["storage"]['stat'] == 0].index.tolist())
         self.data["transformer"] = self.data["transformer"].drop(self.data["transformer"][self.data["transformer"]['stat'] == 0].index.tolist())
@@ -63,6 +64,12 @@ class printdata(object):
         f.write('param PD:=\n')
         for i in self.data["demand"].index.tolist():
             f.write(str(self.data["demand"]["name"][i])+" "+str(float(self.data["demand"]["real"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+        # set of negative demands
+        f.write('set DNeg:=\n')
+        for i in self.data["demand"].index.tolist():
+            if float(self.data["demand"]["real"][i]) < 0:
+                f.write(str(self.data["demand"]["name"][i]) + "\n")
         f.write(';\n')
         f.write('param VOLL:=\n')
         for i in self.data["demand"].index.tolist():
@@ -221,7 +228,7 @@ class printdata(object):
         f = open(self.datfile, 'a')
 
         #set of shunts
-        if not(self.data["shunt"].empty):
+        if self.data["flags"]["shunt"]:
             f.write('set SHUNT:=\n')
             for i in self.data["shunt"].index.tolist():
                 f.write(str(self.data["shunt"]["name"][i])+"\n")
@@ -603,6 +610,12 @@ class printdata(object):
         for i in self.data["timeseries"]["Demand"]:
             for j in self.data["timeseries"]["Demand"].index.tolist():
                 f.write(str(i)+" "+str(self.data["timeseries"]["TP"]["timeperiod"][j])+" "+str(float(self.data["timeseries"]["Demand"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+        f.write(';\n')
+        # set of negative demands
+        f.write('set DNeg:=\n')
+        for i in self.data["demand"].index.tolist():
+            if float(self.data["demand"]["real"][i])<0:
+                f.write(str(self.data["demand"]["name"][i])+"\n")
         f.write(';\n')
         f.write('param VOLL:=\n')
         for i in self.data["demand"].index.tolist():
