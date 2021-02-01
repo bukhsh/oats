@@ -22,6 +22,7 @@ model.B      = Set()  # set of buses
 model.G      = Set()  # set of generators
 model.WIND   = Set()  # set of wind generators
 model.D      = Set()  # set of demands
+model.DNeg   = Set()  # set of demands
 model.L      = Set()  # set of lines
 model.SHUNT  = Set()  # set of shunts
 model.b0     = Set(within=model.B)  # set of reference buses
@@ -36,8 +37,8 @@ model.SHUNTbs = Set(within=model.B*model.SHUNT)  # set of shunt-bus mapping
 
 # --- parameters ---
 # line matrix
-model.A     = Param(model.L*model.LE)       # bus-line matrix
-model.AT    = Param(model.TRANSF*model.LE)  # bus-transformer matrix
+model.A     = Param(model.L*model.LE,within=Any)       # bus-line matrix
+model.AT    = Param(model.TRANSF*model.LE,within=Any)  # bus-transformer matrix
 
 # demands
 model.PD      = Param(model.D, within=Reals)  # real power demand
@@ -114,8 +115,12 @@ def demand_model(model,d):
     return model.pD[d] == model.alpha[d]*model.PD[d]
 def demand_LS_bound_Max(model,d):
     return model.alpha[d] <= 1
+def alpha_FixNegDemands(model,d):
+    return model.alpha[d] == 1
+
 model.demandmodelC = Constraint(model.D, rule=demand_model)
 model.demandalphaC = Constraint(model.D, rule=demand_LS_bound_Max)
+model.alphaFix      = Constraint(model.DNeg, rule=alpha_FixNegDemands)
 
 # --- generator power limits ---
 def Real_Power_Max(model,g):
