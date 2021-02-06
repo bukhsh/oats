@@ -12,7 +12,7 @@ Optimisation and Analysis Toolbox for power Systems (OATS) is a high-level model
 </p>
 
 ## Getting started
-The scripts in OATS are written in Python 2. The optimisation models are written in PYOMO, which is an algebraic modelling language. A solver is required to solve the optimisation models.
+The scripts in OATS are written in Python 3. The optimisation models are written in PYOMO, which is an algebraic modelling language. A solver is required to solve the optimisation models.
 
 ## Documentation
 The [documentation](https://oats.readthedocs.io) of OATS is a best place to start. The documentation provides installation instructions and brief description of the optimisation models that are implemented in OATS.
