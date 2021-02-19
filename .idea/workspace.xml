@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="223f896f-623a-4933-b075-25cee17ebd93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/networkdata.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/networkdata.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/_sources/networkdata.rst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/networkdata.rst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/networkdata.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/networkdata.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/networkdata.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/networkdata.rst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
