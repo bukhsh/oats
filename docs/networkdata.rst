@@ -22,9 +22,14 @@ A reduced representative GB network
 -----------------------------------
 `[Download link] <https://github.com/bukhsh/oats/blob/master/OATS-testcases/GB_ReducedNetwork.xlsx>`_
 
-.. image:: /pics/GBRed.png
-		:width: 15em
-		:align: center
+.. figure:: /pics/GBdiagram.jpg
+        :alt: map to
+
+        Geographical location of the nodes in the reduced GB network (Underlay: ETYS National Grid ESO, Overlay: `Callum MacIver <https://www.strath.ac.uk/staff/macivercallummr/>`_)
+
+
+
+
 
 A reduced GB network model was developed at the University of Strathclyde in response to a
 need articulated in [1]. The network model is based on a solved 2009 full GB transmission network peak demand load flow
