@@ -33,7 +33,6 @@ def selecttestcase(test):
     "transformer": df_transformer.dropna(how='all'),
     "wind": df_wind.dropna(how='all'),
     "baseMVA": df_baseMVA.dropna(how='all'),
-    "zone": df_zone.dropna(how='all'),
     "zone":df_zone.dropna(how='all'),
     "zonalNTC":df_zonalNTC.dropna(how='all'),
     "flags":data_flags
@@ -51,7 +50,7 @@ def selecttestcase(test):
         print('Time-series data not defined')
         data["flags"]['ts'] = 0
     try:
-        df_ts    = xl.parse("shunt",header=[0,1])
+        df_ts    = xl.parse("shunt")
         data.update( {"shunt" : df_ts.dropna(how='all')} )
     except:
         print('Shunt data not defined')
