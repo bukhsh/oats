@@ -99,7 +99,7 @@ class printdata(object):
             f.write(str(self.data["generator"]["busname"][i]) + " "+str(self.data["generator"]["name"][i])+"\n")
         f.write(';\n')
         #---set of wind generator-bus mapping (windgen_bus, gen_ind)---
-        if self.data["wind"].empty:
+        if not(self.data["wind"].empty):
             f.write('set Wbs:=\n')
             for i in self.data["wind"].index.tolist():
                 f.write(str(self.data["wind"]["busname"][i]) + " "+str(self.data["wind"]["name"][i])+"\n")
@@ -778,7 +778,7 @@ class printdata(object):
                     f.write('set CG:=\n')
                     flag_C=1
                 f.write(str(contingencies_id)+" "+str(self.data["generator"]["name"][i])+"\n")
-                contingencies_set.append(contingencies_id)
+                contingencies_set.append([contingencies_id,str(self.data["generator"]["probability"][i])])
                 contingencies_id += 1
         if flag_C==1:
             f.write(';\n')
@@ -819,6 +819,11 @@ class printdata(object):
         if flag_C==1:
             f.write(';\n')
         ##--set of contingencies--
+        probok = 1- sum(x[1] for x in contingencies_set)
+        print ('The probability of system being OK is: ',str(probok*100),'%')
+        f.write('param probOK:=\n')
+        f.write(str(probok) + "\n")
+        f.write(';\n')
         f.write('set C:=\n')
         for i in contingencies_set:
             f.write(str(i[0])+"\n")
