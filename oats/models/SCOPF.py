@@ -23,6 +23,7 @@ model.B      = Set()  # set of buses, as a list of positive integers
 model.G      = Set()  # set of generators, as a list of positive integers
 model.WIND   = Set()  # set of wind generators, as a list of positive integers
 model.D      = Set()  # set of demands, as a list of positive integers
+model.DNeg   = Set()  # set of negative demands
 model.L      = Set()  # set of lines, as a list of positive integers
 model.TRANSF = Set()  # set of transformers, as a list of positive integers
 model.SHUNT  = Set()  # set of shunts, as a list of positive integers
@@ -44,8 +45,8 @@ model.SHUNTbs = Set(within=model.B*model.SHUNT)  # set of shunt-node mapping
 
 # --- parameters ---
 # line matrix
-model.A     = Param(model.L*model.LE)       # bus-line (node-arc) matrix
-model.AT    = Param(model.TRANSF*model.LE)  # bus-transformer (node-arc) matrix
+model.A     = Param(model.L*model.LE,within=Any)       # bus-line (node-arc) matrix
+model.AT    = Param(model.TRANSF*model.LE,within=Any)  # bus-transformer (node-arc) matrix
 
 # demands
 model.PD      = Param(model.D, within=Reals)  # real power demand at load d, p.u.
@@ -79,9 +80,10 @@ model.c0    = Param(model.G, within=NonNegativeReals)# generator cost coefficien
 model.baseMVA = Param(within=NonNegativeReals)# base MVA
 
 #constants
-model.eps = Param(within=NonNegativeReals)
-model.nT = Param(within=NonNegativeReals) #total time horizon
-model.probC = Param(model.C, domain=NonNegativeReals) #total time horizon
+model.eps    = Param(within=NonNegativeReals)
+model.nT     = Param(within=NonNegativeReals) #total time horizon
+model.probC  = Param(model.C, domain=NonNegativeReals) #probabaility of contingencies
+model.probOK = Param(domain=NonNegativeReals) #probabaility of the system being OK
 
 # === Pre-contigency variables ===
 # --- control variables ---
@@ -122,7 +124,7 @@ model.FPreCont  = Var() # Objective function component for pre-contingency opera
 model.FPostCont = Var(model.C) # Objective function component for post-contingency operation
 # --- cost function ---
 def objective(model):
-    obj = sum(model.probC[c]*model.FPostCont[c] for c in model.C) +(1-sum(model.probC[c] for c in model.C))*model.FPreCont
+    obj = sum(model.probC[c]*model.FPostCont[c] for c in model.C) + model.probOK*model.FPreCont
     return obj
 model.OBJ = Objective(rule=objective, sense=minimize)
 
@@ -134,7 +136,7 @@ model.precontingency_cost_const = Constraint(rule=precontingency_cost)
 
 def postcontingency_cost(model,c):
     return model.FPostCont[c] == sum(model.baseMVA*(model.c1[g]*model.DeltapGDown[g,c]+model.c1[g]*model.DeltapGUp[g,c]) for g in model.G)\
-    +sum(model.baseMVA*(model.c1[w]*model.DeltapWDown[w,c]) for w in model.WIND)\
+    +sum(model.baseMVA*(60*model.DeltapWDown[w,c]) for w in model.WIND)\
     +sum(model.baseMVA*(model.VOLL[d]*(1-model.alphaC[d,c])*model.PD[d]) for d in model.D)
 model.postcontingency_cost_const = Constraint(model.C, rule=postcontingency_cost)
 
@@ -166,9 +168,12 @@ def demand_model(model,d):
     return model.pD[d] == model.alpha[d]*model.PD[d]
 def demand_LS_bound_Max(model,d):
     return model.alpha[d] <= 1
+def alpha_FixNegDemands(model,d):
+    return model.alpha[d] == 1
 #the next two lines creates constraints for demand model
 model.demandmodelC = Constraint(model.D, rule=demand_model)
 model.demandalphaC = Constraint(model.D, rule=demand_LS_bound_Max)
+model.alphaFix      = Constraint(model.DNeg, rule=alpha_FixNegDemands)
 
 # --- generator power limits ---
 def Real_Power_Max(model,g):

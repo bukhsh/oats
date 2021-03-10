@@ -190,7 +190,7 @@ class printoutput(object):
                 for g in self.instance.Wbs:
                     wind.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
                     'PGLB(MW)':self.instance.WGmin[g[1]]*self.instance.baseMVA,\
-                    'PG(MW)':round(self.instance.PW[g[1]]*self.instance.baseMVA,3),\
+                    'PG(MW)':round(self.instance.WGmax[g[1]]*self.instance.baseMVA,3),\
                     'pG(MW)':round(self.instance.pW[g[1]].value*self.instance.baseMVA,3),\
                     'PGUB(MW)':self.instance.WGmax[g[1]]*self.instance.baseMVA})
                     ind += 1

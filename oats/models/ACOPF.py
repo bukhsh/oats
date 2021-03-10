@@ -33,8 +33,8 @@ model.SHUNTbs = Set(within=model.B * model.SHUNT)# shunt-bus mapping
 
 # --- parameters ---
 # line matrix
-model.A = Param(model.L*model.LE)       # bus-line
-model.AT = Param(model.TRANSF*model.LE) # bus-transformer
+model.A = Param(model.L*model.LE,within=Any)       # bus-line
+model.AT = Param(model.TRANSF*model.LE,within=Any) # bus-transformer
 
 # demands
 model.PD = Param(model.D, within=Reals)  # real power demand
@@ -223,7 +223,7 @@ model.QGminC = Constraint(model.G, rule=Reactive_Power_Min)
 # ---wind generator power limits ---
 def Wind_Real_Power_Max(model,w):
     return model.pW[w] <= model.WGmax[w]
-def Wind_Real_Power_Min(model,w,t):
+def Wind_Real_Power_Min(model,w):
     return model.pW[w] >= model.WGmin[w]
 def Wind_Reactive_Power_Max(model,w):
     return model.qW[w] <= model.WGQmax[w]
