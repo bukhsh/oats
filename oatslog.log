@@ -1,8 +1,8 @@
-Wed, 10 Mar 2021 17:28:24 INFO     OATS log file
-Wed, 10 Mar 2021 17:28:24 INFO     Program started
-Wed, 10 Mar 2021 17:28:24 INFO     Solver selected: cplex
-Wed, 10 Mar 2021 17:28:24 INFO     Testcase selected: /home/waqquas/Downloads/GBNetwork_Revised_Reduced.xlsx
-Wed, 10 Mar 2021 17:28:24 INFO     Model selected: SCOPF
-Wed, 10 Mar 2021 17:28:24 INFO     Given model file found and selected from the models library
-Wed, 10 Mar 2021 17:28:25 INFO     Given testcase file found and selected from the testcase library
-Wed, 10 Mar 2021 17:28:37 INFO     Done!
+Thu, 11 Mar 2021 11:42:37 INFO     OATS log file
+Thu, 11 Mar 2021 11:42:37 INFO     Program started
+Thu, 11 Mar 2021 11:42:37 INFO     Solver selected: cplex
+Thu, 11 Mar 2021 11:42:37 INFO     Testcase selected: /home/waqquas/Downloads/GBNetwork_Revised_Reduced.xlsx
+Thu, 11 Mar 2021 11:42:37 INFO     Model selected: SCOPF
+Thu, 11 Mar 2021 11:42:37 INFO     Given model file found and selected from the models library
+Thu, 11 Mar 2021 11:42:39 INFO     Given testcase file found and selected from the testcase library
+Thu, 11 Mar 2021 11:43:15 INFO     Done!
