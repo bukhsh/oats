@@ -819,7 +819,7 @@ class printdata(object):
         if flag_C==1:
             f.write(';\n')
         ##--set of contingencies--
-        probok = 1- sum(x[1] for x in contingencies_set)
+        probok = 1- sum(float(x[1]) for x in contingencies_set)
         print ('The probability of system being OK is: ',str(probok*100),'%')
         f.write('param probOK:=\n')
         f.write(str(probok) + "\n")

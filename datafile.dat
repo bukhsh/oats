@@ -1,6 +1,6 @@
 #This is Python generated data file for Pyomo model DCLF.py
 #_author_:W. Bukhsh
-#Time stamp: 2021-03-10 17:28:25.485902
+#Time stamp: 2021-03-11 11:42:39.026850
 set B:=
 ABHA41
 ABHA42
@@ -12918,10 +12918,47 @@ T250 -65.22731720044355
 T251 -83.3541718763024
 T252 -82.77460475126232
 ;
+set CG:=
+1 G1
+2 G2
+;
+set CL:=
+3 L1
+4 L2
+5 L3
+;
+set CT:=
+6 T1
+7 T2
+;
+set CWIND:=
+8 W1
+9 W2
+;
 param probOK:=
-1
+0.9991
 ;
 set C:=
+1
+2
+3
+4
+5
+6
+7
+8
+9
+;
+param probC:=
+1 0.0001
+2 0.0001
+3 0.0001
+4 0.0001
+5 0.0001
+6 0.0001
+7 0.0001
+8 0.0001
+9 0.0001
 ;
 param RampUp:=
 G1 10.0
