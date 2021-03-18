@@ -161,6 +161,12 @@ def phase_angle_diff1(model,l):
     model.delta[model.A[l,2]]
 model.phase_diff1 = Constraint(model.L, rule=phase_angle_diff1)
 
+# --- phase angle constraints ---
+def phase_angle_diff2(model,l):
+    return model.deltaLT[l] == model.delta[model.AT[l,1]] - \
+    model.delta[model.AT[l,2]]
+model.phase_diff2 = Constraint(model.TRANSF, rule=phase_angle_diff2)
+
 # --- reference bus constraint ---
 def ref_bus_def(model,b):
     return model.delta[b]==0
