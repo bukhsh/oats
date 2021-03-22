@@ -19,6 +19,7 @@ model.B      = Set()  # set of buses
 model.G      = Set()  # set of generators
 model.WIND   = Set()  # set of wind generators
 model.D      = Set()  # set of demands
+model.DNeg   = Set()  # set of demands
 model.L      = Set()  # set of lines
 model.SHUNT  = Set()  # set of shunts
 model.LE     = Set()  # line-to and from ends set (1,2)
@@ -239,8 +240,13 @@ def Load_Shed_real(model,d):
     return model.pD[d] == model.alpha[d]*model.PD[d]
 def Load_Shed_reactive(model,d):
     return model.qD[d] == model.alpha[d]*model.QD[d]
-model.LoadShed_real = Constraint(model.D, rule=Load_Shed_real)
+def alpha_FixNegDemands(model,d):
+    return model.alpha[d] == 1
+
+model.LoadShed_real     = Constraint(model.D, rule=Load_Shed_real)
 model.LoadShed_reactive = Constraint(model.D, rule=Load_Shed_reactive)
+model.alphaFix          = Constraint(model.DNeg, rule=alpha_FixNegDemands)
+
 
 def alpha_BoundUB(model,d):
     return model.alpha[d] <= 1

@@ -309,14 +309,13 @@ class printoutput(object):
                 ind = 0
                 for g in self.instance.Wbs:
                     wind.loc[ind] = pd.Series({'name':g[0], 'busname':g[1],\
-                    'PGLB(MW)':self.instance.PGmin[g[1]]*self.instance.baseMVA,\
+                    'PGLB(MW)':self.instance.WGmin[g[1]]*self.instance.baseMVA,\
                     'pG(MW)':round(self.instance.pW[g[1]].value*self.instance.baseMVA,3),\
-                    'PGUB(MW)':self.instance.PGmax[g[1]]*self.instance.baseMVA,\
-                    'QGLB(MVar)':self.instance.QGmin[g[1]]*self.instance.baseMVA,\
+                    'PGUB(MW)':self.instance.WGmax[g[1]]*self.instance.baseMVA,\
+                    'QGLB(MVar)':self.instance.WGQmin[g[1]]*self.instance.baseMVA,\
                     'qG(MVar)':round(self.instance.qW[g[1]].value*self.instance.baseMVA,3),\
-                    'QGUB(MVar)':self.instance.QGmax[g[1]]*self.instance.baseMVA})
+                    'QGUB(MVar)':self.instance.WGQmax[g[1]]*self.instance.baseMVA})
                     ind += 1
-
 
         #----------------------------------------------------------
         #===write output on xlsx file===
