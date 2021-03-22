@@ -6,6 +6,4 @@ import oats
 #
 from oats.run import scopf,dcopf,acopf
 
-# scopf(neos=False,solver='cplex',tc='OATS-testcases/GB_ReducedNetwork.xlsx')
-# dcopf(neos=False,solver='cplex',tc='/home/waqquas/Dropbox/NIA-GB-Data/TestCases/GBNetwork_Revised_Reduced.xlsx')
-scopf(neos=False,solver='cplex',tc='/home/waqquas/Downloads/GBNetwork_Revised_Reduced.xlsx')
+acopf(neos=False,solver='ipopt',tc='/home/waqquas/Downloads/GBNetwork_Revised_Reduced.xlsx')

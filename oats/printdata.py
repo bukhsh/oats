@@ -382,7 +382,7 @@ class printdata(object):
         for i in self.data["generator"].index.tolist():
             f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["VS"][i]))+"\n")
         f.write(';\n')
-        if not(self.data["transformer"]):
+        if not(self.data["transformer"].empty):
             #---Transformer tap bounds---
             f.write('param TapLB:=\n')
             for i in self.data["transformer"].index.tolist():
@@ -416,6 +416,16 @@ class printdata(object):
         for i in self.data["generator"].index.tolist():
             f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["QGUB"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
         f.write(';\n')
+        if not (self.data["wind"].empty):
+            f.write('param WGQmin:=\n')
+            for i in self.data["wind"].index.tolist():
+                f.write(str(self.data["wind"]["name"][i])+" "+str(float(self.data["wind"]["QGLB"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+            f.write('param WGQmax:=\n')
+            for i in self.data["wind"].index.tolist():
+                f.write(str(self.data["wind"]["name"][i])+" "+str(float(self.data["wind"]["QGUB"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+            f.write(';\n')
+
         #---Voltage bounds---
         f.write('param Vmin:=\n')
         for i in self.data["bus"].index.tolist():
@@ -472,7 +482,7 @@ class printdata(object):
                 f.write(str(i)+' '+str(self.data["bus"]["VM"][self.data["bus"]["name"]==i].item())+"\n")
             f.write(';\n')
         #---Voltage targets---
-        if not(self.data["transformer"]):
+        if not(self.data["transformer"].empty):
             #---Transformer tap bounds---
             f.write('param Tap:=\n')
             for i in self.data["transformer"].index.tolist():
@@ -516,7 +526,7 @@ class printdata(object):
         for i in self.data["generator"].index.tolist():
             f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["offer"][i]))+"\n")
         f.write(';\n')
-        if not(self.data["wind"]):
+        if not(self.data["wind"].empty):
             f.write('param PW:=\n')
             for i in self.data["wind"].index.tolist():
                 f.write(str(self.data["wind"]["name"][i])+" "+str(float(self.data["wind"]["PG"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
@@ -547,7 +557,7 @@ class printdata(object):
             f.write(str(i)+"\n")
         f.write(';\n')
         #---set of wind generators---
-        if not(self.data["wind"]):
+        if not(self.data["wind"].empty):
             f.write('set WIND:=\n')
             for i in self.data["wind"]["name"].unique():
                 f.write(str(i)+"\n")
@@ -594,7 +604,7 @@ class printdata(object):
             f.write(str(self.data["generator"]["name"][i])+" "+str(self.data["bus"]["zone"][self.data["bus"]["name"]== self.data["generator"]["busname"][i]].item())+"\n")
         f.write(';\n')
         ###---set of wind zone mapping---
-        if not(self.data["wind"]):
+        if not(self.data["wind"].empty):
             f.write('set WZ:=\n')
             for i in self.data["wind"]["name"].index.tolist():
                 f.write(str(self.data["wind"]["name"][i])+" "+str(self.data["bus"]["zone"][self.data["bus"]["name"]== self.data["wind"]["busname"][i]].item())+"\n")
@@ -635,7 +645,7 @@ class printdata(object):
             f.write(str(self.data["generator"]["name"][i])+" "+str(float(self.data["generator"]["PGUB"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
         f.write(';\n')
         #---Real power wind generation bounds---
-        if not(self.data["wind"]):
+        if not(self.data["wind"].empty):
             f.write('param WGmin:=\n')
             for i in self.data["timeseries"]["Wind"]:
                 for j in self.data["timeseries"]["Wind"].index.tolist():
@@ -693,7 +703,7 @@ class printdata(object):
         for i in self.data["zone"].index.tolist():
             f.write(str(self.data["zone"]["zone"][i])+" "+str(float(self.data["zone"]["reserve(MW)"][i])/self.data["baseMVA"]["baseMVA"][0])+"\n")
         f.write(';\n')
-        if not(self.data["zonalNTC"]):
+        if not(self.data["zonalNTC"].empty):
             f.write('param A:=\n')
             for i in self.data["zonalNTC"].index.tolist():
                 f.write(str(self.data["zonalNTC"]["interconnection_ID"][i])+" "+"1"+" "+str(self.data["zonalNTC"]["from_zone"][i])+"\n")
