@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="223f896f-623a-4933-b075-25cee17ebd93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafile.dat" beforeDir="false" afterPath="$PROJECT_DIR$/datafile.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oats/models/ACOPF.py" beforeDir="false" afterPath="$PROJECT_DIR$/oats/models/ACOPF.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oats/printdata.py" beforeDir="false" afterPath="$PROJECT_DIR$/oats/printdata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oats/printoutput.py" beforeDir="false" afterPath="$PROJECT_DIR$/oats/printoutput.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oatslog.log" beforeDir="false" afterPath="$PROJECT_DIR$/oatslog.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/runtest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/outputs.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/outputs.rst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +12,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/bukhsh/oats" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1nEpdGXJgwBikL8fOxU0tXfUAOM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
