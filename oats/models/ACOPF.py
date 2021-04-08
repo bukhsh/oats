@@ -277,7 +277,7 @@ def bus_max_voltage(model,b):
 def bus_min_voltage(model,b):
     return model.v[b] >= model.Vmin[b]
 model.Vmaxc = Constraint(model.B, rule=bus_max_voltage)
-# model.Vminc = Constraint(model.B, rule=bus_min_voltage)
+model.Vminc = Constraint(model.B, rule=bus_min_voltage)
 
 # --- reference bus constraint ---
 def ref_bus_def(model,b):
