@@ -6,4 +6,4 @@ import oats
 #
 from oats.run import scopf,dcopf,acopf
 
-acopf(neos=False,solver='ipopt',tc='/home/waqquas/Downloads/GBNetwork_Revised_Reduced.xlsx')
+acopf(neos=False,solver='ipopt',tc='/home/waqquas/Downloads/GBNetwork_Revised_Reduced_S1.xlsx')

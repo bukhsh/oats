@@ -228,7 +228,7 @@ class printdata(object):
         f = open(self.datfile, 'a')
 
         #set of shunts
-        if self.data["flags"]["shunt"]:
+        if self.data["flags"]["shunt"] and not(self.data["shunt"].empty):
             f.write('set SHUNT:=\n')
             for i in self.data["shunt"].index.tolist():
                 f.write(str(self.data["shunt"]["name"][i])+"\n")
