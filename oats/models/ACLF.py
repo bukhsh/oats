@@ -94,7 +94,7 @@ model.baseMVA = Param(within=NonNegativeReals)# base MVA
 model.eps = Param(within=NonNegativeReals)
 
 # --- variables ---
-model.pG       = Var(model.G, domain= NonNegativeReals)# real power output of generator
+model.pG       = Var(model.G, domain= Reals)# real power output of generator
 model.qG       = Var(model.G, domain= Reals)    # reactive power output of generator
 model.pW       = Var(model.WIND, domain= Reals) #real power generation from wind
 model.qW       = Var(model.WIND, domain= Reals) #reactive power generation from wind
@@ -119,9 +119,9 @@ model.epsV_up     = Var(model.G, initialize=0.0, domain= NonNegativeReals)
 model.epsV_down   = Var(model.G, initialize=0.0, domain= NonNegativeReals)
 # --- cost function ---
 def objective(model):
-    obj = 1*sum(model.epsV_up[g]+model.epsV_down[g] for g in model.G)+\
-    1*sum(model.baseMVA*(model.pLto[l]+model.pLfrom[l]) for l in model.L)+\
-    sum(model.baseMVA*(model.epsPG_up[g]+model.epsPG_down[g]) for g in model.DistSlack)
+    obj = 0.8*sum(model.epsV_up[g]+model.epsV_down[g] for g in model.G)+\
+    0.1*sum((model.pLto[l]+model.pLfrom[l]) for l in model.L)+\
+    0.1*sum((model.epsPG_up[g]+model.epsPG_down[g]) for g in model.DistSlack)
     return obj
 model.OBJ = Objective(rule=objective, sense=minimize)
 

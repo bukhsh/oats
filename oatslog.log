@@ -1,8 +1,8 @@
-Thu, 08 Apr 2021 12:29:36 INFO     OATS log file
-Thu, 08 Apr 2021 12:29:36 INFO     Program started
-Thu, 08 Apr 2021 12:29:36 INFO     Solver selected: ipopt
-Thu, 08 Apr 2021 12:29:36 INFO     Testcase selected: /home/waqquas/Downloads/GBNetwork_Revised_Reduced_S1.xlsx
-Thu, 08 Apr 2021 12:29:36 INFO     Model selected: ACOPF
-Thu, 08 Apr 2021 12:29:36 INFO     Given model file found and selected from the models library
-Thu, 08 Apr 2021 12:29:37 INFO     Given testcase file found and selected from the testcase library
-Thu, 08 Apr 2021 12:29:54 INFO     Done!
+Thu, 09 Sep 2021 12:27:07 INFO     OATS log file
+Thu, 09 Sep 2021 12:27:07 INFO     Program started
+Thu, 09 Sep 2021 12:27:07 INFO     Solver selected: ipopt
+Thu, 09 Sep 2021 12:27:07 INFO     Testcase selected: /home/waqquas/Downloads/LFAtest_pypower.xlsx
+Thu, 09 Sep 2021 12:27:07 INFO     Model selected: ACLF
+Thu, 09 Sep 2021 12:27:08 INFO     Given model file found and selected from the models library
+Thu, 09 Sep 2021 12:27:08 INFO     Given testcase file found and selected from the testcase library
+Thu, 09 Sep 2021 12:27:08 INFO     Done!
