@@ -157,6 +157,8 @@ The wind sheet is included to separate variable generation from fixed capacity
 +--------------------+----------------------------------------------------+
 | stat               | Status (1-connected, 0-disconnected)               |
 +--------------------+----------------------------------------------------+
+| type               | 1-PQ Bus, 2- Distributed Slack Bus, 3 - Slack Bus  |
++--------------------+----------------------------------------------------+
 | PG                 | Real power output (MW)                             |
 +--------------------+----------------------------------------------------+
 | QG                 | Reactive power output (MVAr)                       |
