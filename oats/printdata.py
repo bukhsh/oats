@@ -576,20 +576,20 @@ class printdata(object):
             f.write(';\n')
         #---set of time-periods---
         f.write('set T:= \n')
-        for i in self.data["timeseries"]["TP"]["timeperiod"]:
+        for i in self.data["timeseries"].index:
             f.write(str(i) + "\n")
         f.write(';\n')
         f.write('set TRed:= \n')
-        for i in self.data["timeseries"]["TP"]["timeperiod"][1:]:
+        for i in self.data["timeseries"].index[1:]:
             f.write(str(i) + "\n")
         f.write(';\n')
 
         f.write('set Tstart:= \n')
-        f.write(str(self.data["timeseries"]["TP"]["timeperiod"][0]) + "\n")
+        f.write(str(self.data["timeseries"].index[0]) + "\n")
         f.write(';\n')
 
         f.write('set Tend:= \n')
-        f.write(str(self.data["timeseries"]["TP"]["timeperiod"][self.data["timeseries"]["TP"]["timeperiod"].index[-1]]) + "\n")
+        f.write(str(self.data["timeseries"].index[-1]) + "\n")
         f.write(';\n')
 
         #---storage-bus mapping---
@@ -619,7 +619,7 @@ class printdata(object):
         f.write('param PD:=\n')
         for i in self.data["timeseries"]["Demand"]:
             for j in self.data["timeseries"]["Demand"].index.tolist():
-                f.write(str(i)+" "+str(self.data["timeseries"]["TP"]["timeperiod"][j])+" "+str(float(self.data["timeseries"]["Demand"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+                f.write(str(i)+" "+str(j)+" "+str(float(self.data["timeseries"]["Demand"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
         f.write(';\n')
         # set of negative demands
         f.write('set DNeg:=\n')
@@ -663,7 +663,7 @@ class printdata(object):
             f.write(';\n')
 
 
-        if self.data["flags"]["storage"]:
+        if (self.data["flags"]["storage"]) and (not(self.data["storage"].empty)):
             f.write('param ChargeEff:=\n')
             for i in  self.data["storage"].index.tolist():
                 f.write(str(self.data["storage"]["name"][i])+" "+str(float(self.data["storage"]["ChargingEfficieny(%)"][i])/100.0)+"\n")

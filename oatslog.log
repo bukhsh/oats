@@ -1,8 +1,8 @@
-Thu, 09 Sep 2021 12:27:07 INFO     OATS log file
-Thu, 09 Sep 2021 12:27:07 INFO     Program started
-Thu, 09 Sep 2021 12:27:07 INFO     Solver selected: ipopt
-Thu, 09 Sep 2021 12:27:07 INFO     Testcase selected: /home/waqquas/Downloads/LFAtest_pypower.xlsx
-Thu, 09 Sep 2021 12:27:07 INFO     Model selected: ACLF
-Thu, 09 Sep 2021 12:27:08 INFO     Given model file found and selected from the models library
-Thu, 09 Sep 2021 12:27:08 INFO     Given testcase file found and selected from the testcase library
-Thu, 09 Sep 2021 12:27:08 INFO     Done!
+Wed, 08 Jun 2022 16:16:00 INFO     OATS log file
+Wed, 08 Jun 2022 16:16:00 INFO     Program started
+Wed, 08 Jun 2022 16:16:00 INFO     Solver selected: cplex
+Wed, 08 Jun 2022 16:16:00 INFO     Testcase selected: /Users/waqquasbukhsh/GitHub/oats/oats/testcases/case24_ieee_rts.xlsx
+Wed, 08 Jun 2022 16:16:00 INFO     Model selected: UC
+Wed, 08 Jun 2022 16:16:00 INFO     Given model file found and selected from the models library
+Wed, 08 Jun 2022 16:16:00 INFO     Given testcase file found and selected from the testcase library
+Wed, 08 Jun 2022 16:16:03 INFO     Done!
