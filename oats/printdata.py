@@ -648,13 +648,13 @@ class printdata(object):
         if not(self.data["wind"].empty):
             f.write('param WGmin:=\n')
             for i in self.data["timeseries"]["Wind"]:
-                for j in self.data["timeseries"]["Wind"].index.tolist():
-                    f.write(str(i)+" "+str(self.data["timeseries"]["TP"]["timeperiod"][j])+" "+str(0)+"\n")
+                for j in self.data["timeseries"]["Wind"].index:
+                    f.write(str(i)+" "+str(j)+" "+str(0)+"\n")
             f.write(';\n')
             f.write('param WGmax:=\n')
             for i in self.data["timeseries"]["Wind"]:
                 for j in self.data["timeseries"]["Wind"].index.tolist():
-                    f.write(str(i)+" "+str(self.data["timeseries"]["TP"]["timeperiod"][j])+" "+str(float(self.data["timeseries"]["Wind"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
+                    f.write(str(i)+" "+str(j)+" "+str(float(self.data["timeseries"]["Wind"][i][j])/self.data["baseMVA"]["baseMVA"][0])+"\n")
             f.write(';\n')
 
             f.write('param bid:=\n')

@@ -6,5 +6,5 @@ import oats
 #
 from oats.run import scopf,dcopf,acopf,aclf,uc
 
-uc(neos=False,solver='cplex')
+uc(neos=False,solver='cplex',tc= '/Users/waqquasbukhsh/Downloads/ntdc_2021_oats_v2.xlsx')
 

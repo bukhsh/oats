@@ -377,13 +377,15 @@ class printoutput(object):
         cols_summary    = ['Time Period','Conventional generation (MW)', 'Wind generation (MW)', 'Demand (MW)']
         cols_zone       = ['Time Period','Zone', 'Conventional generation (MW)', 'Wind generation (MW)', 'Demand (MW)']
         cols_ict        = ['Time Period','From', 'To', 'Power flow To(MW)', 'Power flow Fr(MW)']
-        cols_gen        = ['Time Period','Generator', 'on/off', 'start', 'stop','pG(MW)']
+        cols_gen        = ['Time Period','Generator', 'on/off', 'start', 'stop','pG(MW)','PGmax(MW)','PGmin(MW)']
+        cols_wind       = ['Time Period', 'Generator', 'PG(MW)', 'pG(MW)']
         cols_storage    = ['Storage','Time Period','Charge(MWh)','Discharge(MWh)','State(MWh)']
 
         summary         = pd.DataFrame(columns=cols_summary)
         zone            = pd.DataFrame(columns=cols_zone)
         interconnect    = pd.DataFrame(columns=cols_ict)
         generation      = pd.DataFrame(columns=cols_gen)
+        wind            = pd.DataFrame(columns=cols_wind)
         storage         = pd.DataFrame(columns=cols_storage)
         ind = 0
         for t in self.instance.T:
@@ -409,7 +411,16 @@ class printoutput(object):
             for g in self.instance.G:
                 generation.loc[ind] = pd.Series({'Time Period':t,'Generator':g, 'on/off':self.instance.u[g,t].value,\
                 'start':self.instance.ustart[g,t].value, 'stop':self.instance.ustop[g,t].value,\
-                'pG(MW)':self.instance.pG[g,t].value*self.instance.baseMVA})
+                'pG(MW)':self.instance.pG[g,t].value*self.instance.baseMVA,\
+                 'PGmax(MW)':self.instance.PGmax[g]*self.instance.baseMVA,\
+                                                 'PGmin(MW)':self.instance.PGmin[g]*self.instance.baseMVA})
+                ind += 1
+        ind = 0
+        for t in self.instance.T:
+            for w in self.instance.WIND:
+                wind.loc[ind] = pd.Series(
+                    {'Time Period': t, 'Generator': w, 'PG(MW)':self.instance.WGmax[w,t]*self.instance.baseMVA,\
+                     'pG(MW)':self.instance.pW[w,t].value*self.instance.baseMVA})
                 ind += 1
         ind = 0
         for t in self.instance.T:
@@ -427,5 +438,6 @@ class printoutput(object):
         zone.to_excel(writer, sheet_name = 'zone',index=False)
         interconnect.to_excel(writer, sheet_name = 'interconnection',index=False)
         generation.to_excel(writer, sheet_name = 'generator',index=False)
+        wind.to_excel(writer, sheet_name='wind', index=False)
         storage.to_excel(writer, sheet_name = 'storage',index=False)
         writer.save()
