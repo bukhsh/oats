@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="223f896f-623a-4933-b075-25cee17ebd93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OATS-testcases/case24_ieee_rts.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/OATS-testcases/case24_ieee_rts.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datafile.dat" beforeDir="false" afterPath="$PROJECT_DIR$/datafile.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oats/printdata.py" beforeDir="false" afterPath="$PROJECT_DIR$/oats/printdata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oats/selecttestcase.py" beforeDir="false" afterPath="$PROJECT_DIR$/oats/selecttestcase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oats/testcases/case24_ieee_rts.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/oats/testcases/case24_ieee_rts.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oats/printoutput.py" beforeDir="false" afterPath="$PROJECT_DIR$/oats/printoutput.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oatslog.log" beforeDir="false" afterPath="$PROJECT_DIR$/oatslog.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/results.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/runtest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +17,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="hiddenUrls">
