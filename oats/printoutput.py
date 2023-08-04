@@ -331,7 +331,7 @@ class printoutput(object):
         wind.to_excel(writer, sheet_name = 'wind',index=False)
         branch.to_excel(writer, sheet_name = 'branch',index=False)
         transformer.to_excel(writer, sheet_name = 'transformer',index=False)
-        writer.save()
+        writer.close()
     def printUC(self):
         print ("Cost of the objective function:", str(float(self.instance.OBJ())))
         print ("***********")
@@ -440,4 +440,4 @@ class printoutput(object):
         generation.to_excel(writer, sheet_name = 'generator',index=False)
         wind.to_excel(writer, sheet_name='wind', index=False)
         storage.to_excel(writer, sheet_name = 'storage',index=False)
-        writer.save()
+        writer.close()
