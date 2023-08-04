@@ -84,8 +84,7 @@ model.pLT     = Var(model.TRANSF, domain= Reals) # real power injected at b onto
 
 # --- cost function ---
 def objective(model):
-    obj = sum(model.c2[g]*(model.baseMVA*model.pG[g])**2+\
-    model.c1[g]*(model.baseMVA*model.pG[g])+model.c0[g] for g in model.G) +\
+    obj = sum(model.c1[g]*(model.baseMVA*model.pG[g])+model.c0[g] for g in model.G) +\
     sum(model.VOLL[d]*(1-model.alpha[d])*model.baseMVA*model.PD[d] for d in model.D)
     return obj
 model.OBJ = Objective(rule=objective, sense=minimize)

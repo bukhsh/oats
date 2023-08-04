@@ -1,8 +1,8 @@
-Thu, 23 Jun 2022 15:58:45 INFO     OATS log file
-Thu, 23 Jun 2022 15:58:45 INFO     Program started
-Thu, 23 Jun 2022 15:58:45 INFO     Solver selected: cplex
-Thu, 23 Jun 2022 15:58:45 INFO     Testcase selected: /Users/waqquasbukhsh/Downloads/ntdc_2021_oats_v2.xlsx
-Thu, 23 Jun 2022 15:58:45 INFO     Model selected: UC
-Thu, 23 Jun 2022 15:58:45 INFO     Given model file found and selected from the models library
-Thu, 23 Jun 2022 15:58:45 INFO     Given testcase file found and selected from the testcase library
-Thu, 23 Jun 2022 15:58:50 INFO     Done!
+Fri, 04 Aug 2023 17:27:11 INFO     OATS log file
+Fri, 04 Aug 2023 17:27:11 INFO     Program started
+Fri, 04 Aug 2023 17:27:11 INFO     Solver selected: glpk
+Fri, 04 Aug 2023 17:27:11 INFO     Testcase selected: OATS-testcases/case24_ieee_rts.xlsx
+Fri, 04 Aug 2023 17:27:11 INFO     Model selected: DCOPF
+Fri, 04 Aug 2023 17:27:11 INFO     Given model file found and selected from the models library
+Fri, 04 Aug 2023 17:27:11 INFO     Given testcase file found and selected from the testcase library
+Fri, 04 Aug 2023 17:27:11 INFO     Done!
