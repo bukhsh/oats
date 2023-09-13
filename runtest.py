@@ -6,5 +6,6 @@ import oats
 #
 from oats.run import scopf,dcopf,acopf,aclf,uc,dclf
 
-dcopf(neos=False,solver='glpk',tc= 'OATS-testcases/case24_ieee_rts.xlsx')
+dcopf(neos=False,solver='cplex',tc= 'OATS-testcases/case24_ieee_rts.xlsx')
+
 

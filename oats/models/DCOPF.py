@@ -92,12 +92,12 @@ model.OBJ = Objective(rule=objective, sense=minimize)
 # --- Kirchoff's current law at each bus b ---
 def KCL_def(model, b):
     return sum(model.pG[g] for g in model.G if (b,g) in model.Gbs) +\
-    sum(model.pW[w] for w in model.WIND if (b,w) in model.Wbs) == \
+    sum(model.pW[w] for w in model.WIND if (b,w) in model.Wbs)-\
+    sum(model.pL[l] for l in model.L if model.A[l,1]==b)+ \
+    sum(model.pL[l] for l in model.L if model.A[l,2]==b)-\
+    sum(model.pLT[l] for l in model.TRANSF if model.AT[l,1]==b)+ \
+    sum(model.pLT[l] for l in model.TRANSF if model.AT[l,2]==b) == \
     sum(model.pD[d] for d in model.D if (b,d) in model.Dbs)+\
-    sum(model.pL[l] for l in model.L if model.A[l,1]==b)- \
-    sum(model.pL[l] for l in model.L if model.A[l,2]==b)+\
-    sum(model.pLT[l] for l in model.TRANSF if model.AT[l,1]==b)- \
-    sum(model.pLT[l] for l in model.TRANSF if model.AT[l,2]==b)+\
     sum(model.GB[s] for s in model.SHUNT if (b,s) in model.SHUNTbs)
 model.KCL_const = Constraint(model.B, rule=KCL_def)
 
