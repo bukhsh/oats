@@ -1,0 +1,15 @@
+# MacOS
+.DS_Store
+
+# Compiled files
+*.pyc
+*.pyo
+
+# Python generated files
+datafile.dat
+results.xlsx
+oatslog.log
+parse_table_datacmds.py
+oatslog.log
+# .idea
+.idea
