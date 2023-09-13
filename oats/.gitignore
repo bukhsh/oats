@@ -1,8 +1,14 @@
 # Compiled python modules.
 *.pyc
-
+*.log
+results.xlsx
+datafile.dat
+.DS_Store
+parse_table_datacmds.py
 # Setuptools distribution folder.
 /dist/
-
+/venv/
+/oatspower.egg-info/
+/build/
 # Python egg metadata, regenerated from source files by setuptools.
 /*.egg-info

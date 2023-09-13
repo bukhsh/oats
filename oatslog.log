@@ -1,8 +1,8 @@
-Fri, 04 Aug 2023 17:27:11 INFO     OATS log file
-Fri, 04 Aug 2023 17:27:11 INFO     Program started
-Fri, 04 Aug 2023 17:27:11 INFO     Solver selected: glpk
-Fri, 04 Aug 2023 17:27:11 INFO     Testcase selected: OATS-testcases/case24_ieee_rts.xlsx
-Fri, 04 Aug 2023 17:27:11 INFO     Model selected: DCOPF
-Fri, 04 Aug 2023 17:27:11 INFO     Given model file found and selected from the models library
-Fri, 04 Aug 2023 17:27:11 INFO     Given testcase file found and selected from the testcase library
-Fri, 04 Aug 2023 17:27:11 INFO     Done!
+Wed, 13 Sep 2023 10:19:40 INFO     OATS log file
+Wed, 13 Sep 2023 10:19:40 INFO     Program started
+Wed, 13 Sep 2023 10:19:40 INFO     Solver selected: cplex
+Wed, 13 Sep 2023 10:19:40 INFO     Testcase selected: OATS-testcases/case24_ieee_rts.xlsx
+Wed, 13 Sep 2023 10:19:40 INFO     Model selected: DCOPF
+Wed, 13 Sep 2023 10:19:40 INFO     Given model file found and selected from the models library
+Wed, 13 Sep 2023 10:19:41 INFO     Given testcase file found and selected from the testcase library
+Wed, 13 Sep 2023 10:19:41 INFO     Done!

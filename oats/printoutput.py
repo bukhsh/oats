@@ -53,6 +53,7 @@ class printoutput(object):
         cols_demand     = ['name', 'busname', 'PD(MW)']
 
         if ('DC' in self.mod) or ('SC' in self.mod):
+            cols_bus.append('LMP')
             cols_branch     = ['name', 'from_busname', 'to_busname', 'pL(MW)']
             cols_transf     = ['name', 'from_busname', 'to_busname', 'pLT(MW)']
             if 'LF' in self.mod:
@@ -96,8 +97,9 @@ class printoutput(object):
         if ('DC' in self.mod) or ('SC' in self.mod):
             #bus data
             ind=0
+
             for b in self.instance.B:
-                bus.loc[ind] = pd.Series({'name': b,'angle(degs)':self.instance.delta[b].value*180/math.pi})
+                bus.loc[ind] = pd.Series({'name': b,'angle(degs)':self.instance.delta[b].value*180/math.pi,'LMP':self.instance.dual[self.instance.KCL_const[b]]/self.instance.baseMVA})
                 ind += 1
             if 'LF' in self.mod:
                 #line data
