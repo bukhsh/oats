@@ -21,18 +21,18 @@ import logging
 from oats.selecttestcase import selecttestcase
 from oats.printdata import printdata
 from oats.printoutput import printoutput
-import imp
+import importlib
 #====================================
 
 def runcase(testcase,mod,opt=None):
     oats_dir = os.path.dirname(os.path.realpath(__file__))
     if 'user_def_model' in opt:
-        modelf = imp.load_source(mod, mod+'.py')
-        model = modelf.model
+        modelf = importlib.machinery.SourceFileLoader(mod, mod+'.py')
+        model  = modelf.load_module().model
     else:
         try:
-            modelf = imp.load_source(mod, oats_dir+'/models/'+mod+'.py')
-            model = modelf.model
+            modelf = importlib.machinery.SourceFileLoader(mod, oats_dir+'/models/'+mod+'.py')
+            model = modelf.load_module().model
             logging.info("Given model file found and selected from the models library")
         except Exception:
             logging.error("Given model file not found in the 'models' library", exc_info=False)

@@ -26,5 +26,6 @@ setup(name='oatspower',
         'sympy',
         'xlrd',
         'pandas',
+        'xlsxwriter'
       ],
       zip_safe=False)
